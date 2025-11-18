@@ -1,0 +1,53 @@
+## 🚀 Installation et Démarrage
+
+Pour cloner et lancer le projet en local :
+
+1.  **Cloner le dépôt :**
+    ```bash
+    git clone [URL_DU_DEPOT]
+    cd CodeWave-Site
+    ```
+
+2.  **Lancement :**
+    Ce site est un projet statique (principalement HTML/CSS/JS). Il peut être visualisé directement en ouvrant le fichier `index.html` dans votre navigateur.
+
+    Pour un environnement de développement local simulant un serveur (pour les tests de formulaire, etc.), utilisez une extension comme **Live Server** sur VS Code ou un serveur local (ex: XAMPP, Node's `http-server`).
+
+3.  **Configuration des Formulaires :**
+    Le formulaire de contact (`contact.html`) et le formulaire de devis renvoient actuellement vers `contact.php` et `quote.php`. Ces scripts doivent être implémentés sur le serveur de production pour gérer l'envoi d'e-mails.
+
+## 🤝 Contribution et Support
+
+Pour toute suggestion, bug ou besoin de support technique sur le code, veuillez ouvrir une "Issue" dans ce dépôt.
+
+---
+
+## 📝 Fichier readme.txt (Format Texte Simple)
+
+```text
+=====================================================
+PROJET : CODEWAVE - SITE VITRINE DE SERVICES WEB
+=====================================================
+
+Date de Création : Novembre 2025
+Développeur : M.G.N CodeWave
+
+DESCRIPTION :
+Ce répertoire contient les fichiers source du site web vitrine de CodeWave.
+Le site présente nos services de développement web, notre portfolio et nos tarifs
+clairs en Franc CFA (XAF) pour le marché gabonais.
+
+STRUCTURE DES FICHIERS CLES :
+- index.html    : Page d'accueil
+- tarifs.html   : Grille tarifaire des services (Sites Vitrine, E-commerce, etc.)
+- portfolio.html: Présentation des réalisations
+- contact.html  : Formulaire de contact et de demande de devis
+- css/style.css : Styles CSS principaux
+- js/           : Scripts JavaScript et librairies
+
+DEMARRAGE RAPIDE :
+1. Ouvrez le fichier index.html dans n'importe quel navigateur web (Chrome, Firefox, etc.).
+2. Pour un fonctionnement complet (formulaires), le site doit être hébergé sur un serveur web.
+
+CONTACT ET SUPPORT :
+Pour toute question technique, veuillez contacter : contact@codewave.ga
