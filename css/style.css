@@ -1,9 +1,17 @@
 /********** Template CSS **********/
 :root {
-  --primary: #06a3da;
-  --secondary: #34ad54;
-  --light: #eef9ff;
-  --dark: #091e3e;
+  /* Remplacez ces valeurs après extraction depuis le logo */
+  --brand-1: #0b6fa3; /* couleur principale (ex: bleu) */
+  --brand-2: #2f9a6a; /* couleur secondaire (ex: vert) */
+  --brand-3: #f5f7fa; /* fonds clair */
+  --brand-4: #07172a; /* texte sombre */
+  --accent: #ffb547; /* accent chaud (optionnel) */
+
+  /* compatibilité */
+  --primary: var(--brand-1);
+  --secondary: var(--brand-2);
+  --light: var(--brand-3);
+  --dark: var(--brand-4);
 }
 
 /*** Spinner ***/
@@ -475,7 +483,266 @@ h6,
 /*** Miscellaneous ***/
 @media (min-width: 991.98px) {
   .facts {
-    position: relative;
+    position: relative; // ...existing code...
+    /* ===== Responsive improvements ===== */
+
+    /* Fluid base font for better scaling */
+    html {
+      font-size: clamp(14px, 1.6vw, 18px);
+      -webkit-text-size-adjust: 100%;
+      -moz-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+    }
+
+    body {
+      font-family: "Nunito", sans-serif;
+      line-height: 1.6;
+      color: var(--secondary);
+      background-color: #fff;
+    }
+
+    /* Container padding */
+    .container,
+    .container-fluid {
+      padding-left: 1rem;
+      padding-right: 1rem;
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 1200px;
+    }
+
+    /* Make images responsive */
+    img,
+    .team-item .team-img img,
+    .blog-item .blog-img img,
+    .carousel-inner img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Spinner responsive */
+    .spinner {
+      width: 40px;
+      height: 40px;
+    }
+    @media (max-width: 576px) {
+      .spinner {
+        width: 28px;
+        height: 28px;
+        border-radius: 6px;
+        margin: 40px auto;
+      }
+    }
+
+    /* Service cards - use auto height and responsive spacing */
+    .service-item {
+      height: auto;
+      min-height: 220px;
+      padding: 20px;
+    }
+    .service-item .service-icon {
+      width: 60px;
+      height: 60px;
+      margin-bottom: 20px;
+    }
+    .service-item a.btn {
+      width: 56px;
+      bottom: -32px;
+      margin-left: -28px;
+    }
+
+    /* Team items & social - better behaviour on small screens */
+    .team-item {
+      height: auto;
+      padding-bottom: 1rem;
+    }
+    .team-social a.btn {
+      margin-top: 60px;
+      opacity: 0;
+    }
+    .team-item:hover .team-social a.btn {
+      opacity: 1;
+      margin-top: 0;
+    }
+
+    /* Carousel caption responsive padding and text scale */
+    .carousel-caption {
+      padding: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .carousel-caption h1 {
+      font-size: clamp(1.5rem, 3.8vw, 3rem);
+      line-height: 1.05;
+    }
+    .carousel-caption h5 {
+      font-size: clamp(0.9rem, 1.8vw, 1.25rem);
+    }
+
+    /* Navbar responsive tweaks */
+    .navbar-dark .navbar-nav .nav-link {
+      padding: 18px 0;
+      margin-left: 16px;
+      font-size: clamp(14px, 1.4vw, 18px);
+    }
+    .navbar-brand h1 {
+      font-size: clamp(1.2rem, 2.4vw, 2rem);
+    }
+
+    /* Buttons sizing on small devices */
+    .btn,
+    .btn-primary,
+    .btn-secondary {
+      padding: 0.6rem 1rem;
+    }
+    .btn-square {
+      width: 36px;
+      height: 36px;
+    }
+    @media (max-width: 576px) {
+      .btn {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.95rem;
+      }
+      .btn-square {
+        width: 30px;
+        height: 30px;
+      }
+    }
+
+    /* Section title responsive bar length */
+    .section-title::before {
+      width: 120px;
+    }
+    .section-title.section-title-sm::before {
+      width: 70px;
+    }
+
+    /* Testimonial dots spacing on small screens */
+    .testimonial-carousel .owl-dots {
+      margin-top: 12px;
+    }
+
+    /* Back to top - always visible on larger screens, smaller on mobiles */
+    .back-to-top {
+      right: 30px;
+      bottom: 30px;
+      padding: 0.6rem 0.75rem;
+    }
+    @media (max-width: 576px) {
+      .back-to-top {
+        right: 16px;
+        bottom: 16px;
+        padding: 0.45rem 0.5rem;
+        border-radius: 8px;
+      }
+    }
+
+    /* Card responsive */
+    .card {
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    /* Wave decoration adaptative height */
+    .wave-decoration::before {
+      height: 80px;
+      background-size: 200% 100%;
+    }
+
+    /* Utility: stacked columns on small screens */
+    .row-responsive {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .row-responsive > [class*="col-"] {
+      flex: 1 1 100%;
+      max-width: 100%;
+    }
+
+    /* Breakpoints for layout adjustments */
+    @media (max-width: 991.98px) {
+      .navbar-dark {
+        position: relative;
+      }
+
+      .carousel-control-prev,
+      .carousel-control-next {
+        width: 13%;
+      }
+
+      .service-item {
+        padding: 18px;
+        min-height: 200px;
+      }
+
+      .team-social a.btn {
+        margin-top: 50px;
+      }
+    }
+
+    @media (max-width: 767.98px) {
+      .navbar-dark .navbar-nav .nav-link,
+      .sticky-top.navbar-dark .navbar-nav .nav-link {
+        padding: 12px 0;
+        margin-left: 8px;
+      }
+
+      .carousel-caption {
+        padding: 1.2rem;
+        background: linear-gradient(
+          135deg,
+          rgba(0, 102, 204, 0.85),
+          rgba(26, 26, 26, 0.85)
+        );
+      }
+
+      .section-title::before {
+        left: 50%;
+        margin-left: -45px;
+        width: 90px;
+      }
+
+      .service-item .service-icon {
+        width: 54px;
+        height: 54px;
+      }
+
+      .team-item .team-img img {
+        transform: none;
+      }
+    }
+
+    @media (max-width: 479.98px) {
+      .navbar-dark .navbar-brand h1 {
+        font-size: 1.1rem;
+      }
+
+      .carousel-caption h1 {
+        font-size: 1.4rem;
+      }
+
+      .section-title::before {
+        width: 70px;
+        margin-left: -35px;
+      }
+
+      .service-item {
+        padding: 14px;
+        min-height: 180px;
+      }
+    }
+
+    /* small accessibility tweaks */
+    a,
+    button {
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+      outline-offset: 2px;
+    }
     margin-top: -75px;
     z-index: 1;
   }
@@ -490,21 +757,41 @@ h6,
 }
 
 .bg-header {
-  background: linear-gradient(rgba(9, 30, 62, 0.7), rgba(9, 30, 62, 0.7)),
+  background: linear-gradient(rgba(7, 23, 42, 0.6), rgba(7, 23, 42, 0.6)),
     url(../img/carousel-1.jpg) center center no-repeat;
   background-size: cover;
+  color: var(--brand-3);
 }
 
-.link-animated a {
-  transition: 0.5s;
+/* Utiliser les variables pour éléments clés */
+a,
+.navbar-dark .navbar-nav .nav-link:hover,
+.navbar-dark .navbar-nav .nav-link.active,
+.text-brand {
+  color: var(--primary);
 }
 
-.link-animated a:hover {
-  padding-left: 10px;
+.bg-header {
+  color: var(--light);
 }
 
-@media (min-width: 767.98px) {
-  .footer-about {
-    margin-bottom: -75px;
-  }
+.bg-brand {
+  background-color: var(--primary) !important;
+  color: #fff;
+}
+.bg-brand-2 {
+  background-color: var(--secondary) !important;
+  color: #fff;
+}
+
+.btn-primary {
+  background: var(--primary) !important;
+  border-color: transparent !important;
+  color: #fff !important;
+  box-shadow: none;
+}
+.btn-secondary {
+  background: var(--secondary) !important;
+  border-color: transparent !important;
+  color: #fff !important;
 }
