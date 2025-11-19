@@ -1,9 +1,9 @@
 /********** Template CSS **********/
 :root {
   /* Remplacez ces valeurs après extraction depuis le logo */
-  --brand-1: #0b6fa3; /* couleur principale (ex: bleu) */
+  --brand-1: #004aad; /* couleur principale (ex: bleu) */
   --brand-2: #2f9a6a; /* couleur secondaire (ex: vert) */
-  --brand-3: #f5f7fa; /* fonds clair */
+  --brand-3: #f4f3f3; /* fonds clair */
   --brand-4: #07172a; /* texte sombre */
   --accent: #ffb547; /* accent chaud (optionnel) */
 
@@ -92,7 +92,7 @@ h6,
 
 .btn-primary,
 .btn-secondary {
-  color: #ffffff;
+  color: #f4f3f3;
   box-shadow: inset 0 0 0 50px transparent;
 }
 
@@ -133,7 +133,7 @@ h6,
   position: relative;
   margin-left: 25px;
   padding: 35px 0;
-  color: #ffffff;
+  color: #f4f3f3;
   font-size: 18px;
   font-weight: 600;
   outline: none;
@@ -151,7 +151,7 @@ h6,
 }
 
 .navbar-dark .navbar-brand h1 {
-  color: #ffffff;
+  color: #f4f3f3;
 }
 
 .navbar-dark .navbar-toggler {
@@ -162,7 +162,7 @@ h6,
 @media (max-width: 991.98px) {
   .sticky-top.navbar-dark {
     position: relative;
-    background: #ffffff;
+    background: #f4f3f3;
   }
 
   .navbar-dark .navbar-nav .nav-link,
@@ -189,7 +189,7 @@ h6,
 
   .sticky-top.navbar-dark {
     position: fixed;
-    background: #ffffff;
+    background: #f4f3f3;
   }
 
   .navbar-dark .navbar-nav .nav-link::before {
@@ -279,7 +279,7 @@ h6,
   width: 6px;
   height: 5px;
   bottom: 0px;
-  background: #ffffff;
+  background: #f4f3f3;
   -webkit-animation: section-title-run 5s infinite linear;
   animation: section-title-run 5s infinite linear;
 }
@@ -376,114 +376,10 @@ h6,
   opacity: 1;
 }
 
-/*** Testimonial ***/
-.testimonial-carousel .owl-dots {
-  margin-top: 15px;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-}
-
-.testimonial-carousel .owl-dot {
-  position: relative;
-  display: inline-block;
-  margin: 0 5px;
-  width: 15px;
-  height: 15px;
-  background: #dddddd;
-  border-radius: 2px;
-  transition: 0.5s;
-}
-
-.testimonial-carousel .owl-dot.active {
-  width: 30px;
-  background: var(--primary);
-}
-
-.testimonial-carousel .owl-item.center {
-  position: relative;
-  z-index: 1;
-}
-
-.testimonial-carousel .owl-item .testimonial-item {
-  transition: 0.5s;
-}
-
-.testimonial-carousel .owl-item.center .testimonial-item {
-  background: #ffffff !important;
-  box-shadow: 0 0 30px #dddddd;
-}
-
-/*** Team ***/
-.team-item {
-  transition: 0.5s;
-}
-
-.team-social {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: 0.5s;
-}
-
-.team-social a.btn {
-  position: relative;
-  margin: 0 3px;
-  margin-top: 100px;
-  opacity: 0;
-}
-
-.team-item:hover {
-  box-shadow: 0 0 30px #dddddd;
-}
-
-.team-item:hover .team-social {
-  background: rgba(9, 30, 62, 0.7);
-}
-
-.team-item:hover .team-social a.btn:first-child {
-  opacity: 1;
-  margin-top: 0;
-  transition: 0.3s 0s;
-}
-
-.team-item:hover .team-social a.btn:nth-child(2) {
-  opacity: 1;
-  margin-top: 0;
-  transition: 0.3s 0.05s;
-}
-
-.team-item:hover .team-social a.btn:nth-child(3) {
-  opacity: 1;
-  margin-top: 0;
-  transition: 0.3s 0.1s;
-}
-
-.team-item:hover .team-social a.btn:nth-child(4) {
-  opacity: 1;
-  margin-top: 0;
-  transition: 0.3s 0.15s;
-}
-
-.team-item .team-img img,
-.blog-item .blog-img img {
-  transition: 0.5s;
-}
-
-.team-item:hover .team-img img,
-.blog-item:hover .blog-img img {
-  transform: scale(1.15);
-}
-
 /*** Miscellaneous ***/
 @media (min-width: 991.98px) {
   .facts {
-    position: relative; // ...existing code...
+    position: relative;
     /* ===== Responsive improvements ===== */
 
     /* Fluid base font for better scaling */
@@ -498,7 +394,7 @@ h6,
       font-family: "Nunito", sans-serif;
       line-height: 1.6;
       color: var(--secondary);
-      background-color: #fff;
+      background-color: #f4f3f3;
     }
 
     /* Container padding */
@@ -777,21 +673,21 @@ a,
 
 .bg-brand {
   background-color: var(--primary) !important;
-  color: #fff;
+  color: #f4f3f3;
 }
 .bg-brand-2 {
   background-color: var(--secondary) !important;
-  color: #fff;
+  color: #f4f3f3;
 }
 
 .btn-primary {
   background: var(--primary) !important;
   border-color: transparent !important;
-  color: #fff !important;
+  color: #f4f3f3 !important;
   box-shadow: none;
 }
 .btn-secondary {
   background: var(--secondary) !important;
   border-color: transparent !important;
-  color: #fff !important;
+  color: #f4f3f3 !important;
 }
