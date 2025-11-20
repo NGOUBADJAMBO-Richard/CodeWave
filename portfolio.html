@@ -71,35 +71,6 @@
             >
           </div>
         </div>
-        <div class="col-lg-4 text-center text-lg-end">
-          <div class="d-inline-flex align-items-center" style="height: 45px">
-            <a
-              class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2"
-              href="#"
-              aria-label="Facebook CodeWave"
-              ><i class="fab fa-facebook-f fw-normal"></i
-            ></a>
-            <a
-              class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2"
-              href="#"
-              aria-label="LinkedIn CodeWave"
-              ><i class="fab fa-linkedin-in fw-normal"></i
-            ></a>
-            <a
-              class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2"
-              href="#"
-              aria-label="Instagram CodeWave"
-              ><i class="fab fa-instagram fw-normal"></i
-            ></a>
-            <a
-              class="btn btn-sm btn-outline-light btn-sm-square rounded-circle"
-              href="https://wa.me/24174676741"
-              target="_blank"
-              aria-label="Contacter CodeWave par WhatsApp"
-              ><i class="fab fa-whatsapp fw-normal"></i
-            ></a>
-          </div>
-        </div>
       </div>
     </div>
     <!-- Topbar End -->
@@ -107,8 +78,19 @@
     <!-- Navbar Start -->
     <div class="container-fluid position-relative p-0">
       <nav class="navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0">
-        <a href="index.html" class="navbar-brand p-0">
-          <h1 class="m-0"><i class="fa fa-code me-2"></i>CodeWave</h1>
+        <a
+          href="index.html"
+          class="navbar-brand d-flex align-items-center p-0"
+          aria-label="Accueil CodeWave"
+        >
+          <img
+            src="img/logo/codewave.png"
+            alt="Logo CodeWave"
+            height="40"
+            loading="lazy"
+            class="me-2"
+          />
+          <span class="h5 m-0 fw-bold text-white">CodeWave</span>
         </a>
 
         <button
@@ -158,7 +140,7 @@
         <div class="row py-5">
           <div class="col-12 pt-lg-5 mt-lg-5 text-center">
             <h1 class="display-4 text-white animated zoomIn">Portfolio</h1>
-            <a href="" class="h5 text-white">Home</a>
+            <a href="" class="h5 text-white">Accueil</a>
             <i class="far fa-circle text-white px-2"></i>
             <a href="" class="h5 text-white">Portfolio</a>
           </div>
@@ -168,264 +150,269 @@
     <!-- Navbar End -->
 
     <!-- Portfolio Start -->
-    <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
-      <div class="container py-5">
-        <div
-          class="section-title text-center position-relative pb-3 mb-5 mx-auto"
-          style="max-width: 600px"
-        >
-          <h5 class="fw-bold text-primary text-uppercase">Notre Portfolio</h5>
-          <h1 class="mb-0">
-            Découvrez Nos Dernières Réalisations Web au Gabon
-          </h1>
-        </div>
+    <main class="container py-5">
+      <header
+        class="section-title text-center position-relative pb-3 mb-5 mx-auto"
+        style="max-width: 600px"
+      >
+        <h5 class="fw-bold text-primary text-uppercase">Notre Portfolio</h5>
+        <h2 class="mb-0">
+          Exemples récents de sites réalisés pour des entreprises au Gabon
+        </h2>
+      </header>
 
-        <div class="row g-5">
-          <div class="col-lg-12 text-center">
-            <ul class="list-inline portfolio-filter mb-5">
-              <li class="btn btn-outline-primary active" data-filter="*">
-                Tout
-              </li>
-              <li class="btn btn-outline-primary" data-filter=".vitrine">
-                Sites Vitrine
-              </li>
-              <li class="btn btn-outline-primary" data-filter=".ecommerce">
-                E-commerce
-              </li>
-              <li class="btn btn-outline-primary" data-filter=".blog">
-                Blogs & Portfolios
-              </li>
-            </ul>
+      <div class="row mb-4">
+        <div class="col-12 text-center">
+          <div class="btn-group" role="tablist" aria-label="Filtres portfolio">
+            <button
+              class="btn btn-outline-primary active"
+              data-filter="*"
+              role="button"
+              aria-pressed="true"
+            >
+              Tout
+            </button>
+            <button
+              class="btn btn-outline-primary"
+              data-filter=".vitrine"
+              role="button"
+              aria-pressed="false"
+            >
+              Sites Vitrine
+            </button>
+            <button
+              class="btn btn-outline-primary"
+              data-filter=".ecommerce"
+              role="button"
+              aria-pressed="false"
+            >
+              E-commerce
+            </button>
+            <button
+              class="btn btn-outline-primary"
+              data-filter=".blog"
+              role="button"
+              aria-pressed="false"
+            >
+              Blogs & Portfolios
+            </button>
           </div>
         </div>
+      </div>
 
-        <div class="row g-4 portfolio-container">
-          <div
-            class="col-lg-4 col-md-6 portfolio-item vitrine wow fadeInUp"
-            data-wow-delay="0.6s"
-          >
-            <div class="portfolio-inner position-relative">
-              <img
-                class="img-fluid w-100"
-                src="img/portfolio-1.jpg"
-                alt="Projet Site Vitrine PME"
-              />
-              <div class="portfolio-text bg-light p-4">
-                <h4 class="text-primary mb-0">Rénovation Plus</h4>
-                <p class="text-secondary mb-0">Site Vitrine & Galerie</p>
+      <div class="row g-4 portfolio-container">
+        <!-- Card template: adjust alt and links per real project -->
+        <figure
+          class="col-lg-4 col-md-6 portfolio-item vitrine wow fadeInUp"
+          data-wow-delay="0.1s"
+        >
+          <div class="card portfolio-inner shadow-sm">
+            <img
+              src="img/portfolio-1.jpg"
+              class="card-img-top img-fluid"
+              alt="Rénovation Plus - site vitrine"
+              loading="lazy"
+            />
+            <figcaption class="card-body portfolio-text bg-light p-4">
+              <h4 class="text-primary mb-1">Rénovation Plus</h4>
+              <p class="text-secondary mb-3">Site Vitrine & Galerie</p>
+              <div class="d-flex gap-2">
                 <a
-                  class="d-flex justify-content-center align-items-center"
+                  class="btn btn-outline-primary btn-sm"
                   href="img/portfolio-1.jpg"
                   data-lightbox="portfolio"
-                  aria-label="Aperçu du projet Rénovation Plus"
+                  aria-label="Aperçu Rénovation Plus"
+                  ><i class="bi bi-eye"></i> Aperçu</a
                 >
-                  <i class="bi bi-eye"></i>
-                </a>
                 <a
-                  class="d-flex justify-content-center align-items-center"
+                  class="btn btn-outline-secondary btn-sm"
                   href="#"
-                  title="Voir le projet Rénovation Plus en ligne"
+                  aria-label="Voir Rénovation Plus en ligne"
+                  ><i class="bi bi-link"></i> Voir</a
                 >
-                  <i class="bi bi-link"></i>
-                </a>
               </div>
-            </div>
+            </figcaption>
           </div>
+        </figure>
 
-          <div
-            class="col-lg-4 col-md-6 portfolio-item ecommerce wow fadeInUp"
-            data-wow-delay="0.1s"
-          >
-            <div class="portfolio-inner position-relative">
-              <img
-                class="img-fluid w-100"
-                src="img/portfolio-2.jpg"
-                alt="Projet E-commerce Mode"
-              />
-              <div class="portfolio-text bg-light p-4">
-                <h4 class="text-primary mb-0">Gabon Chic</h4>
-                <p class="text-secondary mb-0">Boutique en Ligne</p>
+        <figure
+          class="col-lg-4 col-md-6 portfolio-item ecommerce wow fadeInUp"
+          data-wow-delay="0.15s"
+        >
+          <div class="card portfolio-inner shadow-sm">
+            <img
+              src="img/portfolio-2.jpg"
+              class="card-img-top img-fluid"
+              alt="Gabon Chic - boutique en ligne"
+              loading="lazy"
+            />
+            <figcaption class="card-body portfolio-text bg-light p-4">
+              <h4 class="text-primary mb-1">Gabon Chic</h4>
+              <p class="text-secondary mb-3">Boutique en Ligne</p>
+              <div class="d-flex gap-2">
                 <a
-                  class="d-flex justify-content-center align-items-center"
+                  class="btn btn-outline-primary btn-sm"
                   href="img/portfolio-2.jpg"
                   data-lightbox="portfolio"
-                  aria-label="Aperçu du projet Gabon Chic"
+                  aria-label="Aperçu Gabon Chic"
+                  ><i class="bi bi-eye"></i> Aperçu</a
                 >
-                  <i class="bi bi-eye"></i>
-                </a>
                 <a
-                  class="d-flex justify-content-center align-items-center"
+                  class="btn btn-outline-secondary btn-sm"
                   href="#"
-                  title="Voir le projet Gabon Chic en ligne"
+                  aria-label="Voir Gabon Chic en ligne"
+                  ><i class="bi bi-link"></i> Voir</a
                 >
-                  <i class="bi bi-link"></i>
-                </a>
               </div>
-            </div>
+            </figcaption>
           </div>
+        </figure>
 
-          <div
-            class="col-lg-4 col-md-6 portfolio-item blog wow fadeInUp"
-            data-wow-delay="0.3s"
-          >
-            <div class="portfolio-inner position-relative">
-              <img
-                class="img-fluid w-100"
-                src="img/portfolio-3.jpg"
-                alt="Projet Blog Photographe"
-              />
-              <div class="portfolio-text bg-light p-4">
-                <h4 class="text-primary mb-0">L'Œil de Libreville</h4>
-                <p class="text-secondary mb-0">Portfolio & Blog</p>
+        <figure
+          class="col-lg-4 col-md-6 portfolio-item blog wow fadeInUp"
+          data-wow-delay="0.2s"
+        >
+          <div class="card portfolio-inner shadow-sm">
+            <img
+              src="img/portfolio-3.jpg"
+              class="card-img-top img-fluid"
+              alt="L'Œil de Libreville - portfolio photographe"
+              loading="lazy"
+            />
+            <figcaption class="card-body portfolio-text bg-light p-4">
+              <h4 class="text-primary mb-1">L'Œil de Libreville</h4>
+              <p class="text-secondary mb-3">Portfolio & Blog</p>
+              <div class="d-flex gap-2">
                 <a
-                  class="d-flex justify-content-center align-items-center"
+                  class="btn btn-outline-primary btn-sm"
                   href="img/portfolio-3.jpg"
                   data-lightbox="portfolio"
-                  aria-label="Aperçu du projet L'Œil de Libreville"
+                  aria-label="Aperçu L'Œil de Libreville"
+                  ><i class="bi bi-eye"></i> Aperçu</a
                 >
-                  <i class="bi bi-eye"></i>
-                </a>
                 <a
-                  class="d-flex justify-content-center align-items-center"
+                  class="btn btn-outline-secondary btn-sm"
                   href="#"
-                  title="Voir le projet L'Œil de Libreville en ligne"
+                  aria-label="Voir L'Œil de Libreville en ligne"
+                  ><i class="bi bi-link"></i> Voir</a
                 >
-                  <i class="bi bi-link"></i>
-                </a>
               </div>
-            </div>
+            </figcaption>
           </div>
+        </figure>
 
-          <div
-            class="col-lg-4 col-md-6 portfolio-item vitrine wow fadeInUp"
-            data-wow-delay="0.9s"
-          >
-            <div class="portfolio-inner position-relative">
-              <img
-                class="img-fluid w-100"
-                src="img/portfolio-4.jpg"
-                alt="Projet Site Vitrine Service"
-              />
-              <div class="portfolio-text bg-light p-4">
-                <h4 class="text-primary mb-0">Logistics Rapide</h4>
-                <p class="text-secondary mb-0">Site Vitrine Service</p>
+        <!-- Repeat other items (kept original content) -->
+        <figure
+          class="col-lg-4 col-md-6 portfolio-item vitrine wow fadeInUp"
+          data-wow-delay="0.25s"
+        >
+          <div class="card portfolio-inner shadow-sm">
+            <img
+              src="img/portfolio-4.jpg"
+              class="card-img-top img-fluid"
+              alt="Logistics Rapide - site vitrine service"
+              loading="lazy"
+            />
+            <figcaption class="card-body portfolio-text bg-light p-4">
+              <h4 class="text-primary mb-1">Logistics Rapide</h4>
+              <p class="text-secondary mb-3">Site Vitrine Service</p>
+              <div class="d-flex gap-2">
                 <a
-                  class="d-flex justify-content-center align-items-center"
+                  class="btn btn-outline-primary btn-sm"
                   href="img/portfolio-4.jpg"
                   data-lightbox="portfolio"
-                  aria-label="Aperçu du projet Logistics Rapide"
+                  aria-label="Aperçu Logistics Rapide"
+                  ><i class="bi bi-eye"></i> Aperçu</a
                 >
-                  <i class="bi bi-eye"></i>
-                </a>
                 <a
-                  class="d-flex justify-content-center align-items-center"
+                  class="btn btn-outline-secondary btn-sm"
                   href="#"
-                  title="Voir le projet Logistics Rapide en ligne"
+                  aria-label="Voir Logistics Rapide"
+                  ><i class="bi bi-link"></i> Voir</a
                 >
-                  <i class="bi bi-link"></i>
-                </a>
               </div>
-            </div>
+            </figcaption>
           </div>
+        </figure>
 
-          <div
-            class="col-lg-4 col-md-6 portfolio-item ecommerce wow fadeInUp"
-            data-wow-delay="0.6s"
-          >
-            <div class="portfolio-inner position-relative">
-              <img
-                class="img-fluid w-100"
-                src="img/portfolio-5.jpg"
-                alt="Projet E-commerce Marketplace"
-              />
-              <div class="portfolio-text bg-light p-4">
-                <h4 class="text-primary mb-0">MarketPlace Gabon</h4>
-                <p class="text-secondary mb-0">Plateforme Multi-vendeurs</p>
+        <figure
+          class="col-lg-4 col-md-6 portfolio-item ecommerce wow fadeInUp"
+          data-wow-delay="0.3s"
+        >
+          <div class="card portfolio-inner shadow-sm">
+            <img
+              src="img/portfolio-5.jpg"
+              class="card-img-top img-fluid"
+              alt="MarketPlace Gabon - plateforme multi-vendeurs"
+              loading="lazy"
+            />
+            <figcaption class="card-body portfolio-text bg-light p-4">
+              <h4 class="text-primary mb-1">MarketPlace Gabon</h4>
+              <p class="text-secondary mb-3">Plateforme Multi-vendeurs</p>
+              <div class="d-flex gap-2">
                 <a
-                  class="d-flex justify-content-center align-items-center"
+                  class="btn btn-outline-primary btn-sm"
                   href="img/portfolio-5.jpg"
                   data-lightbox="portfolio"
-                  aria-label="Aperçu du projet MarketPlace Gabon"
+                  aria-label="Aperçu MarketPlace Gabon"
+                  ><i class="bi bi-eye"></i> Aperçu</a
                 >
-                  <i class="bi bi-eye"></i>
-                </a>
                 <a
-                  class="d-flex justify-content-center align-items-center"
+                  class="btn btn-outline-secondary btn-sm"
                   href="#"
-                  title="Voir le projet MarketPlace Gabon en ligne"
+                  aria-label="Voir MarketPlace Gabon"
+                  ><i class="bi bi-link"></i> Voir</a
                 >
-                  <i class="bi bi-link"></i>
-                </a>
               </div>
-            </div>
+            </figcaption>
           </div>
+        </figure>
 
-          <div
-            class="col-lg-4 col-md-6 portfolio-item vitrine wow fadeInUp"
-            data-wow-delay="0.1s"
-          >
-            <div class="portfolio-inner position-relative">
-              <img
-                class="img-fluid w-100"
-                src="img/portfolio-6.jpg"
-                alt="Projet Site Corporate"
-              />
-              <div class="portfolio-text bg-light p-4">
-                <h4 class="text-primary mb-0">Vision Conseils</h4>
-                <p class="text-secondary mb-0">Site Corporate</p>
+        <figure
+          class="col-lg-4 col-md-6 portfolio-item vitrine wow fadeInUp"
+          data-wow-delay="0.35s"
+        >
+          <div class="card portfolio-inner shadow-sm">
+            <img
+              src="img/portfolio-6.jpg"
+              class="card-img-top img-fluid"
+              alt="Vision Conseils - site corporate"
+              loading="lazy"
+            />
+            <figcaption class="card-body portfolio-text bg-light p-4">
+              <h4 class="text-primary mb-1">Vision Conseils</h4>
+              <p class="text-secondary mb-3">Site Corporate</p>
+              <div class="d-flex gap-2">
                 <a
-                  class="d-flex justify-content-center align-items-center"
+                  class="btn btn-outline-primary btn-sm"
                   href="img/portfolio-6.jpg"
                   data-lightbox="portfolio"
-                  aria-label="Aperçu du projet Vision Conseils"
+                  aria-label="Aperçu Vision Conseils"
+                  ><i class="bi bi-eye"></i> Aperçu</a
                 >
-                  <i class="bi bi-eye"></i>
-                </a>
                 <a
-                  class="d-flex justify-content-center align-items-center"
+                  class="btn btn-outline-secondary btn-sm"
                   href="#"
-                  title="Voir le projet Vision Conseils en ligne"
+                  aria-label="Voir Vision Conseils"
+                  ><i class="bi bi-link"></i> Voir</a
                 >
-                  <i class="bi bi-link"></i>
-                </a>
               </div>
-            </div>
+            </figcaption>
           </div>
+        </figure>
 
-          <div class="col-12 text-center mt-5">
-            <p class="mb-0 text-dark">
-              Ces quelques exemples ne représentent qu'une partie de nos
-              travaux.
-              <a class="text-primary fw-bold" href="contact.html"
-                >Contactez-nous</a
-              >
-              pour discuter de votre projet unique !
-            </p>
-          </div>
+        <div class="col-12 text-center mt-5">
+          <p class="mb-0 text-muted">
+            Ces exemples représentent une partie de nos travaux.
+            <a class="text-primary fw-bold" href="contact.html"
+              >Contactez-nous</a
+            >
+            pour parler de votre projet.
+          </p>
         </div>
       </div>
-    </div>
+    </main>
     <!-- Portfolio End -->
-
-    <!-- Vendor Start -->
-    <!-- <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
-      <div class="container py-5 mb-5">
-        <div class="bg-white">
-          <div class="owl-carousel vendor-carousel">
-            <img src="img/vendor-1.jpg" alt="" />
-            <img src="img/vendor-2.jpg" alt="" />
-            <img src="img/vendor-3.jpg" alt="" />
-            <img src="img/vendor-4.jpg" alt="" />
-            <img src="img/vendor-5.jpg" alt="" />
-            <img src="img/vendor-6.jpg" alt="" />
-            <img src="img/vendor-7.jpg" alt="" />
-            <img src="img/vendor-8.jpg" alt="" />
-            <img src="img/vendor-9.jpg" alt="" />
-          </div>
-        </div>
-      </div>
-    </div> -->
-    <!-- Vendor End -->
 
     <!-- Footer Start -->
     <div
@@ -448,17 +435,6 @@
                 sites web performants, modernes et optimisés pour la croissance
                 de votre entreprise au Gabon et en Afrique.
               </p>
-              <form action="newsletter-signup.php" method="POST">
-                <div class="input-group">
-                  <input
-                    type="email"
-                    class="form-control border-white p-3"
-                    placeholder="Votre Email"
-                    required
-                  />
-                  <button class="btn btn-dark">S'abonner</button>
-                </div>
-              </form>
             </div>
           </div>
 
