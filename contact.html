@@ -232,9 +232,10 @@
       <div class="row g-5">
         <div class="col-lg-6 wow slideInUp" data-wow-delay="0.3s">
           <form
-            action="contact.php"
+            action="https://formspree.io/f/mpweqqzz"
             method="POST"
             class="shadow-sm rounded p-4 bg-white"
+            name="Formulaire de contact"
             novalidate
           >
             <div class="row g-3">
@@ -244,7 +245,7 @@
                 >
                 <input
                   id="name"
-                  name="name"
+                  name="name_contact"
                   type="text"
                   class="form-control border-0 bg-light px-4"
                   placeholder="Votre nom complet"
@@ -259,7 +260,7 @@
                 >
                 <input
                   id="email"
-                  name="email"
+                  name="email_contact"
                   type="email"
                   class="form-control border-0 bg-light px-4"
                   placeholder="Votre adresse email"
@@ -274,7 +275,7 @@
                 >
                 <input
                   id="subject"
-                  name="subject"
+                  name="subject_contact"
                   type="text"
                   class="form-control border-0 bg-light px-4"
                   placeholder="Objet du message"
@@ -289,7 +290,7 @@
                 >
                 <textarea
                   id="message"
-                  name="message"
+                  name="message_contact"
                   class="form-control border-0 bg-light px-4 py-3"
                   rows="6"
                   placeholder="Votre message (détails du projet, questions...)"
