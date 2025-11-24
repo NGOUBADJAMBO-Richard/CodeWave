@@ -749,7 +749,7 @@
               <div class="mb-3">
                 <input
                   type="text"
-                  name="name_tarification"
+                  name="Nom et Prenom du Client"
                   class="form-control form-control-lg bg-white border-0"
                   placeholder="Nom et prénom"
                   aria-label="Nom et prénom"
@@ -759,7 +759,7 @@
               <div class="mb-3">
                 <input
                   type="email"
-                  name="email_tarification"
+                  name="L'email du Client"
                   class="form-control form-control-lg bg-white border-0"
                   placeholder="Adresse email"
                   aria-label="Adresse email"
@@ -767,8 +767,18 @@
                 />
               </div>
               <div class="mb-3">
+                <input
+                  type="text"
+                  name="Le numéro de téléphone du Client"
+                  class="form-control form-control-lg bg-white border-0"
+                  placeholder="Numéro de téléphone"
+                  aria-label="Numéro de téléphone"
+                  required
+                />
+              </div>
+              <div class="mb-3">
                 <select
-                  name="pack_choisi"
+                  name="Le pack ou service souhaité"
                   id="service-pack-select-form"
                   class="form-select form-select-lg bg-white border-0"
                   aria-label="Type de service"
@@ -777,36 +787,38 @@
                   <option value="" selected disabled>
                     Sélectionnez le pack ou service
                   </option>
-                  <option value="vitrine-basic">
+                  <option value="PACK VITRINE BASIC (145 000 XAF)">
                     PACK VITRINE BASIC (145 000 XAF)
                   </option>
-                  <option value="vitrine-pro">
+                  <option value="PACK VITRINE PRO (265 000 XAF)">
                     PACK VITRINE PRO (265 000 XAF)
                   </option>
-                  <option value="ecommerce-startup">
+                  <option value="PACK E-COMMERCE START-UP (390 000 XAF)">
                     PACK E-COMMERCE START-UP (390 000 XAF)
                   </option>
-                  <option value="ecommerce-business">
+                  <option value="PACK E-COMMERCE BUSINESS (610 000 XAF)">
                     PACK E-COMMERCE BUSINESS (610 000 XAF)
                   </option>
-                  <option value="blog-starter">
+                  <option value="PACK PORTFOLIO/BLOG STARTER (125 000 XAF)">
                     PACK PORTFOLIO/BLOG STARTER (125 000 XAF)
                   </option>
-                  <option value="blog-premium">
+                  <option value="PACK PORTFOLIO/BLOG PREMIUM (210 000 XAF)">
                     PACK PORTFOLIO/BLOG PREMIUM (210 000 XAF)
                   </option>
-                  <option value="hebergement-annuel">
+                  <option value="PACK HÉBERGEMENT ANNUEL (35 000 XAF/an)">
                     PACK HÉBERGEMENT ANNUEL (35 000 XAF/an)
                   </option>
-                  <option value="maintenance-mensuelle">
+                  <option value="PACK MAINTENANCE MENSUELLE (20 000 XAF/mois)">
                     PACK MAINTENANCE MENSUELLE (20 000 XAF/mois)
                   </option>
-                  <option value="sur-mesure">PROJET SUR MESURE / AUTRE</option>
+                  <option value="PROJET SUR MESURE / AUTRE">
+                    PROJET SUR MESURE / AUTRE
+                  </option>
                 </select>
               </div>
               <div class="mb-3">
                 <textarea
-                  name="message_tarification"
+                  name="Description du projet"
                   class="form-control bg-white border-0"
                   rows="4"
                   placeholder="Décrivez votre projet (fonctionnalités, budget, délais)"
@@ -819,6 +831,11 @@
                   Envoyer la demande
                 </button>
               </div>
+              <input
+                type="hidden"
+                name="_next"
+                value="https://codewave-psi.vercel.app/thanks.html"
+              />
             </form>
           </div>
         </div>
