@@ -1,0 +1,561 @@
+/* ========================================
+   CodeWave - Responsive Styles
+   ======================================== */
+
+/* === Large Desktops (1440px+) === */
+@media (min-width: 1440px) {
+  .container {
+    max-width: 1400px;
+  }
+
+  .hero-title {
+    font-size: 5rem;
+  }
+
+  .section-title {
+    font-size: 3.5rem;
+  }
+}
+
+/* === Desktops (1024px - 1439px) === */
+@media (min-width: 1024px) and (max-width: 1439px) {
+  .container {
+    max-width: 1200px;
+  }
+}
+
+/* === Tablets & Small Desktops (768px - 1023px) === */
+@media (max-width: 1023px) {
+  /* Navigation */
+  .nav-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    flex-direction: column;
+    padding: 2rem;
+    box-shadow: var(--shadow-xl);
+    border-top: 1px solid var(--gray-200);
+    z-index: 999;
+  }
+
+  .nav-menu.active {
+    display: flex;
+  }
+
+  .nav-menu li {
+    width: 100%;
+  }
+
+  .nav-menu a {
+    display: block;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--gray-100);
+  }
+
+  .nav-cta .btn {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  /* Hero Section */
+  .hero {
+    padding: 6rem 0 3rem;
+    min-height: auto;
+  }
+
+  .hero-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .hero-title {
+    font-size: 3rem;
+  }
+
+  .hero-description {
+    font-size: 1.125rem;
+  }
+
+  .hero-stats {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+
+  /* Services Grid */
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  /* Portfolio Grid */
+  .portfolio-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  /* Features Grid */
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Testimonials */
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Footer */
+  .footer-content {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* === Mobile Landscape & Tablets (640px - 767px) === */
+@media (min-width: 640px) and (max-width: 767px) {
+  .section-padding {
+    padding: 4rem 0;
+  }
+
+  .section-title {
+    font-size: 2.25rem;
+  }
+
+  .hero-cta {
+    flex-direction: row;
+  }
+
+  .btn-lg {
+    padding: 0.875rem 1.75rem;
+    font-size: 0.938rem;
+  }
+}
+
+/* === Mobile (max-width: 767px) === */
+@media (max-width: 767px) {
+  /* Base Typography */
+  html {
+    font-size: 15px;
+  }
+
+  .section-padding {
+    padding: 3rem 0;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .section-subtitle {
+    font-size: 1.125rem;
+  }
+
+  /* Navigation */
+  .nav-wrapper {
+    height: 70px;
+  }
+
+  .logo {
+    gap: 0.5rem;
+  }
+
+  .logo-m,
+  .logo-g,
+  .logo-n {
+    font-size: 1.5rem;
+  }
+
+  .logo-codewave {
+    font-size: 0.938rem;
+  }
+
+  .logo-tagline {
+    font-size: 0.563rem;
+  }
+
+  /* Hero Section */
+  .hero {
+    padding: 5rem 0 2rem;
+  }
+
+  .hero-badge {
+    font-size: 0.813rem;
+    padding: 0.375rem 0.875rem;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+    line-height: 1.1;
+  }
+
+  .hero-description {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-cta {
+    flex-direction: column;
+    gap: 0.875rem;
+  }
+
+  .btn-lg {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    font-size: 0.938rem;
+  }
+
+  .hero-stats {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding-top: 1.5rem;
+  }
+
+  .stat-number {
+    font-size: 2.5rem;
+  }
+
+  .stat-label {
+    font-size: 0.813rem;
+  }
+
+  /* Hero Mockup */
+  .hero-mockup {
+    margin-top: 2rem;
+  }
+
+  .mockup-browser {
+    transform: scale(0.9);
+  }
+
+  /* Features Grid */
+  .features-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .feature-card {
+    padding: 1.5rem;
+  }
+
+  .feature-icon {
+    width: 3.5rem;
+    height: 3.5rem;
+    font-size: 1.75rem;
+  }
+
+  /* Services Grid */
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .service-card {
+    padding: 1.5rem;
+  }
+
+  .service-icon {
+    width: 3.5rem;
+    height: 3.5rem;
+    font-size: 1.75rem;
+  }
+
+  .service-price {
+    font-size: 1.25rem;
+  }
+
+  /* Portfolio Grid */
+  .portfolio-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .portfolio-image {
+    height: 12rem;
+  }
+
+  /* Testimonials */
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .testimonial-card {
+    padding: 1.5rem;
+  }
+
+  .testimonial-text {
+    font-size: 1rem;
+  }
+
+  /* CTA Section */
+  .cta-title {
+    font-size: 2rem;
+  }
+
+  .cta-text {
+    font-size: 1rem;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .cta-features {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  /* Footer */
+  .footer {
+    padding: 3rem 0 1.5rem;
+  }
+
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .footer-col {
+    text-align: center;
+  }
+
+  .footer-logo {
+    justify-content: center;
+  }
+
+  .footer-social {
+    justify-content: center;
+  }
+
+  .footer-links {
+    align-items: center;
+  }
+
+  .newsletter-form {
+    max-width: 100%;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .footer-legal {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  /* WhatsApp Float */
+  .whatsapp-float {
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 3.5rem;
+    height: 3.5rem;
+    font-size: 1.75rem;
+  }
+
+  /* Page Header */
+  .page-header {
+    padding: 6rem 0 3rem;
+  }
+
+  .page-title {
+    font-size: 2.5rem;
+  }
+
+  .page-subtitle {
+    font-size: 1.125rem;
+  }
+
+  /* Pricing Cards */
+  .pricing-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .pricing-card {
+    padding: 1.5rem;
+  }
+
+  .price-amount {
+    font-size: 2.5rem;
+  }
+
+  /* Blog Grid */
+  .blog-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .blog-image {
+    height: 10rem;
+  }
+
+  .blog-title {
+    font-size: 1.125rem;
+  }
+}
+
+/* === Small Mobile (max-width: 479px) === */
+@media (max-width: 479px) {
+  html {
+    font-size: 14px;
+  }
+
+  .container {
+    padding: 0 0.875rem;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .section-title {
+    font-size: 1.75rem;
+  }
+
+  .btn {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.875rem;
+  }
+
+  .btn-lg {
+    padding: 0.875rem 1.25rem;
+    font-size: 0.875rem;
+  }
+
+  .feature-card h3,
+  .service-card h3 {
+    font-size: 1.125rem;
+  }
+
+  .stat-number {
+    font-size: 2rem;
+  }
+
+  .portfolio-info {
+    padding: 1rem;
+  }
+
+  .portfolio-tag {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.625rem;
+  }
+
+  .testimonial-rating i {
+    font-size: 1rem;
+  }
+}
+
+/* === Print Styles === */
+@media print {
+  .navbar,
+  .whatsapp-float,
+  .cta-section,
+  .footer-social,
+  .newsletter-form {
+    display: none;
+  }
+
+  body {
+    font-size: 12pt;
+    color: black;
+    background: white;
+  }
+
+  .hero,
+  .section-padding {
+    padding: 1rem 0;
+  }
+
+  a {
+    color: black;
+    text-decoration: underline;
+  }
+
+  .btn {
+    border: 1px solid black;
+    color: black;
+    background: white;
+  }
+}
+
+/* === Landscape Orientation === */
+@media (max-width: 767px) and (orientation: landscape) {
+  .hero {
+    min-height: auto;
+    padding: 4rem 0 2rem;
+  }
+
+  .hero-stats {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .section-padding {
+    padding: 2rem 0;
+  }
+}
+
+/* === High Resolution Displays === */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* === Reduced Motion === */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .whatsapp-float {
+    animation: none;
+  }
+
+  .badge-dot {
+    animation: none;
+  }
+}
+
+/* === Dark Mode (Optional) === */
+@media (prefers-color-scheme: dark) {
+  /* Décommentez pour activer le mode sombre automatique */
+  /*
+  body {
+    background: #111827;
+    color: #f3f4f6;
+  }
+  
+  .navbar {
+    background: rgba(17, 24, 39, 0.95);
+    border-bottom-color: #374151;
+  }
+  
+  .footer {
+    background: #1f2937;
+  }
+  */
+}
+
+/* === Container Queries (Future) === */
+@container (min-width: 640px) {
+  /* Future-proof container queries */
+  .service-card {
+    padding: 2rem;
+  }
+}

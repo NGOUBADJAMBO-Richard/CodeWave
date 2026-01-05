@@ -1,662 +1,696 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="fr">
   <head>
-    <meta charset="utf-8" />
-    <title>
-      M.G.N CodeWave - Création de Sites Web et Solutions Digitales au Gabon
-    </title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
-      name="keywords"
-      content="CodeWave, développeur web Gabon, création site vitrine, e-commerce, portfolio, front-end, back-end, React, Laravel, maintenance web"
-    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="M.G.N CodeWave : Votre expert en développement web au Gabon. Nous concevons des sites modernes et performants pour les PME, startups et entrepreneurs."
+      content="CodeWave - Création de sites web professionnels au Gabon. Sites vitrines, e-commerce, blogs. À partir de 80 000 FCFA. Devis gratuit en 24h."
     />
-    <link href="img/logo/codewave.png" rel="icon" />
+    <meta
+      name="keywords"
+      content="création site web gabon, développeur web libreville, site e-commerce gabon, agence web gabon, codewave"
+    />
+    <meta name="author" content="M.G.N CodeWave" />
 
+    <!-- Open Graph -->
+    <meta
+      property="og:title"
+      content="CodeWave - Votre Site Web Prêt en 2 Semaines"
+    />
+    <meta
+      property="og:description"
+      content="Solutions digitales professionnelles au Gabon. À partir de 100 000 FCFA."
+    />
+    <meta property="og:image" content="assets/images/og-image.jpg" />
+    <meta property="og:url" content="https://m-g-n-code-wave.vercel.app/" />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="CodeWave - Création Sites Web Gabon" />
+    <meta
+      name="twitter:description"
+      content="Développement web professionnel au Gabon"
+    />
+    <meta name="twitter:image" content="assets/images/og-image.jpg" />
+
+    <title>CodeWave - Création de Sites Web Professionnels</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/images/logo/codewave.png" />
+    <link rel="apple-touch-icon" href="assets/images/logo/codewave.png" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/responsive.css" />
+    <link rel="stylesheet" href="assets/css/animations.css" />
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Rubik:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
 
+    <!-- Icons -->
     <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
       rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
-      rel="stylesheet"
-    />
-
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
-    <link href="lib/animate/animate.min.css" rel="stylesheet" />
-
-    <link href="css/bootstrap.min.css" rel="stylesheet" />
-    <link href="css/style.css" rel="stylesheet" />
-    <link rel="stylesheet" href="css/improvements.css" />
   </head>
-
   <body>
-    <!-- Spinner Start -->
-    <div
-      id="spinner"
-      class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center"
-      aria-hidden="true"
-    >
-      <div class="spinner" role="status" aria-label="Chargement en cours"></div>
-    </div>
-    <!-- Spinner End -->
-
-    <!-- Topbar Start -->
-    <div
-      class="container-fluid bg-dark px-3 px-lg-5 d-none d-lg-block"
-      role="region"
-      aria-label="Informations de contact rapides"
-    >
-      <div class="row gx-0">
-        <div class="col-lg-8 text-center text-lg-start mb-2 mb-lg-0">
-          <div class="d-inline-flex align-items-center" style="height: 45px">
-            <small class="me-3 text-light"
-              ><i class="fa fa-map-marker-alt me-2" aria-hidden="true"></i
-              >Libreville, Gabon</small
-            >
-            <small class="me-3 text-light"
-              ><i class="fa fa-phone-alt me-2" aria-hidden="true"></i
-              ><a
-                href="tel:+24174676741"
-                class="text-light text-decoration-none"
-                >+241 74 67 67 41</a
-              ></small
-            >
-            <small class="text-light"
-              ><i class="fa fa-envelope-open me-2" aria-hidden="true"></i
-              ><a
-                href="mailto:ngoubadjambo18@gmail.com"
-                class="text-light text-decoration-none"
-                >ngoubadjambo18@gmail.com</a
-              ></small
-            >
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Topbar End -->
-
-    <!-- Navbar & Carousel Start -->
-    <header class="container-fluid position-relative p-0" role="banner">
-      <nav
-        class="navbar navbar-expand-lg navbar-dark px-3 px-lg-5 py-3 py-lg-0"
-        aria-label="Navigation principale"
-      >
-        <div class="container-fluid px-0">
-          <a
-            href="index.html"
-            class="navbar-brand d-flex align-items-center p-0"
-            aria-label="Accueil CodeWave"
-          >
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+      <div class="container">
+        <div class="nav-wrapper">
+          <a href="index.html" class="logo">
             <img
-              src="img/logo/codewave.png"
-              alt="Logo CodeWave"
-              height="40"
-              loading="lazy"
-              class="me-2"
+              src="assets/images/logo/codewave.png"
+              alt="Profil M.G.N CodeWave"
+              class="logo-image"
             />
-            <span class="h5 m-0 fw-bold text-white">CodeWave</span>
           </a>
 
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarCollapse"
-            aria-controls="navbarCollapse"
-            aria-expanded="false"
-            aria-label="Basculer la navigation"
-          >
-            <span class="fa fa-bars" aria-hidden="true"></span>
-          </button>
+          <ul class="nav-menu" id="navMenu">
+            <li><a href="index.html" class="active">Accueil</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="tarifs.html">Tarifs</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="a-propos.html">À Propos</a></li>
+            <li><a href="careers.html">Carrières</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
 
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav ms-auto py-0 align-items-lg-center">
-              <li class="nav-item">
-                <a href="index.html" class="nav-link active" aria-current="page"
-                  >Accueil</a
-                >
-              </li>
-              <li class="nav-item">
-                <a href="service.html" class="nav-link">Services</a>
-              </li>
-              <li class="nav-item">
-                <a href="portfolio.html" class="nav-link">Portfolio</a>
-              </li>
-              <li class="nav-item dropdown">
+          <div class="nav-cta">
+            <a href="contact.html" class="btn btn-primary">Devis Gratuit</a>
+            <button class="menu-toggle" id="menuToggle">
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-media" data-mode="video">
+        <video
+          class="hero-video"
+          autoplay
+          muted
+          loop
+          playsinline
+          webkit-playsinline
+          preload="auto"
+          poster="assets/images/og-image.jpg"
+        >
+          <source
+            src="assets/video/CodeWave-Presentation.mp4"
+            type="video/mp4"
+          />
+        </video>
+        <div
+          class="hero-image"
+          style="background-image: url('assets/images/og-image.jpg')"
+        ></div>
+        <div class="hero-media-overlay"></div>
+      </div>
+      <div class="hero-background"></div>
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-left">
+            <div class="hero-badge fade-in">
+              <span class="badge-dot"></span>
+              <span>🇬🇦 Basé à Libreville, Gabon</span>
+            </div>
+
+            <h1 class="hero-title fade-in-up">
+              Votre Site Web
+              <span class="gradient-text">Prêt en 2 Semaines</span>
+            </h1>
+
+            <p class="hero-description fade-in-up delay-1">
+              Développement de <strong>sites web professionnels</strong>,
+              boutiques en ligne et applications sur mesure. Des solutions
+              modernes et abordables pour propulser votre entreprise.
+            </p>
+
+            <div class="hero-cta fade-in-up delay-2">
+              <a href="contact.html" class="btn btn-primary btn-lg">
+                Démarrer Mon Projet
+                <i class="fas fa-arrow-right"></i>
+              </a>
+              <a
+                href="https://wa.me/24166198918?text=Bonjour,%20je%20souhaite%20discuter%20d'un%20projet%20web"
+                class="btn btn-secondary btn-lg"
+                target="_blank"
+              >
+                <i class="fab fa-whatsapp"></i>
+                WhatsApp Direct
+              </a>
+            </div>
+
+            <div class="hero-stats fade-in-up delay-3">
+              <div class="stat">
+                <i class="fas fa-award"></i>
+                <div class="stat-number" data-target="6">0</div>
+                <div class="stat-label">Projets Réalisés</div>
+              </div>
+              <div class="stat">
+                <i class="fas fa-star"></i>
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Satisfaction Client</div>
+              </div>
+              <div class="stat">
+                <i class="fas fa-clock"></i>
+                <div class="stat-number">24/7</div>
+                <div class="stat-label">Support Disponible</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-right fade-in-right">
+            <div class="hero-mockup">
+              <div class="mockup-browser">
+                <div class="browser-header">
+                  <div class="browser-dots">
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
+                  </div>
+                </div>
+                <div class="browser-content">
+                  <div class="content-bar"></div>
+                  <div class="content-bar short"></div>
+                  <div class="content-grid">
+                    <div class="grid-item blue"></div>
+                    <div class="grid-item purple"></div>
+                    <div class="grid-item pink"></div>
+                  </div>
+                  <div class="content-bar medium"></div>
+                  <div class="content-buttons">
+                    <div class="button-mock green">Responsive</div>
+                    <div class="button-mock orange">SEO Ready</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Visuels Clés -->
+    <!-- <section class="section-padding image-showcase">
+      <div class="container">
+        <div class="section-header text-center">
+          <h2 class="section-title">Nos Solutions en Images</h2>
+          <p class="section-subtitle">
+            Un aperçu visuel de nos réalisations et de nos accompagnements
+          </p>
+        </div>
+
+        <div class="showcase-grid">
+          <div class="showcase-card">
+            <img
+              src="https://images.unsplash.com/photo-1526498460520-4c246339dccb?auto=format&fit=crop&w=1200&q=80"
+              alt="Refonte de site vitrine"
+            />
+            <div class="showcase-body">
+              <h3>Refonte de sites vitrines</h3>
+              <p>
+                Avant/après pour clarifier l'impact visuel et la lisibilité.
+              </p>
+            </div>
+          </div>
+
+          <div class="showcase-card">
+            <img
+              src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80"
+              alt="Parcours e-commerce"
+            />
+            <div class="showcase-body">
+              <h3>Boutiques en ligne</h3>
+              <p>Parcours d'achat optimisé et fiches produits claires.</p>
+            </div>
+          </div>
+
+          <div class="showcase-card">
+            <img
+              src="https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=1200&q=80"
+              alt="Support et maintenance"
+            />
+            <div class="showcase-body">
+              <h3>Support & maintenance</h3>
+              <p>Dashboards, suivi SLA et interventions planifiées.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section> -->
+
+    <!-- Why Choose Us -->
+    <section class="why-choose section-padding">
+      <div class="container">
+        <div class="section-header text-center">
+          <h2 class="section-title">Pourquoi Choisir CodeWave ?</h2>
+          <p class="section-subtitle">Votre partenaire digital de confiance</p>
+        </div>
+
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+            <h3>Qualité Garantie</h3>
+            <p>Des designs modernes testés sur tous les appareils</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-clock"></i>
+            </div>
+            <h3>Livraison Rapide</h3>
+            <p>Votre site prêt en 2-4 semaines selon le pack</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-users"></i>
+            </div>
+            <h3>Support Dédié</h3>
+            <p>Assistance rapide par WhatsApp, email ou téléphone</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <h3>Prix Compétitifs</h3>
+            <p>Les meilleurs tarifs au Gabon avec paiement flexible</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Preview -->
+    <section class="services-preview section-padding bg-light">
+      <div class="container">
+        <div class="section-header text-center">
+          <h2 class="section-title">Nos Services</h2>
+          <p class="section-subtitle">
+            Des solutions complètes pour tous vos besoins web
+          </p>
+        </div>
+
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-desktop"></i>
+            </div>
+            <h3>Sites Vitrines</h3>
+            <p>Sites web professionnels pour présenter votre activité</p>
+            <div class="service-price">À partir de 100 000 FCFA</div>
+            <ul class="service-features">
+              <li><i class="fas fa-check"></i> Design responsive</li>
+              <li><i class="fas fa-check"></i> Optimisation SEO</li>
+              <li><i class="fas fa-check"></i> Formulaire de contact</li>
+            </ul>
+            <a href="services.html#vitrines" class="btn btn-outline"
+              >En Savoir Plus</a
+            >
+          </div>
+
+          <div class="service-card featured">
+            <div class="popular-badge">⭐ PLUS POPULAIRE</div>
+            <div class="service-icon">
+              <i class="fas fa-shopping-cart"></i>
+            </div>
+            <h3>E-Commerce</h3>
+            <p>Boutiques en ligne complètes avec paiement sécurisé</p>
+            <div class="service-price">À partir de 300 000 FCFA</div>
+            <ul class="service-features">
+              <li><i class="fas fa-check"></i> Gestion produits</li>
+              <li><i class="fas fa-check"></i> Paiement en ligne</li>
+              <li><i class="fas fa-check"></i> Suivi commandes</li>
+            </ul>
+            <a href="services.html#ecommerce" class="btn btn-primary"
+              >Commander</a
+            >
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-palette"></i>
+            </div>
+            <h3>Blogs & Portfolios</h3>
+            <p>Plateformes pour partager votre passion et vos réalisations</p>
+            <div class="service-price">À partir de 80 000 FCFA</div>
+            <ul class="service-features">
+              <li><i class="fas fa-check"></i> Design épuré</li>
+              <li><i class="fas fa-check"></i> SEO optimisé</li>
+              <li><i class="fas fa-check"></i> Gestion facile</li>
+            </ul>
+            <a href="services.html#blogs" class="btn btn-outline">Découvrir</a>
+          </div>
+        </div>
+
+        <div class="text-center mt-5">
+          <a href="services.html" class="btn btn-primary btn-lg"
+            >Voir Tous Nos Services</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio Preview -->
+    <section class="portfolio-preview section-padding">
+      <div class="container">
+        <div class="section-header text-center">
+          <h2 class="section-title">Nos Réalisations</h2>
+          <p class="section-subtitle">
+            Découvrez des projets qui ont transformé des entreprises
+          </p>
+        </div>
+
+        <div class="portfolio-grid">
+          <!-- Waz'UP -->
+          <div class="portfolio-item">
+            <div
+              class="portfolio-image"
+              style="
+                background: linear-gradient(135deg, #1d4ed8 0%, #06b6d4 100%);
+              "
+            >
+              <div class="portfolio-overlay">
+                <h4>Waz'UP</h4>
+                <p>Super-app Flutter</p>
+                <a href="portfolio/wazup-details.html" class="portfolio-link">
+                  <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+            <div class="portfolio-info">
+              <div class="portfolio-tag">Application mobile</div>
+              <div class="portfolio-result">
+                <i class="fas fa-bolt"></i>
+                E-commerce & livraison
+              </div>
+            </div>
+          </div>
+
+          <!-- H2P Group -->
+          <div class="portfolio-item">
+            <div
+              class="portfolio-image"
+              style="
+                background: linear-gradient(135deg, #8b5cf6 0%, #c084fc 100%);
+              "
+            >
+              <div class="portfolio-overlay">
+                <h4>H2P Group</h4>
+                <p>Site & Identité</p>
+                <a href="portfolio/h2p-details.html" class="portfolio-link">
+                  <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+            <div class="portfolio-info">
+              <div class="portfolio-tag">Site vitrine</div>
+              <div class="portfolio-result">
+                <i class="fas fa-calendar-check"></i>
+                Prise de RDV
+              </div>
+            </div>
+          </div>
+
+          <!-- Le Bon Waz -->
+          <div class="portfolio-item">
+            <div
+              class="portfolio-image"
+              style="
+                background: linear-gradient(135deg, #f97316 0%, #f59e0b 100%);
+              "
+            >
+              <div class="portfolio-overlay">
+                <h4>Le Bon Waz</h4>
+                <p>Marketplace</p>
                 <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  data-bs-toggle="dropdown"
-                  role="button"
-                  aria-expanded="false"
-                  >Ressources</a
+                  href="portfolio/lebonwaz-details.html"
+                  class="portfolio-link"
                 >
-                <ul class="dropdown-menu m-0">
-                  <li>
-                    <a href="about.html" class="dropdown-item">À Propos</a>
-                  </li>
-                  <li>
-                    <a href="tarifs.html" class="dropdown-item"
-                      >Tarifs & Devis</a
-                    >
-                  </li>
-                </ul>
-              </li>
-              <li class="nav-item">
-                <a href="contact.html" class="nav-link">Contact</a>
+                  <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+            <div class="portfolio-info">
+              <div class="portfolio-tag">E-Commerce</div>
+              <div class="portfolio-result">
+                <i class="fas fa-store"></i>
+                Annonces & messagerie
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-5">
+          <a href="portfolio.html" class="btn btn-primary btn-lg"
+            >Voir Tous Nos Projets</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <!-- <section class="testimonials section-padding bg-gradient">
+      <div class="container">
+        <div class="section-header text-center">
+          <h2 class="section-title text-white">Ce Que Disent Nos Clients</h2>
+          <p class="section-subtitle text-white-70">
+            Des témoignages authentiques de clients satisfaits
+          </p>
+        </div>
+
+        <div class="testimonials-grid">
+          <div class="testimonial-card">
+            <div class="testimonial-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+            <p class="testimonial-text">
+              "CodeWave a transformé mon commerce en boutique en ligne
+              florissante. En 3 mois, mes ventes ont triplé ! Le site est
+              magnifique et facile à gérer."
+            </p>
+            <div class="testimonial-author">
+              <div
+                class="author-avatar"
+                style="
+                  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+                "
+              ></div>
+              <div>
+                <div class="author-name">Marie Okomo</div>
+                <div class="author-role">Propriétaire - Boutique Élégance</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+            <p class="testimonial-text">
+              "Professionnel, à l'écoute et très compétent. Notre nouveau site
+              reflète parfaitement notre expertise. Nous recevons 3x plus de
+              demandes."
+            </p>
+            <div class="testimonial-author">
+              <div
+                class="author-avatar"
+                style="
+                  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+                "
+              ></div>
+              <div>
+                <div class="author-name">Jean-Paul Ndong</div>
+                <div class="author-role">Avocat - Cabinet Ndong</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section> -->
+
+    <!-- CTA Section -->
+    <section class="cta-section section-padding">
+      <div class="container">
+        <div class="cta-content text-center">
+          <h2 class="cta-title">Prêt à Lancer Votre Projet ?</h2>
+          <!-- <p class="cta-text">
+            Rejoignez plus de 80 entreprises gabonaises qui nous font confiance
+          </p> -->
+          <div class="cta-buttons">
+            <a href="contact.html#contactForm" class="btn btn-white btn-lg">
+              Demander un Devis Gratuit
+              <i class="fas fa-arrow-right"></i>
+            </a>
+            <a
+              href="https://wa.me/24166198918?text=Bonjour,%20je%20souhaite%20discuter%20d'un%20projet%20web."
+              class="btn btn-outline-white btn-lg"
+              target="_blank"
+            >
+              <i class="fab fa-whatsapp"></i>
+              WhatsApp Direct
+            </a>
+          </div>
+          <div class="cta-features">
+            <div class="cta-feature">
+              <i class="fas fa-check"></i>
+              <span>Devis en 24h</span>
+            </div>
+            <div class="cta-feature">
+              <i class="fas fa-check"></i>
+              <span>Paiement flexible</span>
+            </div>
+            <div class="cta-feature">
+              <i class="fas fa-check"></i>
+              <span>Support 24/7</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-col">
+            <a href="index.html" class="footer-logo">
+              <span class="logo-m">M</span>
+              <span class="logo-g">G</span>
+              <span class="logo-n">N</span>
+              <div class="logo-text">
+                <span class="logo-codewave">CODEWAVE</span>
+                <span class="logo-tagline">Solutions Digitales</span>
+              </div>
+            </a>
+            <p class="footer-description">
+              Votre partenaire digital de confiance au Gabon. Nous transformons
+              vos idées en sites web performants et rentables.
+            </p>
+            <div class="footer-social">
+              <a href="#" class="social-link" aria-label="Facebook"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="#" class="social-link" aria-label="LinkedIn"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
+              <a href="#" class="social-link" aria-label="GitHub"
+                ><i class="fab fa-github"></i
+              ></a>
+              <a
+                href="https://wa.me/24166198918"
+                class="social-link"
+                target="_blank"
+                aria-label="WhatsApp"
+                ><i class="fab fa-whatsapp"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h4>Services</h4>
+            <ul class="footer-links">
+              <li><a href="services.html#vitrines">Sites Vitrines</a></li>
+              <li><a href="services.html#ecommerce">E-Commerce</a></li>
+              <li><a href="services.html#blogs">Blogs & Portfolios</a></li>
+              <li><a href="services.html#maintenance">Maintenance</a></li>
+              <li>
+                <a href="services.html#additionnels">SEO & Référencement</a>
               </li>
             </ul>
-
-            <a
-              href="tarifs.html"
-              class="btn btn-primary py-2 px-4 ms-3"
-              role="button"
-              aria-label="Demander un devis"
-              >Demander un Devis</a
-            >
-          </div>
-        </div>
-      </nav>
-
-      <div
-        id="header-carousel"
-        class="carousel slide carousel-fade"
-        data-bs-ride="carousel"
-        aria-label="Carrousel d'images présentant CodeWave"
-      >
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img
-              class="w-100"
-              src="img/carousel-1.jpg"
-              alt="Solutions digitales CodeWave"
-              loading="lazy"
-            />
-            <div
-              class="carousel-caption d-flex flex-column align-items-center justify-content-center text-center p-3"
-            >
-              <div style="max-width: 900px">
-                <h5 class="text-white text-uppercase mb-2 animated slideInDown">
-                  M.G.N CodeWave : L'Innovation Web au Gabon
-                </h5>
-                <h1
-                  class="display-6 display-md-3 text-white mb-3 animated zoomIn"
-                >
-                  Des solutions web & digitales sur mesure pour votre business
-                </h1>
-                <a
-                  href="service.html"
-                  class="btn btn-outline-light btn-lg mt-2"
-                  role="button"
-                  aria-label="Voir nos services"
-                  >Nos services</a
-                >
-              </div>
-            </div>
           </div>
 
-          <div class="carousel-item">
-            <img
-              class="w-100"
-              src="img/carousel-2.jpg"
-              alt="Sites e-commerce CodeWave"
-              loading="lazy"
-            />
-            <div
-              class="carousel-caption d-flex flex-column align-items-center justify-content-center text-center p-3"
+          <div class="footer-col">
+            <h4>Liens Rapides</h4>
+            <ul class="footer-links">
+              <li><a href="index.html">Accueil</a></li>
+              <li><a href="portfolio.html">Portfolio</a></li>
+              <li><a href="tarifs.html">Tarifs</a></li>
+              <li><a href="blog.html">Blog</a></li>
+              <li><a href="careers.html">Carrières</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>Newsletter</h4>
+            <p>Recevez nos conseils web</p>
+            <form
+              action="https://formspree.io/f/mpweqqzz"
+              method="POST"
+              name="Newsletter"
+              class="newsletter-form"
+              id="newsletterForm"
             >
-              <div style="max-width: 900px">
-                <h5 class="text-white text-uppercase mb-2 animated slideInDown">
-                  Développeurs Full-Stack - Performance garantie
-                </h5>
-                <h1
-                  class="display-6 display-md-3 text-white mb-3 animated zoomIn"
-                >
-                  Créez votre boutique en ligne performante
-                </h1>
-                <a
-                  href="tarifs.html#ecommerce"
-                  class="btn btn-outline-light btn-lg mt-2"
-                  role="button"
-                  aria-label="Découvrir l'e-commerce"
-                  >E-commerce</a
-                >
-              </div>
-            </div>
+              <input
+                type="email"
+                placeholder="Votre email"
+                required
+                aria-label="Email pour newsletter"
+                name="email"
+              />
+              <button type="submit" aria-label="S'abonner">
+                <i class="fas fa-paper-plane"></i>
+              </button>
+            </form>
+            <p class="newsletter-note">🔒 Pas de spam. Désabonnement facile.</p>
           </div>
         </div>
 
-        <button
-          class="carousel-control-prev"
-          type="button"
-          data-bs-target="#header-carousel"
-          data-bs-slide="prev"
-          aria-label="Image précédente"
-        >
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Précédent</span>
-        </button>
-
-        <button
-          class="carousel-control-next"
-          type="button"
-          data-bs-target="#header-carousel"
-          data-bs-slide="next"
-          aria-label="Image suivante"
-        >
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Suivant</span>
-        </button>
-      </div>
-    </header>
-    <!-- Navbar & Carousel End -->
-
-    <!-- About Start -->
-    <main>
-      <section
-        class="container-fluid py-5 wow fadeInUp"
-        data-wow-delay="0.1s"
-        aria-labelledby="about-title"
-      >
-        <div class="container py-5">
-          <div class="row g-5 align-items-center">
-            <div class="col-lg-7">
-              <header
-                class="section-title position-relative pb-3 mb-4"
-                id="about-title"
-              >
-                <h5 class="fw-bold text-primary text-uppercase">
-                  À Propos de CodeWave
-                </h5>
-                <h1 class="mb-0">
-                  L'expertise digitale au service de votre succès au Gabon
-                </h1>
-              </header>
-
-              <p class="mb-4 text-muted">
-                M.G.N CodeWave conçoit des sites modernes, sécurisés et
-                optimisés pour les usages locaux : mobile-first, paiements
-                locaux, intégration WhatsApp. Nous accompagnons PME et
-                indépendants de la stratégie à la mise en production.
-              </p>
-
-              <div class="row g-3 mb-4">
-                <div class="col-sm-6">
-                  <div class="d-flex">
-                    <div
-                      class="bg-primary text-white rounded d-flex align-items-center justify-content-center me-3"
-                      style="width: 48px; height: 48px"
-                    >
-                      <i class="fa fa-code"></i>
-                    </div>
-                    <div>
-                      <h6 class="mb-1">Expertise technique</h6>
-                      <p class="mb-0 text-muted small">
-                        Front‑end, back‑end et intégrations.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-6">
-                  <div class="d-flex">
-                    <div
-                      class="bg-primary text-white rounded d-flex align-items-center justify-content-center me-3"
-                      style="width: 48px; height: 48px"
-                    >
-                      <i class="fa fa-project-diagram"></i>
-                    </div>
-                    <div>
-                      <h6 class="mb-1">Méthodologie agile</h6>
-                      <p class="mb-0 text-muted small">
-                        Livraison itérative et communication claire.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-6">
-                  <div class="d-flex">
-                    <div
-                      class="bg-primary text-white rounded d-flex align-items-center justify-content-center me-3"
-                      style="width: 48px; height: 48px"
-                    >
-                      <i class="fa fa-shield-alt"></i>
-                    </div>
-                    <div>
-                      <h6 class="mb-1">Sécurité & performance</h6>
-                      <p class="mb-0 text-muted small">
-                        Bonnes pratiques et monitoring.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-6">
-                  <div class="d-flex">
-                    <div
-                      class="bg-primary text-white rounded d-flex align-items-center justify-content-center me-3"
-                      style="width: 48px; height: 48px"
-                    >
-                      <i class="fa fa-headset"></i>
-                    </div>
-                    <div>
-                      <h6 class="mb-1">Support local</h6>
-                      <p class="mb-0 text-muted small">
-                        Assistance réactive depuis Libreville.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="d-flex align-items-center gap-3">
-                <a href="tarifs.html" class="btn btn-primary btn-lg"
-                  >Demander un Devis</a
-                >
-                <a href="contact.html" class="btn btn-outline-primary btn-lg"
-                  >Contactez‑nous</a
-                >
-              </div>
-            </div>
-
-            <div class="col-lg-5">
-              <figure class="shadow-sm rounded overflow-hidden h-100">
-                <img
-                  src="img/about.jpg"
-                  alt="Équipe CodeWave"
-                  class="img-fluid w-100 h-100"
-                  style="object-fit: cover"
-                  loading="lazy"
-                />
-              </figure>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Features / Why choose -->
-      <section
-        class="container-fluid py-5 wow fadeInUp"
-        data-wow-delay="0.1s"
-        aria-labelledby="features-title"
-      >
-        <div class="container py-5">
-          <div
-            class="section-title text-center position-relative pb-3 mb-5 mx-auto"
-            style="max-width: 600px"
-          >
-            <h5 id="features-title" class="fw-bold text-primary text-uppercase">
-              Pourquoi Nous Choisir
-            </h5>
-            <h1 class="mb-0">
-              Votre partenaire idéal pour la croissance digitale
-            </h1>
-          </div>
-
-          <div class="row g-4">
-            <div class="col-lg-4">
-              <div class="card h-100 border-0 shadow-sm">
-                <div class="card-body">
-                  <div
-                    class="bg-primary rounded d-inline-flex align-items-center justify-content-center mb-3"
-                    style="width: 60px; height: 60px"
-                  >
-                    <i class="fa fa-map-marked-alt text-white"></i>
-                  </div>
-                  <h4>Expertise locale & globale</h4>
-                  <p class="mb-0 text-muted">
-                    Solutions adaptées au marché gabonais avec standards
-                    internationaux.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-4">
-              <div class="card h-100 border-0 shadow-sm">
-                <div class="card-body">
-                  <div
-                    class="bg-primary rounded d-inline-flex align-items-center justify-content-center mb-3"
-                    style="width: 60px; height: 60px"
-                  >
-                    <i class="fa fa-cogs text-white"></i>
-                  </div>
-                  <h4>Méthodologie orientée résultats</h4>
-                  <p class="mb-0 text-muted">
-                    Agile, tests et optimisation continue.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-4">
-              <div class="card h-100 border-0 shadow-sm">
-                <div class="card-body">
-                  <div
-                    class="bg-primary rounded d-inline-flex align-items-center justify-content-center mb-3"
-                    style="width: 60px; height: 60px"
-                  >
-                    <i class="fa fa-headset text-white"></i>
-                  </div>
-                  <h4>Support et maintenance</h4>
-                  <p class="mb-0 text-muted">
-                    Offres d'hébergement, sauvegardes et support prioritaire.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-    <!-- About End -->
-
-    <!-- Service Section simplified and responsive kept as in original file (no structural change) -->
-
-    <!-- Footer Start -->
-    <div
-      class="container-fluid bg-dark text-light mt-5 wow fadeInUp"
-      data-wow-delay="0.1s"
-    >
-      <div class="container">
-        <div class="row gx-5">
-          <div class="col-lg-4 col-md-6 footer-about">
-            <div
-              class="d-flex flex-column align-items-center justify-content-center text-center h-100 bg-primary p-4"
+        <div class="footer-bottom">
+          <p>
+            &copy; 2025 <strong>M.G.N CodeWave</strong>. Tous droits réservés.
+            🇬🇦 Fait avec ❤️ au Gabon
+          </p>
+          <div class="footer-legal">
+            <a href="mentions-legales.html">Mentions Légales</a>
+            <a href="politique-confidentialite.html"
+              >Politique de Confidentialité</a
             >
-              <a
-                href="index.html"
-                class="navbar-brand d-flex align-items-center p-0"
-                aria-label="Accueil CodeWave"
-              >
-                <img
-                  src="img/logo/codewave.png"
-                  alt="Logo CodeWave"
-                  height="40"
-                  loading="lazy"
-                  class="me-2"
-                />
-                <span class="h5 m-0 fw-bold text-white">CodeWave</span>
-              </a>
-              <p class="mt-3 mb-4">
-                Votre partenaire Full-Stack à Libreville. Nous concevons des
-                sites web performants, modernes et optimisés pour la croissance
-                de votre entreprise au Gabon et en Afrique.
-              </p>
-            </div>
-          </div>
-
-          <div class="col-lg-8 col-md-6">
-            <div class="row gx-5">
-              <div class="col-lg-4 col-md-12 pt-5 mb-5">
-                <div
-                  class="section-title section-title-sm position-relative pb-3 mb-4"
-                >
-                  <h3 class="text-light mb-0">Nous Contacter</h3>
-                </div>
-                <div class="d-flex mb-2">
-                  <i class="bi bi-geo-alt text-primary me-2"></i>
-                  <p class="mb-0">Libreville, Gabon</p>
-                </div>
-                <div class="d-flex mb-2">
-                  <i class="bi bi-envelope-open text-primary me-2"></i>
-                  <p class="mb-0">ngoubadjambo18@gmail.com</p>
-                </div>
-                <div class="d-flex mb-2">
-                  <i class="bi bi-telephone text-primary me-2"></i>
-                  <p class="mb-0">+241 74 67 67 41</p>
-                </div>
-                <div class="d-flex mt-4">
-                  <a
-                    class="btn btn-primary btn-square me-2"
-                    href="#"
-                    aria-label="Lien Facebook"
-                    ><i class="fab fa-facebook-f fw-normal"></i
-                  ></a>
-                  <a
-                    class="btn btn-primary btn-square me-2"
-                    href="#"
-                    aria-label="Lien LinkedIn"
-                    ><i class="fab fa-linkedin-in fw-normal"></i
-                  ></a>
-                  <a
-                    class="btn btn-primary btn-square"
-                    href="https://wa.me/24174676741"
-                    target="_blank"
-                    aria-label="Lien WhatsApp"
-                    ><i class="fab fa-whatsapp fw-normal"></i
-                  ></a>
-                </div>
-              </div>
-
-              <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
-                <div
-                  class="section-title section-title-sm position-relative pb-3 mb-4"
-                >
-                  <h3 class="text-light mb-0">Liens Utiles</h3>
-                </div>
-                <div
-                  class="link-animated d-flex flex-column justify-content-start"
-                >
-                  <a class="text-light mb-2" href="index.html"
-                    ><i class="bi bi-arrow-right text-primary me-2"></i
-                    >Accueil</a
-                  >
-                  <a class="text-light mb-2" href="mentions-legale.html"
-                    ><i class="bi bi-arrow-right text-primary me-2"></i>Mentions
-                    Légales</a
-                  >
-                  <a class="text-light mb-2" href="cgu.html"
-                    ><i class="bi bi-arrow-right text-primary me-2"></i
-                    >Condition Générales d'Utilisation</a
-                  >
-                  <a class="text-light mb-2" href="about.html"
-                    ><i class="bi bi-arrow-right text-primary me-2"></i>À
-                    Propos</a
-                  >
-                  <a class="text-light mb-2" href="service.html"
-                    ><i class="bi bi-arrow-right text-primary me-2"></i>Nos
-                    Services</a
-                  >
-                  <a class="text-light mb-2" href="tarifs.html"
-                    ><i class="bi bi-arrow-right text-primary me-2"></i>Demander
-                    un Devis</a
-                  >
-                  <a class="text-light" href="contact.html"
-                    ><i class="bi bi-arrow-right text-primary me-2"></i
-                    >Contact</a
-                  >
-                </div>
-              </div>
-
-              <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
-                <div
-                  class="section-title section-title-sm position-relative pb-3 mb-4"
-                >
-                  <h3 class="text-light mb-0">Nos Services Clés</h3>
-                </div>
-                <div
-                  class="link-animated d-flex flex-column justify-content-start"
-                >
-                  <a class="text-light mb-2" href="service.html#vitrine"
-                    ><i class="bi bi-arrow-right text-primary me-2"></i>Sites
-                    Web Vitrines</a
-                  >
-                  <a class="text-light mb-2" href="service.html#ecommerce"
-                    ><i class="bi bi-arrow-right text-primary me-2"></i
-                    >Plateformes E-commerce</a
-                  >
-                  <a class="text-light mb-2" href="service.html#blog"
-                    ><i class="bi bi-arrow-right text-primary me-2"></i>Blogs &
-                    Portfolios</a
-                  >
-                  <a class="text-light mb-2" href="service.html#maintenance"
-                    ><i class="bi bi-arrow-right text-primary me-2"></i
-                    >Maintenance & Hébergement</a
-                  >
-                  <a class="text-light mb-2" href="service.html#seo"
-                    ><i class="bi bi-arrow-right text-primary me-2"></i
-                    >Optimisation SEO</a
-                  >
-                  <a class="text-light" href="tarifs.html"
-                    ><i class="bi bi-arrow-right text-primary me-2"></i>Voir Nos
-                    Tarifs</a
-                  >
-                </div>
-              </div>
-            </div>
+            <a href="cgv.html">CGV</a>
+            <a href="plan-du-site.html">Plan du Site</a>
           </div>
         </div>
       </div>
-    </div>
-    <div class="container-fluid text-white" style="background: #061429">
-      <div class="container text-center">
-        <div class="row justify-content-end">
-          <div class="col-lg-8 col-md-6">
-            <div
-              class="d-flex align-items-center justify-content-center"
-              style="height: 75px"
-            >
-              <p class="mb-0">
-                &copy;
-                <a class="text-white border-bottom" href="index.html"
-                  >M.G.N CodeWave</a
-                >, 2025. Tous Droits Réservés.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Footer End -->
+    </footer>
 
-    <!-- Back to Top -->
+    <!-- WhatsApp Float Button -->
     <a
-      href="#"
-      class="btn btn-lg btn-primary btn-lg-square rounded back-to-top"
-      aria-label="Retour en haut"
-      ><i class="bi bi-arrow-up" aria-hidden="true"></i
-    ></a>
+      href="https://wa.me/24166198918?text=Bonjour,%20je%20souhaite%20discuter%20d'un%20projet%20web"
+      class="whatsapp-float"
+      target="_blank"
+      aria-label="Contactez-nous sur WhatsApp"
+    >
+      <i class="fab fa-whatsapp"></i>
+    </a>
 
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/wow/wow.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/counterup/counterup.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-
-    <!-- Template Javascript -->
-    <script src="js/main.js"></script>
+    <!-- JavaScript -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/animations.js"></script>
   </body>
 </html>

@@ -1,0 +1,896 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Plan du site CodeWave - AccÃ©dez rapidement Ã  toutes les pages de notre site web."
+    />
+    <title>Plan du Site - CodeWave | Navigation ComplÃ¨te</title>
+
+    <link rel="icon" type="image/png" href="assets/images/logo/codewave.png" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/responsive.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <style>
+      .sitemap-section {
+        background: white;
+        padding: 2rem;
+        border-radius: var(--radius-2xl);
+        box-shadow: var(--shadow-lg);
+        margin-bottom: 2rem;
+      }
+
+      .sitemap-section h3 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--gray-900);
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.75rem;
+        border-bottom: 2px solid var(--primary);
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+
+      .sitemap-section h3 i {
+        color: var(--primary);
+        font-size: 1.75rem;
+      }
+
+      .sitemap-links {
+        display: grid;
+        gap: 1rem;
+      }
+
+      .sitemap-link {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem;
+        border-radius: var(--radius-lg);
+        transition: var(--transition);
+        border: 1px solid var(--gray-200);
+      }
+
+      .sitemap-link:hover {
+        background: var(--gray-50);
+        border-color: var(--primary);
+        transform: translateX(5px);
+      }
+
+      .sitemap-link i {
+        width: 2.5rem;
+        height: 2.5rem;
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--secondary) 100%
+        );
+        color: white;
+        border-radius: var(--radius-lg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+
+      .sitemap-link-content {
+        flex: 1;
+      }
+
+      .sitemap-link-title {
+        font-weight: 600;
+        color: var(--gray-900);
+        margin-bottom: 0.25rem;
+      }
+
+      .sitemap-link-desc {
+        font-size: 0.875rem;
+        color: var(--gray-600);
+      }
+
+      .sitemap-subsection {
+        margin-left: 2rem;
+        margin-top: 0.5rem;
+        padding-left: 1rem;
+        border-left: 2px solid var(--gray-200);
+      }
+
+      .sitemap-subsection a {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem;
+        color: var(--gray-700);
+        transition: var(--transition);
+        border-radius: var(--radius-md);
+      }
+
+      .sitemap-subsection a:hover {
+        background: var(--gray-50);
+        color: var(--primary);
+      }
+
+      .sitemap-subsection a i {
+        color: var(--primary);
+        font-size: 0.875rem;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+      <div class="container">
+        <div class="nav-wrapper">
+          <a href="index.html" class="logo">
+            <img
+              src="assets/images/logo/codewave.png"
+              alt="Profil M.G.N CodeWave"
+              class="logo-image"
+            />
+          </a>
+
+          <ul class="nav-menu" id="navMenu">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="tarifs.html">Tarifs</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="a-propos.html">Ã€ Propos</a></li>
+            <li><a href="careers.html">CarriÃ¨res</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+
+          <div class="nav-cta">
+            <a href="contact.html" class="btn btn-primary">Devis Gratuit</a>
+            <button class="menu-toggle" id="menuToggle">
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+      <div class="page-header-media" data-mode="image">
+        <div
+          class="page-header-image"
+          style="
+            background-image: url('https://images.unsplash.com/photo-1532521e6f95-8cef12cbb2da?auto=format&fit=crop&w=1600&q=80');
+          "
+        ></div>
+        <div class="page-header-overlay"></div>
+      </div>
+      <div class="container">
+        <div class="breadcrumb">
+          <a href="index.html">Accueil</a>
+          <span>/</span>
+          <span>Plan du Site</span>
+        </div>
+        <h1 class="page-title">Plan du Site</h1>
+        <p class="page-subtitle">
+          Naviguez facilement sur notre site et trouvez ce que vous cherchez
+        </p>
+      </div>
+    </section>
+
+    <!-- Sitemap Content -->
+    <section class="section-padding">
+      <div class="container">
+        <div style="max-width: 72rem; margin: 0 auto">
+          <!-- Introduction -->
+          <div
+            style="
+              background: linear-gradient(
+                135deg,
+                var(--gray-50) 0%,
+                #dbeafe 100%
+              );
+              padding: 2rem;
+              border-radius: var(--radius-2xl);
+              margin-bottom: 3rem;
+              text-align: center;
+              border: 2px solid var(--primary);
+            "
+          >
+            <i
+              class="fas fa-sitemap"
+              style="
+                font-size: 3rem;
+                color: var(--primary);
+                margin-bottom: 1rem;
+              "
+            ></i>
+            <h2
+              style="
+                font-size: 1.75rem;
+                font-weight: 700;
+                color: var(--gray-900);
+                margin-bottom: 0.5rem;
+              "
+            >
+              Bienvenue sur le Plan du Site CodeWave
+            </h2>
+            <p style="color: var(--gray-700); max-width: 48rem; margin: 0 auto">
+              Retrouvez ici l'ensemble des pages de notre site pour une
+              navigation rapide et intuitive
+            </p>
+          </div>
+
+          <div style="display: grid; gap: 2rem">
+            <!-- Pages Principales -->
+            <div class="sitemap-section">
+              <h3>
+                <i class="fas fa-home"></i>
+                Pages Principales
+              </h3>
+              <div class="sitemap-links">
+                <a href="index.html" class="sitemap-link">
+                  <i class="fas fa-home"></i>
+                  <div class="sitemap-link-content">
+                    <div class="sitemap-link-title">Accueil</div>
+                    <div class="sitemap-link-desc">
+                      Page d'accueil avec prÃ©sentation de nos services et
+                      rÃ©alisations
+                    </div>
+                  </div>
+                </a>
+
+                <a href="services.html" class="sitemap-link">
+                  <i class="fas fa-cogs"></i>
+                  <div class="sitemap-link-content">
+                    <div class="sitemap-link-title">Services</div>
+                    <div class="sitemap-link-desc">
+                      DÃ©couvrez tous nos services de dÃ©veloppement web
+                    </div>
+                  </div>
+                </a>
+                <div class="sitemap-subsection">
+                  <a href="services.html#vitrines">
+                    <i class="fas fa-chevron-right"></i>
+                    Sites Vitrines
+                  </a>
+                  <a href="services.html#ecommerce">
+                    <i class="fas fa-chevron-right"></i>
+                    E-Commerce
+                  </a>
+                  <a href="services.html#blogs">
+                    <i class="fas fa-chevron-right"></i>
+                    Blogs & Portfolios
+                  </a>
+                  <a href="services.html#maintenance">
+                    <i class="fas fa-chevron-right"></i>
+                    Maintenance
+                  </a>
+                  <a href="services.html#additionnels">
+                    <i class="fas fa-chevron-right"></i>
+                    Services Additionnels
+                  </a>
+                </div>
+
+                <a href="tarifs.html" class="sitemap-link">
+                  <i class="fas fa-euro-sign"></i>
+                  <div class="sitemap-link-content">
+                    <div class="sitemap-link-title">Tarifs</div>
+                    <div class="sitemap-link-desc">
+                      Consultez nos tarifs transparents et compÃ©titifs
+                    </div>
+                  </div>
+                </a>
+
+                <a href="portfolio.html" class="sitemap-link">
+                  <i class="fas fa-briefcase"></i>
+                  <div class="sitemap-link-content">
+                    <div class="sitemap-link-title">Portfolio</div>
+                    <div class="sitemap-link-desc">
+                      Nos rÃ©alisations et projets rÃ©ussis
+                    </div>
+                  </div>
+                </a>
+                <div class="sitemap-subsection">
+                  <a href="portfolio/wazup-details.html">
+                    <i class="fas fa-chevron-right"></i>
+                    Waz'UP â€” Super-app Flutter
+                  </a>
+                  <a href="portfolio/h2p-details.html">
+                    <i class="fas fa-chevron-right"></i>
+                    H2P Group â€” Site & IdentitÃ©
+                  </a>
+                  <a href="portfolio/lebonwaz-details.html">
+                    <i class="fas fa-chevron-right"></i>
+                    Le Bon Waz â€” Marketplace
+                  </a>
+                  <a href="portfolio/lamp-details.html">
+                    <i class="fas fa-chevron-right"></i>
+                    LAMP â€” Plateforme web
+                  </a>
+                  <a href="portfolio/englishfunclub-details.html">
+                    <i class="fas fa-chevron-right"></i>
+                    English Fun Club â€” Site Ã©ducatif
+                  </a>
+                  <a href="portfolio/decouvre-details.html">
+                    <i class="fas fa-chevron-right"></i>
+                    DÃ©couvre â€” App dÃ©couverte locale
+                  </a>
+                  <a href="portfolio/booki-details.html">
+                    <i class="fas fa-chevron-right"></i>
+                    Booki â€” Site de rÃ©servation
+                  </a>
+                  <a href="portfolio/gracedeploye-details.html">
+                    <i class="fas fa-chevron-right"></i>
+                    GrÃ¢ce DÃ©ployÃ© â€” Site vitrine
+                  </a>
+                  <a href="portfolio/api-airtel.html">
+                    <i class="fas fa-chevron-right"></i>
+                    API Airtel Money â€” IntÃ©gration
+                  </a>
+                  <a href="portfolio/gestion-prospects-details.html">
+                    <i class="fas fa-chevron-right"></i>
+                    Gestion de Prospects â€” Outil CRM
+                  </a>
+                  <a href="portfolio/mgn-codewave-details.html">
+                    <i class="fas fa-chevron-right"></i>
+                    M.G.N CodeWave â€” Site & branding
+                  </a>
+                </div>
+
+                <a href="blog.html" class="sitemap-link">
+                  <i class="fas fa-blog"></i>
+                  <div class="sitemap-link-content">
+                    <div class="sitemap-link-title">Blog</div>
+                    <div class="sitemap-link-desc">
+                      Articles, conseils et actualitÃ©s web
+                    </div>
+                  </div>
+                </a>
+                <div class="sitemap-subsection">
+                  <a href="blogs/10-raisons-creer-site-web-gabon.html">
+                    <i class="fas fa-chevron-right"></i>
+                    10 Raisons de CrÃ©er un Site Web au Gabon
+                  </a>
+                  <a href="blogs/erreurs-site-ecommerce.html">
+                    <i class="fas fa-chevron-right"></i>
+                    Erreurs Ã  Ã‰viter sur un Site Eâ€‘Commerce
+                  </a>
+                  <a href="blogs/monetiser-site-web.html">
+                    <i class="fas fa-chevron-right"></i>
+                    MonÃ©tiser son Site Web: StratÃ©gies
+                  </a>
+                  <a href="blogs/optimiser-seo-gabon.html">
+                    <i class="fas fa-chevron-right"></i>
+                    Optimiser son SEO au Gabon
+                  </a>
+                  <a href="blogs/strategie-contenu-blog.html">
+                    <i class="fas fa-chevron-right"></i>
+                    StratÃ©gie de Contenu pour Blog
+                  </a>
+                  <a href="blogs/tendances-web-design-2025.html">
+                    <i class="fas fa-chevron-right"></i>
+                    Tendances Web Design 2025
+                  </a>
+                  <a href="blogs/vitesse-chargement-site-web.html">
+                    <i class="fas fa-chevron-right"></i>
+                    Vitesse de Chargement: Bonnes Pratiques
+                  </a>
+                </div>
+
+                <a href="a-propos.html" class="sitemap-link">
+                  <i class="fas fa-info-circle"></i>
+                  <div class="sitemap-link-content">
+                    <div class="sitemap-link-title">Ã€ Propos</div>
+                    <div class="sitemap-link-desc">
+                      Qui sommes-nous ? Notre histoire et notre Ã©quipe
+                    </div>
+                  </div>
+                </a>
+                <a href="careers.html" class="sitemap-link">
+                  <i class="fas fa-user-tie"></i>
+                  <div class="sitemap-link-content">
+                    <div class="sitemap-link-title">CarriÃ¨res</div>
+                    <div class="sitemap-link-desc">
+                      Offres et opportunitÃ©s de collaboration
+                    </div>
+                  </div>
+                </a>
+
+                <a href="contact.html" class="sitemap-link">
+                  <i class="fas fa-envelope"></i>
+                  <div class="sitemap-link-content">
+                    <div class="sitemap-link-title">Contact</div>
+                    <div class="sitemap-link-desc">
+                      Contactez-nous pour votre projet web
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            <!-- Packs & Services -->
+            <div class="sitemap-section">
+              <h3>
+                <i class="fas fa-box"></i>
+                Packs & Services DÃ©taillÃ©s
+              </h3>
+              <div class="sitemap-links">
+                <div
+                  style="
+                    padding: 1rem;
+                    background: var(--gray-50);
+                    border-radius: var(--radius-lg);
+                  "
+                >
+                  <h4
+                    style="
+                      font-weight: 700;
+                      color: var(--gray-900);
+                      margin-bottom: 1rem;
+                    "
+                  >
+                    <i class="fas fa-desktop" style="color: var(--primary)"></i>
+                    Sites Vitrines
+                  </h4>
+                  <div class="sitemap-subsection" style="margin-left: 0">
+                    <a href="contact.html?pack=vitrine-basic">
+                      <i class="fas fa-chevron-right"></i>
+                      Pack Basic (100 000 FCFA)
+                    </a>
+                    <a href="contact.html?pack=vitrine-pro">
+                      <i class="fas fa-chevron-right"></i>
+                      Pack Pro (200 000 FCFA)
+                    </a>
+                  </div>
+                </div>
+
+                <div
+                  style="
+                    padding: 1rem;
+                    background: var(--gray-50);
+                    border-radius: var(--radius-lg);
+                  "
+                >
+                  <h4
+                    style="
+                      font-weight: 700;
+                      color: var(--gray-900);
+                      margin-bottom: 1rem;
+                    "
+                  >
+                    <i
+                      class="fas fa-shopping-cart"
+                      style="color: var(--success)"
+                    ></i>
+                    E-Commerce
+                  </h4>
+                  <div class="sitemap-subsection" style="margin-left: 0">
+                    <a href="contact.html?pack=ecommerce-startup">
+                      <i class="fas fa-chevron-right"></i>
+                      Pack Start-Up (300 000 FCFA)
+                    </a>
+                    <a href="contact.html?pack=ecommerce-business">
+                      <i class="fas fa-chevron-right"></i>
+                      Pack Business (500 000 FCFA)
+                    </a>
+                  </div>
+                </div>
+
+                <div
+                  style="
+                    padding: 1rem;
+                    background: var(--gray-50);
+                    border-radius: var(--radius-lg);
+                  "
+                >
+                  <h4
+                    style="
+                      font-weight: 700;
+                      color: var(--gray-900);
+                      margin-bottom: 1rem;
+                    "
+                  >
+                    <i
+                      class="fas fa-palette"
+                      style="color: var(--secondary)"
+                    ></i>
+                    Blogs & Portfolios
+                  </h4>
+                  <div class="sitemap-subsection" style="margin-left: 0">
+                    <a href="contact.html?pack=blog-starter">
+                      <i class="fas fa-chevron-right"></i>
+                      Pack Starter (80 000 FCFA)
+                    </a>
+                    <a href="contact.html?pack=blog-premium">
+                      <i class="fas fa-chevron-right"></i>
+                      Pack Premium (150 000 FCFA)
+                    </a>
+                  </div>
+                </div>
+
+                <div
+                  style="
+                    padding: 1rem;
+                    background: var(--gray-50);
+                    border-radius: var(--radius-lg);
+                  "
+                >
+                  <h4
+                    style="
+                      font-weight: 700;
+                      color: var(--gray-900);
+                      margin-bottom: 1rem;
+                    "
+                  >
+                    <i
+                      class="fas fa-plus-circle"
+                      style="color: var(--warning)"
+                    ></i>
+                    Services Additionnels
+                  </h4>
+                  <div class="sitemap-subsection" style="margin-left: 0">
+                    <a href="contact.html?pack=seo">
+                      <i class="fas fa-chevron-right"></i>
+                      Optimisation SEO (50 000 FCFA)
+                    </a>
+                    <a href="contact.html?pack=logo">
+                      <i class="fas fa-chevron-right"></i>
+                      CrÃ©ation Logo (35 000 FCFA)
+                    </a>
+                    <a href="contact.html?pack=maintenance">
+                      <i class="fas fa-chevron-right"></i>
+                      Maintenance (15 000 FCFA/mois)
+                    </a>
+                    <a href="contact.html?pack=hebergement">
+                      <i class="fas fa-chevron-right"></i>
+                      HÃ©bergement (20 000 FCFA/an)
+                    </a>
+                    <a href="contact.html?pack=refonte">
+                      <i class="fas fa-chevron-right"></i>
+                      Refonte de Site
+                    </a>
+                    <a href="contact.html?pack=chat">
+                      <i class="fas fa-chevron-right"></i>
+                      Chat en Direct
+                    </a>
+                    <a href="contact.html?pack=custom">
+                      <i class="fas fa-chevron-right"></i>
+                      DÃ©veloppement Sur Mesure
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Ressources -->
+            <div class="sitemap-section">
+              <h3>
+                <i class="fas fa-book"></i>
+                Ressources & Informations
+              </h3>
+              <div class="sitemap-links">
+                <a href="blog.html" class="sitemap-link">
+                  <i class="fas fa-newspaper"></i>
+                  <div class="sitemap-link-content">
+                    <div class="sitemap-link-title">Articles de Blog</div>
+                    <div class="sitemap-link-desc">
+                      Tutoriels, conseils et actualitÃ©s du web
+                    </div>
+                  </div>
+                </a>
+
+                <a href="portfolio.html" class="sitemap-link">
+                  <i class="fas fa-images"></i>
+                  <div class="sitemap-link-content">
+                    <div class="sitemap-link-title">Nos Projets</div>
+                    <div class="sitemap-link-desc">
+                      DÃ©couvrez nos rÃ©alisations par catÃ©gorie
+                    </div>
+                  </div>
+                </a>
+
+                <a href="a-propos.html" class="sitemap-link">
+                  <i class="fas fa-users"></i>
+                  <div class="sitemap-link-content">
+                    <div class="sitemap-link-title">Notre Ã‰quipe</div>
+                    <div class="sitemap-link-desc">
+                      Rencontrez l'Ã©quipe CodeWave
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            <!-- Informations LÃ©gales -->
+            <div class="sitemap-section">
+              <h3>
+                <i class="fas fa-balance-scale"></i>
+                Informations LÃ©gales
+              </h3>
+              <div class="sitemap-links">
+                <a href="mentions-legales.html" class="sitemap-link">
+                  <i class="fas fa-file-alt"></i>
+                  <div class="sitemap-link-content">
+                    <div class="sitemap-link-title">Mentions LÃ©gales</div>
+                    <div class="sitemap-link-desc">
+                      Informations lÃ©gales et Ã©ditoriales
+                    </div>
+                  </div>
+                </a>
+
+                <a href="politique-confidentialite.html" class="sitemap-link">
+                  <i class="fas fa-shield-alt"></i>
+                  <div class="sitemap-link-content">
+                    <div class="sitemap-link-title">
+                      Politique de ConfidentialitÃ©
+                    </div>
+                    <div class="sitemap-link-desc">
+                      Protection de vos donnÃ©es personnelles
+                    </div>
+                  </div>
+                </a>
+
+                <a href="cgv.html" class="sitemap-link">
+                  <i class="fas fa-file-contract"></i>
+                  <div class="sitemap-link-content">
+                    <div class="sitemap-link-title">
+                      Conditions GÃ©nÃ©rales de Vente
+                    </div>
+                    <div class="sitemap-link-desc">
+                      Nos conditions de vente et de prestation
+                    </div>
+                  </div>
+                </a>
+
+                <a href="plan-du-site.html" class="sitemap-link">
+                  <i class="fas fa-sitemap"></i>
+                  <div class="sitemap-link-content">
+                    <div class="sitemap-link-title">Plan du Site</div>
+                    <div class="sitemap-link-desc">
+                      Navigation complÃ¨te du site (page actuelle)
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            <!-- Contact & RÃ©seaux Sociaux -->
+            <div class="sitemap-section">
+              <h3>
+                <i class="fas fa-phone"></i>
+                Contact & RÃ©seaux Sociaux
+              </h3>
+              <div class="sitemap-links">
+                <a href="contact.html" class="sitemap-link">
+                  <i class="fas fa-paper-plane"></i>
+                  <div class="sitemap-link-content">
+                    <div class="sitemap-link-title">Formulaire de Contact</div>
+                    <div class="sitemap-link-desc">
+                      Envoyez-nous votre demande de devis
+                    </div>
+                  </div>
+                </a>
+
+                <a href="mailto:mgncodewave18@gmail.com" class="sitemap-link">
+                  <i class="fas fa-envelope"></i>
+                  <div class="sitemap-link-content">
+                    <div class="sitemap-link-title">Email</div>
+                    <div class="sitemap-link-desc">mgncodewave18@gmail.com</div>
+                  </div>
+                </a>
+
+                <a href="tel:+24166198918" class="sitemap-link">
+                  <i class="fas fa-phone"></i>
+                  <div class="sitemap-link-content">
+                    <div class="sitemap-link-title">TÃ©lÃ©phone</div>
+                    <div class="sitemap-link-desc">+241 74 67 67 41</div>
+                  </div>
+                </a>
+
+                <a
+                  href="https://wa.me/24166198918"
+                  target="_blank"
+                  class="sitemap-link"
+                >
+                  <i class="fab fa-whatsapp"></i>
+                  <div class="sitemap-link-content">
+                    <div class="sitemap-link-title">WhatsApp</div>
+                    <div class="sitemap-link-desc">
+                      Chat direct avec notre Ã©quipe
+                    </div>
+                  </div>
+                </a>
+
+                <a
+                  href="https://m-g-n-code-wave.vercel.app/"
+                  target="_blank"
+                  class="sitemap-link"
+                >
+                  <i class="fas fa-globe"></i>
+                  <div class="sitemap-link-content">
+                    <div class="sitemap-link-title">Site Web</div>
+                    <div class="sitemap-link-desc">
+                      m-g-n-code-wave.vercel.app
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- CTA Section -->
+          <div
+            style="
+              background: linear-gradient(
+                135deg,
+                var(--primary) 0%,
+                var(--secondary) 100%
+              );
+              padding: 3rem 2rem;
+              border-radius: var(--radius-2xl);
+              text-align: center;
+              color: white;
+              margin-top: 3rem;
+            "
+          >
+            <i
+              class="fas fa-rocket"
+              style="font-size: 3rem; margin-bottom: 1rem"
+            ></i>
+            <h3 style="font-size: 2rem; font-weight: 800; margin-bottom: 1rem">
+              Vous ne trouvez pas ce que vous cherchez ?
+            </h3>
+            <p style="font-size: 1.125rem; margin-bottom: 2rem; opacity: 0.9">
+              Contactez-nous directement, nous serons ravis de vous aider !
+            </p>
+            <div
+              style="
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+              "
+            >
+              <a href="contact.html" class="btn btn-white btn-lg">
+                Nous Contacter
+                <i class="fas fa-arrow-right"></i>
+              </a>
+              <a
+                href="https://wa.me/24166198918"
+                target="_blank"
+                class="btn btn-outline-white btn-lg"
+              >
+                <i class="fab fa-whatsapp"></i>
+                WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-col">
+            <a href="index.html" class="footer-logo">
+              <span class="logo-m">M</span>
+              <span class="logo-g">G</span>
+              <span class="logo-n">N</span>
+              <div class="logo-text">
+                <span class="logo-codewave">CODEWAVE</span>
+                <span class="logo-tagline">Solutions Digitales</span>
+              </div>
+            </a>
+            <p class="footer-description">
+              Votre partenaire digital de confiance au Gabon. Nous transformons
+              vos idÃ©es en sites web performants et rentables.
+            </p>
+            <div class="footer-social">
+              <a href="#" class="social-link" aria-label="Facebook"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="#" class="social-link" aria-label="LinkedIn"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
+              <a href="#" class="social-link" aria-label="GitHub"
+                ><i class="fab fa-github"></i
+              ></a>
+              <a
+                href="https://wa.me/24166198918"
+                class="social-link"
+                target="_blank"
+                aria-label="WhatsApp"
+                ><i class="fab fa-whatsapp"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h4>Services</h4>
+            <ul class="footer-links">
+              <li><a href="services.html#vitrines">Sites Vitrines</a></li>
+              <li><a href="services.html#ecommerce">E-Commerce</a></li>
+              <li><a href="services.html#blogs">Blogs & Portfolios</a></li>
+              <li><a href="services.html#maintenance">Maintenance</a></li>
+              <li>
+                <a href="services.html#additionnels">SEO & RÃ©fÃ©rencement</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>Liens Rapides</h4>
+            <ul class="footer-links">
+              <li><a href="index.html">Accueil</a></li>
+              <li><a href="portfolio.html">Portfolio</a></li>
+              <li><a href="tarifs.html">Tarifs</a></li>
+              <li><a href="blog.html">Blog</a></li>
+              <li><a href="careers.html">CarriÃ¨res</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>Newsletter</h4>
+            <p>Recevez nos conseils web</p>
+            <form class="newsletter-form" id="newsletterForm">
+              <input
+                type="email"
+                placeholder="Votre email"
+                required
+                aria-label="Email pour newsletter"
+                name="email"
+              />
+              <button type="submit" aria-label="S'abonner">
+                <i class="fas fa-paper-plane"></i>
+              </button>
+            </form>
+            <p class="newsletter-note">
+              ðŸ”’ Pas de spam. DÃ©sabonnement facile.
+            </p>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>
+            &copy; 2025 <strong>M.G.N CodeWave</strong>. Tous droits rÃ©servÃ©s.
+            ðŸ‡¬ðŸ‡¦ Fait avec â¤ï¸ au Gabon
+          </p>
+          <div class="footer-legal">
+            <a href="mentions-legales.html">Mentions LÃ©gales</a>
+            <a href="politique-confidentialite.html"
+              >Politique de ConfidentialitÃ©</a
+            >
+            <a href="cgv.html">CGV</a>
+            <a href="plan-du-site.html">Plan du Site</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a
+      href="https://wa.me/24166198918?text=Bonjour,%20je%20souhaite%20discuter%20d'un%20projet%20web"
+      class="whatsapp-float"
+      target="_blank"
+      aria-label="Contact WhatsApp"
+    >
+      <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- JavaScript -->
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

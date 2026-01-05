@@ -1,0 +1,1581 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Rejoignez CodeWave - Offres d'emploi développement web au Gabon. Développeurs, designers, commerciaux recherchés."
+    />
+    <title>Recrutement - CodeWave | Rejoignez Notre Équipe</title>
+
+    <link rel="icon" type="image/png" href="assets/images/logo/codewave.png" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/responsive.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <style>
+      .job-card {
+        background: white;
+        border-radius: var(--radius-2xl);
+        padding: 2rem;
+        box-shadow: var(--shadow-lg);
+        transition: var(--transition);
+        border: 2px solid transparent;
+        cursor: pointer;
+      }
+
+      .job-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-2xl);
+        border-color: var(--primary);
+      }
+
+      .job-header {
+        display: flex;
+        align-items: start;
+        gap: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .job-icon {
+        width: 4rem;
+        height: 4rem;
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--secondary) 100%
+        );
+        border-radius: var(--radius-xl);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        color: white;
+        flex-shrink: 0;
+      }
+
+      .job-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin: 1.5rem 0;
+      }
+
+      .job-tag {
+        padding: 0.5rem 1rem;
+        background: var(--gray-100);
+        border-radius: var(--radius-full);
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: var(--gray-700);
+      }
+
+      .job-tag.primary {
+        background: linear-gradient(135deg, #dbeafe 0%, #e0e7ff 100%);
+        color: var(--primary);
+      }
+
+      .job-tag.success {
+        background: linear-gradient(135deg, #dcfce7 0%, #d1fae5 100%);
+        color: var(--success);
+      }
+
+      .job-tag.warning {
+        background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+        color: var(--warning);
+      }
+
+      .benefits-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+        margin: 3rem 0;
+      }
+
+      .benefit-card {
+        background: white;
+        padding: 2rem;
+        border-radius: var(--radius-xl);
+        box-shadow: var(--shadow-md);
+        text-align: center;
+        transition: var(--transition);
+      }
+
+      .benefit-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-xl);
+      }
+
+      .benefit-icon {
+        width: 4rem;
+        height: 4rem;
+        margin: 0 auto 1rem;
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--secondary) 100%
+        );
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        color: white;
+      }
+
+      .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        z-index: 9999;
+        overflow-y: auto;
+        padding: 2rem 1rem;
+      }
+
+      .modal.active {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .modal-content {
+        background: white;
+        border-radius: var(--radius-2xl);
+        max-width: 700px;
+        width: 100%;
+        max-height: 90vh;
+        overflow-y: auto;
+        position: relative;
+        animation: slideUp 0.4s;
+      }
+
+      .modal-close {
+        position: sticky;
+        top: 1rem;
+        right: 1rem;
+        float: right;
+        width: 3rem;
+        height: 3rem;
+        background: var(--gray-800);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 1.5rem;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s;
+      }
+
+      .modal-close:hover {
+        background: var(--primary);
+        transform: rotate(90deg);
+      }
+
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+      <div class="container">
+        <div class="nav-wrapper">
+          <a href="index.html" class="logo">
+            <img
+              src="assets/images/logo/codewave.png"
+              alt="Profil M.G.N CodeWave"
+              class="logo-image"
+            />
+          </a>
+
+          <ul class="nav-menu" id="navMenu">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="tarifs.html">Tarifs</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="a-propos.html">À Propos</a></li>
+            <li><a href="careers.html" class="active">Carrières</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+
+          <div class="nav-cta">
+            <a href="contact.html" class="btn btn-primary">Devis Gratuit</a>
+            <button class="menu-toggle" id="menuToggle">
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+      <div class="page-header-media" data-mode="image">
+        <div
+          class="page-header-image"
+          style="
+            background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1600&q=80');
+          "
+        ></div>
+        <div class="page-header-overlay"></div>
+      </div>
+      <div class="container">
+        <div class="breadcrumb">
+          <a href="index.html">Accueil</a>
+          <span>/</span>
+          <span>Recrutement</span>
+        </div>
+        <h1 class="page-title">Rejoignez Notre Équipe</h1>
+        <p class="page-subtitle">
+          Construisons ensemble le futur digital du Gabon
+        </p>
+      </div>
+    </section>
+
+    <!-- Intro Section -->
+    <section class="section-padding" style="padding-top: 3rem">
+      <div class="container">
+        <div style="max-width: 56rem; margin: 0 auto">
+          <div
+            style="
+              background: linear-gradient(135deg, #dbeafe 0%, #e0e7ff 100%);
+              padding: 3rem;
+              border-radius: var(--radius-2xl);
+              text-align: center;
+              border: 2px solid var(--primary);
+            "
+          >
+            <i
+              class="fas fa-rocket"
+              style="
+                font-size: 3rem;
+                color: var(--primary);
+                margin-bottom: 1rem;
+              "
+            ></i>
+            <h2
+              style="
+                font-size: 2rem;
+                font-weight: 800;
+                color: var(--gray-900);
+                margin-bottom: 1rem;
+              "
+            >
+              🇬🇦 CodeWave Recrute des Talents Gabonais !
+            </h2>
+            <p
+              style="
+                font-size: 1.125rem;
+                color: var(--gray-700);
+                line-height: 1.8;
+                margin-bottom: 2rem;
+              "
+            >
+              Nous sommes une
+              <strong>startup web en création</strong> basée à Libreville. Notre
+              mission : digitaliser les entreprises gabonaises avec solutions
+              web performantes. Nous cherchons des talents motivés et autonomes,
+              prêts à grandir avec nous grâce à un modèle basé sur le partage
+              des profits des projets réalisés.
+            </p>
+            <div
+              style="
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 2rem;
+                font-weight: 600;
+                color: var(--gray-700);
+              "
+            >
+              <div>
+                <i class="fas fa-briefcase" style="color: var(--primary)"></i>
+                <strong>Postes selon projets</strong>
+              </div>
+              <div>
+                <i
+                  class="fas fa-map-marker-alt"
+                  style="color: var(--success)"
+                ></i>
+                <strong>Libreville, Gabon</strong>
+              </div>
+              <div>
+                <i class="fas fa-users" style="color: var(--secondary)"></i>
+                <strong>Freelance & Partenariat</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Avantages -->
+    <section class="section-padding bg-light">
+      <div class="container">
+        <div class="section-header text-center">
+          <h2 class="section-title">Pourquoi Rejoindre CodeWave ?</h2>
+          <p class="section-subtitle">
+            Ce que nous offrons à nos collaborateurs
+          </p>
+        </div>
+
+        <div class="benefits-grid">
+          <div class="benefit-card">
+            <div class="benefit-icon">
+              <i class="fas fa-percent"></i>
+            </div>
+            <h3
+              style="
+                font-weight: 700;
+                color: var(--gray-900);
+                margin-bottom: 0.5rem;
+              "
+            >
+              Rémunération au Partage
+            </h3>
+            <p style="color: var(--gray-600)">
+              % du chiffre d'affaires des projets réalisés. Potentiel illimité
+            </p>
+          </div>
+
+          <div class="benefit-card">
+            <div class="benefit-icon">
+              <i class="fas fa-laptop-house"></i>
+            </div>
+            <h3
+              style="
+                font-weight: 700;
+                color: var(--gray-900);
+                margin-bottom: 0.5rem;
+              "
+            >
+              Télétravail 100%
+            </h3>
+            <p style="color: var(--gray-600)">
+              Travail à distance complète. Soyez productif d'où vous voulez
+            </p>
+          </div>
+
+          <div class="benefit-card">
+            <div class="benefit-icon">
+              <i class="fas fa-lightbulb"></i>
+            </div>
+            <h3
+              style="
+                font-weight: 700;
+                color: var(--gray-900);
+                margin-bottom: 0.5rem;
+              "
+            >
+              Apprentissage Réel
+            </h3>
+            <p style="color: var(--gray-600)">
+              Travaillez sur de vrais projets clients. Compétences garanties
+            </p>
+          </div>
+
+          <div class="benefit-card">
+            <div class="benefit-icon">
+              <i class="fas fa-handshake"></i>
+            </div>
+            <h3
+              style="
+                font-weight: 700;
+                color: var(--gray-900);
+                margin-bottom: 0.5rem;
+              "
+            >
+              Partenariat Équitable
+            </h3>
+            <p style="color: var(--gray-600)">
+              Croissance ensemble. Votre succès est notre succès
+            </p>
+          </div>
+
+          <div class="benefit-card">
+            <div class="benefit-icon">
+              <i class="fas fa-users"></i>
+            </div>
+            <h3
+              style="
+                font-weight: 700;
+                color: var(--gray-900);
+                margin-bottom: 0.5rem;
+              "
+            >
+              Équipe Startup
+            </h3>
+            <p style="color: var(--gray-600)">
+              Esprit entrepreneurial, environnement jeune et motivant
+            </p>
+          </div>
+
+          <div class="benefit-card">
+            <div class="benefit-icon">
+              <i class="fas fa-project-diagram"></i>
+            </div>
+            <h3
+              style="
+                font-weight: 700;
+                color: var(--gray-900);
+                margin-bottom: 0.5rem;
+              "
+            >
+              Projets Réels
+            </h3>
+            <p style="color: var(--gray-600)">
+              Diversité de missions. Portfolio qui grandit rapidement
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Offres d'Emploi -->
+    <section class="section-padding">
+      <div class="container">
+        <div class="section-header text-center">
+          <h2 class="section-title">Postes Ouverts</h2>
+          <p class="section-subtitle">
+            Cliquez sur une offre pour voir les détails et postuler
+          </p>
+        </div>
+
+        <div style="max-width: 72rem; margin: 0 auto; display: grid; gap: 2rem">
+          <!-- Poste 1 : Développeur Full-Stack -->
+          <div class="job-card" onclick="openJobModal(1)">
+            <div class="job-header">
+              <div class="job-icon">
+                <i class="fas fa-code"></i>
+              </div>
+              <div style="flex: 1">
+                <h3
+                  style="
+                    font-size: 1.5rem;
+                    font-weight: 700;
+                    color: var(--gray-900);
+                    margin-bottom: 0.5rem;
+                  "
+                >
+                  Développeur Full-Stack (React/Node.js)
+                </h3>
+                <p style="color: var(--gray-600); margin-bottom: 1rem">
+                  Développez des applications web modernes pour nos clients
+                  gabonais
+                </p>
+                <div class="job-tags">
+                  <span class="job-tag primary"
+                    ><i class="fas fa-briefcase"></i> Freelance</span
+                  >
+                  <span class="job-tag success"
+                    ><i class="fas fa-map-marker-alt"></i> Télétravail</span
+                  >
+                  <span class="job-tag warning"
+                    ><i class="fas fa-clock"></i> Flexible</span
+                  >
+                  <span class="job-tag"
+                    ><i class="fas fa-graduation-cap"></i> Bac+3 minimum</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div
+              style="padding-top: 1rem; border-top: 1px solid var(--gray-200)"
+            >
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                "
+              >
+                <span style="color: var(--gray-600); font-size: 0.875rem">
+                  <i class="fas fa-money-bill-wave"></i> % du CA par projet
+                </span>
+                <span style="color: var(--primary); font-weight: 600">
+                  Voir les détails <i class="fas fa-arrow-right"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Poste 2 : Designer UI/UX -->
+          <div class="job-card" onclick="openJobModal(2)">
+            <div class="job-header">
+              <div
+                class="job-icon"
+                style="
+                  background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 100%);
+                "
+              >
+                <i class="fas fa-palette"></i>
+              </div>
+              <div style="flex: 1">
+                <h3
+                  style="
+                    font-size: 1.5rem;
+                    font-weight: 700;
+                    color: var(--gray-900);
+                    margin-bottom: 0.5rem;
+                  "
+                >
+                  Designer UI/UX
+                </h3>
+                <p style="color: var(--gray-600); margin-bottom: 1rem">
+                  Créez des interfaces modernes et intuitives pour nos projets
+                  web
+                </p>
+                <div class="job-tags">
+                  <span class="job-tag primary"
+                    ><i class="fas fa-briefcase"></i> Freelance</span
+                  >
+                  <span class="job-tag success"
+                    ><i class="fas fa-map-marker-alt"></i> Télétravail</span
+                  >
+                  <span class="job-tag warning"
+                    ><i class="fas fa-clock"></i> Par projet</span
+                  >
+                  <span class="job-tag"
+                    ><i class="fas fa-graduation-cap"></i> Bac+2 minimum</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div
+              style="padding-top: 1rem; border-top: 1px solid var(--gray-200)"
+            >
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                "
+              >
+                <span style="color: var(--gray-600); font-size: 0.875rem">
+                  <i class="fas fa-money-bill-wave"></i> % du CA par projet
+                </span>
+                <span style="color: var(--primary); font-weight: 600">
+                  Voir les détails <i class="fas fa-arrow-right"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Poste 3 : Commercial Digital -->
+          <div class="job-card" onclick="openJobModal(3)">
+            <div class="job-header">
+              <div
+                class="job-icon"
+                style="
+                  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+                "
+              >
+                <i class="fas fa-handshake"></i>
+              </div>
+              <div style="flex: 1">
+                <h3
+                  style="
+                    font-size: 1.5rem;
+                    font-weight: 700;
+                    color: var(--gray-900);
+                    margin-bottom: 0.5rem;
+                  "
+                >
+                  Commercial Digital B2B
+                </h3>
+                <p style="color: var(--gray-600); margin-bottom: 1rem">
+                  Prospectez et développez notre portefeuille clients au Gabon
+                </p>
+                <div class="job-tags">
+                  <span class="job-tag primary"
+                    ><i class="fas fa-briefcase"></i> Freelance</span
+                  >
+                  <span class="job-tag success"
+                    ><i class="fas fa-map-marker-alt"></i> Libreville</span
+                  >
+                  <span class="job-tag warning"
+                    ><i class="fas fa-clock"></i> Flexible</span
+                  >
+                  <span class="job-tag"
+                    ><i class="fas fa-trophy"></i> Commissions</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div
+              style="padding-top: 1rem; border-top: 1px solid var(--gray-200)"
+            >
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                "
+              >
+                <span style="color: var(--gray-600); font-size: 0.875rem">
+                  <i class="fas fa-money-bill-wave"></i> % du CA réalisé
+                </span>
+                <span style="color: var(--primary); font-weight: 600">
+                  Voir les détails <i class="fas fa-arrow-right"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Poste 4 : Développeur Backend -->
+          <div class="job-card" onclick="openJobModal(4)">
+            <div class="job-header">
+              <div
+                class="job-icon"
+                style="
+                  background: linear-gradient(135deg, #06b6d4 0%, #0284c7 100%);
+                "
+              >
+                <i class="fas fa-database"></i>
+              </div>
+              <div style="flex: 1">
+                <h3
+                  style="
+                    font-size: 1.5rem;
+                    font-weight: 700;
+                    color: var(--gray-900);
+                    margin-bottom: 0.5rem;
+                  "
+                >
+                  Développeur Backend (Node.js/Python)
+                </h3>
+                <p style="color: var(--gray-600); margin-bottom: 1rem">
+                  Construisez les fondations robustes de nos applications
+                </p>
+                <div class="job-tags">
+                  <span class="job-tag primary"
+                    ><i class="fas fa-briefcase"></i> CDI</span
+                  >
+                  <span class="job-tag success"
+                    ><i class="fas fa-map-marker-alt"></i> Télétravail</span
+                  >
+                  <span class="job-tag warning"
+                    ><i class="fas fa-clock"></i> Temps plein</span
+                  >
+                  <span class="job-tag"
+                    ><i
+                      class="fas fa-plus-circle"
+                      style="color: var(--success)"
+                    ></i>
+                    Prime projets</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div
+              style="padding-top: 1rem; border-top: 1px solid var(--gray-200)"
+            >
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                "
+              >
+                <span style="color: var(--gray-600); font-size: 0.875rem">
+                  <i class="fas fa-money-bill-wave"></i> 250K - 400K FCFA +
+                  Prime
+                </span>
+                <span style="color: var(--primary); font-weight: 600">
+                  Voir les détails <i class="fas fa-arrow-right"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Poste 5 : Développeur Frontend -->
+          <div class="job-card" onclick="openJobModal(5)">
+            <div class="job-header">
+              <div
+                class="job-icon"
+                style="
+                  background: linear-gradient(135deg, #ec4899 0%, #f43f5e 100%);
+                "
+              >
+                <i class="fab fa-react"></i>
+              </div>
+              <div style="flex: 1">
+                <h3
+                  style="
+                    font-size: 1.5rem;
+                    font-weight: 700;
+                    color: var(--gray-900);
+                    margin-bottom: 0.5rem;
+                  "
+                >
+                  Développeur Frontend (React/Vue.js)
+                </h3>
+                <p style="color: var(--gray-600); margin-bottom: 1rem">
+                  Créez des interfaces utilisateur modernes et performantes
+                </p>
+                <div class="job-tags">
+                  <span class="job-tag primary"
+                    ><i class="fas fa-briefcase"></i> CDI</span
+                  >
+                  <span class="job-tag success"
+                    ><i class="fas fa-map-marker-alt"></i> Télétravail</span
+                  >
+                  <span class="job-tag warning"
+                    ><i class="fas fa-clock"></i> Temps plein</span
+                  >
+                  <span class="job-tag"
+                    ><i
+                      class="fas fa-plus-circle"
+                      style="color: var(--success)"
+                    ></i>
+                    Prime projets</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div
+              style="padding-top: 1rem; border-top: 1px solid var(--gray-200)"
+            >
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                "
+              >
+                <span style="color: var(--gray-600); font-size: 0.875rem">
+                  <i class="fas fa-money-bill-wave"></i> 220K - 380K FCFA +
+                  Prime
+                </span>
+                <span style="color: var(--primary); font-weight: 600">
+                  Voir les détails <i class="fas fa-arrow-right"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Poste 6 : Responsable QA/Testing -->
+          <div class="job-card" onclick="openJobModal(6)">
+            <div class="job-header">
+              <div
+                class="job-icon"
+                style="
+                  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+                "
+              >
+                <i class="fas fa-check-double"></i>
+              </div>
+              <div style="flex: 1">
+                <h3
+                  style="
+                    font-size: 1.5rem;
+                    font-weight: 700;
+                    color: var(--gray-900);
+                    margin-bottom: 0.5rem;
+                  "
+                >
+                  Responsable QA & Testing
+                </h3>
+                <p style="color: var(--gray-600); margin-bottom: 1rem">
+                  Garantissez la qualité et la fiabilité de nos projets
+                </p>
+                <div class="job-tags">
+                  <span class="job-tag primary"
+                    ><i class="fas fa-briefcase"></i> CDI</span
+                  >
+                  <span class="job-tag success"
+                    ><i class="fas fa-map-marker-alt"></i> Télétravail</span
+                  >
+                  <span class="job-tag warning"
+                    ><i class="fas fa-clock"></i> Temps plein</span
+                  >
+                  <span class="job-tag"
+                    ><i class="fas fa-star"></i> Salaire fixe</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div
+              style="padding-top: 1rem; border-top: 1px solid var(--gray-200)"
+            >
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                "
+              >
+                <span style="color: var(--gray-600); font-size: 0.875rem">
+                  <i class="fas fa-money-bill-wave"></i> 200K - 320K FCFA
+                </span>
+                <span style="color: var(--primary); font-weight: 600">
+                  Voir les détails <i class="fas fa-arrow-right"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Poste 7 : Responsable Marketing/SEO -->
+          <div class="job-card" onclick="openJobModal(7)">
+            <div class="job-header">
+              <div
+                class="job-icon"
+                style="
+                  background: linear-gradient(135deg, #a855f7 0%, #9333ea 100%);
+                "
+              >
+                <i class="fas fa-bullhorn"></i>
+              </div>
+              <div style="flex: 1">
+                <h3
+                  style="
+                    font-size: 1.5rem;
+                    font-weight: 700;
+                    color: var(--gray-900);
+                    margin-bottom: 0.5rem;
+                  "
+                >
+                  Responsable Marketing & SEO
+                </h3>
+                <p style="color: var(--gray-600); margin-bottom: 1rem">
+                  Construisez notre présence digitale et attirez des clients
+                </p>
+                <div class="job-tags">
+                  <span class="job-tag primary"
+                    ><i class="fas fa-briefcase"></i> CDI</span
+                  >
+                  <span class="job-tag success"
+                    ><i class="fas fa-map-marker-alt"></i>
+                    Libreville/Télétravail</span
+                  >
+                  <span class="job-tag warning"
+                    ><i class="fas fa-clock"></i> Temps plein</span
+                  >
+                  <span class="job-tag"
+                    ><i class="fas fa-star"></i> Salaire fixe</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div
+              style="padding-top: 1rem; border-top: 1px solid var(--gray-200)"
+            >
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                "
+              >
+                <span style="color: var(--gray-600); font-size: 0.875rem">
+                  <i class="fas fa-money-bill-wave"></i> 180K - 300K FCFA
+                </span>
+                <span style="color: var(--primary); font-weight: 600">
+                  Voir les détails <i class="fas fa-arrow-right"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Poste 8 : Responsable Administratif & Gestion -->
+          <div class="job-card" onclick="openJobModal(8)">
+            <div class="job-header">
+              <div
+                class="job-icon"
+                style="
+                  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+                "
+              >
+                <i class="fas fa-clipboard-list"></i>
+              </div>
+              <div style="flex: 1">
+                <h3
+                  style="
+                    font-size: 1.5rem;
+                    font-weight: 700;
+                    color: var(--gray-900);
+                    margin-bottom: 0.5rem;
+                  "
+                >
+                  Responsable Admin & Gestion
+                </h3>
+                <p style="color: var(--gray-600); margin-bottom: 1rem">
+                  Organisez les opérations et assurez la croissance
+                  administrative
+                </p>
+                <div class="job-tags">
+                  <span class="job-tag primary"
+                    ><i class="fas fa-briefcase"></i> CDI</span
+                  >
+                  <span class="job-tag success"
+                    ><i class="fas fa-map-marker-alt"></i> Libreville</span
+                  >
+                  <span class="job-tag warning"
+                    ><i class="fas fa-clock"></i> Temps plein</span
+                  >
+                  <span class="job-tag"
+                    ><i class="fas fa-star"></i> Salaire fixe</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div
+              style="padding-top: 1rem; border-top: 1px solid var(--gray-200)"
+            >
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                "
+              >
+                <span style="color: var(--gray-600); font-size: 0.875rem">
+                  <i class="fas fa-money-bill-wave"></i> 150K - 250K FCFA
+                </span>
+                <span style="color: var(--primary); font-weight: 600">
+                  Voir les détails <i class="fas fa-arrow-right"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Candidature Spontanée -->
+    <section class="section-padding bg-light">
+      <div class="container">
+        <div style="max-width: 56rem; margin: 0 auto">
+          <div
+            style="
+              background: linear-gradient(
+                135deg,
+                var(--primary) 0%,
+                var(--secondary) 100%
+              );
+              padding: 3rem;
+              border-radius: var(--radius-2xl);
+              text-align: center;
+              color: white;
+            "
+          >
+            <i
+              class="fas fa-paper-plane"
+              style="font-size: 3rem; margin-bottom: 1rem"
+            ></i>
+            <h2 style="font-size: 2rem; font-weight: 800; margin-bottom: 1rem">
+              Vous ne trouvez pas le poste idéal ?
+            </h2>
+            <p style="font-size: 1.125rem; margin-bottom: 2rem; opacity: 0.9">
+              Envoyez-nous une candidature spontanée ! Nous sommes toujours à la
+              recherche de talents motivés pour renforcer notre équipe.
+            </p>
+            <a
+              href="mailto:mgncodewave18@gmail.com?subject=Candidature Spontanée CodeWave"
+              class="btn btn-white btn-lg"
+            >
+              <i class="fas fa-envelope"></i>
+              Envoyer Ma Candidature
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Modal -->
+    <div class="modal" id="jobModal">
+      <div class="modal-content">
+        <button class="modal-close" onclick="closeModal()">
+          <i class="fas fa-times"></i>
+        </button>
+        <div id="modalBody"></div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-col">
+            <a href="index.html" class="footer-logo">
+              <span class="logo-m">M</span>
+              <span class="logo-g">G</span>
+              <span class="logo-n">N</span>
+              <div class="logo-text">
+                <span class="logo-codewave">CODEWAVE</span>
+                <span class="logo-tagline">Solutions Digitales</span>
+              </div>
+            </a>
+            <p class="footer-description">
+              Votre partenaire digital de confiance au Gabon. Nous transformons
+              vos idées en sites web performants et rentables.
+            </p>
+            <div class="footer-social">
+              <a href="#" class="social-link" aria-label="Facebook"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="#" class="social-link" aria-label="LinkedIn"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
+              <a href="#" class="social-link" aria-label="GitHub"
+                ><i class="fab fa-github"></i
+              ></a>
+              <a
+                href="https://wa.me/24166198918"
+                class="social-link"
+                target="_blank"
+                aria-label="WhatsApp"
+                ><i class="fab fa-whatsapp"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h4>Services</h4>
+            <ul class="footer-links">
+              <li><a href="services.html#vitrines">Sites Vitrines</a></li>
+              <li><a href="services.html#ecommerce">E-Commerce</a></li>
+              <li><a href="services.html#blogs">Blogs & Portfolios</a></li>
+              <li><a href="services.html#maintenance">Maintenance</a></li>
+              <li>
+                <a href="services.html#additionnels">SEO & Référencement</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>Liens Rapides</h4>
+            <ul class="footer-links">
+              <li><a href="index.html">Accueil</a></li>
+              <li><a href="portfolio.html">Portfolio</a></li>
+              <li><a href="tarifs.html">Tarifs</a></li>
+              <li><a href="blog.html">Blog</a></li>
+              <li><a href="recrutement.html">Recrutement</a></li>
+              <li><a href="careers.html">Carrières</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>Newsletter</h4>
+            <p>Recevez nos conseils web</p>
+            <form class="newsletter-form" id="newsletterForm">
+              <input
+                type="email"
+                placeholder="Votre email"
+                required
+                aria-label="Email pour newsletter"
+              />
+              <button type="submit" aria-label="S'abonner">
+                <i class="fas fa-paper-plane"></i>
+              </button>
+            </form>
+            <p class="newsletter-note">🔒 Pas de spam. Désabonnement facile.</p>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>
+            &copy; 2025 <strong>M.G.N CodeWave</strong>. Tous droits réservés.
+            🇬🇦 Fait avec ❤️ au Gabon
+          </p>
+          <div class="footer-legal">
+            <a href="mentions-legales.html">Mentions Légales</a>
+            <a href="politique-confidentialite.html"
+              >Politique de Confidentialité</a
+            >
+            <a href="cgv.html">CGV</a>
+            <a href="plan-du-site.html">Plan du Site</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a
+      href="https://wa.me/24166198918?text=Bonjour,%20je%20souhaite%20discuter%20d'un%20projet%20web"
+      class="whatsapp-float"
+      target="_blank"
+      aria-label="Contact WhatsApp"
+    >
+      <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- JavaScript -->
+    <script src="assets/js/main.js"></script>
+    <script>
+      // Base de données des offres d'emploi
+      const jobs = {
+        1: {
+          title: "Développeur Full-Stack (React/Node.js)",
+          icon: "fa-code",
+          gradient:
+            "linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%)",
+          type: "Freelance",
+          location: "Télétravail",
+          salary: "% du CA par projet",
+          description:
+            "Nous recherchons un développeur full-stack passionné pour rejoindre notre équipe technique en tant que partenaire. Vous travaillerez sur des projets clients réels avec rémunération basée sur le pourcentage du chiffre d'affaires généré.",
+          missions: [
+            "Développer des applications web avec React.js et Node.js",
+            "Créer et maintenir des APIs RESTful",
+            "Travailler avec des bases de données (MongoDB, PostgreSQL)",
+            "Collaborer avec les designers pour intégrer les maquettes",
+            "Optimiser les performances et la sécurité des applications",
+            "Participer aux revues de code",
+            "Gérer le déploiement et la maintenance des applications",
+          ],
+          profil: [
+            "Bac+3 minimum en informatique ou équivalent",
+            "Maîtrise de React.js, Node.js, Express.js",
+            "Expérience avec MongoDB ou PostgreSQL",
+            "Connaissance de Git",
+            "Autonomie et rigueur",
+            "Bon niveau en français (oral et écrit)",
+          ],
+          avantages: [
+            "Rémunération : % du CA de chaque projet réalisé",
+            "Gain potentiel illimité basé sur les projets",
+            "100% télétravail - Flexibilité totale",
+            "Travail sur des projets réels clients",
+            "Portefeuille professionnel en constante croissance",
+            "Ambiance startup dynamique",
+            "Croissance rapide de l'équipe",
+          ],
+        },
+        2: {
+          title: "Designer UI/UX",
+          icon: "fa-palette",
+          gradient: "linear-gradient(135deg, #ec4899 0%, #8b5cf6 100%)",
+          type: "Freelance",
+          location: "Télétravail",
+          salary: "% du CA par projet",
+          description:
+            "Rejoignez notre équipe créative pour concevoir des interfaces modernes et intuitives. Vous serez partenaire sur les projets clients et rémunéré au pourcentage du CA réalisé.",
+          missions: [
+            "Créer des maquettes et prototypes pour sites web",
+            "Réaliser des recherches utilisateurs (UX Research)",
+            "Concevoir des wireframes et user flows",
+            "Développer l'identité visuelle des projets",
+            "Collaborer avec les développeurs pour l'intégration",
+            "Effectuer des tests utilisateurs et itérer",
+            "Maintenir une cohérence visuelle sur tous les projets",
+          ],
+          profil: [
+            "Bac+2 minimum en design graphique ou équivalent",
+            "Maîtrise de Figma, Adobe XD ou Sketch",
+            "Connaissance de Adobe Photoshop et Illustrator",
+            "Compréhension des principes UX/UI",
+            "Portfolio démontrant votre créativité",
+            "Sensibilité aux tendances design",
+          ],
+          avantages: [
+            "Rémunération : % du CA de chaque projet",
+            "Potentiel de gain basé sur vos projets réalisés",
+            "100% télétravail - Liberté géographique",
+            "Portfolio professionnel qui grandit",
+            "Liberté créative sur les projets",
+            "Horaires flexibles",
+            "Partenariat équitable et transparent",
+          ],
+        },
+        3: {
+          title: "Commercial Digital B2B",
+          icon: "fa-handshake",
+          gradient: "linear-gradient(135deg, #10b981 0%, #059669 100%)",
+          type: "Freelance",
+          location: "Libreville / Télétravail",
+          salary: "% du CA généré",
+          description:
+            "Nous cherchons un commercial passionné pour prospecter et développer notre portefeuille clients au Gabon. Vous serez rémunéré au pourcentage du CA que vous générez. Plus vous vendez, plus vous gagnez !",
+          missions: [
+            "Prospecter de nouveaux clients (PME, grandes entreprises)",
+            "Identifier les besoins des clients et proposer des solutions",
+            "Préparer et présenter des offres commerciales",
+            "Négocier les contrats et conditions",
+            "Assurer le suivi client et développer les comptes",
+            "Participer aux événements networking",
+            "Atteindre les objectifs de vente mensuels",
+          ],
+          profil: [
+            "Bac+2 minimum en commerce, marketing",
+            "Minimum 1-2 ans d'expérience en vente B2B",
+            "Excellent relationnel et capacité de persuasion",
+            "Connaissance du marché des entreprises gabonaises",
+            "Maîtrise du français",
+            "Autonomie et orientation résultats",
+            "Permis de conduire (déplacements)",
+          ],
+          avantages: [
+            "Rémunération : % du CA que vous générez (généreux)",
+            "Potentiel de gain illimité",
+            "Horaires flexibles",
+            "Travail autonome - Vous êtes entrepreneur",
+            "Frais de déplacement remboursés",
+            "Outils et support commercial fournis",
+            "Partenariat transparent et motivant",
+          ],
+        },
+        4: {
+          title: "Développeur Backend (Node.js/Python)",
+          icon: "fa-database",
+          gradient: "linear-gradient(135deg, #06b6d4 0%, #0284c7 100%)",
+          type: "CDI",
+          location: "Télétravail",
+          salary: "250K - 400K FCFA + Prime projets",
+          description:
+            "Nous recherchons un développeur backend expérimenté pour construire les fondations robustes de nos applications. Salaire fixe + prime sur les projets réalisés pour vous motiver à l'excellence.",
+          missions: [
+            "Développer des APIs RESTful et GraphQL",
+            "Gérer les bases de données (PostgreSQL, MongoDB)",
+            "Implémenter l'authentification et la sécurité",
+            "Optimiser les performances backend",
+            "Intégrer les services tiers (paiement, SMS, email)",
+            "Documenter le code et les API",
+            "Participer aux code reviews et mentoring",
+          ],
+          profil: [
+            "Bac+3 minimum en informatique",
+            "Expérience 2+ ans en développement backend",
+            "Maîtrise de Node.js/Express ou Python/Django",
+            "Connaissance des bases de données relationnelles",
+            "Familiarité avec REST API et microservices",
+            "Connaissance de Git et des méthodologies Agile",
+            "Bon niveau d'anglais (documentation technique)",
+          ],
+          avantages: [
+            "Salaire fixe : 250K - 400K FCFA selon expérience",
+            "Prime additionnelle par projet réalisé",
+            "Potentiel de salaire annuel très intéressant",
+            "100% télétravail - Flexibilité complète",
+            "Travail sur des projets clients variés",
+            "Croissance rapide et responsabilités accrues",
+            "Ambiance startup jeune et dynamique",
+          ],
+        },
+        5: {
+          title: "Développeur Frontend (React/Vue.js)",
+          icon: "fab fa-react",
+          gradient: "linear-gradient(135deg, #ec4899 0%, #f43f5e 100%)",
+          type: "CDI",
+          location: "Télétravail",
+          salary: "220K - 380K FCFA + Prime projets",
+          description:
+            "Nous cherchons un développeur frontend talentueux pour créer des interfaces utilisateur modernes et performantes. Salaire fixe + prime en fonction des projets complétés.",
+          missions: [
+            "Développer des composants réutilisables",
+            "Intégrer les maquettes Figma en code",
+            "Optimiser les performances front-end",
+            "Assurer la compatibilité cross-browser",
+            "Gérer le state management (Redux, Vuex)",
+            "Implémenter les animations et transitions",
+            "Tester et déboguer les applications",
+          ],
+          profil: [
+            "Bac+3 en informatique ou équivalent",
+            "Expérience 2+ ans en React.js ou Vue.js",
+            "Maîtrise de HTML5, CSS3, JavaScript ES6+",
+            "Connaissance de Tailwind CSS ou Bootstrap",
+            "Utilisation courante de Git",
+            "Capacité à travailler en équipe agile",
+            "Portfolio de projets disponible",
+          ],
+          avantages: [
+            "Salaire fixe : 220K - 380K FCFA selon expérience",
+            "Prime supplémentaire par projet réalisé",
+            "100% télétravail",
+            "Horaires flexibles",
+            "Travail sur des projets réels clients",
+            "Possibilités d'évolution rapide",
+            "Environnement startup stimulant",
+          ],
+        },
+        6: {
+          title: "Responsable QA & Testing",
+          icon: "fa-check-double",
+          gradient: "linear-gradient(135deg, #f59e0b 0%, #d97706 100%)",
+          type: "CDI",
+          location: "Télétravail",
+          salary: "200K - 320K FCFA",
+          description:
+            "Nous avons besoin d'un QA passionné pour garantir la qualité de nos projets. Vous serez responsable des tests fonctionnels, de régression et des tests d'acceptation utilisateur.",
+          missions: [
+            "Créer et exécuter des plans de test détaillés",
+            "Effectuer des tests fonctionnels et de régression",
+            "Tester sur différents navigateurs et appareils",
+            "Rapporter les bugs avec précision",
+            "Collaborer avec les développeurs pour la résolution",
+            "Mettre en place des tests automatisés",
+            "Améliorer le processus QA",
+          ],
+          profil: [
+            "Bac+2 minimum en informatique",
+            "Expérience 1-2 ans en QA/Testing",
+            "Connaissance des méthodologies de test",
+            "Rigueur et attention au détail",
+            "Capacité à documenter les bugs clairement",
+            "Notions de base en automatisation (un plus)",
+            "Autonomie et proactivité",
+          ],
+          avantages: [
+            "Salaire fixe mensuel : 200K - 320K FCFA",
+            "Salaire stable et prévisible",
+            "100% télétravail",
+            "Horaires réguliers et flexibles",
+            "Croissance des compétences QA/automatisation",
+            "Équipe technique bienveillante",
+            "Projets variés et intéressants",
+          ],
+        },
+        7: {
+          title: "Responsable Marketing & SEO",
+          icon: "fa-bullhorn",
+          gradient: "linear-gradient(135deg, #a855f7 0%, #9333ea 100%)",
+          type: "CDI",
+          location: "Libreville / Télétravail",
+          salary: "180K - 300K FCFA",
+          description:
+            "Nous recherchons un marketer digital pour construire notre présence en ligne et attirer des clients. Vous serez responsable du contenu, du SEO et des campagnes marketing.",
+          missions: [
+            "Développer la stratégie marketing digitale",
+            "Créer du contenu blog optimisé SEO",
+            "Gérer les réseaux sociaux (Facebook, Instagram, LinkedIn)",
+            "Mettre en place des campagnes publicitaires",
+            "Analyser les données et les performances",
+            "Optimiser le référencement du site web",
+            "Collaborer avec l'équipe commerciale",
+          ],
+          profil: [
+            "Bac+2 minimum en marketing/communication",
+            "Expérience 1-2 ans en marketing digital",
+            "Connaissance du SEO et SEM",
+            "Maîtrise des réseaux sociaux",
+            "Excellentes capacités rédactionnelles",
+            "Familiarité avec Google Analytics",
+            "Créativité et analytique",
+          ],
+          avantages: [
+            "Salaire fixe mensuel : 180K - 300K FCFA",
+            "Sécurité financière avec salaire stable",
+            "Télétravail partiel possible",
+            "Budget marketing pour tester les idées",
+            "Outils marketing fournis",
+            "Opportunités de formation continues",
+            "Impact direct sur la croissance de l'entreprise",
+          ],
+        },
+        8: {
+          title: "Responsable Admin & Gestion",
+          icon: "fa-clipboard-list",
+          gradient: "linear-gradient(135deg, #10b981 0%, #059669 100%)",
+          type: "CDI",
+          location: "Libreville",
+          salary: "150K - 250K FCFA",
+          description:
+            "Nous avons besoin d'une personne organisée pour gérer l'administratif et la logistique. Vous serez le pilier organisationnel de notre startup en croissance.",
+          missions: [
+            "Gérer la facturation et les paiements",
+            "Administrer les contrats et documents",
+            "Coordonner les calendriers et réunions",
+            "Gérer les fournisseurs et ressources",
+            "Assurer la conformité légale/administrative",
+            "Préparer les rapports financiers",
+            "Supporter l'équipe dans les tâches administratives",
+          ],
+          profil: [
+            "Bac+1 minimum en gestion/administration",
+            "Expérience 1-2 ans en administration",
+            "Excellentes capacités organisationnelles",
+            "Maîtrise d'Excel et outils bureautiques",
+            "Rigueur et précision",
+            "Discrétion et professionnalisme",
+            "Flexibilité et adaptabilité",
+          ],
+          avantages: [
+            "Salaire fixe mensuel : 150K - 250K FCFA",
+            "Stabilité et sécurité financière",
+            "Horaires réguliers",
+            "Rôle central dans la croissance de l'entreprise",
+            "Autonomie et responsabilités",
+            "Environnement startup motivant",
+            "Possibilités d'évolution rapide",
+          ],
+        },
+      };
+
+      // Fonction pour ouvrir le modal d'une offre
+      function openJobModal(jobId) {
+        const job = jobs[jobId];
+        const modal = document.getElementById("jobModal");
+        const modalBody = document.getElementById("modalBody");
+
+        modalBody.innerHTML = `
+          <div style="padding: 3rem; background: ${
+            job.gradient
+          }; color: white; border-radius: 1.5rem 1.5rem 0 0;">
+            <div style="font-size: 3rem; margin-bottom: 1rem;">
+              <i class="fas ${job.icon}"></i>
+            </div>
+            <h2 style="font-size: 2rem; font-weight: 800; margin-bottom: 1rem;">${
+              job.title
+            }</h2>
+            <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; opacity: 0.9;">
+              <span><i class="fas fa-briefcase"></i> ${job.type}</span>
+              <span><i class="fas fa-map-marker-alt"></i> ${job.location}</span>
+              <span><i class="fas fa-money-bill-wave"></i> ${job.salary}</span>
+            </div>
+          </div>
+          <div style="padding: 3rem;">
+            <div style="margin-bottom: 2rem;">
+              <h3 style="font-size: 1.5rem; font-weight: 700; color: var(--gray-900); margin-bottom: 1rem;">
+                <i class="fas fa-info-circle" style="color: var(--primary);"></i> Description du Poste
+              </h3>
+              <p style="color: var(--gray-700); line-height: 1.8;">${
+                job.description
+              }</p>
+            </div>
+
+            <div style="margin-bottom: 2rem;">
+              <h3 style="font-size: 1.5rem; font-weight: 700; color: var(--gray-900); margin-bottom: 1rem;">
+                <i class="fas fa-tasks" style="color: var(--primary);"></i> Vos Missions
+              </h3>
+              <ul style="list-style: none; padding: 0;">
+                ${job.missions
+                  .map(
+                    (m) => `
+                  <li style="display: flex; align-items: start; gap: 0.75rem; margin-bottom: 0.75rem; color: var(--gray-700);">
+                    <i class="fas fa-check-circle" style="color: var(--success); margin-top: 0.25rem;"></i>
+                    <span>${m}</span>
+                  </li>
+                `
+                  )
+                  .join("")}
+              </ul>
+            </div>
+
+            <div style="margin-bottom: 2rem;">
+              <h3 style="font-size: 1.5rem; font-weight: 700; color: var(--gray-900); margin-bottom: 1rem;">
+                <i class="fas fa-user-check" style="color: var(--primary);"></i> Profil Recherché
+              </h3>
+              <ul style="list-style: none; padding: 0;">
+                ${job.profil
+                  .map(
+                    (p) => `
+                  <li style="display: flex; align-items: start; gap: 0.75rem; margin-bottom: 0.75rem; color: var(--gray-700);">
+                    <i class="fas fa-chevron-right" style="color: var(--primary); margin-top: 0.25rem;"></i>
+                    <span>${p}</span>
+                  </li>
+                `
+                  )
+                  .join("")}
+              </ul>
+            </div>
+
+            <div style="margin-bottom: 2rem;">
+              <h3 style="font-size: 1.5rem; font-weight: 700; color: var(--gray-900); margin-bottom: 1rem;">
+                <i class="fas fa-gift" style="color: var(--primary);"></i> Ce Que Nous Offrons
+              </h3>
+              <ul style="list-style: none; padding: 0;">
+                ${job.avantages
+                  .map(
+                    (a) => `
+                  <li style="display: flex; align-items: start; gap: 0.75rem; margin-bottom: 0.75rem; color: var(--gray-700);">
+                    <i class="fas fa-star" style="color: var(--warning); margin-top: 0.25rem;"></i>
+                    <span>${a}</span>
+                  </li>
+                `
+                  )
+                  .join("")}
+              </ul>
+            </div>
+
+            <div style="background: linear-gradient(135deg, #dbeafe 0%, #e0e7ff 100%); padding: 2rem; border-radius: var(--radius-xl); margin-bottom: 2rem;">
+              <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--gray-900); margin-bottom: 1rem;">
+                <i class="fas fa-paper-plane" style="color: var(--primary);"></i> Intéressé(e) ?
+              </h3>
+              <p style="color: var(--gray-700); margin-bottom: 1rem;">
+                Envoyez-nous votre CV et une lettre de motivation à :
+              </p>
+              <p style="margin-bottom: 1rem;">
+                <strong>Email :</strong> <a href="mailto:mgncodewave18@gmail.com?subject=Candidature ${
+                  job.title
+                }" style="color: var(--primary); text-decoration: underline;">mgncodewave18@gmail.com</a>
+              </p>
+              <p style="margin-bottom: 1.5rem;">
+                <strong>WhatsApp :</strong> <a href="https://wa.me/24166198918?text=Bonjour, je postule pour le poste de ${
+                  job.title
+                }" target="_blank" style="color: var(--success); text-decoration: underline;">+241 66 19 89 18</a>
+              </p>
+              <p style="font-size: 0.875rem; color: var(--gray-600);">
+                <i class="fas fa-info-circle"></i> N'oubliez pas de préciser le poste dans votre email.
+              </p>
+            </div>
+
+            <div style="text-align: center;">
+              <a href="mailto:mgncodewave18@gmail.com?subject=Candidature ${
+                job.title
+              }" 
+                 class="btn btn-primary btn-lg" 
+                 style="display: inline-block; padding: 1rem 2rem; background: ${
+                   job.gradient
+                 }; color: white; text-decoration: none; border-radius: 2rem; font-weight: 600;">
+                <i class="fas fa-envelope"></i> Postuler Maintenant
+              </a>
+            </div>
+          </div>
+        `;
+
+        modal.classList.add("active");
+        document.body.style.overflow = "hidden";
+      }
+
+      // Fonction pour fermer le modal
+      function closeModal() {
+        const modal = document.getElementById("jobModal");
+        modal.classList.remove("active");
+        document.body.style.overflow = "auto";
+      }
+
+      // Fermer en cliquant en dehors
+      document
+        .getElementById("jobModal")
+        .addEventListener("click", function (e) {
+          if (e.target === this) {
+            closeModal();
+          }
+        });
+
+      // Fermer avec Échap
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+          closeModal();
+        }
+      });
+    </script>
+  </body>
+</html>

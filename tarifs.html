@@ -1,1041 +1,1529 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="fr">
   <head>
-    <meta charset="utf-8" />
-    <title>
-      Tarifs Clairs Création Site Web (XAF) | Forfaits E-commerce et SEO |
-      CodeWave Gabon
-    </title>
-
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
-      content="tarifs création site web gabon, prix développement web libreville, forfaits e-commerce XAF, coût site vitrine, maintenance web tarifs"
-      name="keywords"
-    />
-
-    <meta
-      content="Découvrez nos tarifs transparents en XAF pour tous nos services CodeWave. Des forfaits abordables pour sites vitrines, e-commerce, blogs et la maintenance web au Gabon."
       name="description"
+      content="Tarifs CodeWave - Sites web à partir de 80 000 FCFA. Packs vitrines, e-commerce, blogs. Paiement flexible. Devis gratuit."
     />
+    <title>Tarifs - CodeWave | Prix Sites Web Gabon</title>
 
-    <link href="img/logo/codewave.png" rel="icon" />
+    <link rel="icon" type="image/png" href="assets/images/logo/codewave.png" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/responsive.css" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Rubik:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
       rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
 
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
-    <link href="lib/animate/animate.min.css" rel="stylesheet" />
+    <style>
+      .pricing-table {
+        overflow-x: auto;
+        margin: 2rem 0;
+      }
 
-    <link href="css/bootstrap.min.css" rel="stylesheet" />
+      .comparison-table {
+        width: 100%;
+        border-collapse: collapse;
+        background: white;
+        border-radius: var(--radius-2xl);
+        overflow: hidden;
+        box-shadow: var(--shadow-xl);
+      }
 
-    <link href="css/style.css" rel="stylesheet" />
-    <link rel="stylesheet" href="css/improvements.css" />
+      .comparison-table thead {
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--secondary) 100%
+        );
+        color: white;
+      }
+
+      .comparison-table th,
+      .comparison-table td {
+        padding: 1rem;
+        text-align: left;
+        border-bottom: 1px solid var(--gray-200);
+      }
+
+      .comparison-table th {
+        font-weight: 700;
+        font-size: 1.125rem;
+      }
+
+      .comparison-table tbody tr:hover {
+        background: var(--gray-50);
+      }
+
+      .comparison-table .check {
+        color: var(--success);
+        font-size: 1.25rem;
+        text-align: center;
+      }
+
+      .comparison-table .cross {
+        color: var(--gray-300);
+        font-size: 1.25rem;
+        text-align: center;
+      }
+
+      .price-calculator {
+        background: white;
+        padding: 2rem;
+        border-radius: var(--radius-2xl);
+        box-shadow: var(--shadow-xl);
+        border: 2px solid var(--primary);
+      }
+
+      .calculator-input {
+        margin-bottom: 1.5rem;
+      }
+
+      .calculator-input label {
+        display: block;
+        font-weight: 600;
+        color: var(--gray-700);
+        margin-bottom: 0.5rem;
+      }
+
+      .calculator-input select {
+        width: 100%;
+        padding: 0.875rem 1rem;
+        border: 2px solid var(--gray-200);
+        border-radius: var(--radius-lg);
+        font-size: 1rem;
+        transition: var(--transition);
+      }
+
+      .calculator-input select:focus {
+        outline: none;
+        border-color: var(--primary);
+      }
+
+      .calculator-result {
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--secondary) 100%
+        );
+        color: white;
+        padding: 2rem;
+        border-radius: var(--radius-xl);
+        text-align: center;
+        margin-top: 1.5rem;
+      }
+
+      .calculator-result .total {
+        font-size: 3rem;
+        font-weight: 800;
+        margin-bottom: 0.5rem;
+      }
+
+      .guarantee-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: var(--success);
+        color: white;
+        padding: 0.75rem 1.5rem;
+        border-radius: var(--radius-full);
+        font-weight: 700;
+        box-shadow: var(--shadow-lg);
+      }
+    </style>
   </head>
-
   <body>
-    <!-- Spinner Start -->
-    <div
-      id="spinner"
-      class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center"
-    >
-      <div class="spinner"></div>
-    </div>
-    <!-- Spinner End -->
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+      <div class="container">
+        <div class="nav-wrapper">
+          <a href="index.html" class="logo">
+            <img
+              src="assets/images/logo/codewave.png"
+              alt="Profil M.G.N CodeWave"
+              class="logo-image"
+            />
+          </a>
 
-    <!-- Topbar Start -->
-    <div class="container-fluid bg-dark px-5 d-none d-lg-block">
-      <div class="row gx-0">
-        <div class="col-lg-8 text-center text-lg-start mb-2 mb-lg-0">
-          <div class="d-inline-flex align-items-center" style="height: 45px">
-            <small class="me-3 text-light"
-              ><i class="fa fa-map-marker-alt me-2"></i>Libreville, Gabon</small
-            >
-            <small class="me-3 text-light"
-              ><i class="fa fa-phone-alt me-2"></i>+241 74 67 67 41</small
-            >
-            <small class="text-light"
-              ><i class="fa fa-envelope-open me-2"></i
-              >ngoubadjambo18@gmail.com</small
-            >
+          <ul class="nav-menu" id="navMenu">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="tarifs.html" class="active">Tarifs</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="a-propos.html">À Propos</a></li>
+            <li><a href="careers.html">Carrières</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+
+          <div class="nav-cta">
+            <a href="contact.html" class="btn btn-primary">Devis Gratuit</a>
+            <button class="menu-toggle" id="menuToggle">
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
           </div>
         </div>
       </div>
-    </div>
-    <!-- Topbar End -->
+    </nav>
 
-    <!-- Navbar Start -->
-    <header class="container-fluid position-relative p-0" role="banner">
-      <nav
-        class="navbar navbar-expand-lg navbar-dark px-3 px-lg-5 py-3 py-lg-0"
-        aria-label="Navigation principale"
-      >
-        <a
-          href="index.html"
-          class="navbar-brand d-flex align-items-center p-0"
-          aria-label="Accueil CodeWave"
-        >
-          <img
-            src="img/logo/codewave.png"
-            alt="Logo CodeWave"
-            height="40"
-            loading="lazy"
-            class="me-2"
-          />
-          <span class="h5 m-0 fw-bold text-white">CodeWave</span>
-        </a>
-
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarCollapse"
-          aria-controls="navbarCollapse"
-          aria-expanded="false"
-          aria-label="Basculer la navigation"
-        >
-          <span class="fa fa-bars" aria-hidden="true"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-          <div class="navbar-nav ms-auto py-0">
-            <a href="index.html" class="nav-item nav-link">Accueil</a>
-            <a href="service.html" class="nav-item nav-link" aria-current="page"
-              >Services</a
-            >
-
-            <a href="portfolio.html" class="nav-item nav-link">Portfolio</a>
-
-            <div class="nav-item dropdown">
-              <a
-                href="#"
-                class="nav-link dropdown-toggle active"
-                data-bs-toggle="dropdown"
-                role="button"
-                aria-expanded="false"
-                >Ressources</a
-              >
-              <ul class="dropdown-menu m-0">
-                <li><a href="about.html" class="dropdown-item">À Propos</a></li>
-                <li>
-                  <a href="tarifs.html" class="dropdown-item active"
-                    >Tarifs & Devis</a
-                  >
-                </li>
-              </ul>
-            </div>
-
-            <a href="contact.html" class="nav-item nav-link">Contact</a>
-          </div>
-
-          <a href="tarifs.html" class="btn btn-primary py-2 px-4 ms-3 active"
-            >Demander un Devis</a
-          >
-        </div>
-      </nav>
-
-      <div
-        class="container-fluid bg-primary py-5 bg-header"
-        style="margin-bottom: 90px"
-      >
-        <div class="row py-5">
-          <div class="col-12 pt-lg-5 mt-lg-5 text-center">
-            <h1 class="display-4 text-white animated zoomIn">Tarifs</h1>
-            <a href="" class="h5 text-white">Accueil</a>
-            <i class="far fa-circle text-white px-2"></i>
-            <a href="" class="h5 text-white">Tarifs</a>
-          </div>
-        </div>
+    <!-- Page Header -->
+    <section class="page-header">
+      <div class="page-header-media" data-mode="image">
+        <div
+          class="page-header-image"
+          style="
+            background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=80');
+          "
+        ></div>
+        <div class="page-header-overlay"></div>
       </div>
-    </header>
-    <!-- Navbar End -->
-
-    <!-- Pricing Plan Start -->
-    <main class="container py-5">
-      <header
-        class="section-title text-center position-relative pb-3 mb-5 mx-auto"
-        style="max-width: 700px"
-      >
-        <h5 class="fw-bold text-primary text-uppercase">Nos Tarifs</h5>
-        <h1 class="mb-0">Forfaits clairs et compétitifs en Franc CFA (XAF)</h1>
-      </header>
-
-      <div class="row g-4">
-        <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
-          <div class="card h-100 shadow-sm">
-            <div class="card-header bg-light border-0 text-center py-4">
-              <h4 class="text-primary mb-1">PACK VITRINE BASIC</h4>
-              <small class="text-uppercase text-muted"
-                >Idéal pour Artisans & TPE</small
-              >
-            </div>
-            <div class="card-body d-flex flex-column">
-              <div class="pricing mb-3 text-center">
-                <span class="h5 align-top" style="font-size: 18px">XAF</span>
-                <span class="display-6 fw-bold">145&nbsp;000</span>
-                <div class="text-muted small">(Prix Fixe)</div>
-              </div>
-
-              <ul class="list-unstyled mb-4 flex-grow-1">
-                <li class="d-flex justify-content-between mb-2">
-                  <span>Design moderne & responsive</span
-                  ><i class="fa fa-check text-primary"></i>
-                </li>
-                <li class="d-flex justify-content-between mb-2">
-                  <span>1–5 pages statiques</span
-                  ><i class="fa fa-check text-primary"></i>
-                </li>
-                <li class="d-flex justify-content-between mb-2">
-                  <span>Formulaire de contact</span
-                  ><i class="fa fa-check text-primary"></i>
-                </li>
-                <li class="d-flex justify-content-between">
-                  <span>Intégration réseaux sociaux</span
-                  ><i class="fa fa-check text-primary"></i>
-                </li>
-                <li class="d-flex justify-content-between">
-                  <span>Hébergement (1 an) + Nom de Domaine</span
-                  ><i class="fa fa-check text-primary"></i>
-                </li>
-                <li class="d-flex justify-content-between">
-                  <span>Mise en ligne & tests initiaux</span
-                  ><i class="fa fa-check text-primary"></i>
-                </li>
-              </ul>
-
-              <div class="text-center mt-auto">
-                <a
-                  class="btn btn-outline-primary"
-                  href="https://wa.me/24174676741?text=Je%20souhaite%20demander%20le%20Pack%20Vitrine%20Basic%20de%20145000FCFA"
-                  aria-label="Demander Pack Vitrine Basic"
-                  >Je choisis ce pack</a
-                >
-              </div>
-            </div>
-          </div>
+      <div class="container">
+        <div class="breadcrumb">
+          <a href="index.html">Accueil</a>
+          <span>/</span>
+          <span>Tarifs</span>
         </div>
-
-        <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
-          <div
-            class="card h-100 shadow highlight position-relative"
-            style="z-index: 1"
-          >
-            <div class="card-header bg-white border-0 text-center py-4">
-              <h4 class="text-primary mb-1">PACK VITRINE PRO</h4>
-              <small class="text-uppercase text-muted">Le choix des PME</small>
-            </div>
-            <div class="card-body d-flex flex-column">
-              <div class="pricing mb-3 text-center">
-                <span class="h5 align-top" style="font-size: 18px">XAF</span>
-                <span class="display-6 fw-bold">265&nbsp;000</span>
-                <div class="text-muted small">(Prix Fixe)</div>
-              </div>
-
-              <ul class="list-unstyled mb-4 flex-grow-1">
-                <li class="d-flex justify-content-between mb-2">
-                  <span>Jusqu'à 10 pages personnalisées</span
-                  ><i class="fa fa-check text-primary"></i>
-                </li>
-                <li class="d-flex justify-content-between mb-2">
-                  <span>Optimisation SEO de base</span
-                  ><i class="fa fa-check text-primary"></i>
-                </li>
-                <li class="d-flex justify-content-between mb-2">
-                  <span>Google Maps intégré</span
-                  ><i class="fa fa-check text-primary"></i>
-                </li>
-                <li class="d-flex justify-content-between">
-                  <span>Support initial & formation CMS</span
-                  ><i class="fa fa-check text-primary"></i>
-                </li>
-                <li class="d-flex justify-content-between">
-                  <span>Hébergement (1 an) + Nom de Domaine</span
-                  ><i class="fa fa-check text-primary"></i>
-                </li>
-                <li class="d-flex justify-content-between">
-                  <span>Certificat SSL Premium</span
-                  ><i class="fa fa-check text-primary"></i>
-                </li>
-              </ul>
-
-              <div class="text-center mt-auto">
-                <a
-                  class="btn btn-primary"
-                  href="https://wa.me/24174676741?text=Je%20souhaite%20demander%20le%20Pack%20Vitrine%20Pro%20de%20265000FCFA"
-                  aria-label="Demander Pack Vitrine Pro"
-                  >Je choisis ce pack</a
-                >
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.6s">
-          <div class="card h-100 shadow-sm">
-            <div class="card-header bg-light border-0 text-center py-4">
-              <h4 class="text-primary mb-1">PACK E-COMMERCE START-UP</h4>
-              <small class="text-uppercase text-muted"
-                >Lancez votre boutique en ligne</small
-              >
-            </div>
-            <div class="card-body d-flex flex-column">
-              <div class="pricing mb-3 text-center">
-                <span class="h5 align-top" style="font-size: 18px">XAF</span>
-                <span class="display-6 fw-bold">390&nbsp;000</span>
-                <div class="text-muted small">(Prix Fixe)</div>
-              </div>
-
-              <ul class="list-unstyled mb-4 flex-grow-1">
-                <li class="d-flex justify-content-between mb-2">
-                  <span>CMS E-Commerce & interface d'admin</span
-                  ><i class="fa fa-check text-primary"></i>
-                </li>
-                <li class="d-flex justify-content-between mb-2">
-                  <span>Gestion jusqu'à 50 produits</span
-                  ><i class="fa fa-check text-primary"></i>
-                </li>
-                <li class="d-flex justify-content-between mb-2">
-                  <span>Options de paiement (Mobile Money, Virement)</span
-                  ><i class="fa fa-check text-primary"></i>
-                </li>
-                <li class="d-flex justify-content-between">
-                  <span>Fonctionnalité de suivi des commandes</span
-                  ><i class="fa fa-check text-primary"></i>
-                </li>
-                <li class="d-flex justify-content-between">
-                  <span>Hébergement (1 an) + Nom de Domaine</span
-                  ><i class="fa fa-check text-primary"></i>
-                </li>
-                <li class="d-flex justify-content-between">
-                  <span>Formation à la gestion de la boutique</span
-                  ><i class="fa fa-check text-primary"></i>
-                </li>
-              </ul>
-
-              <div class="text-center mt-auto">
-                <a
-                  class="btn btn-outline-primary"
-                  href="https://wa.me/24174676741?text=Je%20souhaite%20demander%20le%20Pack%20E-commerce%20Start-up%20de%20390000FCFA"
-                  aria-label="Demander Pack E-commerce Start-up"
-                  >Je choisis ce pack</a
-                >
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="row g-4 mt-4">
-        <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
-          <div class="card h-100 shadow-sm">
-            <div class="card-header bg-light border-0 text-center py-4">
-              <h4 class="text-primary mb-1">PACK E-COMMERCE BUSINESS</h4>
-              <small class="text-uppercase text-muted"
-                >Volume illimité et performance</small
-              >
-            </div>
-            <div class="card-body d-flex flex-column">
-              <div class="pricing mb-3 text-center">
-                <span class="h5 align-top" style="font-size: 18px">XAF</span>
-                <span class="display-6 fw-bold">610&nbsp;000</span>
-                <div class="text-muted small">(Prix Fixe)</div>
-              </div>
-
-              <ul class="list-unstyled mb-4 flex-grow-1">
-                <li class="d-flex justify-content-between mb-2">
-                  <span>Gestion de produits illimitée</span
-                  ><i class="fa fa-check text-primary"></i>
-                </li>
-                <li class="d-flex justify-content-between mb-2">
-                  <span>Fonctionnalités avancées (Wishlist, filtres, avis)</span
-                  ><i class="fa fa-check text-primary"></i>
-                </li>
-                <li class="d-flex justify-content-between mb-2">
-                  <span>Optimisation performance & SEO avancé</span
-                  ><i class="fa fa-check text-primary"></i>
-                </li>
-                <li class="d-flex justify-content-between">
-                  <span>Intégration d'un système de livraison</span
-                  ><i class="fa fa-check text-primary"></i>
-                </li>
-                <li class="d-flex justify-content-between">
-                  <span>Hébergement (1 an) + Nom de Domaine</span
-                  ><i class="fa fa-check text-primary"></i>
-                </li>
-                <li class="d-flex justify-content-between">
-                  <span>Support Premium 1 mois offert</span
-                  ><i class="fa fa-check text-primary"></i>
-                </li>
-              </ul>
-
-              <div class="text-center mt-auto">
-                <a
-                  class="btn btn-outline-primary"
-                  href="https://wa.me/24174676741?text=Je%20souhaite%20demander%20le%20Pack%20E-commerce%20Business%20de%20610000FCFA"
-                  aria-label="Demander Pack E-commerce Business"
-                  >Je choisis ce pack</a
-                >
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
-          <article class="card h-100 shadow-sm">
-            <header class="card-header bg-light border-0 text-center py-4">
-              <h4 class="text-primary mb-1">PACK PORTFOLIO / BLOG STARTER</h4>
-              <small class="text-uppercase text-muted"
-                >Pour créateurs & photographes</small
-              >
-            </header>
-            <div class="card-body d-flex flex-column">
-              <div class="pricing mb-3 text-center">
-                <span class="h5 align-top" style="font-size: 18px">XAF</span>
-                <span class="display-6 fw-bold">125&nbsp;000</span>
-                <div class="text-muted small">(Prix Fixe)</div>
-              </div>
-
-              <ul class="list-unstyled mb-4 flex-grow-1">
-                <li class="d-flex justify-content-between mb-2">
-                  <span>Design épuré et professionnel</span
-                  ><i class="fa fa-check text-primary"></i>
-                </li>
-                <li class="d-flex justify-content-between mb-2">
-                  <span>Catégorisation des articles/réalisations</span
-                  ><i class="fa fa-check text-primary"></i>
-                </li>
-                <li class="d-flex justify-content-between mb-2">
-                  <span>Formulaire d'abonnement</span
-                  ><i class="fa fa-check text-primary"></i>
-                </li>
-                <li class="d-flex justify-content-between">
-                  <span>CMS simple (WordPress / Static)</span
-                  ><i class="fa fa-check text-primary"></i>
-                </li>
-                <li class="d-flex justify-content-between">
-                  <span>Hébergement (1 an) + Nom de Domaine</span
-                  ><i class="fa fa-check text-primary"></i>
-                </li>
-                <li class="d-flex justify-content-between">
-                  <span>Mise en page optimisée pour médias</span
-                  ><i class="fa fa-check text-primary"></i>
-                </li>
-              </ul>
-
-              <div class="text-center mt-auto">
-                <a
-                  class="btn btn-outline-primary"
-                  href="https://wa.me/24174676741?text=Je%20souhaite%20demander%20le%20Pack%20Portfolio%20Blog%20Starter%20de%20125000FCFA"
-                  aria-label="Demander Pack Portfolio Blog Starter"
-                  >Je choisis ce pack</a
-                >
-              </div>
-            </div>
-          </article>
-        </div>
-
-        <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.6s">
-          <article class="card h-100 shadow-sm">
-            <header class="card-header bg-light border-0 text-center py-4">
-              <h4 class="text-primary mb-1">PACK PORTFOLIO / BLOG PREMIUM</h4>
-              <small class="text-uppercase text-muted"
-                >Pour influenceurs et gros volumes</small
-              >
-            </header>
-            <div class="card-body d-flex flex-column">
-              <div class="pricing mb-3 text-center">
-                <span class="h5 align-top" style="font-size: 18px">XAF</span>
-                <span class="display-6 fw-bold">210&nbsp;000</span>
-                <div class="text-muted small">(Prix Fixe)</div>
-              </div>
-
-              <ul class="list-unstyled mb-4 flex-grow-1">
-                <li class="d-flex justify-content-between mb-2">
-                  <span>Design sur mesure</span
-                  ><i class="fa fa-check text-primary"></i>
-                </li>
-                <li class="d-flex justify-content-between mb-2">
-                  <span>Optimisation SEO avancée</span
-                  ><i class="fa fa-check text-primary"></i>
-                </li>
-                <li class="d-flex justify-content-between mb-2">
-                  <span>Intégration Google Analytics / Search Console</span
-                  ><i class="fa fa-check text-primary"></i>
-                </li>
-                <li class="d-flex justify-content-between">
-                  <span>Hébergement (1 an) + Nom de Domaine</span
-                  ><i class="fa fa-check text-primary"></i>
-                </li>
-                <li class="d-flex justify-content-between">
-                  <span>Optimisation de vitesse (Caching)</span
-                  ><i class="fa fa-check text-primary"></i>
-                </li>
-                <li class="d-flex justify-content-between">
-                  <span>Sécurité renforcée (Firewall)</span
-                  ><i class="fa fa-check text-primary"></i>
-                </li>
-              </ul>
-
-              <div class="text-center mt-auto">
-                <a
-                  class="btn btn-outline-primary"
-                  href="https://wa.me/24174676741?text=Je%20souhaite%20demander%20le%20Pack%20Portfolio%20Blog%20Premium%20de%20210000FCFA"
-                  aria-label="Demander Pack Portfolio Blog Premium"
-                  >Je choisis ce pack</a
-                >
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-
-      <div class="row g-4 mt-4">
-        <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
-          <article class="card h-100 shadow-sm">
-            <header class="card-header bg-light border-0 text-center py-4">
-              <h4 class="text-primary mb-1">PACK HÉBERGEMENT ANNUEL</h4>
-              <small class="text-uppercase text-muted"
-                >Sécurité & performance (Base O2Switch)</small
-              >
-            </header>
-            <div class="card-body d-flex flex-column">
-              <div class="pricing mb-3 text-center">
-                <span class="h6 mb-0">XAF / an</span>
-                <span class="display-6 fw-bold">35&nbsp;000</span>
-                <div class="text-muted small">(Facturation annuelle)</div>
-              </div>
-
-              <ul class="list-unstyled mb-4 flex-grow-1">
-                <li class="d-flex justify-content-between mb-2">
-                  <span>Hébergement Serveur Rapide (NVMe/SSD)</span
-                  ><i class="fa fa-check text-primary"></i>
-                </li>
-                <li class="d-flex justify-content-between mb-2">
-                  <span>Certificat SSL Inclus (Let's Encrypt)</span
-                  ><i class="fa fa-check text-primary"></i>
-                </li>
-                <li class="d-flex justify-content-between mb-2">
-                  <span>Sauvegardes journalières & restaurations</span
-                  ><i class="fa fa-check text-primary"></i>
-                </li>
-                <li class="d-flex justify-content-between">
-                  <span>Monitoring 24/7 & Anti-DDoS</span
-                  ><i class="fa fa-check text-primary"></i>
-                </li>
-                <li class="d-flex justify-content-between">
-                  <span>Gestion Multi-Sites simplifiée</span
-                  ><i class="fa fa-check text-primary"></i>
-                </li>
-                <li class="d-flex justify-content-between">
-                  <span
-                    >Nom de Domaine inclus la première année (transfert ou
-                    nouveau)</span
-                  ><i class="fa fa-check text-primary"></i>
-                </li>
-              </ul>
-
-              <div class="text-center mt-auto">
-                <a
-                  class="btn btn-outline-primary"
-                  href="https://wa.me/24174676741?text=Je%20souhaite%20demander%20le%20Pack%20Hébergement%20Annuel%20de%2035000FCFA"
-                  aria-label="Demander Pack Hébergement"
-                  >Souscrire l'hébergement</a
-                >
-              </div>
-            </div>
-          </article>
-        </div>
-
-        <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
-          <article class="card h-100 shadow-sm">
-            <header class="card-header bg-light border-0 text-center py-4">
-              <h4 class="text-primary mb-1">PACK MAINTENANCE MENSUELLE</h4>
-              <small class="text-uppercase text-muted"
-                >Mises à jour, sécurité & support</small
-              >
-            </header>
-            <div class="card-body d-flex flex-column">
-              <div class="pricing mb-3 text-center">
-                <span class="h6 mb-0">XAF / mois</span>
-                <span class="display-6 fw-bold">20&nbsp;000</span>
-                <div class="text-muted small">(Abonnement mensuel)</div>
-              </div>
-
-              <ul class="list-unstyled mb-4 flex-grow-1">
-                <li class="d-flex justify-content-between mb-2">
-                  <span>Mises à jour CMS & plugins hebdomadaires</span
-                  ><i class="fa fa-check text-primary"></i>
-                </li>
-                <li class="d-flex justify-content-between mb-2">
-                  <span>Sauvegardes journalières & restaurations rapides</span
-                  ><i class="fa fa-check text-primary"></i>
-                </li>
-                <li class="d-flex justify-content-between mb-2">
-                  <span>Corrections sécurité, patchs & nettoyage malware</span
-                  ><i class="fa fa-check text-primary"></i>
-                </li>
-                <li class="d-flex justify-content-between">
-                  <span>Support prioritaire (Réponse en - de 4h)</span
-                  ><i class="fa fa-check text-primary"></i>
-                </li>
-                <li class="d-flex justify-content-between">
-                  <span>Rapports de performance mensuels</span
-                  ><i class="fa fa-check text-primary"></i>
-                </li>
-                <li class="d-flex justify-content-between">
-                  <span>Petites modifications de contenu (30 min/mois)</span
-                  ><i class="fa fa-check text-primary"></i>
-                </li>
-              </ul>
-
-              <div class="text-center mt-auto">
-                <a
-                  class="btn btn-outline-primary"
-                  href="https://wa.me/24174676741?text=Je%20souhaite%20demander%20le%20Pack%20Maintenance%20Mensuelle%20de%2020000FCFA"
-                  aria-label="Demander Pack Maintenance"
-                  >Souscrire la maintenance</a
-                >
-              </div>
-            </div>
-          </article>
-        </div>
-
-        <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.6s">
-          <article class="card h-100 shadow-sm">
-            <header class="card-header bg-light border-0 text-center py-4">
-              <h4 class="text-primary mb-1">PROJET SUR MESURE</h4>
-              <small class="text-uppercase text-muted"
-                >Plateformes complexes / fonctionnalités uniques</small
-              >
-            </header>
-            <div class="card-body d-flex flex-column">
-              <div class="pricing mb-3 text-center">
-                <span class="h6 mb-0">XAF</span>
-                <span class="display-6 fw-bold">SUR</span>
-                <div class="text-muted small">(Devis Personnalisé)</div>
-              </div>
-
-              <ul class="list-unstyled mb-4 flex-grow-1">
-                <li class="d-flex justify-content-between mb-2">
-                  <span>Web App, Intranet, Marketplace, SaaS...</span
-                  ><i class="fa fa-check text-primary"></i>
-                </li>
-                <li class="d-flex justify-content-between mb-2">
-                  <span>Étude de faisabilité détaillée</span
-                  ><i class="fa fa-check text-primary"></i>
-                </li>
-                <li class="d-flex justify-content-between mb-2">
-                  <span>Technologies spécifiques (React, Node.js, Python)</span
-                  ><i class="fa fa-check text-primary"></i>
-                </li>
-                <li class="d-flex justify-content-between">
-                  <span>Contrat de développement clair & étapes</span
-                  ><i class="fa fa-check text-primary"></i>
-                </li>
-                <li class="d-flex justify-content-between">
-                  <span>Architecture cloud/serveur dédiée</span
-                  ><i class="fa fa-check text-primary"></i>
-                </li>
-                <li class="d-flex justify-content-between">
-                  <span>Gestion de projet dédiée</span
-                  ><i class="fa fa-check text-primary"></i>
-                </li>
-              </ul>
-
-              <div class="text-center mt-auto">
-                <a
-                  class="btn btn-outline-primary"
-                  href="#devis"
-                  aria-label="Demander un Devis Sur Mesure"
-                  >Demander un devis</a
-                >
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-
-      <div class="text-center mt-5">
-        <p class="mb-0 text-muted">
-          L'hébergement (via O2Switch ou équivalent) et le Nom de Domaine (.com,
-          .net, .org, etc.) sont inclus la première année dans tous les packs de
-          création. Leur renouvellement est facturé au tarif annuel de 35 000
-          XAF/an via le PACK HÉBERGEMENT ANNUEL.
-          <a class="text-primary fw-bold" href="https://wa.me/24174676741"
-            >Contactez-nous pour un devis personnalisé</a
-          >
+        <h1 class="page-title">Nos Tarifs</h1>
+        <p class="page-subtitle">
+          Des prix transparents et compétitifs adaptés au marché gabonais
         </p>
       </div>
+    </section>
 
-      <section
-        class="row g-4 mt-5 align-items-center wow fadeInUp"
-        data-wow-delay="0.1s"
-        id="devis"
-      >
-        <div class="col-lg-7">
-          <header class="mb-4">
-            <h5 class="fw-bold text-primary text-uppercase">
-              Demandez un Devis
-            </h5>
-            <h2 class="mb-0">
-              Expliquez votre projet, nous vous répondons sous 24h
-            </h2>
-          </header>
-
-          <p class="text-muted">
-            Indiquez les fonctionnalités souhaitées, le nombre de pages, et un
-            budget indicatif — nous vous enverrons une proposition claire en
-            XAF.
+    <!-- Pricing Overview -->
+    <section class="section-padding">
+      <div class="container">
+        <div class="section-header text-center">
+          <h2 class="section-title">Choisissez Votre Pack</h2>
+          <p class="section-subtitle">
+            Tous nos tarifs sont en FCFA TTC • Paiement en 2-3 fois disponible
           </p>
+        </div>
 
-          <div class="row gx-3">
-            <div class="col-sm-6 mb-3">
-              <i class="fa fa-reply text-primary me-2"></i>Réponse garantie sous
-              24h
+        <!-- Sites Vitrines -->
+        <div style="margin-bottom: 4rem">
+          <h3
+            style="
+              font-size: 2rem;
+              font-weight: 800;
+              color: var(--gray-900);
+              margin-bottom: 2rem;
+              text-align: center;
+            "
+          >
+            <i class="fas fa-desktop" style="color: var(--primary)"></i>
+            Sites Vitrines
+          </h3>
+          <div class="pricing-cards">
+            <div class="pricing-card">
+              <div class="pricing-header">
+                <h4>Pack Basic</h4>
+                <div class="pricing-price">
+                  <span class="price-amount">100 000</span>
+                  <span class="price-currency">FCFA</span>
+                </div>
+                <p class="pricing-desc">
+                  Idéal pour : Artisans, TPE, Associations
+                </p>
+              </div>
+              <ul class="pricing-features">
+                <li><i class="fas fa-check"></i> 1 à 5 pages</li>
+                <li><i class="fas fa-check"></i> Design moderne responsive</li>
+                <li><i class="fas fa-check"></i> Formulaire de contact</li>
+                <li>
+                  <i class="fas fa-check"></i> Intégration réseaux sociaux
+                </li>
+                <li><i class="fas fa-check"></i> Certificat SSL (HTTPS)</li>
+                <li><i class="fas fa-check"></i> Formation incluse</li>
+                <li><i class="fas fa-check"></i> Livraison 1-2 semaines</li>
+              </ul>
+              <a
+                href="https://wa.me/24166198918?text=Bonjour,%20je%20souhaite%20demander%20le%20Pack%20Vitrine%20de%20100000%20FCFA%20pour%20un%20site%20web%20vitrine."
+                class="btn btn-outline"
+                style="width: 100%"
+                >Commander</a
+              >
             </div>
-            <div class="col-sm-6 mb-3">
-              <i class="fa fa-money-bill-alt text-primary me-2"></i>Devis clair
-              en XAF
+
+            <div class="pricing-card featured">
+              <div class="popular-badge">LE PLUS POPULAIRE</div>
+              <div class="pricing-header">
+                <h4>Pack Pro</h4>
+                <div class="pricing-price">
+                  <span class="price-amount">200 000</span>
+                  <span class="price-currency">FCFA</span>
+                </div>
+                <p class="pricing-desc">Idéal pour : PME, Entrepreneurs</p>
+              </div>
+              <ul class="pricing-features">
+                <li><i class="fas fa-check"></i> Jusqu'à 10 pages</li>
+                <li><i class="fas fa-check"></i> Design personnalisé unique</li>
+                <li>
+                  <i class="fas fa-check"></i>
+                  <strong>Optimisation SEO de base</strong>
+                </li>
+                <li><i class="fas fa-check"></i> Google Maps & Analytics</li>
+                <li><i class="fas fa-check"></i> Formulaires avancés</li>
+                <li><i class="fas fa-check"></i> Galerie photos/vidéos</li>
+                <li>
+                  <i class="fas fa-check"></i>
+                  <strong>Support prioritaire 3 mois</strong>
+                </li>
+              </ul>
+              <a
+                href="https://wa.me/24166198918?text=Bonjour,%20je%20souhaite%20demander%20le%20Pack%20Pro%20de%20200000%20FCFA%20pour%20un%20site%20web%20vitrine."
+                class="btn btn-primary"
+                style="width: 100%"
+                >Commander Maintenant</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- E-Commerce -->
+        <div style="margin-bottom: 4rem">
+          <h3
+            style="
+              font-size: 2rem;
+              font-weight: 800;
+              color: var(--gray-900);
+              margin-bottom: 2rem;
+              text-align: center;
+            "
+          >
+            <i class="fas fa-shopping-cart" style="color: var(--success)"></i>
+            Sites E-Commerce
+          </h3>
+          <div class="pricing-cards">
+            <div class="pricing-card">
+              <div class="pricing-header">
+                <h4>Pack Start-Up</h4>
+                <div class="pricing-price">
+                  <span class="price-amount">300 000</span>
+                  <span class="price-currency">FCFA</span>
+                </div>
+                <p class="pricing-desc">
+                  Idéal pour : Petites boutiques, Lancement
+                </p>
+              </div>
+              <ul class="pricing-features">
+                <li><i class="fas fa-check"></i> Max 20 produits</li>
+                <li><i class="fas fa-check"></i> Interface admin facile</li>
+                <li><i class="fas fa-check"></i> Paiement en ligne sécurisé</li>
+                <li><i class="fas fa-check"></i> Suivi des commandes</li>
+                <li><i class="fas fa-check"></i> Gestion du stock</li>
+                <li><i class="fas fa-check"></i> Rapports de ventes</li>
+                <li><i class="fas fa-check"></i> Formation complète</li>
+              </ul>
+              <a
+                href="https://wa.me/24166198918?text=Bonjour,%20je%20souhaite%20demander%20le%20Pack%20E-Commerce%20Start-Up%20de%20300000%20FCFA%20pour%20une%20boutique%20en%20ligne."
+                class="btn btn-outline"
+                style="width: 100%"
+                >Commander</a
+              >
+            </div>
+
+            <div class="pricing-card featured">
+              <div class="popular-badge">MEILLEURE VALEUR</div>
+              <div class="pricing-header">
+                <h4>Pack Business</h4>
+                <div class="pricing-price">
+                  <span class="price-amount">500 000</span>
+                  <span class="price-currency">FCFA</span>
+                </div>
+                <p class="pricing-desc">
+                  Idéal pour : PME, Entreprises établies
+                </p>
+              </div>
+              <ul class="pricing-features">
+                <li>
+                  <i class="fas fa-check"></i>
+                  <strong>Produits illimités</strong>
+                </li>
+                <li><i class="fas fa-check"></i> Design sur mesure premium</li>
+                <li><i class="fas fa-check"></i> Statistiques avancées</li>
+                <li>
+                  <i class="fas fa-check"></i> Multi-devises (FCFA/EUR/USD)
+                </li>
+                <li><i class="fas fa-check"></i> Promotions & coupons</li>
+                <li>
+                  <i class="fas fa-check"></i>
+                  <strong>Maintenance gratuite 3 mois</strong>
+                </li>
+                <li>
+                  <i class="fas fa-check"></i>
+                  <strong>Support dédié 24/7</strong>
+                </li>
+              </ul>
+              <a
+                href="https://wa.me/24166198918?text=Bonjour,%20je%20souhaite%20demander%20le%20Pack%20E-Commerce%20Business%20de%20500000%20FCFA%20pour%20une%20boutique%20en%20ligne."
+                class="btn btn-primary"
+                style="width: 100%"
+                >Commander Maintenant</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Blogs & Portfolios -->
+        <div style="margin-bottom: 4rem">
+          <h3
+            style="
+              font-size: 2rem;
+              font-weight: 800;
+              color: var(--gray-900);
+              margin-bottom: 2rem;
+              text-align: center;
+            "
+          >
+            <i class="fas fa-palette" style="color: var(--secondary)"></i>
+            Blogs & Portfolios
+          </h3>
+          <div class="pricing-cards">
+            <div class="pricing-card">
+              <div class="pricing-header">
+                <h4>Pack Starter</h4>
+                <div class="pricing-price">
+                  <span class="price-amount">80 000</span>
+                  <span class="price-currency">FCFA</span>
+                </div>
+                <p class="pricing-desc">Idéal pour : Débutants, Particuliers</p>
+              </div>
+              <ul class="pricing-features">
+                <li><i class="fas fa-check"></i> Design pur professionnel</li>
+                <li><i class="fas fa-check"></i> Catégorisation articles</li>
+                <li><i class="fas fa-check"></i> Formulaire d'abonnement</li>
+                <li><i class="fas fa-check"></i> Partage réseaux sociaux</li>
+                <li><i class="fas fa-check"></i> Responsive design</li>
+                <li><i class="fas fa-check"></i> Gestion facile du contenu</li>
+              </ul>
+              <a
+                href="https://wa.me/24166198918?text=Bonjour,%20je%20souhaite%20demander%20le%20Pack%20Starter%20de%2080000%20FCFA%20pour%20un%20blog%20ou%20portfolio."
+                class="btn btn-outline"
+                style="width: 100%"
+                >Commander</a
+              >
+            </div>
+
+            <div class="pricing-card featured">
+              <div class="popular-badge">POUR CRÉATIFS</div>
+              <div class="pricing-header">
+                <h4>Pack Premium</h4>
+                <div class="pricing-price">
+                  <span class="price-amount">150 000</span>
+                  <span class="price-currency">FCFA</span>
+                </div>
+                <p class="pricing-desc">Idéal pour : Artistes, Photographes</p>
+              </div>
+              <ul class="pricing-features">
+                <li><i class="fas fa-check"></i> Design sur mesure unique</li>
+                <li>
+                  <i class="fas fa-check"></i> <strong>SEO avancé</strong>
+                </li>
+                <li><i class="fas fa-check"></i> Google Analytics intégré</li>
+                <li><i class="fas fa-check"></i> Système de commentaires</li>
+                <li><i class="fas fa-check"></i> Newsletter automatique</li>
+                <li><i class="fas fa-check"></i> Monétisation AdSense</li>
+              </ul>
+              <a
+                href="https://wa.me/24166198918?text=Bonjour,%20je%20souhaite%20demander%20le%20Pack%20Premium%20de%20150000%20FCFA%20pour%20un%20blog%20ou%20portfolio."
+                class="btn btn-primary"
+                style="width: 100%"
+                >Commander Maintenant</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Comparison Table -->
+    <section class="section-padding bg-light">
+      <div class="container">
+        <div class="section-header text-center">
+          <h2 class="section-title">Tableau Comparatif</h2>
+          <p class="section-subtitle">
+            Comparez nos différents packs pour choisir celui qui vous convient
+          </p>
+        </div>
+
+        <div class="pricing-table">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Fonctionnalité</th>
+                <th>
+                  Basic<br /><small style="opacity: 0.8">100K FCFA</small>
+                </th>
+                <th>Pro<br /><small style="opacity: 0.8">200K FCFA</small></th>
+                <th>
+                  Start-Up<br /><small style="opacity: 0.8">300K FCFA</small>
+                </th>
+                <th>
+                  Business<br /><small style="opacity: 0.8">500K FCFA</small>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Nombre de pages</strong></td>
+                <td>1-5</td>
+                <td>Jusqu'à 10</td>
+                <td>Illimité</td>
+                <td>Illimité</td>
+              </tr>
+              <tr>
+                <td><strong>Design responsive</strong></td>
+                <td class="check"><i class="fas fa-check-circle"></i></td>
+                <td class="check"><i class="fas fa-check-circle"></i></td>
+                <td class="check"><i class="fas fa-check-circle"></i></td>
+                <td class="check"><i class="fas fa-check-circle"></i></td>
+              </tr>
+              <tr>
+                <td><strong>Design personnalisé</strong></td>
+                <td class="cross"><i class="fas fa-times-circle"></i></td>
+                <td class="check"><i class="fas fa-check-circle"></i></td>
+                <td class="check"><i class="fas fa-check-circle"></i></td>
+                <td class="check"><i class="fas fa-check-circle"></i></td>
+              </tr>
+              <tr>
+                <td><strong>Optimisation SEO</strong></td>
+                <td class="cross"><i class="fas fa-times-circle"></i></td>
+                <td class="check"><i class="fas fa-check-circle"></i></td>
+                <td class="check"><i class="fas fa-check-circle"></i></td>
+                <td class="check"><i class="fas fa-check-circle"></i></td>
+              </tr>
+              <tr>
+                <td><strong>Formulaire de contact</strong></td>
+                <td class="check"><i class="fas fa-check-circle"></i></td>
+                <td class="check"><i class="fas fa-check-circle"></i></td>
+                <td class="check"><i class="fas fa-check-circle"></i></td>
+                <td class="check"><i class="fas fa-check-circle"></i></td>
+              </tr>
+              <tr>
+                <td><strong>E-Commerce</strong></td>
+                <td class="cross"><i class="fas fa-times-circle"></i></td>
+                <td class="cross"><i class="fas fa-times-circle"></i></td>
+                <td class="check"><i class="fas fa-check-circle"></i></td>
+                <td class="check"><i class="fas fa-check-circle"></i></td>
+              </tr>
+              <tr>
+                <td><strong>Paiement en ligne</strong></td>
+                <td class="cross"><i class="fas fa-times-circle"></i></td>
+                <td class="cross"><i class="fas fa-times-circle"></i></td>
+                <td class="check"><i class="fas fa-check-circle"></i></td>
+                <td class="check"><i class="fas fa-check-circle"></i></td>
+              </tr>
+              <tr>
+                <td><strong>Google Analytics</strong></td>
+                <td class="cross"><i class="fas fa-times-circle"></i></td>
+                <td class="check"><i class="fas fa-check-circle"></i></td>
+                <td class="check"><i class="fas fa-check-circle"></i></td>
+                <td class="check"><i class="fas fa-check-circle"></i></td>
+              </tr>
+              <tr>
+                <td><strong>Support prioritaire</strong></td>
+                <td>-</td>
+                <td>3 mois</td>
+                <td>3 mois</td>
+                <td>Illimité</td>
+              </tr>
+              <tr>
+                <td><strong>Délai de livraison</strong></td>
+                <td>1-2 semaines</td>
+                <td>2-3 semaines</td>
+                <td>3-4 semaines</td>
+                <td>4-6 semaines</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Additionnels & Maintenance -->
+    <section class="section-padding">
+      <div class="container">
+        <div class="section-header text-center">
+          <h2 class="section-title">Services Additionnels & Maintenance</h2>
+          <p class="section-subtitle">
+            Complétez votre site avec des options supplémentaires
+          </p>
+        </div>
+
+        <div style="display: grid; gap: 2rem; max-width: 72rem; margin: 0 auto">
+          <!-- Maintenance -->
+          <div
+            style="background: white; padding: 2rem; border-radius: var(--radius-2xl); box-shadow: var(--shadow-lg); display: grid; md:grid-template-columns: 2fr 1fr; gap: 2rem; align-items: center;"
+          >
+            <div>
+              <h3
+                style="
+                  font-size: 1.5rem;
+                  font-weight: 700;
+                  color: var(--gray-900);
+                  margin-bottom: 1rem;
+                "
+              >
+                <i class="fas fa-wrench" style="color: var(--warning)"></i>
+                Maintenance Mensuelle
+              </h3>
+              <p style="color: var(--gray-600); margin-bottom: 1rem">
+                Mises à jour, sauvegardes quotidiennes, support technique 24/7
+              </p>
+              <ul style="display: grid; gap: 0.5rem">
+                <li
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 0.5rem;
+                    color: var(--gray-700);
+                    font-size: 0.875rem;
+                  "
+                >
+                  <i class="fas fa-check" style="color: var(--success)"></i>
+                  <span>Mises à jour régulières</span>
+                </li>
+                <li
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 0.5rem;
+                    color: var(--gray-700);
+                    font-size: 0.875rem;
+                  "
+                >
+                  <i class="fas fa-check" style="color: var(--success)"></i>
+                  <span>Sauvegardes quotidiennes</span>
+                </li>
+                <li
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 0.5rem;
+                    color: var(--gray-700);
+                    font-size: 0.875rem;
+                  "
+                >
+                  <i class="fas fa-check" style="color: var(--success)"></i>
+                  <span>Support technique 24/7</span>
+                </li>
+              </ul>
+            </div>
+            <div style="text-align: center">
+              <div
+                style="
+                  font-size: 3rem;
+                  font-weight: 800;
+                  color: var(--primary);
+                  margin-bottom: 0.5rem;
+                "
+              >
+                15 000
+              </div>
+              <div
+                style="
+                  color: var(--gray-600);
+                  font-weight: 600;
+                  margin-bottom: 1rem;
+                "
+              >
+                FCFA/mois
+              </div>
+              <a
+                href="https://wa.me/24166198918?text=Bonjour,%20je%20souhaite%20souscrire%20au%20service%20de%20maintenance%20mensuelle%20de%2015000%20FCFA%20par%20mois."
+                class="btn btn-primary"
+                >Souscrire</a
+              >
             </div>
           </div>
 
-          <div class="d-flex align-items-center mt-3">
+          <!-- Hébergement -->
+          <div
+            style="background: white; padding: 2rem; border-radius: var(--radius-2xl); box-shadow: var(--shadow-lg); display: grid; md:grid-template-columns: 2fr 1fr; gap: 2rem; align-items: center;"
+          >
+            <div>
+              <h3
+                style="
+                  font-size: 1.5rem;
+                  font-weight: 700;
+                  color: var(--gray-900);
+                  margin-bottom: 1rem;
+                "
+              >
+                <i class="fas fa-server" style="color: var(--primary)"></i>
+                Hébergement Web Premium
+              </h3>
+              <p style="color: var(--gray-600); margin-bottom: 1rem">
+                Serveur rapide et sécurisé, SSL inclus, 99.9% disponibilité
+              </p>
+              <ul style="display: grid; gap: 0.5rem">
+                <li
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 0.5rem;
+                    color: var(--gray-700);
+                    font-size: 0.875rem;
+                  "
+                >
+                  <i class="fas fa-check" style="color: var(--success)"></i>
+                  <span>Certificat SSL (HTTPS)</span>
+                </li>
+                <li
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 0.5rem;
+                    color: var(--gray-700);
+                    font-size: 0.875rem;
+                  "
+                >
+                  <i class="fas fa-check" style="color: var(--success)"></i>
+                  <span>Nom de domaine offert</span>
+                </li>
+                <li
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 0.5rem;
+                    color: var(--gray-700);
+                    font-size: 0.875rem;
+                  "
+                >
+                  <i class="fas fa-check" style="color: var(--success)"></i>
+                  <span>5 emails professionnels</span>
+                </li>
+              </ul>
+            </div>
+            <div style="text-align: center">
+              <div
+                style="
+                  font-size: 3rem;
+                  font-weight: 800;
+                  color: var(--primary);
+                  margin-bottom: 0.5rem;
+                "
+              >
+                20 000
+              </div>
+              <div
+                style="
+                  color: var(--gray-600);
+                  font-weight: 600;
+                  margin-bottom: 1rem;
+                "
+              >
+                FCFA/an
+              </div>
+              <a href="contact.html?pack=hebergement" class="btn btn-outline"
+                >Souscrire</a
+              >
+            </div>
+          </div>
+
+          <!-- Options additionnelles -->
+          <div
+            style="display: grid; md:grid-template-columns: repeat(3, 1fr); gap: 1.5rem;"
+          >
             <div
-              class="bg-primary rounded d-flex align-items-center justify-content-center"
-              style="width: 60px; height: 60px"
+              style="
+                background: linear-gradient(
+                  135deg,
+                  var(--gray-50) 0%,
+                  #dbeafe 100%
+                );
+                padding: 1.5rem;
+                border-radius: var(--radius-xl);
+                text-align: center;
+              "
             >
+              <i
+                class="fas fa-search"
+                style="
+                  font-size: 2.5rem;
+                  color: var(--primary);
+                  margin-bottom: 1rem;
+                "
+              ></i>
+              <h4
+                style="
+                  font-weight: 700;
+                  color: var(--gray-900);
+                  margin-bottom: 0.5rem;
+                "
+              >
+                SEO Avancé
+              </h4>
+              <div
+                style="
+                  font-size: 1.5rem;
+                  font-weight: 800;
+                  color: var(--primary);
+                  margin-bottom: 1rem;
+                "
+              >
+                50 000 FCFA
+              </div>
+              <a href="contact.html?pack=seo" class="btn btn-outline btn-sm"
+                >Commander</a
+              >
+            </div>
+
+            <div
+              style="
+                background: linear-gradient(
+                  135deg,
+                  var(--gray-50) 0%,
+                  #fef3c7 100%
+                );
+                padding: 1.5rem;
+                border-radius: var(--radius-xl);
+                text-align: center;
+              "
+            >
+              <i
+                class="fas fa-paint-brush"
+                style="
+                  font-size: 2.5rem;
+                  color: var(--warning);
+                  margin-bottom: 1rem;
+                "
+              ></i>
+              <h4
+                style="
+                  font-weight: 700;
+                  color: var(--gray-900);
+                  margin-bottom: 0.5rem;
+                "
+              >
+                Création Logo
+              </h4>
+              <div
+                style="
+                  font-size: 1.5rem;
+                  font-weight: 800;
+                  color: var(--warning);
+                  margin-bottom: 1rem;
+                "
+              >
+                35 000 FCFA
+              </div>
+              <a href="contact.html?pack=logo" class="btn btn-outline btn-sm"
+                >Commander</a
+              >
+            </div>
+
+            <div
+              style="
+                background: linear-gradient(
+                  135deg,
+                  var(--gray-50) 0%,
+                  #dcfce7 100%
+                );
+                padding: 1.5rem;
+                border-radius: var(--radius-xl);
+                text-align: center;
+              "
+            >
+              <i
+                class="fas fa-sync-alt"
+                style="
+                  font-size: 2.5rem;
+                  color: var(--success);
+                  margin-bottom: 1rem;
+                "
+              ></i>
+              <h4
+                style="
+                  font-weight: 700;
+                  color: var(--gray-900);
+                  margin-bottom: 0.5rem;
+                "
+              >
+                Refonte Site
+              </h4>
+              <div
+                style="
+                  font-size: 1.5rem;
+                  font-weight: 800;
+                  color: var(--success);
+                  margin-bottom: 1rem;
+                "
+              >
+                80 000+ FCFA
+              </div>
+              <a href="contact.html?pack=refonte" class="btn btn-outline btn-sm"
+                >Commander</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Price Calculator -->
+    <section class="section-padding bg-light">
+      <div class="container">
+        <div style="max-width: 56rem; margin: 0 auto">
+          <div class="price-calculator">
+            <h2
+              style="
+                font-size: 2rem;
+                font-weight: 800;
+                color: var(--gray-900);
+                margin-bottom: 1rem;
+                text-align: center;
+              "
+            >
+              <i class="fas fa-calculator"></i>
+              Calculateur de Prix
+            </h2>
+            <p
+              style="
+                text-align: center;
+                color: var(--gray-600);
+                margin-bottom: 2rem;
+              "
+            >
+              Estimez le coût de votre projet en quelques clics
+            </p>
+
+            <div class="calculator-input">
+              <label>Type de site</label>
+              <select id="siteType">
+                <option value="0">-- Sélectionnez --</option>
+                <option value="100000">
+                  Site Vitrine Basic (100 000 FCFA)
+                </option>
+                <option value="200000">Site Vitrine Pro (200 000 FCFA)</option>
+                <option value="300000">
+                  E-Commerce Start-Up (300 000 FCFA)
+                </option>
+                <option value="500000">
+                  E-Commerce Business (500 000 FCFA)
+                </option>
+                <option value="80000">
+                  Blog/Portfolio Starter (80 000 FCFA)
+                </option>
+                <option value="150000">
+                  Blog/Portfolio Premium (150 000 FCFA)
+                </option>
+              </select>
+            </div>
+
+            <div class="calculator-input">
+              <label>Options additionnelles</label>
+              <select id="additionalOptions" multiple style="height: 120px">
+                <option value="50000">SEO Avancé (+50 000 FCFA)</option>
+                <option value="35000">Création Logo (+35 000 FCFA)</option>
+                <option value="30000">Chat en Direct (+30 000 FCFA)</option>
+                <option value="25000">Analytics Avancés (+25 000 FCFA)</option>
+              </select>
+              <small style="color: var(--gray-500); font-size: 0.75rem"
+                >Maintenez Ctrl pour sélectionner plusieurs options</small
+              >
+            </div>
+
+            <div class="calculator-input">
+              <label>Maintenance mensuelle</label>
+              <select id="maintenance">
+                <option value="0">Non merci</option>
+                <option value="15000">
+                  Oui, maintenance (+15 000 FCFA/mois)
+                </option>
+              </select>
+            </div>
+
+            <div class="calculator-input">
+              <label>Hébergement annuel</label>
+              <select id="hosting">
+                <option value="0">Non merci</option>
+                <option value="20000">
+                  Oui, hébergement (+20 000 FCFA/an)
+                </option>
+              </select>
+            </div>
+
+            <div class="calculator-result" id="calculatorResult">
+              <div style="font-size: 1.125rem; margin-bottom: 0.5rem">
+                Total Estimé
+              </div>
+              <div class="total" id="totalPrice">0 FCFA</div>
+              <div style="font-size: 0.875rem; opacity: 0.9" id="breakdown">
+                Sélectionnez vos options ci-dessus
+              </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 2rem">
+              <a href="contact.html#contactForm" class="btn btn-white btn-lg">
+                Demander un Devis Personnalisé
+                <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Payment Options -->
+    <section class="section-padding">
+      <div class="container">
+        <div class="section-header text-center">
+          <h2 class="section-title">Options de Paiement Flexibles</h2>
+          <p class="section-subtitle">
+            Nous facilitons le financement de votre projet digital
+          </p>
+        </div>
+
+        <div
+          style="display: grid; md:grid-template-columns: repeat(3, 1fr); gap: 2rem; max-width: 56rem; margin: 0 auto;"
+        >
+          <div
+            style="
+              background: white;
+              padding: 2rem;
+              border-radius: var(--radius-2xl);
+              box-shadow: var(--shadow-lg);
+              text-align: center;
+            "
+          >
+            <div
+              style="
+                width: 4rem;
+                height: 4rem;
+                background: linear-gradient(
+                  135deg,
+                  var(--primary) 0%,
+                  var(--secondary) 100%
+                );
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 0 auto 1rem;
+              "
+            >
+              <i
+                class="fas fa-credit-card"
+                style="font-size: 2rem; color: white"
+              ></i>
+            </div>
+            <h3
+              style="
+                font-weight: 700;
+                color: var(--gray-900);
+                margin-bottom: 0.5rem;
+              "
+            >
+              Paiement en 1 fois
+            </h3>
+            <p style="color: var(--gray-600); font-size: 0.875rem">
+              100% à la commande
+            </p>
+          </div>
+
+          <div
+            style="
+              background: white;
+              padding: 2rem;
+              border-radius: var(--radius-2xl);
+              box-shadow: var(--shadow-lg);
+              text-align: center;
+              border: 2px solid var(--success);
+            "
+          >
+            <div
+              style="
+                position: absolute;
+                top: -0.75rem;
+                left: 50%;
+                transform: translateX(-50%);
+                background: var(--success);
+                color: white;
+                padding: 0.25rem 1rem;
+                border-radius: var(--radius-full);
+                font-size: 0.75rem;
+                font-weight: 700;
+              "
+            >
+              POPULAIRE
+            </div>
+            <div
+              style="
+                width: 4rem;
+                height: 4rem;
+                background: linear-gradient(
+                  135deg,
+                  var(--success) 0%,
+                  #059669 100%
+                );
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 0 auto 1rem;
+              "
+            >
+              <i
+                class="fas fa-layer-group"
+                style="font-size: 2rem; color: white"
+              ></i>
+            </div>
+            <h3
+              style="
+                font-weight: 700;
+                color: var(--gray-900);
+                margin-bottom: 0.5rem;
+              "
+            >
+              Paiement en 2 fois
+            </h3>
+            <p style="color: var(--gray-600); font-size: 0.875rem">
+              50% à la commande, 50% à la livraison
+            </p>
+          </div>
+
+          <div
+            style="
+              background: white;
+              padding: 2rem;
+              border-radius: var(--radius-2xl);
+              box-shadow: var(--shadow-lg);
+              text-align: center;
+            "
+          >
+            <div
+              style="
+                width: 4rem;
+                height: 4rem;
+                background: linear-gradient(
+                  135deg,
+                  var(--warning) 0%,
+                  #d97706 100%
+                );
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 0 auto 1rem;
+              "
+            >
+              <i
+                class="fas fa-calendar-alt"
+                style="font-size: 2rem; color: white"
+              ></i>
+            </div>
+            <h3
+              style="
+                font-weight: 700;
+                color: var(--gray-900);
+                margin-bottom: 0.5rem;
+              "
+            >
+              Paiement en 3 fois
+            </h3>
+            <p style="color: var(--gray-600); font-size: 0.875rem">
+              Pour les projets > 150 000 FCFA<br />Sans frais supplémentaires
+            </p>
+          </div>
+        </div>
+
+        <div
+          style="
+            background: linear-gradient(135deg, #dbeafe 0%, #e0e7ff 100%);
+            padding: 2rem;
+            border-radius: var(--radius-2xl);
+            margin-top: 3rem;
+            max-width: 56rem;
+            margin-left: auto;
+            margin-right: auto;
+            border: 2px solid var(--primary);
+          "
+        >
+          <div style="text-align: center">
+            <i
+              class="fas fa-info-circle"
+              style="
+                font-size: 2rem;
+                color: var(--primary);
+                margin-bottom: 1rem;
+              "
+            ></i>
+            <h3
+              style="
+                font-weight: 700;
+                color: var(--gray-900);
+                margin-bottom: 1rem;
+              "
+            >
+              Modes de Paiement Acceptés
+            </h3>
+            <div
+              style="
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+                margin-bottom: 1rem;
+              "
+            >
+              <span
+                style="
+                  background: white;
+                  padding: 0.75rem 1.5rem;
+                  border-radius: var(--radius-lg);
+                  font-weight: 600;
+                  box-shadow: var(--shadow-md);
+                "
+              >
+                <i
+                  class="fas fa-money-bill-wave"
+                  style="color: var(--success)"
+                ></i>
+                Espèces
+              </span>
+              <span
+                style="
+                  background: white;
+                  padding: 0.75rem 1.5rem;
+                  border-radius: var(--radius-lg);
+                  font-weight: 600;
+                  box-shadow: var(--shadow-md);
+                "
+              >
+                <i class="fas fa-university" style="color: var(--primary)"></i>
+                Virement Bancaire
+              </span>
+              <span
+                style="
+                  background: white;
+                  padding: 0.75rem 1.5rem;
+                  border-radius: var(--radius-lg);
+                  font-weight: 600;
+                  box-shadow: var(--shadow-md);
+                "
+              >
+                <i class="fas fa-mobile-alt" style="color: var(--warning)"></i>
+                Mobile Money
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Pricing -->
+    <section class="section-padding bg-light">
+      <div class="container">
+        <div class="section-header text-center">
+          <h2 class="section-title">Questions Fréquentes sur les Tarifs</h2>
+        </div>
+
+        <div style="max-width: 56rem; margin: 0 auto; display: grid; gap: 1rem">
+          <div
+            style="
+              background: white;
+              padding: 1.5rem;
+              border-radius: var(--radius-xl);
+              box-shadow: var(--shadow-md);
+            "
+          >
+            <h4
+              style="
+                font-weight: 700;
+                color: var(--gray-900);
+                margin-bottom: 0.75rem;
+              "
+            >
+              <i
+                class="fas fa-question-circle"
+                style="color: var(--primary)"
+              ></i>
+              Les prix incluent-ils l'hébergement et le nom de domaine ?
+            </h4>
+            <p style="color: var(--gray-600)">
+              Non, l'hébergement (20 000 FCFA/an) et la maintenance (15 000
+              FCFA/mois) sont des services optionnels à ajouter selon vos
+              besoins.
+            </p>
+          </div>
+
+          <div
+            style="
+              background: white;
+              padding: 1.5rem;
+              border-radius: var(--radius-xl);
+              box-shadow: var(--shadow-md);
+            "
+          >
+            <h4
+              style="
+                font-weight: 700;
+                color: var(--gray-900);
+                margin-bottom: 0.75rem;
+              "
+            >
+              <i
+                class="fas fa-question-circle"
+                style="color: var(--primary)"
+              ></i>
+              Y a-t-il des frais cachés ?
+            </h4>
+            <p style="color: var(--gray-600)">
+              Aucun frais caché. Tous les prix sont transparents et communiqués
+              avant le début du projet. Ce que vous voyez est ce que vous payez.
+            </p>
+          </div>
+
+          <div
+            style="
+              background: white;
+              padding: 1.5rem;
+              border-radius: var(--radius-xl);
+              box-shadow: var(--shadow-md);
+            "
+          >
+            <h4
+              style="
+                font-weight: 700;
+                color: var(--gray-900);
+                margin-bottom: 0.75rem;
+              "
+            >
+              <i
+                class="fas fa-question-circle"
+                style="color: var(--primary)"
+              ></i>
+              Puis-je avoir un devis personnalisé ?
+            </h4>
+            <p style="color: var(--gray-600)">
+              Absolument ! Chaque projet est unique. Contactez-nous pour un
+              devis détaillé adapté à vos besoins spécifiques, gratuit et sans
+              engagement.
+            </p>
+          </div>
+
+          <div
+            style="
+              background: white;
+              padding: 1.5rem;
+              border-radius: var(--radius-xl);
+              box-shadow: var(--shadow-md);
+            "
+          >
+            <h4
+              style="
+                font-weight: 700;
+                color: var(--gray-900);
+                margin-bottom: 0.75rem;
+              "
+            >
+              <i
+                class="fas fa-question-circle"
+                style="color: var(--primary)"
+              ></i>
+              Que se passe-t-il après le paiement ?
+            </h4>
+            <p style="color: var(--gray-600)">
+              Nous commençons immédiatement votre projet. Vous recevez des mises
+              à jour régulières et pouvez suivre l'avancement à tout moment.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section section-padding">
+      <div class="container">
+        <div class="cta-content text-center">
+          <h2 class="cta-title">Prêt à Démarrer ?</h2>
+          <p class="cta-text">
+            Obtenez votre devis gratuit personnalisé en moins de 24h
+          </p>
+          <div class="cta-buttons">
+            <a href="contact.html#contactForm" class="btn btn-white btn-lg">
+              Demander un Devis Gratuit
+              <i class="fas fa-arrow-right"></i>
+            </a>
+            <a
+              href="https://wa.me/24166198918?text=Bonjour,%20je%20souhaite%20un%20devis%20pour%20mon%20projet%20web"
+              class="btn btn-outline-white btn-lg"
+              target="_blank"
+            >
+              <i class="fab fa-whatsapp"></i>
+              WhatsApp Direct
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-col">
+            <a href="index.html" class="footer-logo">
+              <span class="logo-m">M</span>
+              <span class="logo-g">G</span>
+              <span class="logo-n">N</span>
+              <div class="logo-text">
+                <span class="logo-codewave">CODEWAVE</span>
+                <span class="logo-tagline">Solutions Digitales</span>
+              </div>
+            </a>
+            <p class="footer-description">
+              Votre partenaire digital de confiance au Gabon. Nous transformons
+              vos idées en sites web performants et rentables.
+            </p>
+            <div class="footer-social">
+              <a href="#" class="social-link" aria-label="Facebook"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="#" class="social-link" aria-label="LinkedIn"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
+              <a href="#" class="social-link" aria-label="GitHub"
+                ><i class="fab fa-github"></i
+              ></a>
               <a
-                href="tel:+24174676741"
-                class="text-white"
-                aria-label="Appeler CodeWave"
-                ><i class="fa fa-phone-alt"></i
+                href="https://wa.me/24166198918"
+                class="social-link"
+                target="_blank"
+                aria-label="WhatsApp"
+                ><i class="fab fa-whatsapp"></i
               ></a>
             </div>
-            <div class="ps-3">
-              <h5 class="mb-1">Appelez-nous</h5>
-              <a href="tel:+24174676741" class="text-primary h5 mb-0"
-                >+241 74 67 67 41</a
-              >
-            </div>
           </div>
-        </div>
 
-        <div class="col-lg-5">
-          <div class="card bg-primary text-white h-100 p-4">
-            <form
-              action="https://formspree.io/f/mpweqqzz"
-              method="POST"
-              aria-label="Formulaire demande de devis"
-              name="Formulaire de Tarification"
-              novalidate
-            >
+          <div class="footer-col">
+            <h4>Services</h4>
+            <ul class="footer-links">
+              <li><a href="services.html#vitrines">Sites Vitrines</a></li>
+              <li><a href="services.html#ecommerce">E-Commerce</a></li>
+              <li><a href="services.html#blogs">Blogs & Portfolios</a></li>
+              <li><a href="services.html#maintenance">Maintenance</a></li>
+              <li>
+                <a href="services.html#additionnels">SEO & Référencement</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>Liens Rapides</h4>
+            <ul class="footer-links">
+              <li><a href="index.html">Accueil</a></li>
+              <li><a href="portfolio.html">Portfolio</a></li>
+              <li><a href="tarifs.html">Tarifs</a></li>
+              <li><a href="blog.html">Blog</a></li>
+              <li><a href="careers.html">Carrières</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>Newsletter</h4>
+            <p>Recevez nos conseils web</p>
+            <form class="newsletter-form" id="newsletterForm">
               <input
-                type="hidden"
-                name="_next"
-                value="https://codewave-psi.vercel.app/thanks.html"
+                type="email"
+                placeholder="Votre email"
+                required
+                aria-label="Email pour newsletter"
+                name="email"
               />
-              <div class="mb-3">
-                <input
-                  type="text"
-                  name="Nom et Prenom du Client"
-                  class="form-control form-control-lg bg-white border-0"
-                  placeholder="Nom et prénom"
-                  aria-label="Nom et prénom"
-                  required
-                />
-              </div>
-              <div class="mb-3">
-                <input
-                  type="email"
-                  name="L'email du Client"
-                  class="form-control form-control-lg bg-white border-0"
-                  placeholder="Adresse email"
-                  aria-label="Adresse email"
-                  required
-                />
-              </div>
-              <div class="mb-3">
-                <input
-                  type="text"
-                  name="Le numéro de téléphone du Client"
-                  class="form-control form-control-lg bg-white border-0"
-                  placeholder="Numéro de téléphone"
-                  aria-label="Numéro de téléphone"
-                  required
-                />
-              </div>
-              <div class="mb-3">
-                <select
-                  name="Le pack ou service souhaité"
-                  id="service-pack-select-form"
-                  class="form-select form-select-lg bg-white border-0"
-                  aria-label="Type de service"
-                  required
-                >
-                  <option value="" selected disabled>
-                    Sélectionnez le pack ou service
-                  </option>
-                  <option value="PACK VITRINE BASIC (145 000 XAF)">
-                    PACK VITRINE BASIC (145 000 XAF)
-                  </option>
-                  <option value="PACK VITRINE PRO (265 000 XAF)">
-                    PACK VITRINE PRO (265 000 XAF)
-                  </option>
-                  <option value="PACK E-COMMERCE START-UP (390 000 XAF)">
-                    PACK E-COMMERCE START-UP (390 000 XAF)
-                  </option>
-                  <option value="PACK E-COMMERCE BUSINESS (610 000 XAF)">
-                    PACK E-COMMERCE BUSINESS (610 000 XAF)
-                  </option>
-                  <option value="PACK PORTFOLIO/BLOG STARTER (125 000 XAF)">
-                    PACK PORTFOLIO/BLOG STARTER (125 000 XAF)
-                  </option>
-                  <option value="PACK PORTFOLIO/BLOG PREMIUM (210 000 XAF)">
-                    PACK PORTFOLIO/BLOG PREMIUM (210 000 XAF)
-                  </option>
-                  <option value="PACK HÉBERGEMENT ANNUEL (35 000 XAF/an)">
-                    PACK HÉBERGEMENT ANNUEL (35 000 XAF/an)
-                  </option>
-                  <option value="PACK MAINTENANCE MENSUELLE (20 000 XAF/mois)">
-                    PACK MAINTENANCE MENSUELLE (20 000 XAF/mois)
-                  </option>
-                  <option value="PROJET SUR MESURE / AUTRE">
-                    PROJET SUR MESURE / AUTRE
-                  </option>
-                </select>
-              </div>
-              <div class="mb-3">
-                <textarea
-                  name="Description du projet"
-                  class="form-control bg-white border-0"
-                  rows="4"
-                  placeholder="Décrivez votre projet (fonctionnalités, budget, délais)"
-                  aria-label="Description du projet"
-                  required
-                ></textarea>
-              </div>
-              <div>
-                <button type="submit" class="btn btn-dark w-100 py-3">
-                  Envoyer la demande
-                </button>
-              </div>
-              <input
-                type="hidden"
-                name="_next"
-                value="https://codewave-psi.vercel.app/thanks.html"
-              />
+              <button type="submit" aria-label="S'abonner">
+                <i class="fas fa-paper-plane"></i>
+              </button>
             </form>
+            <p class="newsletter-note">Pas de spam. Désabonnement facile.</p>
           </div>
         </div>
-      </section>
-    </main>
-    <!-- Pricing Plan End -->
 
-    <!-- Footer Start -->
-    <div
-      class="container-fluid bg-dark text-light mt-5 wow fadeInUp"
-      data-wow-delay="0.1s"
+        <div class="footer-bottom">
+          <p>
+            &copy; 2025 <strong>M.G.N CodeWave</strong>. Tous droits réservés.
+            ❤️ Fait avec amour au Gabon
+          </p>
+          <div class="footer-legal">
+            <a href="mentions-legales.html">Mentions Légales</a>
+            <a href="politique-confidentialite.html"
+              >Politique de Confidentialité</a
+            >
+            <a href="cgv.html">CGV</a>
+            <a href="plan-du-site.html">Plan du Site</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a
+      href="https://wa.me/24166198918?text=Bonjour,%20je%20souhaite%20discuter%20d'un%20projet%20web"
+      class="whatsapp-float"
+      target="_blank"
+      aria-label="Contact WhatsApp"
     >
-      <div class="container">
-        <div class="row gx-5">
-          <div class="col-lg-4 col-md-6 footer-about">
-            <div
-              class="d-flex flex-column align-items-center justify-content-center text-center h-100 bg-primary p-4"
-            >
-              <a
-                href="index.html"
-                class="navbar-brand d-flex align-items-center p-0"
-                aria-label="Accueil CodeWave"
-              >
-                <img
-                  src="img/logo/codewave.png"
-                  alt="Logo CodeWave"
-                  height="40"
-                  loading="lazy"
-                  class="me-2"
-                />
-                <span class="h5 m-0 fw-bold text-white">CodeWave</span>
-              </a>
-              <p class="mt-3 mb-4">
-                Votre partenaire Full-Stack à Libreville. Nous concevons des
-                sites web performants, modernes et optimisés pour la croissance
-                de votre entreprise au Gabon et en Afrique.
-              </p>
-            </div>
-          </div>
+      <i class="fab fa-whatsapp"></i>
+    </a>
 
-          <div class="col-lg-8 col-md-6">
-            <div class="row gx-5">
-              <div class="col-lg-4 col-md-12 pt-5 mb-5">
-                <div
-                  class="section-title section-title-sm position-relative pb-3 mb-4"
-                >
-                  <h3 class="text-light mb-0">Nous Contacter</h3>
-                </div>
-                <div class="d-flex mb-2">
-                  <i class="bi bi-geo-alt text-primary me-2"></i>
-                  <p class="mb-0">Libreville, Gabon</p>
-                </div>
-                <div class="d-flex mb-2">
-                  <i class="bi bi-envelope-open text-primary me-2"></i>
-                  <p class="mb-0">ngoubadjambo18@gmail.com</p>
-                </div>
-                <div class="d-flex mb-2">
-                  <i class="bi bi-telephone text-primary me-2"></i>
-                  <p class="mb-0">+241 74 67 67 41</p>
-                </div>
-                <div class="d-flex mt-4">
-                  <a
-                    class="btn btn-primary btn-square me-2"
-                    href="#"
-                    aria-label="Lien Facebook"
-                    ><i class="fab fa-facebook-f fw-normal"></i
-                  ></a>
-                  <a
-                    class="btn btn-primary btn-square me-2"
-                    href="#"
-                    aria-label="Lien LinkedIn"
-                    ><i class="fab fa-linkedin-in fw-normal"></i
-                  ></a>
-                  <a
-                    class="btn btn-primary btn-square"
-                    href="https://wa.me/24174676741"
-                    target="_blank"
-                    aria-label="Lien WhatsApp"
-                    ><i class="fab fa-whatsapp fw-normal"></i
-                  ></a>
-                </div>
-              </div>
+    <!-- JavaScript -->
+    <script src="assets/js/main.js"></script>
+    <script>
+      // Price Calculator
+      function updatePrice() {
+        const siteType =
+          parseInt(document.getElementById("siteType").value) || 0;
+        const maintenance =
+          parseInt(document.getElementById("maintenance").value) || 0;
+        const hosting = parseInt(document.getElementById("hosting").value) || 0;
 
-              <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
-                <div
-                  class="section-title section-title-sm position-relative pb-3 mb-4"
-                >
-                  <h3 class="text-light mb-0">Liens Utiles</h3>
-                </div>
-                <div
-                  class="link-animated d-flex flex-column justify-content-start"
-                >
-                  <a class="text-light mb-2" href="index.html"
-                    ><i class="bi bi-arrow-right text-primary me-2"></i
-                    >Accueil</a
-                  >
-                  <a class="text-light mb-2" href="mentions-legale.html"
-                    ><i class="bi bi-arrow-right text-primary me-2"></i>Mentions
-                    Légales</a
-                  >
-                  <a class="text-light mb-2" href="cgu.html"
-                    ><i class="bi bi-arrow-right text-primary me-2"></i
-                    >Condition Générales d'Utilisation</a
-                  >
-                  <a class="text-light mb-2" href="about.html"
-                    ><i class="bi bi-arrow-right text-primary me-2"></i>À
-                    Propos</a
-                  >
-                  <a class="text-light mb-2" href="service.html"
-                    ><i class="bi bi-arrow-right text-primary me-2"></i>Nos
-                    Services</a
-                  >
-                  <a class="text-light mb-2" href="devis.html"
-                    ><i class="bi bi-arrow-right text-primary me-2"></i>Demander
-                    un Devis</a
-                  >
-                  <a class="text-light" href="contact.html"
-                    ><i class="bi bi-arrow-right text-primary me-2"></i
-                    >Contact</a
-                  >
-                </div>
-              </div>
+        const options = document.getElementById("additionalOptions");
+        let additionalCost = 0;
+        for (let option of options.selectedOptions) {
+          additionalCost += parseInt(option.value);
+        }
 
-              <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
-                <div
-                  class="section-title section-title-sm position-relative pb-3 mb-4"
-                >
-                  <h3 class="text-light mb-0">Nos Services Clés</h3>
-                </div>
-                <div
-                  class="link-animated d-flex flex-column justify-content-start"
-                >
-                  <a class="text-light mb-2" href="service.html#vitrine"
-                    ><i class="bi bi-arrow-right text-primary me-2"></i>Sites
-                    Web Vitrines</a
-                  >
-                  <a class="text-light mb-2" href="service.html#ecommerce"
-                    ><i class="bi bi-arrow-right text-primary me-2"></i
-                    >Plateformes E-commerce</a
-                  >
-                  <a class="text-light mb-2" href="service.html#blog"
-                    ><i class="bi bi-arrow-right text-primary me-2"></i>Blogs &
-                    Portfolios</a
-                  >
-                  <a class="text-light mb-2" href="service.html#maintenance"
-                    ><i class="bi bi-arrow-right text-primary me-2"></i
-                    >Maintenance & Hébergement</a
-                  >
-                  <a class="text-light mb-2" href="service.html#seo"
-                    ><i class="bi bi-arrow-right text-primary me-2"></i
-                    >Optimisation SEO</a
-                  >
-                  <a class="text-light" href="tarifs.html"
-                    ><i class="bi bi-arrow-right text-primary me-2"></i>Voir Nos
-                    Tarifs</a
-                  >
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="container-fluid text-white" style="background: #061429">
-      <div class="container text-center">
-        <div class="row justify-content-end">
-          <div class="col-lg-8 col-md-6">
-            <div
-              class="d-flex align-items-center justify-content-center"
-              style="height: 75px"
-            >
-              <p class="mb-0">
-                &copy;
-                <a class="text-white border-bottom" href="index.html"
-                  >M.G.N CodeWave</a
-                >, 2025. Tous Droits Réservés.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Footer End -->
+        const total = siteType + additionalCost + maintenance + hosting;
 
-    <!-- Back to Top -->
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded back-to-top"
-      ><i class="bi bi-arrow-up"></i
-    ></a>
+        document.getElementById("totalPrice").textContent =
+          total.toLocaleString("fr-FR") + " FCFA";
 
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/wow/wow.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/counterup/counterup.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+        if (total > 0) {
+          let breakdown = "Inclut : ";
+          const parts = [];
+          if (siteType > 0) parts.push("Site");
+          if (additionalCost > 0) parts.push("Options");
+          if (maintenance > 0) parts.push("Maintenance");
+          if (hosting > 0) parts.push("Hébergement");
+          breakdown += parts.join(" + ");
+          document.getElementById("breakdown").textContent = breakdown;
+        }
+      }
 
-    <!-- Template Javascript -->
-    <script src="js/main.js"></script>
+      document
+        .getElementById("siteType")
+        .addEventListener("change", updatePrice);
+      document
+        .getElementById("additionalOptions")
+        .addEventListener("change", updatePrice);
+      document
+        .getElementById("maintenance")
+        .addEventListener("change", updatePrice);
+      document
+        .getElementById("hosting")
+        .addEventListener("change", updatePrice);
+    </script>
   </body>
 </html>

@@ -1,670 +1,675 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="fr">
   <head>
-    <meta charset="utf-8" />
-    <title>
-      Portfolio CodeWave | Nos Réalisations de Sites Web à Libreville, Gabon
-    </title>
-
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
-      content="portfolio développeur web gabon, références sites web libreville, projets e-commerce, réalisations sites vitrine, exemples de sites code wave"
-      name="keywords"
-    />
-
-    <meta
-      content="Découvrez le portfolio de CodeWave : nos dernières réalisations de sites web vitrines et e-commerce pour PME et entrepreneurs au Gabon. Preuves de notre expertise et qualité."
       name="description"
+      content="Portfolio CodeWave - Découvrez nos réalisations de sites web au Gabon. Sites vitrines, e-commerce, blogs créés pour des entreprises gabonaises."
     />
+    <title>Portfolio - CodeWave | Nos Réalisations Web au Gabon</title>
 
-    <link href="img/logo/codewave.png" rel="icon" />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="icon" type="image/png" href="assets/images/logo/codewave.png" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/responsive.css" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Rubik:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
       rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
 
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
-    <link href="lib/animate/animate.min.css" rel="stylesheet" />
+    <style>
+      .portfolio-filters {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+        margin-bottom: 3rem;
+      }
 
-    <link href="css/bootstrap.min.css" rel="stylesheet" />
+      .portfolio-filter {
+        padding: 0.75rem 1.5rem;
+        border-radius: var(--radius-full);
+        font-weight: 600;
+        font-size: 0.875rem;
+        background: white;
+        color: var(--gray-700);
+        border: 2px solid var(--gray-200);
+        cursor: pointer;
+        transition: var(--transition);
+      }
 
-    <link href="css/style.css" rel="stylesheet" />
-    <link rel="stylesheet" href="css/improvements.css" />
+      .portfolio-filter:hover {
+        border-color: var(--primary);
+        color: var(--primary);
+      }
+
+      .portfolio-filter.active {
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--secondary) 100%
+        );
+        color: white;
+        border-color: transparent;
+        box-shadow: var(--shadow-lg);
+      }
+
+      .portfolio-item {
+        transition: var(--transition);
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      .portfolio-item.hidden {
+        opacity: 0;
+        transform: scale(0.8);
+        height: 0;
+        overflow: hidden;
+        margin: 0;
+      }
+    </style>
   </head>
-
   <body>
-    <!-- Spinner Start -->
-    <div
-      id="spinner"
-      class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center"
-    >
-      <div class="spinner"></div>
-    </div>
-    <!-- Spinner End -->
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+      <div class="container">
+        <div class="nav-wrapper">
+          <a href="index.html" class="logo">
+            <img
+              src="assets/images/logo/codewave.png"
+              alt="Profil M.G.N CodeWave"
+              class="logo-image"
+            />
+          </a>
 
-    <!-- Topbar Start -->
-    <div class="container-fluid bg-dark px-5 d-none d-lg-block">
-      <div class="row gx-0">
-        <div class="col-lg-8 text-center text-lg-start mb-2 mb-lg-0">
-          <div class="d-inline-flex align-items-center" style="height: 45px">
-            <small class="me-3 text-light"
-              ><i class="fa fa-map-marker-alt me-2"></i>Libreville, Gabon</small
-            >
-            <small class="me-3 text-light"
-              ><i class="fa fa-phone-alt me-2"></i>+241 74 67 67 41</small
-            >
-            <small class="text-light"
-              ><i class="fa fa-envelope-open me-2"></i
-              >ngoubadjambo18@gmail.com</small
-            >
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Topbar End -->
+          <ul class="nav-menu" id="navMenu">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="tarifs.html">Tarifs</a></li>
+            <li><a href="portfolio.html" class="active">Portfolio</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="a-propos.html">À Propos</a></li>
+            <li><a href="careers.html">Carrières</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
 
-    <!-- Navbar Start -->
-    <header class="container-fluid position-relative p-0" role="banner">
-      <nav
-        class="navbar navbar-expand-lg navbar-dark px-3 px-lg-5 py-3 py-lg-0"
-        aria-label="Navigation principale"
-      >
-        <a
-          href="index.html"
-          class="navbar-brand d-flex align-items-center p-0"
-          aria-label="Accueil CodeWave"
-        >
-          <img
-            src="img/logo/codewave.png"
-            alt="Logo CodeWave"
-            height="40"
-            loading="lazy"
-            class="me-2"
-          />
-          <span class="h5 m-0 fw-bold text-white">CodeWave</span>
-        </a>
-
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarCollapse"
-          aria-controls="navbarCollapse"
-          aria-expanded="false"
-          aria-label="Basculer la navigation"
-        >
-          <span class="fa fa-bars" aria-hidden="true"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-          <div class="navbar-nav ms-auto py-0">
-            <a href="index.html" class="nav-item nav-link">Accueil</a>
-            <a href="service.html" class="nav-item nav-link" aria-current="page"
-              >Services</a
-            >
-
-            <a href="portfolio.html" class="nav-item nav-link active"
-              >Portfolio</a
-            >
-
-            <div class="nav-item dropdown">
-              <a
-                href="#"
-                class="nav-link dropdown-toggle"
-                data-bs-toggle="dropdown"
-                role="button"
-                aria-expanded="false"
-                >Ressources</a
-              >
-              <ul class="dropdown-menu m-0">
-                <li><a href="about.html" class="dropdown-item">À Propos</a></li>
-                <li>
-                  <a href="tarifs.html" class="dropdown-item">Tarifs & Devis</a>
-                </li>
-              </ul>
-            </div>
-
-            <a href="contact.html" class="nav-item nav-link">Contact</a>
-          </div>
-
-          <a href="tarifs.html" class="btn btn-primary py-2 px-4 ms-3"
-            >Demander un Devis</a
-          >
-        </div>
-      </nav>
-
-      <div
-        class="container-fluid bg-primary py-5 bg-header"
-        style="margin-bottom: 90px"
-      >
-        <div class="row py-5">
-          <div class="col-12 pt-lg-5 mt-lg-5 text-center">
-            <h1 class="display-4 text-white animated zoomIn">Portfolio</h1>
-            <a href="" class="h5 text-white">Accueil</a>
-            <i class="far fa-circle text-white px-2"></i>
-            <a href="" class="h5 text-white">Portfolio</a>
-          </div>
-        </div>
-      </div>
-    </header>
-    <!-- Navbar End -->
-
-    <!-- Portfolio Start -->
-    <main class="container py-5">
-      <header
-        class="section-title text-center position-relative pb-3 mb-5 mx-auto"
-        style="max-width: 600px"
-      >
-        <h5 class="fw-bold text-primary text-uppercase">Notre Portfolio</h5>
-        <h2 class="mb-0">
-          Exemples récents de sites réalisés pour des entreprises au Gabon
-        </h2>
-      </header>
-
-      <div class="row mb-4">
-        <div class="col-12 text-center">
-          <div
-            class="btn-group flex-wrap"
-            role="tablist"
-            aria-label="Filtres portfolio"
-          >
-            <button
-              class="btn btn-outline-primary active"
-              data-filter="*"
-              role="button"
-              aria-pressed="true"
-            >
-              Tout
-            </button>
-            <button
-              class="btn btn-outline-primary"
-              data-filter=".vitrine"
-              role="button"
-              aria-pressed="false"
-            >
-              Sites Vitrine
-            </button>
-            <button
-              class="btn btn-outline-primary"
-              data-filter=".ecommerce"
-              role="button"
-              aria-pressed="false"
-            >
-              E-commerce
-            </button>
-            <button
-              class="btn btn-outline-primary"
-              data-filter=".outils-professionnels"
-              role="button"
-              aria-pressed="false"
-            >
-              Outils Professionnels
-            </button>
-            <button
-              class="btn btn-outline-primary"
-              data-filter=".blog"
-              role="button"
-              aria-pressed="false"
-            >
-              Blogs & Portfolios
+          <div class="nav-cta">
+            <a href="contact.html" class="btn btn-primary">Devis Gratuit</a>
+            <button class="menu-toggle" id="menuToggle">
+              <span></span>
+              <span></span>
+              <span></span>
             </button>
           </div>
         </div>
       </div>
+    </nav>
 
-      <div class="row g-4 portfolio-container">
-        <figure
-          class="col-lg-4 col-md-6 portfolio-item outils-professionnels wow fadeInUp"
-          data-wow-delay="0.1s"
-        >
-          <div class="card portfolio-inner shadow-sm">
-            <img
-              src="img/portfolio/lms3.png"
-              class="card-img-top img-fluid"
-              alt="Système de Gestion des Prospect (LMS) - Outils Professionnel"
-              loading="lazy"
-            />
-            <figcaption class="card-body portfolio-text bg-light p-4">
-              <h4 class="text-primary mb-1">
-                Système de Gestion des Prospect (LMS)
-              </h4>
-              <p class="text-secondary mb-3">Outils Professionnel</p>
-              <div class="d-flex gap-2">
-                <a
-                  class="btn btn-outline-primary btn-sm"
-                  href="img/portfolio/lms3.png"
-                  data-lightbox="portfolio"
-                  aria-label="Aperçu Rénovation Plus"
-                  ><i class="bi bi-eye"></i> Aperçu</a
-                >
-                <a
-                  class="btn btn-outline-secondary btn-sm"
-                  href="lms-details.html"
-                  aria-label="Voir Système de Gestion des Prospect (LMS) en ligne"
-                  ><i class="bi bi-link"></i> Voir</a
-                >
-              </div>
-            </figcaption>
-          </div>
-        </figure>
-        <figure
-          class="col-lg-4 col-md-6 portfolio-item vitrine wow fadeInUp"
-          data-wow-delay="0.1s"
-        >
-          <div class="card portfolio-inner shadow-sm">
-            <img
-              src="img/portfolio-1.jpg"
-              class="card-img-top img-fluid"
-              alt="Rénovation Plus - site vitrine"
-              loading="lazy"
-            />
-            <figcaption class="card-body portfolio-text bg-light p-4">
-              <h4 class="text-primary mb-1">Rénovation Plus</h4>
-              <p class="text-secondary mb-3">Site Vitrine & Galerie</p>
-              <div class="d-flex gap-2">
-                <a
-                  class="btn btn-outline-primary btn-sm"
-                  href="img/portfolio-1.jpg"
-                  data-lightbox="portfolio"
-                  aria-label="Aperçu Rénovation Plus"
-                  ><i class="bi bi-eye"></i> Aperçu</a
-                >
-                <a
-                  class="btn btn-outline-secondary btn-sm"
-                  href="portfolio-detail.html"
-                  aria-label="Voir Rénovation Plus en ligne"
-                  ><i class="bi bi-link"></i> Voir</a
-                >
-              </div>
-            </figcaption>
-          </div>
-        </figure>
-
-        <figure
-          class="col-lg-4 col-md-6 portfolio-item ecommerce wow fadeInUp"
-          data-wow-delay="0.15s"
-        >
-          <div class="card portfolio-inner shadow-sm">
-            <img
-              src="img/portfolio-2.jpg"
-              class="card-img-top img-fluid"
-              alt="Gabon Chic - boutique en ligne"
-              loading="lazy"
-            />
-            <figcaption class="card-body portfolio-text bg-light p-4">
-              <h4 class="text-primary mb-1">Gabon Chic</h4>
-              <p class="text-secondary mb-3">Boutique en Ligne</p>
-              <div class="d-flex gap-2">
-                <a
-                  class="btn btn-outline-primary btn-sm"
-                  href="img/portfolio-2.jpg"
-                  data-lightbox="portfolio"
-                  aria-label="Aperçu Gabon Chic"
-                  ><i class="bi bi-eye"></i> Aperçu</a
-                >
-                <a
-                  class="btn btn-outline-secondary btn-sm"
-                  href="#"
-                  aria-label="Voir Gabon Chic en ligne"
-                  ><i class="bi bi-link"></i> Voir</a
-                >
-              </div>
-            </figcaption>
-          </div>
-        </figure>
-
-        <figure
-          class="col-lg-4 col-md-6 portfolio-item blog wow fadeInUp"
-          data-wow-delay="0.2s"
-        >
-          <div class="card portfolio-inner shadow-sm">
-            <img
-              src="img/portfolio-3.jpg"
-              class="card-img-top img-fluid"
-              alt="L'Œil de Libreville - portfolio photographe"
-              loading="lazy"
-            />
-            <figcaption class="card-body portfolio-text bg-light p-4">
-              <h4 class="text-primary mb-1">L'Œil de Libreville</h4>
-              <p class="text-secondary mb-3">Portfolio & Blog</p>
-              <div class="d-flex gap-2">
-                <a
-                  class="btn btn-outline-primary btn-sm"
-                  href="img/portfolio-3.jpg"
-                  data-lightbox="portfolio"
-                  aria-label="Aperçu L'Œil de Libreville"
-                  ><i class="bi bi-eye"></i> Aperçu</a
-                >
-                <a
-                  class="btn btn-outline-secondary btn-sm"
-                  href="#"
-                  aria-label="Voir L'Œil de Libreville en ligne"
-                  ><i class="bi bi-link"></i> Voir</a
-                >
-              </div>
-            </figcaption>
-          </div>
-        </figure>
-
-        <figure
-          class="col-lg-4 col-md-6 portfolio-item vitrine wow fadeInUp"
-          data-wow-delay="0.25s"
-        >
-          <div class="card portfolio-inner shadow-sm">
-            <img
-              src="img/portfolio-4.jpg"
-              class="card-img-top img-fluid"
-              alt="Logistics Rapide - site vitrine service"
-              loading="lazy"
-            />
-            <figcaption class="card-body portfolio-text bg-light p-4">
-              <h4 class="text-primary mb-1">Logistics Rapide</h4>
-              <p class="text-secondary mb-3">Site Vitrine Service</p>
-              <div class="d-flex gap-2">
-                <a
-                  class="btn btn-outline-primary btn-sm"
-                  href="img/portfolio-4.jpg"
-                  data-lightbox="portfolio"
-                  aria-label="Aperçu Logistics Rapide"
-                  ><i class="bi bi-eye"></i> Aperçu</a
-                >
-                <a
-                  class="btn btn-outline-secondary btn-sm"
-                  href="#"
-                  aria-label="Voir Logistics Rapide"
-                  ><i class="bi bi-link"></i> Voir</a
-                >
-              </div>
-            </figcaption>
-          </div>
-        </figure>
-
-        <figure
-          class="col-lg-4 col-md-6 portfolio-item ecommerce wow fadeInUp"
-          data-wow-delay="0.3s"
-        >
-          <div class="card portfolio-inner shadow-sm">
-            <img
-              src="img/portfolio-5.jpg"
-              class="card-img-top img-fluid"
-              alt="MarketPlace Gabon - plateforme multi-vendeurs"
-              loading="lazy"
-            />
-            <figcaption class="card-body portfolio-text bg-light p-4">
-              <h4 class="text-primary mb-1">MarketPlace Gabon</h4>
-              <p class="text-secondary mb-3">Plateforme Multi-vendeurs</p>
-              <div class="d-flex gap-2">
-                <a
-                  class="btn btn-outline-primary btn-sm"
-                  href="img/portfolio-5.jpg"
-                  data-lightbox="portfolio"
-                  aria-label="Aperçu MarketPlace Gabon"
-                  ><i class="bi bi-eye"></i> Aperçu</a
-                >
-                <a
-                  class="btn btn-outline-secondary btn-sm"
-                  href="#"
-                  aria-label="Voir MarketPlace Gabon"
-                  ><i class="bi bi-link"></i> Voir</a
-                >
-              </div>
-            </figcaption>
-          </div>
-        </figure>
-
-        <figure
-          class="col-lg-4 col-md-6 portfolio-item vitrine wow fadeInUp"
-          data-wow-delay="0.35s"
-        >
-          <div class="card portfolio-inner shadow-sm">
-            <img
-              src="img/portfolio-6.jpg"
-              class="card-img-top img-fluid"
-              alt="Vision Conseils - site corporate"
-              loading="lazy"
-            />
-            <figcaption class="card-body portfolio-text bg-light p-4">
-              <h4 class="text-primary mb-1">Vision Conseils</h4>
-              <p class="text-secondary mb-3">Site Corporate</p>
-              <div class="d-flex gap-2">
-                <a
-                  class="btn btn-outline-primary btn-sm"
-                  href="img/portfolio-6.jpg"
-                  data-lightbox="portfolio"
-                  aria-label="Aperçu Vision Conseils"
-                  ><i class="bi bi-eye"></i> Aperçu</a
-                >
-                <a
-                  class="btn btn-outline-secondary btn-sm"
-                  href="#"
-                  aria-label="Voir Vision Conseils"
-                  ><i class="bi bi-link"></i> Voir</a
-                >
-              </div>
-            </figcaption>
-          </div>
-        </figure>
+    <!-- Page Header -->
+    <section class="page-header">
+      <div class="page-header-media" data-mode="image">
+        <div
+          class="page-header-image"
+          style="
+            background-image: url('https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=1600&q=80');
+          "
+        ></div>
+        <div class="page-header-overlay"></div>
       </div>
-
-      <div class="col-12 text-center mt-5">
-        <p class="mb-0 text-muted">
-          Ces exemples représentent une partie de nos travaux.
-          <a class="text-primary fw-bold" href="https://wa.me/24174676741"
-            >Contactez-nous</a
-          >
-          pour parler de votre projet.
+      <div class="container">
+        <div class="breadcrumb">
+          <a href="index.html">Accueil</a>
+          <span>/</span>
+          <span>Portfolio</span>
+        </div>
+        <h1 class="page-title">Nos Réalisations</h1>
+        <p class="page-subtitle">
+          Découvrez des projets qui ont transformé des entreprises gabonaises
         </p>
       </div>
-    </main>
-    <!-- Portfolio End -->
+    </section>
 
-    <!-- Footer Start -->
-    <div
-      class="container-fluid bg-dark text-light mt-5 wow fadeInUp"
-      data-wow-delay="0.1s"
+    <!-- Stats Section -->
+    <section
+      class="section-padding"
+      style="
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+        background: var(--gray-50);
+      "
     >
       <div class="container">
-        <div class="row gx-5">
-          <div class="col-lg-4 col-md-6 footer-about">
+        <div
+          style="
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+          "
+        >
+          <div>
             <div
-              class="d-flex flex-column align-items-center justify-content-center text-center h-100 bg-primary p-4"
+              style="
+                font-size: 3rem;
+                font-weight: 800;
+                color: var(--primary);
+                margin-bottom: 0.5rem;
+              "
             >
+              50+
+            </div>
+            <div style="color: var(--gray-600); font-weight: 600">
+              Projets Réalisés
+            </div>
+          </div>
+          <div>
+            <div
+              style="
+                font-size: 3rem;
+                font-weight: 800;
+                color: var(--success);
+                margin-bottom: 0.5rem;
+              "
+            >
+              20+
+            </div>
+            <div style="color: var(--gray-600); font-weight: 600">
+              Clients Satisfaits
+            </div>
+          </div>
+          <div>
+            <div
+              style="
+                font-size: 3rem;
+                font-weight: 800;
+                color: var(--secondary);
+                margin-bottom: 0.5rem;
+              "
+            >
+              2+
+            </div>
+            <div style="color: var(--gray-600); font-weight: 600">
+              Années d'Expérience
+            </div>
+          </div>
+          <div>
+            <div
+              style="
+                font-size: 3rem;
+                font-weight: 800;
+                color: var(--warning);
+                margin-bottom: 0.5rem;
+              "
+            >
+              100%
+            </div>
+            <div style="color: var(--gray-600); font-weight: 600">
+              Satisfaction Client
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio Grid -->
+    <section class="section-padding">
+      <div class="container">
+        <!-- Filters -->
+        <div class="portfolio-filters">
+          <button class="portfolio-filter active" data-category="all">
+            <i class="fas fa-th"></i> Tous les Projets
+          </button>
+          <button class="portfolio-filter" data-category="ecommerce">
+            <i class="fas fa-shopping-cart"></i> E-Commerce
+          </button>
+          <button class="portfolio-filter" data-category="vitrine">
+            <i class="fas fa-desktop"></i> Sites Vitrines
+          </button>
+          <button class="portfolio-filter" data-category="portfolio">
+            <i class="fas fa-palette"></i> Portfolios
+          </button>
+          <button class="portfolio-filter" data-category="blog">
+            <i class="fas fa-blog"></i> Blogs
+          </button>
+          <button class="portfolio-filter" data-category="application">
+            <i class="fas fa-code"></i> Applications
+          </button>
+        </div>
+
+        <!-- Portfolio Items -->
+        <div class="portfolio-grid">
+          <!-- Waz'UP -->
+          <div class="portfolio-item" data-category="application">
+            <div
+              class="portfolio-image"
+              style="
+                background: linear-gradient(135deg, #1d4ed8 0%, #06b6d4 100%);
+              "
+            >
+              <div class="portfolio-overlay">
+                <h4>Waz'UP</h4>
+                <p>Super-app Flutter</p>
+                <a href="portfolio/wazup-details.html" class="portfolio-link">
+                  <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+            <div class="portfolio-info">
+              <div class="portfolio-tag">Application mobile</div>
+              <div class="portfolio-result">
+                <i class="fas fa-bolt"></i>
+                <span>E-commerce & livraison</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- H2P Group -->
+          <div class="portfolio-item" data-category="vitrine">
+            <div
+              class="portfolio-image"
+              style="
+                background: linear-gradient(135deg, #8b5cf6 0%, #c084fc 100%);
+              "
+            >
+              <div class="portfolio-overlay">
+                <h4>H2P Group</h4>
+                <p>Site & Identité</p>
+                <a href="portfolio/h2p-details.html" class="portfolio-link">
+                  <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+            <div class="portfolio-info">
+              <div class="portfolio-tag">Site vitrine</div>
+              <div class="portfolio-result">
+                <i class="fas fa-calendar-check"></i>
+                <span>Prise de RDV</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- MGN CodeWave -->
+          <div class="portfolio-item" data-category="portfolio">
+            <div
+              class="portfolio-image"
+              style="
+                background: linear-gradient(135deg, #111827 0%, #1f2937 100%);
+              "
+            >
+              <div class="portfolio-overlay">
+                <h4>MGN CodeWave</h4>
+                <p>Studio digital</p>
+                <a
+                  href="portfolio/mgn-codewave-details.html"
+                  class="portfolio-link"
+                >
+                  <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+            <div class="portfolio-info">
+              <div class="portfolio-tag">Identité</div>
+              <div class="portfolio-result">
+                <i class="fas fa-swatchbook"></i>
+                <span>Design system</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Le Bon Waz -->
+          <div class="portfolio-item" data-category="ecommerce">
+            <div
+              class="portfolio-image"
+              style="
+                background: linear-gradient(135deg, #f97316 0%, #f59e0b 100%);
+              "
+            >
+              <div class="portfolio-overlay">
+                <h4>Le Bon Waz</h4>
+                <p>Plateforme e-commerce</p>
+                <a
+                  href="portfolio/lebonwaz-details.html"
+                  class="portfolio-link"
+                >
+                  <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+            <div class="portfolio-info">
+              <div class="portfolio-tag">E-Commerce</div>
+              <div class="portfolio-result">
+                <i class="fas fa-store"></i>
+                <span>Catalogue dynamique</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Lampe À Mes Pieds -->
+          <div class="portfolio-item" data-category="vitrine">
+            <div
+              class="portfolio-image"
+              style="
+                background: linear-gradient(135deg, #f87171 0%, #ef4444 100%);
+              "
+            >
+              <div class="portfolio-overlay">
+                <h4>Lampe À Mes Pieds</h4>
+                <p>Site éditorial</p>
+                <a href="portfolio/lamp-details.html" class="portfolio-link">
+                  <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+            <div class="portfolio-info">
+              <div class="portfolio-tag">Site web</div>
+              <div class="portfolio-result">
+                <i class="fas fa-book-open"></i>
+                <span>Collections</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- English Fun Club -->
+          <div class="portfolio-item" data-category="vitrine">
+            <div
+              class="portfolio-image"
+              style="
+                background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+              "
+            >
+              <div class="portfolio-overlay">
+                <h4>English Fun Club</h4>
+                <p>Plateforme e-learning</p>
+                <a
+                  href="portfolio/englishfunclub-details.html"
+                  class="portfolio-link"
+                >
+                  <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+            <div class="portfolio-info">
+              <div class="portfolio-tag">Site web</div>
+              <div class="portfolio-result">
+                <i class="fas fa-graduation-cap"></i>
+                <span>Apprentissage</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Découvre qui tu es -->
+          <div class="portfolio-item" data-category="application">
+            <div
+              class="portfolio-image"
+              style="
+                background: linear-gradient(135deg, #0ea5e9 0%, #38bdf8 100%);
+              "
+            >
+              <div class="portfolio-overlay">
+                <h4>Découvre qui tu es</h4>
+                <p>Expérience interactive</p>
+                <a
+                  href="portfolio/decouvre-details.html"
+                  class="portfolio-link"
+                >
+                  <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+            <div class="portfolio-info">
+              <div class="portfolio-tag">Application</div>
+              <div class="portfolio-result">
+                <i class="fas fa-user-circle"></i>
+                <span>Tests de profils</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Projet Booki -->
+          <div class="portfolio-item" data-category="vitrine">
+            <div
+              class="portfolio-image"
+              style="
+                background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+              "
+            >
+              <div class="portfolio-overlay">
+                <h4>Projet Booki</h4>
+                <p>Prototype réservation</p>
+                <a href="portfolio/booki-details.html" class="portfolio-link">
+                  <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+            <div class="portfolio-info">
+              <div class="portfolio-tag">Site web</div>
+              <div class="portfolio-result">
+                <i class="fas fa-bed"></i>
+                <span>Portail hôtelier</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Grâce Déployée -->
+          <div class="portfolio-item" data-category="vitrine">
+            <div
+              class="portfolio-image"
+              style="
+                background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
+              "
+            >
+              <div class="portfolio-overlay">
+                <h4>Grâce Déployée</h4>
+                <p>Site communautaire</p>
+                <a
+                  href="portfolio/gracedeploye-details.html"
+                  class="portfolio-link"
+                >
+                  <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+            <div class="portfolio-info">
+              <div class="portfolio-tag">Site web</div>
+              <div class="portfolio-result">
+                <i class="fas fa-hand-holding-heart"></i>
+                <span>Agenda & sermons</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- API Airtel Money -->
+          <div class="portfolio-item" data-category="application">
+            <div
+              class="portfolio-image"
+              style="
+                background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+              "
+            >
+              <div class="portfolio-overlay">
+                <h4>API Airtel Money</h4>
+                <p>Documentation</p>
+                <a href="portfolio/api-airtel.html" class="portfolio-link">
+                  <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+            <div class="portfolio-info">
+              <div class="portfolio-tag">API</div>
+              <div class="portfolio-result">
+                <i class="fas fa-code"></i>
+                <span>Guide intégration</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- LMS Platform -->
+          <div class="portfolio-item" data-category="application">
+            <div
+              class="portfolio-image"
+              style="
+                background: linear-gradient(135deg, #0f766e 0%, #14b8a6 100%);
+              "
+            >
+              <div class="portfolio-overlay">
+                <h4>LMS Platform</h4>
+                <p>Leads management</p>
+                <a
+                  href="portfolio/gestion-prospects-details.html"
+                  class="portfolio-link"
+                >
+                  <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+            <div class="portfolio-info">
+              <div class="portfolio-tag">Application</div>
+              <div class="portfolio-result">
+                <i class="fas fa-chart-line"></i>
+                <span>Prospection</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section section-padding">
+      <div class="container">
+        <div class="cta-content text-center">
+          <h2 class="cta-title">Votre Projet Sera Le Prochain !</h2>
+          <p class="cta-text">
+            Discutons de votre idée et créons ensemble quelque chose
+            d'extraordinaire
+          </p>
+          <div class="cta-buttons">
+            <a
+              href="https://wa.me/24166198918?text=Bonjour,%20je%20souhaite%20discuter%20d'un%20projet%20web"
+              class="btn btn-white btn-lg"
+            >
+              Démarrer Mon Projet
+              <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-col">
+            <a href="index.html" class="footer-logo">
+              <span class="logo-m">M</span>
+              <span class="logo-g">G</span>
+              <span class="logo-n">N</span>
+              <div class="logo-text">
+                <span class="logo-codewave">CODEWAVE</span>
+                <span class="logo-tagline">Solutions Digitales</span>
+              </div>
+            </a>
+            <p class="footer-description">
+              Votre partenaire digital de confiance au Gabon. Nous transformons
+              vos idées en sites web performants et rentables.
+            </p>
+            <div class="footer-social">
+              <a href="#" class="social-link" aria-label="Facebook"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="#" class="social-link" aria-label="LinkedIn"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
+              <a href="#" class="social-link" aria-label="GitHub"
+                ><i class="fab fa-github"></i
+              ></a>
               <a
-                href="index.html"
-                class="navbar-brand d-flex align-items-center p-0"
-                aria-label="Accueil CodeWave"
-              >
-                <img
-                  src="img/logo/codewave.png"
-                  alt="Logo CodeWave"
-                  height="40"
-                  loading="lazy"
-                  class="me-2"
-                />
-                <span class="h5 m-0 fw-bold text-white">CodeWave</span>
-              </a>
-              <p class="mt-3 mb-4">
-                Votre partenaire Full-Stack à Libreville. Nous concevons des
-                sites web performants, modernes et optimisés pour la croissance
-                de votre entreprise au Gabon et en Afrique.
-              </p>
+                href="https://wa.me/24166198918"
+                class="social-link"
+                target="_blank"
+                aria-label="WhatsApp"
+                ><i class="fab fa-whatsapp"></i
+              ></a>
             </div>
           </div>
 
-          <div class="col-lg-8 col-md-6">
-            <div class="row gx-5">
-              <div class="col-lg-4 col-md-12 pt-5 mb-5">
-                <div
-                  class="section-title section-title-sm position-relative pb-3 mb-4"
-                >
-                  <h3 class="text-light mb-0">Nous Contacter</h3>
-                </div>
-                <div class="d-flex mb-2">
-                  <i class="bi bi-geo-alt text-primary me-2"></i>
-                  <p class="mb-0">Libreville, Gabon</p>
-                </div>
-                <div class="d-flex mb-2">
-                  <i class="bi bi-envelope-open text-primary me-2"></i>
-                  <p class="mb-0">ngoubadjambo18@gmail.com</p>
-                </div>
-                <div class="d-flex mb-2">
-                  <i class="bi bi-telephone text-primary me-2"></i>
-                  <p class="mb-0">+241 74 67 67 41</p>
-                </div>
-                <div class="d-flex mt-4">
-                  <a
-                    class="btn btn-primary btn-square me-2"
-                    href="#"
-                    aria-label="Lien Facebook"
-                    ><i class="fab fa-facebook-f fw-normal"></i
-                  ></a>
-                  <a
-                    class="btn btn-primary btn-square me-2"
-                    href="#"
-                    aria-label="Lien LinkedIn"
-                    ><i class="fab fa-linkedin-in fw-normal"></i
-                  ></a>
-                  <a
-                    class="btn btn-primary btn-square"
-                    href="https://wa.me/24174676741"
-                    target="_blank"
-                    aria-label="Lien WhatsApp"
-                    ><i class="fab fa-whatsapp fw-normal"></i
-                  ></a>
-                </div>
-              </div>
+          <div class="footer-col">
+            <h4>Services</h4>
+            <ul class="footer-links">
+              <li><a href="services.html#vitrines">Sites Vitrines</a></li>
+              <li><a href="services.html#ecommerce">E-Commerce</a></li>
+              <li><a href="services.html#blogs">Blogs & Portfolios</a></li>
+              <li><a href="services.html#maintenance">Maintenance</a></li>
+              <li>
+                <a href="services.html#additionnels">SEO & Référencement</a>
+              </li>
+            </ul>
+          </div>
 
-              <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
-                <div
-                  class="section-title section-title-sm position-relative pb-3 mb-4"
-                >
-                  <h3 class="text-light mb-0">Liens Utiles</h3>
-                </div>
-                <div
-                  class="link-animated d-flex flex-column justify-content-start"
-                >
-                  <a class="text-light mb-2" href="index.html"
-                    ><i class="bi bi-arrow-right text-primary me-2"></i
-                    >Accueil</a
-                  >
-                  <a class="text-light mb-2" href="mentions-legale.html"
-                    ><i class="bi bi-arrow-right text-primary me-2"></i>Mentions
-                    Légales</a
-                  >
-                  <a class="text-light mb-2" href="cgu.html"
-                    ><i class="bi bi-arrow-right text-primary me-2"></i
-                    >Condition Générales d'Utilisation</a
-                  >
-                  <a class="text-light mb-2" href="about.html"
-                    ><i class="bi bi-arrow-right text-primary me-2"></i>À
-                    Propos</a
-                  >
-                  <a class="text-light mb-2" href="service.html"
-                    ><i class="bi bi-arrow-right text-primary me-2"></i>Nos
-                    Services</a
-                  >
-                  <a class="text-light mb-2" href="devis.html"
-                    ><i class="bi bi-arrow-right text-primary me-2"></i>Demander
-                    un Devis</a
-                  >
-                  <a class="text-light" href="contact.html"
-                    ><i class="bi bi-arrow-right text-primary me-2"></i
-                    >Contact</a
-                  >
-                </div>
-              </div>
+          <div class="footer-col">
+            <h4>Liens Rapides</h4>
+            <ul class="footer-links">
+              <li><a href="index.html">Accueil</a></li>
+              <li><a href="portfolio.html">Portfolio</a></li>
+              <li><a href="tarifs.html">Tarifs</a></li>
+              <li><a href="blog.html">Blog</a></li>
+              <li><a href="careers.html">Carrières</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
 
-              <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
-                <div
-                  class="section-title section-title-sm position-relative pb-3 mb-4"
-                >
-                  <h3 class="text-light mb-0">Nos Services Clés</h3>
-                </div>
-                <div
-                  class="link-animated d-flex flex-column justify-content-start"
-                >
-                  <a class="text-light mb-2" href="service.html#vitrine"
-                    ><i class="bi bi-arrow-right text-primary me-2"></i>Sites
-                    Web Vitrines</a
-                  >
-                  <a class="text-light mb-2" href="service.html#ecommerce"
-                    ><i class="bi bi-arrow-right text-primary me-2"></i
-                    >Plateformes E-commerce</a
-                  >
-                  <a class="text-light mb-2" href="service.html#blog"
-                    ><i class="bi bi-arrow-right text-primary me-2"></i>Blogs &
-                    Portfolios</a
-                  >
-                  <a class="text-light mb-2" href="service.html#maintenance"
-                    ><i class="bi bi-arrow-right text-primary me-2"></i
-                    >Maintenance & Hébergement</a
-                  >
-                  <a class="text-light mb-2" href="service.html#seo"
-                    ><i class="bi bi-arrow-right text-primary me-2"></i
-                    >Optimisation SEO</a
-                  >
-                  <a class="text-light" href="tarifs.html"
-                    ><i class="bi bi-arrow-right text-primary me-2"></i>Voir Nos
-                    Tarifs</a
-                  >
-                </div>
-              </div>
-            </div>
+          <div class="footer-col">
+            <h4>Newsletter</h4>
+            <p>Recevez nos conseils web</p>
+            <form class="newsletter-form" id="newsletterForm">
+              <input
+                type="email"
+                placeholder="Votre email"
+                required
+                aria-label="Email pour newsletter"
+              />
+              <button type="submit" aria-label="S'abonner">
+                <i class="fas fa-paper-plane"></i>
+              </button>
+            </form>
+            <p class="newsletter-note">🔒 Pas de spam. Désabonnement facile.</p>
           </div>
         </div>
-      </div>
-    </div>
-    <div class="container-fluid text-white" style="background: #061429">
-      <div class="container text-center">
-        <div class="row justify-content-end">
-          <div class="col-lg-8 col-md-6">
-            <div
-              class="d-flex align-items-center justify-content-center"
-              style="height: 75px"
+
+        <div class="footer-bottom">
+          <p>
+            &copy; 2025 <strong>M.G.N CodeWave</strong>. Tous droits réservés.
+            🇬🇦 Fait avec ❤️ au Gabon
+          </p>
+          <div class="footer-legal">
+            <a href="mentions-legales.html">Mentions Légales</a>
+            <a href="politique-confidentialite.html"
+              >Politique de Confidentialité</a
             >
-              <p class="mb-0">
-                &copy;
-                <a class="text-white border-bottom" href="index.html"
-                  >M.G.N CodeWave</a
-                >, 2025. Tous Droits Réservés.
-              </p>
-            </div>
+            <a href="cgv.html">CGV</a>
+            <a href="plan-du-site.html">Plan du Site</a>
           </div>
         </div>
       </div>
-    </div>
-    <!-- Footer End -->
+    </footer>
 
-    <!-- Back to Top -->
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded back-to-top"
-      ><i class="bi bi-arrow-up"></i
-    ></a>
+    <!-- WhatsApp Float Button -->
+    <a
+      href="https://wa.me/24166198918?text=Bonjour,%20je%20souhaite%20discuter%20d'un%20projet%20web"
+      class="whatsapp-float"
+      target="_blank"
+      aria-label="Contact WhatsApp"
+    >
+      <i class="fab fa-whatsapp"></i>
+    </a>
 
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/wow/wow.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/counterup/counterup.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-
-    <!-- Template Javascript -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
-    <script src="js/main.js"></script>
+    <!-- JavaScript -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/portfolio.js"></script>
   </body>
 </html>

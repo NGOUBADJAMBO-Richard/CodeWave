@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Découvrez les tendances du web design qui domineront 2025 : IA, minimalisme, animations immersives et plus encore."
+    />
+    <title>
+      Les Tendances du Web Design en 2025 : À Quoi S'attendre | CodeWave
+    </title>
+
+    <link
+      rel="icon"
+      type="image/png"
+      href="../assets/images/logo/codewave.png"
+    />
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/responsive.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      h2 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin: 2rem 0 1rem;
+        color: var(--gray-900);
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid #9333ea;
+      }
+      h3 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin: 1.5rem 0 0.75rem;
+        color: var(--gray-800);
+      }
+      .article-content ul {
+        list-style: none;
+        padding-left: 0;
+      }
+      .article-content ul li {
+        padding: 0.5rem 0 0.5rem 1.5rem;
+        position: relative;
+      }
+      .article-content ul li:before {
+        content: "◆";
+        position: absolute;
+        left: 0;
+        color: #9333ea;
+        font-weight: bold;
+      }
+      blockquote {
+        border-left: 4px solid #9333ea;
+        padding-left: 1.5rem;
+        margin: 2rem 0;
+        font-style: italic;
+        color: var(--gray-700);
+        background: #faf5ff;
+        padding: 1rem;
+        border-radius: 8px;
+      }
+      .section-padding {
+        padding: 4rem 0;
+      }
+      .btn-outline {
+        border: 2px solid #9333ea;
+        color: #9333ea;
+        padding: 0.5rem 1.5rem;
+      }
+      .btn-outline:hover {
+        background: #9333ea;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+      <div class="container">
+        <div class="nav-wrapper">
+          <a href="../index.html" class="logo">
+            <img
+              src="../assets/images/logo/codewave.png"
+              alt="Profil M.G.N CodeWave"
+              class="logo-image"
+            />
+          </a>
+
+          <ul class="nav-menu" id="navMenu">
+            <li><a href="../index.html">Accueil</a></li>
+            <li><a href="../services.html">Services</a></li>
+            <li><a href="../tarifs.html">Tarifs</a></li>
+            <li><a href="../portfolio.html">Portfolio</a></li>
+            <li><a href="../blog.html" class="active">Blog</a></li>
+            <li><a href="../a-propos.html">À Propos</a></li>
+            <li><a href="../careers.html">Carrières</a></li>
+            <li><a href="../contact.html">Contact</a></li>
+          </ul>
+
+          <div class="nav-cta">
+            <a href="../contact.html" class="btn btn-primary">Devis Gratuit</a>
+            <button class="menu-toggle" id="menuToggle">
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Article Header -->
+    <section
+      class="page-header"
+      style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)"
+    >
+      <div class="container">
+        <div class="breadcrumb">
+          <a href="../index.html" style="color: rgba(255, 255, 255, 0.9)"
+            >Accueil</a
+          >
+          <span style="color: rgba(255, 255, 255, 0.7)">/</span>
+          <a href="../blog.html" style="color: rgba(255, 255, 255, 0.9)"
+            >Blog</a
+          >
+          <span style="color: rgba(255, 255, 255, 0.7)">/</span>
+          <span style="color: white">Tendances Web Design 2025</span>
+        </div>
+        <div style="max-width: 800px; margin: 0 auto; text-align: center">
+          <div
+            style="
+              display: inline-block;
+              background: rgba(255, 255, 255, 0.2);
+              color: white;
+              padding: 0.5rem 1rem;
+              border-radius: var(--radius-full);
+              font-size: 0.875rem;
+              font-weight: 600;
+              margin-bottom: 1rem;
+            "
+          >
+            <i class="fas fa-palette"></i> Actualités Design
+          </div>
+          <h1
+            class="page-title"
+            style="color: white; font-size: 2.5rem; margin-bottom: 1rem"
+          >
+            Les Tendances du Web Design en 2025 : À Quoi S'attendre
+          </h1>
+          <div
+            style="
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              gap: 1.5rem;
+              color: rgba(255, 255, 255, 0.9);
+              font-size: 0.875rem;
+              flex-wrap: wrap;
+            "
+          >
+            <div style="display: flex; align-items: center; gap: 0.5rem">
+              <i class="fas fa-user-circle"></i>
+              <span>Par M.G.N CodeWave</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.5rem">
+              <i class="fas fa-calendar"></i>
+              <span>8 Décembre 2024</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.5rem">
+              <i class="fas fa-clock"></i>
+              <span>7 min de lecture</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.5rem">
+              <i class="fas fa-tag"></i>
+              <span>Actualités</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Article Content -->
+    <article class="section-padding">
+      <div class="container">
+        <div style="max-width: 800px; margin: 0 auto">
+          <!-- Featured Image -->
+          <img
+            src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=80"
+            alt="Tendances web design 2025"
+            style="
+              width: 100%;
+              border-radius: 12px;
+              margin-bottom: 2rem;
+              box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            "
+          />
+
+          <!-- Introduction -->
+          <div class="article-content">
+            <p class="lead">
+              Le web design évolue constamment. En 2025, nous assistons à
+              l'émergence de nouvelles tendances qui redéfinissent l'expérience
+              utilisateur et l'esthétique des sites web. Découvrez les 10
+              tendances incontournables qui vont dominer cette année.
+            </p>
+
+            <h2>1. 🤖 Intelligence Artificielle et Personnalisation</h2>
+            <p>
+              L'IA transforme radicalement le web design en permettant des
+              expériences ultra-personnalisées. Les sites s'adaptent désormais
+              en temps réel aux préférences de chaque visiteur.
+            </p>
+            <div
+              style="
+                background: #faf5ff;
+                border-left: 4px solid #9333ea;
+                padding: 1rem;
+                margin: 1rem 0;
+                border-radius: 8px;
+              "
+            >
+              <ul>
+                <li>Chatbots intelligents avec conversation naturelle</li>
+                <li>Recommandations de contenu personnalisées</li>
+                <li>Interfaces qui s'adaptent au comportement utilisateur</li>
+              </ul>
+            </div>
+
+            <h2>2. ✨ Minimalisme Extrême avec Typographie Audacieuse</h2>
+            <p>
+              Le "Less is More" atteint de nouveaux sommets. Les designs épurés
+              avec typographies XXL créent un impact visuel maximal.
+            </p>
+            <blockquote>
+              "La simplicité est la sophistication suprême." - Léonard de Vinci
+            </blockquote>
+
+            <h2>3. 🎨 Mode Sombre par Défaut</h2>
+            <p>
+              Le dark mode n'est plus une option mais un standard. Avantages :
+            </p>
+            <div
+              style="
+                background: #faf5ff;
+                border-left: 4px solid #9333ea;
+                padding: 1rem;
+                margin: 1rem 0;
+                border-radius: 8px;
+              "
+            >
+              <ul>
+                <li>✅ Réduit la fatigue oculaire</li>
+                <li>✅ Économise la batterie (écrans OLED)</li>
+                <li>✅ Aspect premium et moderne</li>
+                <li>✅ Contrastes élégants</li>
+              </ul>
+            </div>
+
+            <h2>4. 🌊 Animations et Micro-interactions Fluides</h2>
+            <p>
+              Les animations subtiles guident l'utilisateur et rendent
+              l'expérience plus engageante :
+            </p>
+            <div
+              style="
+                background: #faf5ff;
+                border-left: 4px solid #9333ea;
+                padding: 1rem;
+                margin: 1rem 0;
+                border-radius: 8px;
+              "
+            >
+              <ul>
+                <li>Parallax scrolling sophistiqué</li>
+                <li>Transitions page fluides</li>
+                <li>Hover effects créatifs</li>
+                <li>Loading animations originales</li>
+              </ul>
+            </div>
+
+            <h2>5. 🎬 Vidéos Immersives en Plein Écran</h2>
+            <p>
+              Les vidéos remplacent les images statiques pour créer des
+              expériences plus captivantes. Attention : optimisez pour la
+              connexion gabonaise !
+            </p>
+
+            <h2>6. 🔮 3D et Réalité Augmentée (AR)</h2>
+            <p>
+              Les éléments 3D interactifs et l'AR transforment la façon dont les
+              utilisateurs explorent les produits :
+            </p>
+            <div
+              style="
+                background: #faf5ff;
+                border-left: 4px solid #9333ea;
+                padding: 1rem;
+                margin: 1rem 0;
+                border-radius: 8px;
+              "
+            >
+              <ul>
+                <li>Modèles 3D de produits manipulables</li>
+                <li>Essayage virtuel (lunettes, vêtements)</li>
+                <li>Visualisation de meubles chez soi</li>
+              </ul>
+            </div>
+
+            <h2>7. 🎨 Couleurs Vibrantes et Dégradés Audacieux</h2>
+            <p>
+              Exit les couleurs ternes ! 2025 voit le retour des couleurs vives
+              et des dégradés complexes :
+            </p>
+            <div
+              style="
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 1rem;
+                margin: 2rem 0;
+              "
+            >
+              <div
+                style="
+                  height: 100px;
+                  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                  border-radius: 12px;
+                "
+              ></div>
+              <div
+                style="
+                  height: 100px;
+                  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+                  border-radius: 12px;
+                "
+              ></div>
+              <div
+                style="
+                  height: 100px;
+                  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+                  border-radius: 12px;
+                "
+              ></div>
+              <div
+                style="
+                  height: 100px;
+                  background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+                  border-radius: 12px;
+                "
+              ></div>
+            </div>
+
+            <h2>8. 📱 Mobile-First & Progressive Web Apps (PWA)</h2>
+            <p>
+              Avec 85% du trafic web gabonais sur mobile, le design mobile-first
+              n'est plus négociable. Les PWA offrent une expérience app native
+              depuis le navigateur.
+            </p>
+
+            <h2>9. ♿ Accessibilité et Inclusivité</h2>
+            <p>
+              Le design accessible n'est plus une option mais une obligation
+              légale et morale :
+            </p>
+            <ul>
+              <li>Contrastes suffisants pour malvoyants</li>
+              <li>Navigation au clavier complète</li>
+              <li>Sous-titres pour contenus vidéo</li>
+              <li>Textes alternatifs sur images</li>
+            </ul>
+
+            <h2>10. 🌿 Éco-conception (Green Design)</h2>
+            <p>
+              Le web pollue ! Les designers adoptent des pratiques
+              éco-responsables :
+            </p>
+            <ul>
+              <li>Images optimisées (WebP, AVIF)</li>
+              <li>Code minifié et léger</li>
+              <li>Hébergement vert</li>
+              <li>Lazy loading systématique</li>
+            </ul>
+
+            <div
+              style="
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                color: white;
+                padding: 2rem;
+                border-radius: 12px;
+                margin: 2rem 0;
+                text-align: center;
+              "
+            >
+              <h3 style="font-size: 1.5rem; margin-bottom: 1rem">
+                🚀 Votre Site Mérite un Design 2025
+              </h3>
+              <p style="margin-bottom: 1rem">
+                Profitez de notre expertise pour un site moderne, performant et
+                tendance !
+              </p>
+              <a
+                href="../contact.html"
+                style="
+                  display: inline-block;
+                  background: white;
+                  color: #764ba2;
+                  padding: 0.75rem 2rem;
+                  border-radius: 8px;
+                  font-weight: 600;
+                  text-decoration: none;
+                "
+              >
+                Moderniser Mon Site
+              </a>
+            </div>
+
+            <h2>💡 Conclusion</h2>
+            <p>
+              Les tendances 2025 placent l'utilisateur au centre avec des
+              designs personnalisés, accessibles et éco-responsables. Pour
+              rester compétitif au Gabon, votre site doit intégrer au moins 3-4
+              de ces tendances.
+            </p>
+            <p>
+              <strong
+                >CodeWave vous accompagne pour créer un site à la pointe des
+                tendances web design 2025. Contactez-nous pour un audit gratuit
+                !</strong
+              >
+            </p>
+
+            <!-- Share Buttons -->
+            <div
+              style="
+                margin-top: 3rem;
+                padding-top: 2rem;
+                border-top: 2px solid #e5e7eb;
+              "
+            >
+              <h3 style="margin-bottom: 1rem">Partagez cet article</h3>
+              <div style="display: flex; gap: 1rem; flex-wrap: wrap">
+                <a
+                  href="#"
+                  class="btn btn-outline"
+                  style="display: flex; align-items: center; gap: 0.5rem"
+                >
+                  <i class="fab fa-facebook-f"></i> Facebook
+                </a>
+                <a
+                  href="#"
+                  class="btn btn-outline"
+                  style="display: flex; align-items: center; gap: 0.5rem"
+                >
+                  <i class="fab fa-twitter"></i> Twitter
+                </a>
+                <a
+                  href="#"
+                  class="btn btn-outline"
+                  style="display: flex; align-items: center; gap: 0.5rem"
+                >
+                  <i class="fab fa-linkedin-in"></i> LinkedIn
+                </a>
+                <a
+                  href="#"
+                  class="btn btn-outline"
+                  style="display: flex; align-items: center; gap: 0.5rem"
+                >
+                  <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+              </div>
+            </div>
+
+            <!-- Author Box -->
+            <div
+              style="
+                background: #f8f9fa;
+                padding: 2rem;
+                border-radius: 12px;
+                margin-top: 3rem;
+                display: flex;
+                gap: 1.5rem;
+                align-items: center;
+              "
+            >
+              <div
+                style="
+                  width: 80px;
+                  height: 80px;
+                  border-radius: 50%;
+                  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  flex-shrink: 0;
+                "
+              >
+                <i
+                  class="fas fa-user"
+                  style="color: white; font-size: 2rem"
+                ></i>
+              </div>
+              <div>
+                <h4 style="margin-bottom: 0.5rem; color: var(--gray-900)">
+                  À propos de l'auteur
+                </h4>
+                <p style="color: var(--gray-600); margin-bottom: 1rem">
+                  <strong>M.G.N CodeWave</strong> est une agence de
+                  développement web créative, spécialisée dans les designs
+                  modernes et innovants pour les entreprises gabonaises.
+                </p>
+                <a href="../contact.html" class="btn btn-primary btn-sm">
+                  Contactez-nous
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Related Articles -->
+    <section class="section-padding bg-light">
+      <div class="container">
+        <h2
+          style="
+            font-size: 2rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 3rem;
+          "
+        >
+          Articles Similaires
+        </h2>
+        <div
+          style="
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+          "
+        >
+          <article class="blog-card">
+            <div class="blog-image">
+              <img
+                src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=600&q=80"
+                alt="10 raisons site web"
+              />
+              <span class="blog-tag">Conseils</span>
+            </div>
+            <div class="blog-content">
+              <h3 class="blog-title">
+                10 Raisons de Créer un Site Web au Gabon
+              </h3>
+              <p class="blog-excerpt">
+                Découvrez pourquoi avoir un site web est devenu essentiel...
+              </p>
+              <a href="10-raisons-creer-site-web-gabon.html" class="read-more">
+                Lire la suite <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </article>
+
+          <article class="blog-card">
+            <div class="blog-image">
+              <img
+                src="https://images.unsplash.com/photo-1460925895917-adf4ee868993?auto=format&fit=crop&w=600&q=80"
+                alt="Vitesse chargement"
+              />
+              <span class="blog-tag">Tutoriels</span>
+            </div>
+            <div class="blog-content">
+              <h3 class="blog-title">Améliorer la Vitesse de Chargement</h3>
+              <p class="blog-excerpt">
+                Optimisez les performances de votre site pour une meilleure
+                UX...
+              </p>
+              <a href="vitesse-chargement-site-web.html" class="read-more">
+                Lire la suite <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </article>
+
+          <article class="blog-card">
+            <div class="blog-image">
+              <img
+                src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80"
+                alt="SEO Gabon"
+              />
+              <span class="blog-tag">Conseils</span>
+            </div>
+            <div class="blog-content">
+              <h3 class="blog-title">Optimiser votre SEO au Gabon</h3>
+              <p class="blog-excerpt">
+                Les meilleures pratiques SEO locales pour le Gabon...
+              </p>
+              <a href="optimiser-seo-gabon.html" class="read-more">
+                Lire la suite <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-col">
+            <a href="index.html" class="footer-logo">
+              <span class="logo-m">M</span>
+              <span class="logo-g">G</span>
+              <span class="logo-n">N</span>
+              <div class="logo-text">
+                <span class="logo-codewave">CODEWAVE</span>
+                <span class="logo-tagline">Solutions Digitales</span>
+              </div>
+            </a>
+            <p class="footer-description">
+              Votre partenaire digital de confiance au Gabon. Nous transformons
+              vos idées en sites web performants et rentables.
+            </p>
+            <div class="footer-social">
+              <a href="#" class="social-link" aria-label="Facebook"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="#" class="social-link" aria-label="LinkedIn"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
+              <a href="#" class="social-link" aria-label="GitHub"
+                ><i class="fab fa-github"></i
+              ></a>
+              <a
+                href="https://wa.me/24166198918"
+                class="social-link"
+                target="_blank"
+                aria-label="WhatsApp"
+                ><i class="fab fa-whatsapp"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h4>Services</h4>
+            <ul class="footer-links">
+              <li><a href="services.html#vitrines">Sites Vitrines</a></li>
+              <li><a href="services.html#ecommerce">E-Commerce</a></li>
+              <li><a href="services.html#blogs">Blogs & Portfolios</a></li>
+              <li><a href="services.html#maintenance">Maintenance</a></li>
+              <li>
+                <a href="services.html#additionnels">SEO & Référencement</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>Liens Rapides</h4>
+            <ul class="footer-links">
+              <li><a href="index.html">Accueil</a></li>
+              <li><a href="portfolio.html">Portfolio</a></li>
+              <li><a href="tarifs.html">Tarifs</a></li>
+              <li><a href="blog.html">Blog</a></li>
+              <li><a href="careers.html">Carrières</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>Newsletter</h4>
+            <p>Recevez nos conseils web</p>
+            <form
+              action="https://formspree.io/f/mpweqqzz"
+              method="POST"
+              name="Newsletter"
+              class="newsletter-form"
+              id="newsletterForm"
+            >
+              <input
+                type="email"
+                placeholder="Votre email"
+                required
+                aria-label="Email pour newsletter"
+                name="email"
+              />
+              <button type="submit" aria-label="S'abonner">
+                <i class="fas fa-paper-plane"></i>
+              </button>
+            </form>
+            <p class="newsletter-note">🔒 Pas de spam. Désabonnement facile.</p>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>
+            &copy; 2025 <strong>M.G.N CodeWave</strong>. Tous droits réservés.
+            🇬🇦 Fait avec ❤️ au Gabon
+          </p>
+          <div class="footer-legal">
+            <a href="mentions-legales.html">Mentions Légales</a>
+            <a href="politique-confidentialite.html"
+              >Politique de Confidentialité</a
+            >
+            <a href="cgv.html">CGV</a>
+            <a href="plan-du-site.html">Plan du Site</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a
+      href="https://wa.me/24166198918?text=Bonjour,%20je%20souhaite%20discuter%20d'un%20projet%20web"
+      class="whatsapp-float"
+      target="_blank"
+      aria-label="Contact WhatsApp"
+    >
+      <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- JavaScript -->
+    <script src="../assets/js/main.js"></script>
+  </body>
+</html>

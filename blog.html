@@ -1,0 +1,733 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Blog CodeWave - Conseils, tutoriels et actualitÃ©s sur le dÃ©veloppement web, le digital et l'entrepreneuriat au Gabon."
+    />
+    <title>Blog - CodeWave | ActualitÃ©s & Conseils Web Gabon</title>
+
+    <link rel="icon" type="image/png" href="assets/images/logo/codewave.png" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/responsive.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+      <div class="container">
+        <div class="nav-wrapper">
+          <a href="index.html" class="logo">
+            <img
+              src="assets/images/logo/codewave.png"
+              alt="Profil M.G.N CodeWave"
+              class="logo-image"
+            />
+          </a>
+
+          <ul class="nav-menu" id="navMenu">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="tarifs.html">Tarifs</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="blog.html" class="active">Blog</a></li>
+            <li><a href="a-propos.html">À Propos</a></li>
+            <li><a href="careers.html">Carrières</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+
+          <div class="nav-cta">
+            <a href="contact.html" class="btn btn-primary">Devis Gratuit</a>
+            <button class="menu-toggle" id="menuToggle">
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+      <div class="page-header-media" data-mode="image">
+        <div
+          class="page-header-image"
+          style="
+            background-image: url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1600&q=80');
+          "
+        ></div>
+        <div class="page-header-overlay"></div>
+      </div>
+      <div class="container">
+        <div class="breadcrumb">
+          <a href="index.html">Accueil</a>
+          <span>/</span>
+          <span>Blog</span>
+        </div>
+        <h1 class="page-title">Blogs & Actualités</h1>
+        <p class="page-subtitle">
+          Découvrez nos derniers articles, conseils et tutoriels sur le
+          développement web, le digital et l'entrepreneuriat au Gabon.
+        </p>
+      </div>
+    </section>
+
+    <!-- Blog Categories -->
+    <section
+      class="section-padding"
+      style="padding-top: 3rem; padding-bottom: 2rem"
+    >
+      <div class="container">
+        <div
+          style="
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+          "
+        >
+          <a href="#" class="btn btn-primary" data-category="all">
+            <i class="fas fa-th"></i> Tous les Articles
+          </a>
+          <a
+            href="#tutoriels"
+            class="btn btn-outline"
+            data-category="tutoriels"
+          >
+            <i class="fas fa-graduation-cap"></i> Tutoriels
+          </a>
+          <a href="#conseils" class="btn btn-outline" data-category="conseils">
+            <i class="fas fa-lightbulb"></i> Conseils
+          </a>
+          <a
+            href="#actualites"
+            class="btn btn-outline"
+            data-category="actualites"
+          >
+            <i class="fas fa-newspaper"></i> Actualités
+          </a>
+          <a
+            href="#entrepreneuriat"
+            class="btn btn-outline"
+            data-category="entrepreneuriat"
+          >
+            <i class="fas fa-chart-line"></i> Entrepreneuriat
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Article -->
+    <section class="section-padding" style="padding-top: 2rem">
+      <div class="container">
+        <div
+          style="
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: var(--radius-2xl);
+            overflow: hidden;
+            box-shadow: var(--shadow-2xl);
+          "
+        >
+          <div
+            style="display: grid; md:grid-template-columns: 1fr 1fr; gap: 0;"
+          >
+            <div style="padding: 3rem">
+              <div
+                style="
+                  display: inline-block;
+                  background: rgba(255, 255, 255, 0.2);
+                  color: white;
+                  padding: 0.5rem 1rem;
+                  border-radius: var(--radius-full);
+                  font-size: 0.875rem;
+                  font-weight: 600;
+                  margin-bottom: 1rem;
+                "
+              >
+                <i class="fas fa-star"></i> Article à la Une
+              </div>
+              <h2
+                style="
+                  font-size: 2.5rem;
+                  font-weight: 800;
+                  color: white;
+                  margin-bottom: 1rem;
+                "
+              >
+                10 Raisons de Créer un Site Web pour Votre Entreprise au Gabon
+                en 2025
+              </h2>
+              <p
+                style="
+                  color: rgba(255, 255, 255, 0.9);
+                  font-size: 1.125rem;
+                  margin-bottom: 2rem;
+                  line-height: 1.7;
+                "
+              >
+                Dans un monde de plus en plus digital, avoir une présence en
+                ligne n'est plus un luxe mais une nécessité. Découvrez pourquoi
+                votre entreprise gabonaise a besoin d'un site web dès
+                aujourd'hui.
+              </p>
+              <div
+                style="
+                  display: flex;
+                  flex-wrap: wrap;
+                  gap: 1rem;
+                  margin-bottom: 2rem;
+                  color: rgba(255, 255, 255, 0.9);
+                "
+              >
+                <span><i class="fas fa-calendar"></i> 10 Décembre 2024</span>
+                <span><i class="fas fa-clock"></i> 5 min de lecture</span>
+                <span><i class="fas fa-user"></i> M.G.N CodeWave</span>
+              </div>
+              <a
+                href="blogs/10-raisons-creer-site-web-gabon.html"
+                class="btn btn-white"
+              >
+                Lire l'Article
+                <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+            <div
+              style="
+                background: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800')
+                  center/cover;
+                min-height: 400px;
+              "
+            ></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Blog Grid -->
+    <section class="section-padding">
+      <div class="container">
+        <div class="blog-grid">
+          <!-- Article 1 -->
+          <article id="tutoriels" class="blog-card" data-category="tutoriels">
+            <div
+              class="blog-image"
+              style="
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+              "
+            >
+              <div class="blog-category">Tutoriels</div>
+            </div>
+            <div class="blog-content">
+              <div class="blog-date">
+                <i class="fas fa-calendar"></i>
+                <span>8 Décembre 2024</span>
+              </div>
+              <h3 class="blog-title">
+                <a href="blogs/optimiser-seo-gabon.html"
+                  >Comment Optimiser le Référencement de Votre Site Web au
+                  Gabon</a
+                >
+              </h3>
+              <p class="blog-excerpt">
+                Le SEO local est crucial pour attirer des clients gabonais.
+                Découvrez nos 7 conseils pratiques pour améliorer votre
+                visibilité sur Google au Gabon.
+              </p>
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  justify-content: space-between;
+                "
+              >
+                <span style="color: var(--gray-500); font-size: 0.875rem">
+                  <i class="fas fa-clock"></i> 6 min
+                </span>
+                <a href="blogs/optimiser-seo-gabon.html" class="blog-link">
+                  Lire Plus <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Article 2 -->
+          <article id="conseils" class="blog-card" data-category="conseils">
+            <div
+              class="blog-image"
+              style="
+                background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+              "
+            >
+              <div class="blog-category">Conseils</div>
+            </div>
+            <div class="blog-content">
+              <div class="blog-date">
+                <i class="fas fa-calendar"></i>
+                <span>5 Décembre 2024</span>
+              </div>
+              <h3 class="blog-title">
+                <a href="blogs/erreurs-site-ecommerce.html"
+                  >5 Erreurs à Éviter lors de la Création de Votre Site
+                  E-Commerce</a
+                >
+              </h3>
+              <p class="blog-excerpt">
+                Lancez votre boutique en ligne avec succès en évitant ces
+                erreurs courantes qui coûtent cher aux entrepreneurs gabonais.
+              </p>
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  justify-content: space-between;
+                "
+              >
+                <span style="color: var(--gray-500); font-size: 0.875rem">
+                  <i class="fas fa-clock"></i> 4 min
+                </span>
+                <a href="blogs/erreurs-site-ecommerce.html" class="blog-link">
+                  Lire Plus <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Article 3 -->
+          <article id="actualites" class="blog-card" data-category="actualites">
+            <div
+              class="blog-image"
+              style="
+                background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+              "
+            >
+              <div class="blog-category">Actualités</div>
+            </div>
+            <div class="blog-content">
+              <div class="blog-date">
+                <i class="fas fa-calendar"></i>
+                <span>1er Décembre 2024</span>
+              </div>
+              <h3 class="blog-title">
+                <a href="blogs/tendances-web-design-2025.html"
+                  >Les Tendances Web Design 2025 à Adopter au Gabon</a
+                >
+              </h3>
+              <p class="blog-excerpt">
+                Découvrez les nouvelles tendances de design web qui vont dominer
+                2025 et comment les appliquer à votre site gabonais.
+              </p>
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  justify-content: space-between;
+                "
+              >
+                <span style="color: var(--gray-500); font-size: 0.875rem">
+                  <i class="fas fa-clock"></i> 5 min
+                </span>
+                <a
+                  href="blogs/tendances-web-design-2025.html"
+                  class="blog-link"
+                >
+                  Lire Plus <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Article 4 -->
+          <article
+            id="entrepreneuriat"
+            class="blog-card"
+            data-category="entrepreneuriat"
+          >
+            <div
+              class="blog-image"
+              style="
+                background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+              "
+            >
+              <div class="blog-category">Entrepreneuriat</div>
+            </div>
+            <div class="blog-content">
+              <div class="blog-date">
+                <i class="fas fa-calendar"></i>
+                <span>28 Novembre 2024</span>
+              </div>
+              <h3 class="blog-title">
+                <a href="blogs/monetiser-site-web.html"
+                  >Comment Monétiser Votre Site Web : 8 Stratégies Efficaces</a
+                >
+              </h3>
+              <p class="blog-excerpt">
+                Transformez votre site web en source de revenus avec ces
+                stratégies de monétisation adaptées au marché gabonais.
+              </p>
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  justify-content: space-between;
+                "
+              >
+                <span style="color: var(--gray-500); font-size: 0.875rem">
+                  <i class="fas fa-clock"></i> 7 min
+                </span>
+                <a href="blogs/monetiser-site-web.html" class="blog-link">
+                  Lire Plus <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Article 5 -->
+          <article id="tutoriels" class="blog-card" data-category="tutoriels">
+            <div
+              class="blog-image"
+              style="
+                background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+              "
+            >
+              <div class="blog-category">Tutoriels</div>
+            </div>
+            <div class="blog-content">
+              <div class="blog-date">
+                <i class="fas fa-calendar"></i>
+                <span>25 Novembre 2024</span>
+              </div>
+              <h3 class="blog-title">
+                <a href="blogs/strategie-contenu-blog.html"
+                  >Guide Complet : Créer une Stratégie de Contenu pour Votre
+                  Blog</a
+                >
+              </h3>
+              <p class="blog-excerpt">
+                Attirez plus de visiteurs et convertissez-les en clients avec
+                une stratégie de contenu bien pensée.
+              </p>
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  justify-content: space-between;
+                "
+              >
+                <span style="color: var(--gray-500); font-size: 0.875rem">
+                  <i class="fas fa-clock"></i> 8 min
+                </span>
+                <a href="blogs/strategie-contenu-blog.html" class="blog-link">
+                  Lire Plus <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Article 6 -->
+          <article id="conseils" class="blog-card" data-category="conseils">
+            <div
+              class="blog-image"
+              style="
+                background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+              "
+            >
+              <div class="blog-category">Conseils</div>
+            </div>
+            <div class="blog-content">
+              <div class="blog-date">
+                <i class="fas fa-calendar"></i>
+                <span>20 Novembre 2024</span>
+              </div>
+              <h3 class="blog-title">
+                <a href="blogs/vitesse-chargement-site-web.html"
+                  >L'Importance de la Vitesse de Chargement pour Votre Site
+                  Web</a
+                >
+              </h3>
+              <p class="blog-excerpt">
+                Avec la connexion internet au Gabon, la vitesse est cruciale.
+                Apprenez à optimiser votre site pour des temps de chargement
+                rapides.
+              </p>
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  justify-content: space-between;
+                "
+              >
+                <span style="color: var(--gray-500); font-size: 0.875rem">
+                  <i class="fas fa-clock"></i> 5 min
+                </span>
+                <a
+                  href="blogs/vitesse-chargement-site-web.html"
+                  class="blog-link"
+                >
+                  Lire Plus <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Load More -->
+        <div style="text-align: center; margin-top: 3rem">
+          <button class="btn btn-primary btn-lg">
+            <i class="fas fa-sync-alt"></i>
+            Charger Plus d'Articles
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter Subscribe -->
+    <section class="section-padding bg-gradient">
+      <div class="container">
+        <div style="max-width: 48rem; margin: 0 auto; text-center;">
+          <i
+            class="fas fa-envelope-open-text"
+            style="font-size: 3rem; color: white; margin-bottom: 1.5rem"
+          ></i>
+          <h2
+            style="
+              font-size: 2.5rem;
+              font-weight: 800;
+              color: white;
+              margin-bottom: 1rem;
+            "
+          >
+            Restez Informé !
+          </h2>
+          <p
+            style="
+              font-size: 1.25rem;
+              color: rgba(255, 255, 255, 0.9);
+              margin-bottom: 2rem;
+            "
+          >
+            Recevez nos meilleurs articles, conseils et tutoriels directement
+            dans votre boîte mail. 1 email par semaine, aucun spam.
+          </p>
+          <form
+            style="
+              display: flex;
+              gap: 1rem;
+              max-width: 32rem;
+              margin: 0 auto;
+              flex-wrap: wrap;
+            "
+          >
+            <input
+              type="email"
+              placeholder="Votre email"
+              required
+              style="
+                flex: 1;
+                min-width: 250px;
+                padding: 1rem 1.5rem;
+                border: none;
+                border-radius: var(--radius-full);
+                font-size: 1rem;
+              "
+            />
+            <button type="submit" class="btn btn-white">
+              <i class="fas fa-paper-plane"></i>
+              S'Abonner
+            </button>
+          </form>
+          <p
+            style="
+              color: rgba(255, 255, 255, 0.8);
+              font-size: 0.875rem;
+              margin-top: 1rem;
+            "
+          >
+            🔒 Vos données sont sécurisées. Désabonnement en 1 clic.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section-padding">
+      <div class="container">
+        <div
+          style="
+            background: linear-gradient(
+              135deg,
+              var(--gray-50) 0%,
+              #dbeafe 100%
+            );
+            padding: 3rem 2rem;
+            border-radius: var(--radius-2xl);
+            text-align: center;
+            border: 2px solid var(--primary);
+          "
+        >
+          <h2
+            style="
+              font-size: 2.5rem;
+              font-weight: 800;
+              color: var(--gray-900);
+              margin-bottom: 1rem;
+            "
+          >
+            Besoin d'un Site Web Professionnel ?
+          </h2>
+          <p
+            style="
+              font-size: 1.125rem;
+              color: var(--gray-600);
+              margin-bottom: 2rem;
+              max-width: 48rem;
+              margin-left: auto;
+              margin-right: auto;
+            "
+          >
+            Nos articles vous ont convaincu de l'importance d'un site web ?
+            Passez à l'action dès maintenant !
+          </p>
+          <div
+            style="
+              display: flex;
+              flex-wrap: wrap;
+              justify-content: center;
+              gap: 1rem;
+            "
+          >
+            <a href="contact.html" class="btn btn-primary btn-lg">
+              Demander un Devis Gratuit
+              <i class="fas fa-arrow-right"></i>
+            </a>
+            <a href="portfolio.html" class="btn btn-outline btn-lg">
+              Voir Nos RÃ©alisations
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-col">
+            <a href="index.html" class="footer-logo">
+              <span class="logo-m">M</span>
+              <span class="logo-g">G</span>
+              <span class="logo-n">N</span>
+              <div class="logo-text">
+                <span class="logo-codewave">CODEWAVE</span>
+                <span class="logo-tagline">Solutions Digitales</span>
+              </div>
+            </a>
+            <p class="footer-description">
+              Votre partenaire digital de confiance au Gabon. Nous transformons
+              vos idées en sites web performants et rentables.
+            </p>
+            <div class="footer-social">
+              <a href="#" class="social-link" aria-label="Facebook"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="#" class="social-link" aria-label="LinkedIn"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
+              <a href="#" class="social-link" aria-label="GitHub"
+                ><i class="fab fa-github"></i
+              ></a>
+              <a
+                href="https://wa.me/24166198918"
+                class="social-link"
+                target="_blank"
+                aria-label="WhatsApp"
+                ><i class="fab fa-whatsapp"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h4>Services</h4>
+            <ul class="footer-links">
+              <li><a href="services.html#vitrines">Sites Vitrines</a></li>
+              <li><a href="services.html#ecommerce">E-Commerce</a></li>
+              <li><a href="services.html#blogs">Blogs & Portfolios</a></li>
+              <li><a href="services.html#maintenance">Maintenance</a></li>
+              <li>
+                <a href="services.html#additionnels">SEO & Référencement</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>Liens Rapides</h4>
+            <ul class="footer-links">
+              <li><a href="index.html">Accueil</a></li>
+              <li><a href="portfolio.html">Portfolio</a></li>
+              <li><a href="tarifs.html">Tarifs</a></li>
+              <li><a href="blog.html">Blog</a></li>
+              <li><a href="careers.html">Carrières</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>Newsletter</h4>
+            <p>Recevez nos conseils web</p>
+            <form class="newsletter-form" id="newsletterForm">
+              <input
+                type="email"
+                placeholder="Votre email"
+                required
+                aria-label="Email pour newsletter"
+                name="email"
+              />
+              <button type="submit" aria-label="S'abonner">
+                <i class="fas fa-paper-plane"></i>
+              </button>
+            </form>
+            <p class="newsletter-note">🔒 Pas de spam. Désabonnement facile.</p>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>
+            &copy; 2025 <strong>M.G.N CodeWave</strong>. Tous droits réservés.
+            🇬🇦 Fait avec ❤️ au Gabon
+          </p>
+          <div class="footer-legal">
+            <a href="mentions-legales.html">Mentions Légales</a>
+            <a href="politique-confidentialite.html"
+              >Politique de Confidentialité</a
+            >
+            <a href="cgv.html">CGV</a>
+            <a href="plan-du-site.html">Plan du Site</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a
+      href="https://wa.me/24166198918?text=Bonjour,%20je%20souhaite%20discuter%20d'un%20projet%20web"
+      class="whatsapp-float"
+      target="_blank"
+      aria-label="Contact WhatsApp"
+    >
+      <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- JavaScript -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/animations.js"></script>
+  </body>
+</html>

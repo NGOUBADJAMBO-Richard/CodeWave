@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Guide complet pour améliorer la vitesse de chargement de votre site web et offrir une meilleure expérience utilisateur."
+    />
+    <title>
+      Améliorer la Vitesse de Chargement de Votre Site Web | CodeWave
+    </title>
+
+    <link
+      rel="icon"
+      type="image/png"
+      href="../assets/images/logo/codewave.png"
+    />
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/responsive.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      h2 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin: 2rem 0 1rem;
+        color: var(--gray-900);
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid #a8edea;
+      }
+      h3 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin: 1.5rem 0 0.75rem;
+        color: var(--gray-800);
+      }
+      .article-content ul {
+        list-style: none;
+        padding-left: 0;
+      }
+      .article-content ul li {
+        padding: 0.5rem 0 0.5rem 1.5rem;
+        position: relative;
+      }
+      .article-content ul li:before {
+        content: "→";
+        position: absolute;
+        left: 0;
+        color: #a8edea;
+        font-weight: bold;
+      }
+      blockquote {
+        border-left: 4px solid #a8edea;
+        padding-left: 1.5rem;
+        margin: 2rem 0;
+        font-style: italic;
+        color: var(--gray-700);
+        background: #f0fffe;
+        padding: 1rem;
+        border-radius: 8px;
+      }
+      .section-padding {
+        padding: 4rem 0;
+      }
+      .btn-outline {
+        border: 2px solid #a8edea;
+        color: #a8edea;
+        padding: 0.5rem 1.5rem;
+      }
+      .btn-outline:hover {
+        background: #a8edea;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+      <div class="container">
+        <div class="nav-wrapper">
+          <a href="../index.html" class="logo">
+            <img
+              src="../assets/images/logo/codewave.png"
+              alt="Profil M.G.N CodeWave"
+              class="logo-image"
+            />
+          </a>
+
+          <ul class="nav-menu" id="navMenu">
+            <li><a href="../index.html">Accueil</a></li>
+            <li><a href="../services.html">Services</a></li>
+            <li><a href="../tarifs.html">Tarifs</a></li>
+            <li><a href="../portfolio.html">Portfolio</a></li>
+            <li><a href="../blog.html" class="active">Blog</a></li>
+            <li><a href="../a-propos.html">À Propos</a></li>
+            <li><a href="../careers.html">Carrières</a></li>
+            <li><a href="../contact.html">Contact</a></li>
+          </ul>
+
+          <div class="nav-cta">
+            <a href="../contact.html" class="btn btn-primary">Devis Gratuit</a>
+            <button class="menu-toggle" id="menuToggle">
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Article Header -->
+    <section
+      class="page-header"
+      style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)"
+    >
+      <div class="container">
+        <div class="breadcrumb">
+          <a href="../index.html" style="color: rgba(0, 0, 0, 0.7)">Accueil</a>
+          <span style="color: rgba(0, 0, 0, 0.5)">/</span>
+          <a href="../blog.html" style="color: rgba(0, 0, 0, 0.7)">Blog</a>
+          <span style="color: rgba(0, 0, 0, 0.5)">/</span>
+          <span style="color: rgba(0, 0, 0, 0.9)">Vitesse de Chargement</span>
+        </div>
+        <div style="max-width: 800px; margin: 0 auto; text-align: center">
+          <div
+            style="
+              display: inline-block;
+              background: rgba(255, 255, 255, 0.5);
+              color: rgba(0, 0, 0, 0.8);
+              padding: 0.5rem 1rem;
+              border-radius: var(--radius-full);
+              font-size: 0.875rem;
+              font-weight: 600;
+              margin-bottom: 1rem;
+            "
+          >
+            <i class="fas fa-bolt"></i> Performance
+          </div>
+          <h1
+            class="page-title"
+            style="
+              color: rgba(0, 0, 0, 0.9);
+              font-size: 2.5rem;
+              margin-bottom: 1rem;
+            "
+          >
+            Améliorer la Vitesse de Chargement de Votre Site Web
+          </h1>
+          <div
+            style="
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              gap: 1.5rem;
+              color: rgba(0, 0, 0, 0.7);
+              font-size: 0.875rem;
+              flex-wrap: wrap;
+            "
+          >
+            <div style="display: flex; align-items: center; gap: 0.5rem">
+              <i class="fas fa-user-circle"></i>
+              <span>Par M.G.N CodeWave</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.5rem">
+              <i class="fas fa-calendar"></i>
+              <span>1er Décembre 2024</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.5rem">
+              <i class="fas fa-clock"></i>
+              <span>8 min de lecture</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Article Content -->
+    <article class="section-padding">
+      <div class="container">
+        <div style="max-width: 800px; margin: 0 auto">
+          <!-- Featured Image -->
+          <img
+            src="https://images.unsplash.com/photo-1460925895917-adf4ee868993?auto=format&fit=crop&w=1200&q=80"
+            alt="Vitesse de chargement site web"
+            style="
+              width: 100%;
+              border-radius: 12px;
+              margin-bottom: 2rem;
+              box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            "
+          />
+
+          <!-- Introduction -->
+          <div class="article-content">
+            <p class="lead">
+              Chaque seconde compte. Un site qui met 3 secondes à charger perd
+              40% de ses visiteurs. Au Gabon, avec les connexions internet
+              variables, optimiser la vitesse est ESSENTIEL. Voici comment
+              faire.
+            </p>
+
+            <h2>⏱️ Pourquoi la Vitesse Est Cruciale</h2>
+            <ul>
+              <li>
+                📉 <strong>40% des visiteurs quittent</strong> un site lent
+                après 3 secondes
+              </li>
+              <li>
+                🔍 <strong>Google pénalise</strong> les sites lents dans son
+                classement
+              </li>
+              <li>
+                📱 <strong>L'expérience mobile</strong> souffre davantage sur
+                connexion lente
+              </li>
+              <li>
+                💰 <strong>Moins de conversions</strong> = moins de ventes
+              </li>
+              <li>
+                🌍 <strong>Impact environnemental</strong> réduit avec un code
+                optimisé
+              </li>
+            </ul>
+
+            <h2>🔧 10 Techniques pour Accélérer Votre Site</h2>
+
+            <h3>1. Compresser Vos Images</h3>
+            <p>
+              Les images représentent 50-80% du poids d'une page web. Les
+              optimiser est prioritaire.
+            </p>
+            <div
+              style="
+                background: #f0fffe;
+                border-left: 4px solid #a8edea;
+                padding: 1rem;
+                margin: 1rem 0;
+                border-radius: 8px;
+              "
+            >
+              <ul>
+                <li>✅ Utilisez WebP au lieu de JPG/PNG</li>
+                <li>✅ Servez des images responsives (srcset)</li>
+                <li>✅ Compressez avec TinyPNG, Squoosh</li>
+                <li>✅ Utilisez un CDN pour servir images plus vite</li>
+              </ul>
+            </div>
+
+            <h3>2. Lazy Loading</h3>
+            <p>
+              Chargez les images seulement quand elles apparaissent à l'écran.
+            </p>
+            <div
+              style="
+                background: #f8f9fa;
+                padding: 1rem;
+                border-radius: 8px;
+                margin: 1rem 0;
+                font-family: monospace;
+                font-size: 0.875rem;
+              "
+            >
+              &lt;img loading="lazy" src="image.jpg" alt="Description" /&gt;
+            </div>
+
+            <h3>3. Minifier CSS et JavaScript</h3>
+            <p>
+              Réduisez la taille de vos fichiers en supprimant espaces inutiles.
+            </p>
+            <div
+              style="
+                background: #f0fffe;
+                border-left: 4px solid #a8edea;
+                padding: 1rem;
+                margin: 1rem 0;
+                border-radius: 8px;
+              "
+            >
+              <ul>
+                <li>Minifier CSS avec cssnano</li>
+                <li>Minifier JS avec TerserJS</li>
+                <li>Réduction de 30-50% typiquement</li>
+              </ul>
+            </div>
+
+            <h3>4. Utiliser un Cache</h3>
+            <p>
+              Mettez en cache les ressources statiques pour éviter
+              re-téléchargement.
+            </p>
+            <div
+              style="
+                background: #f0fffe;
+                border-left: 4px solid #a8edea;
+                padding: 1rem;
+                margin: 1rem 0;
+                border-radius: 8px;
+              "
+            >
+              <ul>
+                <li>Cache navigateur : 30 jours pour CSS/JS</li>
+                <li>Cache serveur : Redis, Memcached</li>
+                <li>Cache CDN : Cloudflare, CloudFront</li>
+              </ul>
+            </div>
+
+            <h3>5. Activer Gzip Compression</h3>
+            <p>Compressez la transmission des données (réduction 70%).</p>
+
+            <h3>6. Réduire Requêtes HTTP</h3>
+            <p>Moins de requêtes = chargement plus rapide.</p>
+            <div
+              style="
+                background: #f0fffe;
+                border-left: 4px solid #a8edea;
+                padding: 1rem;
+                margin: 1rem 0;
+                border-radius: 8px;
+              "
+            >
+              <ul>
+                <li>Combiner CSS en un fichier</li>
+                <li>Utiliser CSS Sprites pour icônes</li>
+                <li>Éliminer scripts/CSS inutilisés</li>
+              </ul>
+            </div>
+
+            <h3>7. Différer le Chargement JavaScript</h3>
+            <p>Le JS bloque le rendu. Utilisez async/defer.</p>
+            <div
+              style="
+                background: #f8f9fa;
+                padding: 1rem;
+                border-radius: 8px;
+                margin: 1rem 0;
+                font-family: monospace;
+                font-size: 0.875rem;
+              "
+            >
+              &lt;script src="script.js" defer&gt;&lt;/script&gt;
+            </div>
+
+            <h3>8. Utiliser un CDN</h3>
+            <p>
+              Un Content Delivery Network sert votre contenu depuis serveurs
+              proches de l'utilisateur.
+            </p>
+            <div
+              style="
+                background: #f0fffe;
+                border-left: 4px solid #a8edea;
+                padding: 1rem;
+                margin: 1rem 0;
+                border-radius: 8px;
+              "
+            >
+              <ul>
+                <li>Cloudflare (gratuit et excellent)</li>
+                <li>AWS CloudFront</li>
+                <li>Bunny CDN</li>
+              </ul>
+            </div>
+
+            <h3>9. Optimiser la Base de Données</h3>
+            <p>Les requêtes BD lentes ralentissent tout.</p>
+            <div
+              style="
+                background: #f0fffe;
+                border-left: 4px solid #a8edea;
+                padding: 1rem;
+                margin: 1rem 0;
+                border-radius: 8px;
+              "
+            >
+              <ul>
+                <li>Indexer colonnes fréquemment interrogées</li>
+                <li>Utiliser SELECT seulement colonnes nécessaires</li>
+                <li>Implémenter caching de requêtes</li>
+              </ul>
+            </div>
+
+            <h3>10. Choisir un Hébergement Rapide</h3>
+            <p>Un mauvais hébergement ralentit même un site optimisé.</p>
+            <div
+              style="
+                background: #f0fffe;
+                border-left: 4px solid #a8edea;
+                padding: 1rem;
+                margin: 1rem 0;
+                border-radius: 8px;
+              "
+            >
+              <ul>
+                <li>✅ VPS géré (meilleur choix)</li>
+                <li>✅ SSD obligatoire (pas HDD)</li>
+                <li>✅ Serveur SSD rapide au Gabon</li>
+                <li>❌ Éviter hébergement partagé surchargé</li>
+              </ul>
+            </div>
+
+            <h2>📊 Outils pour Mesurer la Vitesse</h2>
+            <ul>
+              <li>
+                <strong>Google PageSpeed Insights</strong> : Analyse gratuite +
+                recommandations
+              </li>
+              <li>
+                <strong>GTmetrix</strong> : Rapports détaillés avec waterfall
+              </li>
+              <li>
+                <strong>WebPageTest</strong> : Tests poussés de performance
+              </li>
+              <li><strong>Lighthouse</strong> : Audit intégré Chrome</li>
+              <li><strong>Pingdom</strong> : Monitoring continu vitesse</li>
+            </ul>
+
+            <div
+              style="
+                background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+                color: rgba(0, 0, 0, 0.9);
+                padding: 2rem;
+                border-radius: 12px;
+                margin: 2rem 0;
+                text-align: center;
+              "
+            >
+              <h3 style="font-size: 1.5rem; margin-bottom: 1rem">
+                ⚡ Votre Site Est-il Assez Rapide ?
+              </h3>
+              <p style="margin-bottom: 1rem">
+                Obtenez un audit de vitesse gratuit et des recommandations
+                précises !
+              </p>
+              <a
+                href="../contact.html"
+                style="
+                  display: inline-block;
+                  background: white;
+                  color: #fed6e3;
+                  padding: 0.75rem 2rem;
+                  border-radius: 8px;
+                  font-weight: 600;
+                  text-decoration: none;
+                "
+              >
+                Audit Gratuit Maintenant
+              </a>
+            </div>
+
+            <h2>💡 Conclusion</h2>
+            <p>
+              L'optimisation de vitesse est un processus continu. Testez
+              régulièrement, appliquez les techniques ci-dessus progressivement,
+              et mesurez l'impact.
+            </p>
+            <p>
+              <strong
+                >Objectif : Atteindre un temps de chargement inférieur à 2
+                secondes au Gabon.</strong
+              >
+            </p>
+
+            <!-- Share Buttons -->
+            <div
+              style="
+                margin-top: 3rem;
+                padding-top: 2rem;
+                border-top: 2px solid #e5e7eb;
+              "
+            >
+              <h3 style="margin-bottom: 1rem">Partagez cet article</h3>
+              <div style="display: flex; gap: 1rem; flex-wrap: wrap">
+                <a
+                  href="#"
+                  class="btn btn-outline"
+                  style="display: flex; align-items: center; gap: 0.5rem"
+                >
+                  <i class="fab fa-facebook-f"></i> Facebook
+                </a>
+                <a
+                  href="#"
+                  class="btn btn-outline"
+                  style="display: flex; align-items: center; gap: 0.5rem"
+                >
+                  <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-col">
+            <a href="index.html" class="footer-logo">
+              <span class="logo-m">M</span>
+              <span class="logo-g">G</span>
+              <span class="logo-n">N</span>
+              <div class="logo-text">
+                <span class="logo-codewave">CODEWAVE</span>
+                <span class="logo-tagline">Solutions Digitales</span>
+              </div>
+            </a>
+            <p class="footer-description">
+              Votre partenaire digital de confiance au Gabon. Nous transformons
+              vos idées en sites web performants et rentables.
+            </p>
+            <div class="footer-social">
+              <a href="#" class="social-link" aria-label="Facebook"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="#" class="social-link" aria-label="LinkedIn"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
+              <a href="#" class="social-link" aria-label="GitHub"
+                ><i class="fab fa-github"></i
+              ></a>
+              <a
+                href="https://wa.me/24166198918"
+                class="social-link"
+                target="_blank"
+                aria-label="WhatsApp"
+                ><i class="fab fa-whatsapp"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h4>Services</h4>
+            <ul class="footer-links">
+              <li><a href="services.html#vitrines">Sites Vitrines</a></li>
+              <li><a href="services.html#ecommerce">E-Commerce</a></li>
+              <li><a href="services.html#blogs">Blogs & Portfolios</a></li>
+              <li><a href="services.html#maintenance">Maintenance</a></li>
+              <li>
+                <a href="services.html#additionnels">SEO & Référencement</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>Liens Rapides</h4>
+            <ul class="footer-links">
+              <li><a href="index.html">Accueil</a></li>
+              <li><a href="portfolio.html">Portfolio</a></li>
+              <li><a href="tarifs.html">Tarifs</a></li>
+              <li><a href="blog.html">Blog</a></li>
+              <li><a href="careers.html">Carrières</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>Newsletter</h4>
+            <p>Recevez nos conseils web</p>
+            <form
+              action="https://formspree.io/f/mpweqqzz"
+              method="POST"
+              name="Newsletter"
+              class="newsletter-form"
+              id="newsletterForm"
+            >
+              <input
+                type="email"
+                placeholder="Votre email"
+                required
+                aria-label="Email pour newsletter"
+                name="email"
+              />
+              <button type="submit" aria-label="S'abonner">
+                <i class="fas fa-paper-plane"></i>
+              </button>
+            </form>
+            <p class="newsletter-note">🔒 Pas de spam. Désabonnement facile.</p>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>
+            &copy; 2025 <strong>M.G.N CodeWave</strong>. Tous droits réservés.
+            🇬🇦 Fait avec ❤️ au Gabon
+          </p>
+          <div class="footer-legal">
+            <a href="mentions-legales.html">Mentions Légales</a>
+            <a href="politique-confidentialite.html"
+              >Politique de Confidentialité</a
+            >
+            <a href="cgv.html">CGV</a>
+            <a href="plan-du-site.html">Plan du Site</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a
+      href="https://wa.me/24166198918"
+      class="whatsapp-float"
+      target="_blank"
+      aria-label="Contact WhatsApp"
+    >
+      <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- JavaScript -->
+    <script src="../assets/js/main.js"></script>
+  </body>
+</html>

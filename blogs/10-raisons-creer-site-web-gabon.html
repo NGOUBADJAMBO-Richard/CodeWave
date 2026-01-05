@@ -1,0 +1,816 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Découvrez les 10 raisons essentielles pour lesquelles votre entreprise au Gabon doit avoir un site web en 2025."
+    />
+    <title>
+      10 Raisons de Créer un Site Web pour Votre Entreprise au Gabon en 2025 |
+      CodeWave
+    </title>
+
+    <link
+      rel="icon"
+      type="image/png"
+      href="../assets/images/logo/codewave.png"
+    />
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/responsive.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      .blog-card {
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: 1px solid #e5e7eb;
+      }
+      .blog-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+      }
+      .blog-image {
+        position: relative;
+        overflow: hidden;
+        height: 200px;
+      }
+      .blog-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+      }
+      .blog-card:hover .blog-image img {
+        transform: scale(1.05);
+      }
+      .blog-tag {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 0.4rem 0.8rem;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 600;
+      }
+      .blog-content {
+        padding: 1.5rem;
+      }
+      .blog-title {
+        font-size: 1.1rem;
+        font-weight: 700;
+        margin-bottom: 0.75rem;
+        color: var(--gray-900);
+      }
+      .blog-excerpt {
+        color: var(--gray-600);
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+        line-height: 1.5;
+      }
+      .read-more {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: #667eea;
+        text-decoration: none;
+        font-weight: 600;
+        transition: gap 0.3s ease;
+      }
+      .read-more:hover {
+        gap: 0.75rem;
+      }
+      .read-more i {
+        font-size: 0.75rem;
+      }
+      .bg-light {
+        background: #f9fafb;
+      }
+      h2 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin: 2rem 0 1rem;
+        color: var(--gray-900);
+      }
+      blockquote {
+        border-left: 4px solid #667eea;
+        padding-left: 1.5rem;
+        margin: 2rem 0;
+        font-style: italic;
+        color: var(--gray-700);
+        font-size: 1.1rem;
+      }
+      .article-content ul {
+        list-style: none;
+        padding-left: 0;
+      }
+      .article-content ul li {
+        padding: 0.5rem 0 0.5rem 1.5rem;
+        position: relative;
+      }
+      .article-content ul li:before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: #16a34a;
+        font-weight: bold;
+      }
+      .section-padding {
+        padding: 4rem 0;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+      <div class="container">
+        <div class="nav-wrapper">
+          <a href="../index.html" class="logo">
+            <img
+              src="../assets/images/logo/codewave.png"
+              alt="Profil M.G.N CodeWave"
+              class="logo-image"
+            />
+          </a>
+
+          <ul class="nav-menu" id="navMenu">
+            <li><a href="../index.html">Accueil</a></li>
+            <li><a href="../services.html">Services</a></li>
+            <li><a href="../tarifs.html">Tarifs</a></li>
+            <li><a href="../portfolio.html">Portfolio</a></li>
+            <li><a href="../blog.html" class="active">Blog</a></li>
+            <li><a href="../a-propos.html">À Propos</a></li>
+            <li><a href="../careers.html">Carrières</a></li>
+            <li><a href="../contact.html">Contact</a></li>
+          </ul>
+
+          <div class="nav-cta">
+            <a href="../contact.html" class="btn btn-primary">Devis Gratuit</a>
+            <button class="menu-toggle" id="menuToggle">
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Article Header -->
+    <section
+      class="page-header"
+      style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
+    >
+      <div class="container">
+        <div class="breadcrumb">
+          <a href="../index.html" style="color: rgba(255, 255, 255, 0.9)"
+            >Accueil</a
+          >
+          <span style="color: rgba(255, 255, 255, 0.7)">/</span>
+          <a href="../blog.html" style="color: rgba(255, 255, 255, 0.9)"
+            >Blog</a
+          >
+          <span style="color: rgba(255, 255, 255, 0.7)">/</span>
+          <span style="color: white">10 Raisons de Créer un Site Web</span>
+        </div>
+        <div style="max-width: 800px; margin: 0 auto; text-align: center">
+          <div
+            style="
+              display: inline-block;
+              background: rgba(255, 255, 255, 0.2);
+              color: white;
+              padding: 0.5rem 1rem;
+              border-radius: var(--radius-full);
+              font-size: 0.875rem;
+              font-weight: 600;
+              margin-bottom: 1rem;
+            "
+          >
+            <i class="fas fa-star"></i> Article À la Une
+          </div>
+          <h1
+            class="page-title"
+            style="color: white; font-size: 2.5rem; margin-bottom: 1rem"
+          >
+            10 Raisons de Créer un Site Web pour Votre Entreprise au Gabon en
+            2025
+          </h1>
+          <div
+            style="
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              gap: 1.5rem;
+              color: rgba(255, 255, 255, 0.9);
+              font-size: 0.875rem;
+              flex-wrap: wrap;
+            "
+          >
+            <div style="display: flex; align-items: center; gap: 0.5rem">
+              <i class="fas fa-user-circle"></i>
+              <span>Par M.G.N CodeWave</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.5rem">
+              <i class="fas fa-calendar"></i>
+              <span>15 Décembre 2024</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.5rem">
+              <i class="fas fa-clock"></i>
+              <span>8 min de lecture</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.5rem">
+              <i class="fas fa-tag"></i>
+              <span>Conseils</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Article Content -->
+    <article class="section-padding">
+      <div class="container">
+        <div style="max-width: 800px; margin: 0 auto">
+          <!-- Featured Image -->
+          <img
+            src="https://images.unsplash.com/photo-1460925895917-adf4ee868993?auto=format&fit=crop&w=1200&q=80"
+            alt="Création de site web au Gabon"
+            style="
+              width: 100%;
+              border-radius: 12px;
+              margin-bottom: 2rem;
+              box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            "
+          />
+
+          <!-- Introduction -->
+          <div class="article-content">
+            <p class="lead">
+              En 2025, avoir un site web n'est plus un luxe, mais une nécessité
+              pour toute entreprise gabonaise souhaitant prospérer dans un monde
+              de plus en plus digital. Que vous soyez une PME à Libreville, un
+              commerce à Port-Gentil, ou une startup à Franceville, voici 10
+              raisons convaincantes pour investir dans votre présence en ligne.
+            </p>
+
+            <h2>1. 🌍 Être Visible 24/7, Partout au Gabon</h2>
+            <p>
+              Contrairement à une boutique physique avec des horaires limités,
+              votre site web travaille pour vous jour et nuit, 7 jours sur 7.
+              Vos clients potentiels peuvent découvrir vos services à 2h du
+              matin comme à midi, depuis Libreville ou depuis une province
+              éloignée.
+            </p>
+            <blockquote>
+              "Un site web, c'est comme avoir un commercial qui ne dort jamais
+              et qui peut servir des milliers de clients simultanément."
+            </blockquote>
+
+            <h2>2. 💰 Crédibilité et Confiance Professionnelle</h2>
+            <p>
+              Au Gabon, 78% des consommateurs vérifient en ligne avant d'acheter
+              un produit ou service. Sans site web, vous perdez instantanément
+              en crédibilité face à vos concurrents qui en ont un. Un site
+              professionnel rassure vos clients et montre que vous êtes une
+              entreprise sérieuse.
+            </p>
+            <p><strong>Ce qu'un site web apporte :</strong></p>
+            <ul>
+              <li>✅ Image professionnelle et moderne</li>
+              <li>✅ Témoignages clients visibles</li>
+              <li>✅ Certificats et réalisations affichés</li>
+              <li>✅ Informations de contact vérifiables</li>
+            </ul>
+
+            <h2>3. 📱 Atteindre 2,5 Millions d'Internautes Gabonais</h2>
+            <p>
+              Avec plus de 2,5 millions d'internautes au Gabon et un taux de
+              pénétration mobile de 170%, votre audience potentielle en ligne
+              dépasse largement celle que vous pouvez atteindre physiquement.
+            </p>
+            <div
+              style="
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                color: white;
+                padding: 2rem;
+                border-radius: 12px;
+                margin: 2rem 0;
+                text-align: center;
+              "
+            >
+              <h3 style="font-size: 2rem; margin-bottom: 0.5rem">
+                70% des Gabonais
+              </h3>
+              <p style="opacity: 0.9">
+                recherchent des produits et services en ligne avant d'acheter
+              </p>
+            </div>
+
+            <h2>4. 🎯 Vous Démarquer de Vos Concurrents</h2>
+            <p>
+              Actuellement, seulement 15% des PME gabonaises ont un site web
+              professionnel. C'est VOTRE opportunité de prendre l'avantage sur
+              vos concurrents qui n'ont pas encore franchi le pas digital.
+            </p>
+
+            <h2>5. 💵 Réduire Vos Coûts Marketing</h2>
+            <p>
+              Un site web bien référencé coûte beaucoup moins cher que la
+              publicité traditionnelle (radio, affichage, flyers) et génère des
+              résultats mesurables et durables.
+            </p>
+            <table
+              style="
+                width: 100%;
+                border-collapse: collapse;
+                margin: 2rem 0;
+                background: white;
+                border-radius: 8px;
+                overflow: hidden;
+                box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+              "
+            >
+              <thead>
+                <tr style="background: #f8f9fa">
+                  <th
+                    style="
+                      padding: 1rem;
+                      text-align: left;
+                      font-weight: 600;
+                      border-bottom: 2px solid #e5e7eb;
+                    "
+                  >
+                    Canal Marketing
+                  </th>
+                  <th
+                    style="
+                      padding: 1rem;
+                      text-align: right;
+                      font-weight: 600;
+                      border-bottom: 2px solid #e5e7eb;
+                    "
+                  >
+                    Coût Mensuel (FCFA)
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding: 1rem; border-bottom: 1px solid #e5e7eb">
+                    Spot Radio (30s)
+                  </td>
+                  <td
+                    style="
+                      padding: 1rem;
+                      text-align: right;
+                      border-bottom: 1px solid #e5e7eb;
+                    "
+                  >
+                    300 000 - 500 000 FCFA
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding: 1rem; border-bottom: 1px solid #e5e7eb">
+                    Panneau publicitaire
+                  </td>
+                  <td
+                    style="
+                      padding: 1rem;
+                      text-align: right;
+                      border-bottom: 1px solid #e5e7eb;
+                    "
+                  >
+                    200 000 - 400 000 FCFA
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding: 1rem; border-bottom: 1px solid #e5e7eb">
+                    Flyers (5000 unités)
+                  </td>
+                  <td
+                    style="
+                      padding: 1rem;
+                      text-align: right;
+                      border-bottom: 1px solid #e5e7eb;
+                    "
+                  >
+                    150 000 - 250 000 FCFA
+                  </td>
+                </tr>
+                <tr style="background: #f0fdf4">
+                  <td
+                    style="
+                      padding: 1rem;
+                      font-weight: 600;
+                      border-bottom: 1px solid #e5e7eb;
+                    "
+                  >
+                    Site Web Professionnel
+                  </td>
+                  <td
+                    style="
+                      padding: 1rem;
+                      text-align: right;
+                      font-weight: 600;
+                      color: #16a34a;
+                      border-bottom: 1px solid #e5e7eb;
+                    "
+                  >
+                    15 000 FCFA/mois
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h2>6. 📊 Collecter des Données Précieuses</h2>
+            <p>
+              Votre site web vous fournit des données précieuses sur vos
+              visiteurs : d'où viennent-ils ? Quelles pages consultent-ils ?
+              Combien de temps restent-ils ? Ces informations vous aident à
+              mieux comprendre vos clients et adapter votre offre.
+            </p>
+
+            <h2>7. 🚀 Faciliter la Vente de Vos Produits/Services</h2>
+            <p>
+              Avec un site e-commerce, vous pouvez vendre vos produits en ligne
+              et accepter des paiements via Mobile Money (Airtel Money, Moov
+              Money), cartes bancaires ou virement. Plus besoin que le client se
+              déplace !
+            </p>
+
+            <h2>8. 📞 Être Contacté Facilement</h2>
+            <p>
+              Formulaires de contact, WhatsApp Business, numéros de téléphone
+              cliquables... Un site web facilite la prise de contact avec vos
+              clients potentiels.
+            </p>
+
+            <h2>9. 🌟 Améliorer Votre Image de Marque</h2>
+            <p>
+              Un site web bien conçu reflète votre professionnalisme et vos
+              valeurs. C'est l'occasion de raconter votre histoire, de partager
+              votre vision et de créer un lien émotionnel avec vos clients.
+            </p>
+
+            <h2>10. 📈 Préparer l'Avenir Digital du Gabon</h2>
+            <p>
+              Le Gabon investit massivement dans la transformation digitale avec
+              le Plan Stratégique Gabon Numérique. Les entreprises sans présence
+              en ligne risquent d'être laissées pour compte. Anticiper cette
+              transition, c'est assurer la pérennité de votre business.
+            </p>
+
+            <div
+              style="
+                background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+                color: white;
+                padding: 2rem;
+                border-radius: 12px;
+                margin: 2rem 0;
+                text-align: center;
+              "
+            >
+              <h3 style="font-size: 1.5rem; margin-bottom: 1rem">
+                🎁 Offre Spéciale Lancement
+              </h3>
+              <p style="margin-bottom: 1rem">
+                Profitez de -15% sur tous nos packs + logo offert (35 000 FCFA)
+                pour les 10 premiers clients !
+              </p>
+              <a
+                href="../contact.html"
+                style="
+                  display: inline-block;
+                  background: white;
+                  color: #f59e0b;
+                  padding: 0.75rem 2rem;
+                  border-radius: 8px;
+                  font-weight: 600;
+                  text-decoration: none;
+                "
+              >
+                Obtenir Mon Devis Gratuit
+              </a>
+            </div>
+
+            <h2>💡 Conclusion</h2>
+            <p>
+              Créer un site web pour votre entreprise au Gabon en 2025 n'est
+              plus une option mais une nécessité stratégique. Avec des coûts
+              abordables (à partir de 100 000 FCFA chez CodeWave) et des
+              bénéfices considérables, c'est un investissement qui se
+              rentabilise rapidement.
+            </p>
+            <p>
+              <strong
+                >Prêt à franchir le pas digital ? Contactez CodeWave dès
+                aujourd'hui pour un devis gratuit et personnalisé.</strong
+              >
+            </p>
+
+            <!-- Share Buttons -->
+            <div
+              style="
+                margin-top: 3rem;
+                padding-top: 2rem;
+                border-top: 2px solid #e5e7eb;
+              "
+            >
+              <h3 style="margin-bottom: 1rem">Partagez cet article</h3>
+              <div style="display: flex; gap: 1rem; flex-wrap: wrap">
+                <a
+                  href="#"
+                  class="btn btn-outline"
+                  style="display: flex; align-items: center; gap: 0.5rem"
+                >
+                  <i class="fab fa-facebook-f"></i> Facebook
+                </a>
+                <a
+                  href="#"
+                  class="btn btn-outline"
+                  style="display: flex; align-items: center; gap: 0.5rem"
+                >
+                  <i class="fab fa-twitter"></i> Twitter
+                </a>
+                <a
+                  href="#"
+                  class="btn btn-outline"
+                  style="display: flex; align-items: center; gap: 0.5rem"
+                >
+                  <i class="fab fa-linkedin-in"></i> LinkedIn
+                </a>
+                <a
+                  href="#"
+                  class="btn btn-outline"
+                  style="display: flex; align-items: center; gap: 0.5rem"
+                >
+                  <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+              </div>
+            </div>
+
+            <!-- Author Box -->
+            <div
+              style="
+                background: #f8f9fa;
+                padding: 2rem;
+                border-radius: 12px;
+                margin-top: 3rem;
+                display: flex;
+                gap: 1.5rem;
+                align-items: center;
+              "
+            >
+              <div
+                style="
+                  width: 80px;
+                  height: 80px;
+                  border-radius: 50%;
+                  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  flex-shrink: 0;
+                "
+              >
+                <i
+                  class="fas fa-user"
+                  style="color: white; font-size: 2rem"
+                ></i>
+              </div>
+              <div>
+                <h4 style="margin-bottom: 0.5rem; color: var(--gray-900)">
+                  À propos de l'auteur
+                </h4>
+                <p style="color: var(--gray-600); margin-bottom: 1rem">
+                  <strong>M.G.N CodeWave</strong> est une agence de
+                  développement web basée à Libreville, spécialisée dans la
+                  création de sites web professionnels pour les entreprises
+                  gabonaises.
+                </p>
+                <a href="../contact.html" class="btn btn-primary btn-sm">
+                  Contactez-nous
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Related Articles -->
+    <section class="section-padding bg-light">
+      <div class="container">
+        <h2
+          style="
+            font-size: 2rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 3rem;
+          "
+        >
+          Articles Similaires
+        </h2>
+        <div
+          style="
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+          "
+        >
+          <article class="blog-card">
+            <div class="blog-image">
+              <img
+                src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80"
+                alt="Optimiser son SEO au Gabon"
+              />
+              <span class="blog-tag">Conseils</span>
+            </div>
+            <div class="blog-content">
+              <h3 class="blog-title">
+                Optimiser votre Référencement SEO au Gabon
+              </h3>
+              <p class="blog-excerpt">
+                Les meilleures pratiques pour améliorer votre classement
+                Google...
+              </p>
+              <a href="optimiser-seo-gabon.html" class="read-more">
+                Lire la suite <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </article>
+
+          <article class="blog-card">
+            <div class="blog-image">
+              <img
+                src="https://images.unsplash.com/photo-1460925895917-adf4ee868993?auto=format&fit=crop&w=600&q=80"
+                alt="Vitesse de chargement"
+              />
+              <span class="blog-tag">Tutoriels</span>
+            </div>
+            <div class="blog-content">
+              <h3 class="blog-title">
+                Améliorer la Vitesse de Chargement de Votre Site
+              </h3>
+              <p class="blog-excerpt">
+                Découvrez comment optimiser les performances de votre site...
+              </p>
+              <a href="vitesse-chargement-site-web.html" class="read-more">
+                Lire la suite <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </article>
+
+          <article class="blog-card">
+            <div class="blog-image">
+              <img
+                src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80"
+                alt="Tendances web design"
+              />
+              <span class="blog-tag">Actualités</span>
+            </div>
+            <div class="blog-content">
+              <h3 class="blog-title">Les Tendances du Web Design en 2025</h3>
+              <p class="blog-excerpt">
+                Découvrez les tendances design qui vont dominer l'année 2025...
+              </p>
+              <a href="tendances-web-design-2025.html" class="read-more">
+                Lire la suite <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-col">
+            <a href="index.html" class="footer-logo">
+              <span class="logo-m">M</span>
+              <span class="logo-g">G</span>
+              <span class="logo-n">N</span>
+              <div class="logo-text">
+                <span class="logo-codewave">CODEWAVE</span>
+                <span class="logo-tagline">Solutions Digitales</span>
+              </div>
+            </a>
+            <p class="footer-description">
+              Votre partenaire digital de confiance au Gabon. Nous transformons
+              vos idées en sites web performants et rentables.
+            </p>
+            <div class="footer-social">
+              <a href="#" class="social-link" aria-label="Facebook"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="#" class="social-link" aria-label="LinkedIn"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
+              <a href="#" class="social-link" aria-label="GitHub"
+                ><i class="fab fa-github"></i
+              ></a>
+              <a
+                href="https://wa.me/24166198918"
+                class="social-link"
+                target="_blank"
+                aria-label="WhatsApp"
+                ><i class="fab fa-whatsapp"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h4>Services</h4>
+            <ul class="footer-links">
+              <li><a href="services.html#vitrines">Sites Vitrines</a></li>
+              <li><a href="services.html#ecommerce">E-Commerce</a></li>
+              <li><a href="services.html#blogs">Blogs & Portfolios</a></li>
+              <li><a href="services.html#maintenance">Maintenance</a></li>
+              <li>
+                <a href="services.html#additionnels">SEO & Référencement</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>Liens Rapides</h4>
+            <ul class="footer-links">
+              <li><a href="index.html">Accueil</a></li>
+              <li><a href="portfolio.html">Portfolio</a></li>
+              <li><a href="tarifs.html">Tarifs</a></li>
+              <li><a href="blog.html">Blog</a></li>
+              <li><a href="careers.html">Carrières</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>Newsletter</h4>
+            <p>Recevez nos conseils web</p>
+            <form
+              action="https://formspree.io/f/mpweqqzz"
+              method="POST"
+              name="Newsletter"
+              class="newsletter-form"
+              id="newsletterForm"
+            >
+              <input
+                type="email"
+                placeholder="Votre email"
+                required
+                aria-label="Email pour newsletter"
+                name="email"
+              />
+              <button type="submit" aria-label="S'abonner">
+                <i class="fas fa-paper-plane"></i>
+              </button>
+            </form>
+            <p class="newsletter-note">🔒 Pas de spam. Désabonnement facile.</p>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>
+            &copy; 2025 <strong>M.G.N CodeWave</strong>. Tous droits réservés.
+            🇬🇦 Fait avec ❤️ au Gabon
+          </p>
+          <div class="footer-legal">
+            <a href="mentions-legales.html">Mentions Légales</a>
+            <a href="politique-confidentialite.html"
+              >Politique de Confidentialité</a
+            >
+            <a href="cgv.html">CGV</a>
+            <a href="plan-du-site.html">Plan du Site</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a
+      href="https://wa.me/24166198918?text=Bonjour,%20je%20souhaite%20discuter%20d'un%20projet%20web"
+      class="whatsapp-float"
+      target="_blank"
+      aria-label="Contact WhatsApp"
+    >
+      <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- JavaScript -->
+    <script src="../assets/js/main.js"></script>
+  </body>
+</html>
