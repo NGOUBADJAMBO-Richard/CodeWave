@@ -1964,6 +1964,34 @@ ol {
   }
 }
 
+/* === Story Section === */
+.story-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.story-title {
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--gray-900);
+  margin-bottom: 1.5rem;
+}
+
+.story-text {
+  color: var(--gray-600);
+  font-size: 1.125rem;
+  line-height: 1.8;
+}
+
+.story-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+}
+
 /* === Responsive === */
 @media (max-width: 1023px) {
   .nav-menu.active {

@@ -118,6 +118,20 @@
     flex-direction: column;
     text-align: center;
   }
+
+  /* Story Section - À Propos */
+  .story-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .story-title {
+    font-size: 2.5rem;
+  }
+
+  .story-text {
+    font-size: 1rem;
+  }
 }
 
 /* === Mobile Landscape & Tablets (640px - 767px) === */
@@ -313,6 +327,26 @@
   .cta-features {
     flex-direction: column;
     gap: 1rem;
+  }
+
+  /* Story Section - À Propos */
+  .story-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .story-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .story-text {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .story-image {
+    order: -1; /* Place l'image en premier sur mobile */
   }
 
   /* Footer */
