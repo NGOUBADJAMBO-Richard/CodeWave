@@ -2,6 +2,30 @@
 // CodeWave - JavaScript Principal
 // ========================================
 
+// ✅ SÉCURITÉ: Fonction de sanitization XSS
+function sanitizeInput(str) {
+  if (!str) return "";
+  const div = document.createElement("div");
+  div.textContent = str;
+  return div.innerHTML;
+}
+
+// ✅ SÉCURITÉ: Validation stricte des inputs
+function validateInput(type, value) {
+  switch (type) {
+    case "email":
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+    case "telephone":
+      return /^[\d\s\-\+\(\)]{10,}$/.test(value.replace(/\s/g, ""));
+    case "nom":
+      return value.length >= 2 && value.length <= 100;
+    case "message":
+      return value.length >= 10 && value.length <= 5000;
+    default:
+      return true;
+  }
+}
+
 // === Configuration EmailJS ===
 // Inscrivez-vous sur https://www.emailjs.com/ (GRATUIT)
 // Remplacez ces valeurs par vos propres identifiants
@@ -86,25 +110,58 @@ if (contactForm) {
     const submitBtn = this.querySelector('button[type="submit"]');
     const originalText = submitBtn.innerHTML;
 
-    // DÃ©sactiver le bouton et afficher le loading
+    // Désactiver le bouton et afficher le loading
     submitBtn.classList.add("loading");
     submitBtn.disabled = true;
 
-    // Supprimer les messages prÃ©cÃ©dents
+    // Supprimer les messages précédents
     const existingMessages = this.querySelectorAll(
       ".success-message, .error-message"
     );
     existingMessages.forEach((msg) => msg.remove());
 
-    // RÃ©cupÃ©rer les donnÃ©es du formulaire
+    // ✅ SÉCURITÉ: Récupérer et valider les données du formulaire
     const formData = {
-      nom: this.querySelector('[name="nom"]').value,
-      email: this.querySelector('[name="email"]').value,
-      telephone: this.querySelector('[name="telephone"]').value,
+      nom: this.querySelector('[name="nom"]').value.trim(),
+      email: this.querySelector('[name="email"]').value.trim().toLowerCase(),
+      telephone: this.querySelector('[name="telephone"]').value.trim(),
       typeProjet: this.querySelector('[name="typeProjet"]').value,
-      budget: this.querySelector('[name="budget"]')?.value || "Non spÃ©cifiÃ©",
-      message: this.querySelector('[name="message"]').value,
+      budget: this.querySelector('[name="budget"]')?.value || "Non spécifié",
+      message: this.querySelector('[name="message"]').value.trim(),
     };
+
+    // ✅ SÉCURITÉ: Valider tous les champs
+    if (!validateInput("nom", formData.nom)) {
+      showMessage("error", "Nom invalide (2-100 caractères)");
+      submitBtn.classList.remove("loading");
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = originalText;
+      return;
+    }
+
+    if (!validateInput("email", formData.email)) {
+      showMessage("error", "Email invalide");
+      submitBtn.classList.remove("loading");
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = originalText;
+      return;
+    }
+
+    if (!validateInput("telephone", formData.telephone)) {
+      showMessage("error", "Telephone invalide");
+      submitBtn.classList.remove("loading");
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = originalText;
+      return;
+    }
+
+    if (!validateInput("message", formData.message)) {
+      showMessage("error", "Message invalide (10-5000 caracteres)");
+      submitBtn.classList.remove("loading");
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = originalText;
+      return;
+    }
 
     try {
       // MÃ©thode 1: EmailJS (RecommandÃ© - GRATUIT)
@@ -164,15 +221,9 @@ if (contactForm) {
 // Fonction pour simuler l'envoi d'email (pour les tests)
 function simulateEmailSend(data) {
   return new Promise((resolve) => {
-    console.log("ðŸ“§ Email simulÃ© envoyÃ©:", data);
-    // Sauvegarder localement pour rÃ©fÃ©rence
-    localStorage.setItem(
-      "lastContactForm",
-      JSON.stringify({
-        ...data,
-        date: new Date().toISOString(),
-      })
-    );
+    console.log("📧 Formulaire envoyé:", data);
+    // ✅ NE PAS sauvegarder les données sensibles en localStorage
+    // Les données sont déjà envoyées via Formspree/EmailJS
     setTimeout(resolve, 1500);
   });
 }
@@ -209,19 +260,24 @@ if (newsletterForm) {
     submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
 
     try {
-      // Sauvegarder l'email localement
-      const newsletters = JSON.parse(
-        localStorage.getItem("newsletters") || "[]"
-      );
-      if (!newsletters.includes(email)) {
-        newsletters.push(email);
-        localStorage.setItem("newsletters", JSON.stringify(newsletters));
+      // ✅ Validation stricte de l'email
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        showMessage("error", "❌ Email invalide");
+        return;
       }
 
-      // Simuler l'envoi
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      // ✅ NE PAS stocker en localStorage (FAILLE DE SÉCURITÉ!)
+      // Envoyer directement à Formspree
+      const response = await fetch("https://formspree.io/f/mpweqqzz", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: email, source: "newsletter" }),
+      });
 
-      // Message de succÃ¨s
+      if (!response.ok) throw new Error("Newsletter submission failed");
+
+      // Message de succès
       const successMsg = document.createElement("p");
       successMsg.style.color = "var(--success)";
       successMsg.style.fontSize = "0.875rem";
@@ -520,4 +576,3 @@ if ("serviceWorker" in navigator) {
     */
   });
 }
-
