@@ -85,7 +85,9 @@ function staggerAnimation(selector, animationClass, delay = 100) {
   });
 }
 
-// === Parallax Scrolling Effect ===
+// === Parallax Scrolling Effect (optionnel) ===
+// Décommentez pour utiliser
+/*
 function initParallax() {
   const parallaxElements = document.querySelectorAll(".parallax");
 
@@ -99,6 +101,7 @@ function initParallax() {
     });
   });
 }
+*/
 
 // === Smooth Scroll to Anchor ===
 function initSmoothScroll() {
@@ -123,7 +126,9 @@ function initSmoothScroll() {
   });
 }
 
-// === Loading Animation ===
+// === Loading Animation (optionnel - non utilisé) ===
+// Décommentez pour utiliser
+/*
 function showLoader() {
   const loader = document.createElement("div");
   loader.className = "page-loader";
@@ -133,7 +138,6 @@ function showLoader() {
   `;
   document.body.appendChild(loader);
 
-  // Ajouter les styles si nécessaire
   if (!document.getElementById("loader-styles")) {
     const style = document.createElement("style");
     style.id = "loader-styles";
@@ -162,8 +166,11 @@ function hideLoader(loader) {
     setTimeout(() => loader.remove(), 300);
   }
 }
+*/
 
-// === Typing Effect ===
+// === Typing Effect (optionnel - non utilisé) ===
+// Décommentez pour utiliser
+/*
 function typeWriter(element, text, speed = 50) {
   let i = 0;
   element.textContent = "";
@@ -178,20 +185,25 @@ function typeWriter(element, text, speed = 50) {
 
   type();
 }
+*/
 
-// === Progress Bar Animation ===
+// === Progress Bar Animation (optionnel - non utilisé) ===
+// Décommentez pour utiliser
+/*
 function animateProgressBar(element, targetWidth, duration = 1000) {
   element.style.setProperty("--progress-width", targetWidth + "%");
   element.style.animation = `progress ${duration}ms ease-out forwards`;
 }
+*/
 
-// === Toast Notification ===
+// === Toast Notification (optionnel - non utilisé) ===
+// Décommentez pour utiliser
+/*
 function showToast(message, type = "info", duration = 3000) {
   const toast = document.createElement("div");
   toast.className = `toast toast-${type}`;
   toast.textContent = message;
 
-  // Styles inline
   Object.assign(toast.style, {
     position: "fixed",
     bottom: "2rem",
@@ -214,8 +226,11 @@ function showToast(message, type = "info", duration = 3000) {
     setTimeout(() => toast.remove(), 300);
   }, duration);
 }
+*/
 
-// === Ripple Effect on Click ===
+// === Ripple Effect on Click (optionnel - non utilisé) ===
+// Décommentez pour utiliser
+/*
 function addRippleEffect(button) {
   button.addEventListener("click", function (e) {
     const ripple = document.createElement("span");
@@ -229,7 +244,6 @@ function addRippleEffect(button) {
     ripple.style.top = y + "px";
     ripple.className = "ripple";
 
-    // Styles
     Object.assign(ripple.style, {
       position: "absolute",
       borderRadius: "50%",
@@ -244,8 +258,11 @@ function addRippleEffect(button) {
     setTimeout(() => ripple.remove(), 600);
   });
 }
+*/
 
-// === Modal Animations ===
+// === Modal Animations (optionnel - non utilisé) ===
+// Décommentez pour utiliser
+/*
 function openModal(modalId) {
   const modal = document.getElementById(modalId);
   if (modal) {
@@ -253,7 +270,6 @@ function openModal(modalId) {
     modal.classList.add("modal-open");
     document.body.style.overflow = "hidden";
 
-    // Animation
     requestAnimationFrame(() => {
       modal.style.opacity = "1";
     });
@@ -271,6 +287,7 @@ function closeModal(modalId) {
     }, 300);
   }
 }
+*/
 
 // === Image Lazy Loading ===
 function initLazyLoading() {
@@ -297,7 +314,9 @@ function initLazyLoading() {
   images.forEach((img) => imageObserver.observe(img));
 }
 
-// === Scroll Progress Bar ===
+// === Scroll Progress Bar (optionnel - non utilisé) ===
+// Décommentez pour utiliser
+/*
 function initScrollProgress() {
   const progressBar = document.createElement("div");
   progressBar.className = "scroll-progress";
@@ -323,6 +342,7 @@ function initScrollProgress() {
     progressBar.style.width = scrolled + "%";
   });
 }
+*/
 
 // === Add Hover Class ===
 function initHoverEffects() {
@@ -355,19 +375,6 @@ function initAnimations() {
   // Lazy loading
   initLazyLoading();
 
-  // Scroll progress bar (optionnel)
-  // initScrollProgress();
-
-  // Parallax (optionnel)
-  // initParallax();
-
-  // Add ripple effect to buttons
-  document.querySelectorAll(".btn-primary, .btn-secondary").forEach((btn) => {
-    btn.style.position = "relative";
-    btn.style.overflow = "hidden";
-    addRippleEffect(btn);
-  });
-
   // Hover effects
   initHoverEffects();
 
@@ -379,32 +386,6 @@ function initAnimations() {
 
 // === Page Load Animation ===
 window.addEventListener("load", () => {
-  // Masquer le loader si présent
-  const loader = document.querySelector(".page-loader");
-  if (loader) {
-    hideLoader(loader);
-  }
-
   // Initialiser toutes les animations
   initAnimations();
-
-  // Log performance
-  if (window.performance) {
-    const perfData = window.performance.timing;
-    const pageLoadTime = perfData.loadEventEnd - perfData.navigationStart;
-    console.log(`⚡ Page chargée en ${pageLoadTime}ms`);
-  }
 });
-
-// === Export functions for use in other scripts ===
-window.CodeWaveAnimations = {
-  showToast,
-  animateNumber,
-  typeWriter,
-  openModal,
-  closeModal,
-  showLoader,
-  hideLoader,
-  animateProgressBar,
-  staggerAnimation,
-};

@@ -1,26 +1,26 @@
-﻿# ðŸš€ CodeWave - Site Web Professionnel
+﻿# 🚀 CodeWave - Site Web Professionnel
 
-Site web complet pour l'entreprise **M.G.N CodeWave**, agence de dÃ©veloppement web basÃ©e Ã  Libreville, Gabon.
+Site web complet pour l'entreprise **M.G.N CodeWave**, agence de développement web basée à Libreville, Gabon.
 
 ---
 
-## ðŸ“‹ Table des MatiÃ¨res
+## 📋 Table des Matières
 
-1. [AperÃ§u](#aperÃ§u)
-2. [FonctionnalitÃ©s](#fonctionnalitÃ©s)
+1. [Aperçu](#aperçu)
+2. [Fonctionnalités](#fonctionnalités)
 3. [Structure du Projet](#structure-du-projet)
 4. [Installation](#installation)
 5. [Configuration](#configuration)
 6. [Utilisation](#utilisation)
-7. [DÃ©ploiement](#dÃ©ploiement)
+7. [Déploiement](#déploiement)
 8. [Personnalisation](#personnalisation)
 9. [Support](#support)
 
 ---
 
-## ðŸŽ¯ AperÃ§u
+## 🎯 Aperçu
 
-Site web moderne et responsive pour prÃ©senter les services de dÃ©veloppement web de CodeWave :
+Site web moderne et responsive pour présenter les services de développement web de CodeWave :
 
 - **Sites Vitrines** : 100 000 - 200 000 FCFA
 - **E-Commerce** : 300 000 - 500 000 FCFA
@@ -642,4 +642,3 @@ Ce projet est la propriÃ©tÃ© de CodeWave. Toute reproduction ou utilisation 
 **Bon dÃ©veloppement ! ðŸš€**
 
 Si vous avez des questions, n'hÃ©sitez pas Ã  nous contacter sur WhatsApp : **+241 74 67 67 41**
-

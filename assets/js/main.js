@@ -26,14 +26,7 @@ function validateInput(type, value) {
   }
 }
 
-// === Configuration EmailJS ===
-// Inscrivez-vous sur https://www.emailjs.com/ (GRATUIT)
-// Remplacez ces valeurs par vos propres identifiants
-const EMAILJS_CONFIG = {
-  serviceID: "service_xxxxxxx", // Votre Service ID
-  templateID: "template_xxxxxxx", // Votre Template ID
-  publicKey: "your_public_key", // Votre Public Key
-};
+// Configuration EmailJS (optionnel - commentée par défaut)
 
 // === Navigation ===
 document.addEventListener("DOMContentLoaded", function () {
@@ -164,26 +157,7 @@ if (contactForm) {
     }
 
     try {
-      // Méthode 1: EmailJS (Recommandé - GRATUIT)
-      // Décommentez après avoir configuré EmailJS
-      /*
-      await emailjs.send(
-        EMAILJS_CONFIG.serviceID,
-        EMAILJS_CONFIG.templateID,
-        {
-          to_email: 'mgncodewave18@gmail.com',
-          from_name: formData.nom,
-          from_email: formData.email,
-          phone: formData.telephone,
-          project_type: formData.typeProjet,
-          budget: formData.budget,
-          message: formData.message
-        },
-        EMAILJS_CONFIG.publicKey
-      );
-      */
-
-      // Méthode 2: Simulation (pour les tests)
+      // Envoyer via Formspree
       await simulateEmailSend(formData);
 
       // Afficher le message de succès
@@ -449,25 +423,14 @@ if (typeProjetSelect) {
   }
 }
 
-// === Tracking Analytics (Google Analytics) ===
-// Décommentez et ajoutez votre ID Google Analytics
+// === Tracking Analytics (Google Analytics - optionnel) ===
+// À activer uniquement si vous avez un ID Google Analytics
 /*
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-XXXXXXXXXX'); // Remplacez par votre ID
 */
-
-// Tracker les clics sur les boutons CTA
-document.querySelectorAll(".btn-primary, .btn-secondary").forEach((btn) => {
-  btn.addEventListener("click", function (e) {
-    const text = this.textContent.trim();
-    console.log("CTA cliqué:", text);
-
-    // Envoyer à Google Analytics
-    // gtag('event', 'cta_click', { button_text: text });
-  });
-});
 
 // === Protection contre le spam (Honeypot) ===
 // Ajouter un champ caché au formulaire
@@ -504,7 +467,9 @@ if ("loading" in HTMLImageElement.prototype) {
   document.body.appendChild(script);
 }
 
-// === Mode Sombre (optionnel) ===
+// === Mode Sombre (optionnel - non utilisé) ===
+// Décommentez pour activer
+/*
 function initDarkMode() {
   const darkModeToggle = document.getElementById("darkModeToggle");
   if (!darkModeToggle) return;
@@ -522,8 +487,11 @@ function initDarkMode() {
     localStorage.setItem("theme", isDark ? "dark" : "light");
   });
 }
+*/
 
-// === Copier dans le presse-papier ===
+// === Copier dans le presse-papier (optionnel - non utilisé) ===
+// Décommentez pour utiliser
+/*
 function copyToClipboard(text) {
   if (navigator.clipboard) {
     navigator.clipboard.writeText(text).then(() => {
@@ -538,6 +506,7 @@ function copyToClipboard(text) {
     document.body.removeChild(textarea);
   }
 }
+*/
 
 // === Console Easter Egg ===
 console.log(
@@ -554,25 +523,23 @@ console.log(
 );
 
 // === Performance Monitoring ===
+// Logge les performances de chargement
 window.addEventListener("load", () => {
   if (window.performance && window.performance.timing) {
     const perfData = window.performance.timing;
     const pageLoadTime = perfData.loadEventEnd - perfData.navigationStart;
     console.log(`⚡ Page chargée en ${pageLoadTime}ms`);
-
-    // Envoyer à Analytics si configuré
-    // gtag('event', 'page_load_time', { value: pageLoadTime });
   }
 });
 
 // === Service Worker (pour PWA - optionnel) ===
+// Décommentez pour activer le caching offline
+/*
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
-    // Décommentez pour activer le Service Worker
-    /*
     navigator.serviceWorker.register('/sw.js')
       .then(registration => console.log('SW enregistré'))
       .catch(err => console.log('Erreur SW:', err));
-    */
   });
 }
+*/
