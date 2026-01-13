@@ -148,7 +148,7 @@ if (contactForm) {
     }
 
     if (!validateInput("telephone", formData.telephone)) {
-      showMessage("error", "Telephone invalide");
+      showMessage("error", "Téléphone invalide");
       submitBtn.classList.remove("loading");
       submitBtn.disabled = false;
       submitBtn.innerHTML = originalText;
@@ -156,7 +156,7 @@ if (contactForm) {
     }
 
     if (!validateInput("message", formData.message)) {
-      showMessage("error", "Message invalide (10-5000 caracteres)");
+      showMessage("error", "Message invalide (10-5000 caractères)");
       submitBtn.classList.remove("loading");
       submitBtn.disabled = false;
       submitBtn.innerHTML = originalText;
@@ -164,8 +164,8 @@ if (contactForm) {
     }
 
     try {
-      // MÃ©thode 1: EmailJS (RecommandÃ© - GRATUIT)
-      // DÃ©commentez aprÃ¨s avoir configurÃ© EmailJS
+      // Méthode 1: EmailJS (Recommandé - GRATUIT)
+      // Décommentez après avoir configuré EmailJS
       /*
       await emailjs.send(
         EMAILJS_CONFIG.serviceID,
@@ -183,16 +183,16 @@ if (contactForm) {
       );
       */
 
-      // MÃ©thode 2: Simulation (pour les tests)
+      // Méthode 2: Simulation (pour les tests)
       await simulateEmailSend(formData);
 
-      // Afficher le message de succÃ¨s
+      // Afficher le message de succès
       showMessage(
         "success",
-        "âœ… Merci ! Votre demande a Ã©tÃ© envoyÃ©e avec succÃ¨s. Nous vous rÃ©pondrons sous 24h."
+        "✅ Merci ! Votre demande a été envoyée avec succès. Nous vous répondrons sous 24h."
       );
 
-      // RÃ©initialiser le formulaire
+      // Réinitialiser le formulaire
       this.reset();
 
       // Redirection WhatsApp (optionnel)
@@ -207,10 +207,10 @@ if (contactForm) {
       console.error("Erreur:", error);
       showMessage(
         "error",
-        "âŒ Oups ! Une erreur est survenue. Veuillez rÃ©essayer ou nous contacter directement via WhatsApp."
+        "❌ Oups ! Une erreur est survenue. Veuillez réessayer ou nous contacter directement via WhatsApp."
       );
     } finally {
-      // RÃ©activer le bouton
+      // Réactiver le bouton
       submitBtn.classList.remove("loading");
       submitBtn.disabled = false;
       submitBtn.innerHTML = originalText;
@@ -282,14 +282,14 @@ if (newsletterForm) {
       successMsg.style.color = "var(--success)";
       successMsg.style.fontSize = "0.875rem";
       successMsg.style.marginTop = "0.5rem";
-      successMsg.innerHTML = "âœ… Inscription rÃ©ussie !";
+      successMsg.innerHTML = "✅ Inscription réussie !";
       this.appendChild(successMsg);
 
       emailInput.value = "";
 
       setTimeout(() => successMsg.remove(), 3000);
     } catch (error) {
-      alert("Erreur lors de l'inscription. Veuillez rÃ©essayer.");
+      alert("Erreur lors de l'inscription. Veuillez réessayer.");
     } finally {
       submitBtn.disabled = false;
       submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i>';
@@ -421,7 +421,7 @@ if (faqItems.length > 0) {
       // Fermer tous les autres items
       faqItems.forEach((i) => i.classList.remove("active"));
 
-      // Toggle l'item cliquÃ©
+      // Toggle l'item cliqué
       if (!isActive) {
         item.classList.add("active");
       }
@@ -429,13 +429,13 @@ if (faqItems.length > 0) {
   });
 }
 
-// === RÃ©cupÃ©rer paramÃ¨tres URL pour prÃ©-remplir le formulaire ===
+// === Récupérer paramètres URL pour pré-remplir le formulaire ===
 function getURLParameter(name) {
   const urlParams = new URLSearchParams(window.location.search);
   return urlParams.get(name);
 }
 
-// PrÃ©-remplir le formulaire de contact si un pack est sÃ©lectionnÃ©
+// Pré-remplir le formulaire de contact si un pack est sélectionné
 const typeProjetSelect = document.querySelector('[name="typeProjet"]');
 if (typeProjetSelect) {
   const packParam = getURLParameter("pack");
@@ -450,7 +450,7 @@ if (typeProjetSelect) {
 }
 
 // === Tracking Analytics (Google Analytics) ===
-// DÃ©commentez et ajoutez votre ID Google Analytics
+// Décommentez et ajoutez votre ID Google Analytics
 /*
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
@@ -462,15 +462,15 @@ gtag('config', 'G-XXXXXXXXXX'); // Remplacez par votre ID
 document.querySelectorAll(".btn-primary, .btn-secondary").forEach((btn) => {
   btn.addEventListener("click", function (e) {
     const text = this.textContent.trim();
-    console.log("CTA cliquÃ©:", text);
+    console.log("CTA cliqué:", text);
 
-    // Envoyer Ã  Google Analytics
+    // Envoyer à Google Analytics
     // gtag('event', 'cta_click', { button_text: text });
   });
 });
 
 // === Protection contre le spam (Honeypot) ===
-// Ajouter un champ cachÃ© au formulaire
+// Ajouter un champ caché au formulaire
 if (contactForm) {
   const honeypot = document.createElement("input");
   honeypot.type = "text";
@@ -480,11 +480,11 @@ if (contactForm) {
   honeypot.autocomplete = "off";
   contactForm.appendChild(honeypot);
 
-  // VÃ©rifier lors de la soumission
+  // Vérifier lors de la soumission
   contactForm.addEventListener("submit", function (e) {
     if (honeypot.value !== "") {
       e.preventDefault();
-      console.warn("Bot dÃ©tectÃ©");
+      console.warn("Bot détecté");
       return false;
     }
   });
@@ -527,7 +527,7 @@ function initDarkMode() {
 function copyToClipboard(text) {
   if (navigator.clipboard) {
     navigator.clipboard.writeText(text).then(() => {
-      console.log("CopiÃ©:", text);
+      console.log("Copié:", text);
     });
   } else {
     const textarea = document.createElement("textarea");
@@ -541,15 +541,15 @@ function copyToClipboard(text) {
 
 // === Console Easter Egg ===
 console.log(
-  "%cðŸ‘‹ Salut DÃ©veloppeur!",
+  "%c👋 Salut Développeur!",
   "font-size: 20px; font-weight: bold; color: #2563eb;"
 );
 console.log(
-  "%cSite crÃ©Ã© par M.G.N CodeWave ðŸ‡¬ðŸ‡¦",
+  "%cSite créé par M.G.N CodeWave 🇬🇦",
   "font-size: 14px; color: #6b7280;"
 );
 console.log(
-  "%cBesoin d'un site comme celui-ci? Contactez-nous: +241 74 67 67 41",
+  "%cBesoin d'un site comme celui-ci? Contactez-nous: +241 66 19 89 18",
   "font-size: 12px; color: #10b981;"
 );
 
@@ -558,9 +558,9 @@ window.addEventListener("load", () => {
   if (window.performance && window.performance.timing) {
     const perfData = window.performance.timing;
     const pageLoadTime = perfData.loadEventEnd - perfData.navigationStart;
-    console.log(`âš¡ Page chargÃ©e en ${pageLoadTime}ms`);
+    console.log(`⚡ Page chargée en ${pageLoadTime}ms`);
 
-    // Envoyer Ã  Analytics si configurÃ©
+    // Envoyer à Analytics si configuré
     // gtag('event', 'page_load_time', { value: pageLoadTime });
   }
 });
@@ -568,10 +568,10 @@ window.addEventListener("load", () => {
 // === Service Worker (pour PWA - optionnel) ===
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
-    // DÃ©commentez pour activer le Service Worker
+    // Décommentez pour activer le Service Worker
     /*
     navigator.serviceWorker.register('/sw.js')
-      .then(registration => console.log('SW enregistrÃ©'))
+      .then(registration => console.log('SW enregistré'))
       .catch(err => console.log('Erreur SW:', err));
     */
   });
