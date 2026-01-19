@@ -109,23 +109,23 @@ if (contactForm) {
 
     // Supprimer les messages précédents
     const existingMessages = this.querySelectorAll(
-      ".success-message, .error-message"
+      ".success-message, .error-message",
     );
     existingMessages.forEach((msg) => msg.remove());
 
     // ✅ SÉCURITÉ: Récupérer et valider les données du formulaire
     const formData = {
-      nom: this.querySelector('[name="nom"]').value.trim(),
-      email: this.querySelector('[name="email"]').value.trim().toLowerCase(),
-      telephone: this.querySelector('[name="telephone"]').value.trim(),
-      typeProjet: this.querySelector('[name="typeProjet"]').value,
-      budget: this.querySelector('[name="budget"]')?.value || "Non spécifié",
-      message: this.querySelector('[name="message"]').value.trim(),
+      nom: document.getElementById("nom")?.value.trim() || "",
+      email: document.getElementById("email")?.value.trim().toLowerCase() || "",
+      telephone: document.getElementById("telephone")?.value.trim() || "",
+      typeProjet: document.getElementById("typeProjet")?.value || "",
+      budget: document.getElementById("budget")?.value || "Non spécifié",
+      message: document.getElementById("message")?.value.trim() || "",
     };
 
     // ✅ SÉCURITÉ: Valider tous les champs
     if (!validateInput("nom", formData.nom)) {
-      showMessage("error", "Nom invalide (2-100 caractères)");
+      showMessage("error", "Nom invalide (2-100 caractères)", contactForm);
       submitBtn.classList.remove("loading");
       submitBtn.disabled = false;
       submitBtn.innerHTML = originalText;
@@ -133,7 +133,7 @@ if (contactForm) {
     }
 
     if (!validateInput("email", formData.email)) {
-      showMessage("error", "Email invalide");
+      showMessage("error", "Email invalide", contactForm);
       submitBtn.classList.remove("loading");
       submitBtn.disabled = false;
       submitBtn.innerHTML = originalText;
@@ -141,7 +141,7 @@ if (contactForm) {
     }
 
     if (!validateInput("telephone", formData.telephone)) {
-      showMessage("error", "Téléphone invalide");
+      showMessage("error", "Téléphone invalide", contactForm);
       submitBtn.classList.remove("loading");
       submitBtn.disabled = false;
       submitBtn.innerHTML = originalText;
@@ -149,7 +149,11 @@ if (contactForm) {
     }
 
     if (!validateInput("message", formData.message)) {
-      showMessage("error", "Message invalide (10-5000 caractères)");
+      showMessage(
+        "error",
+        "Message invalide (10-5000 caractères)",
+        contactForm,
+      );
       submitBtn.classList.remove("loading");
       submitBtn.disabled = false;
       submitBtn.innerHTML = originalText;
@@ -163,7 +167,8 @@ if (contactForm) {
       // Afficher le message de succès
       showMessage(
         "success",
-        "✅ Merci ! Votre demande a été envoyée avec succès. Nous vous répondrons sous 24h."
+        "✅ Merci ! Votre demande a été envoyée avec succès. Nous vous répondrons sous 24h.",
+        contactForm,
       );
 
       // Réinitialiser le formulaire
@@ -174,14 +179,14 @@ if (contactForm) {
         const whatsappMsg = `Bonjour, je viens d'envoyer une demande de devis via le site.\n\nNom: ${formData.nom}\nEmail: ${formData.email}\nProjet: ${formData.typeProjet}`;
         window.open(
           `https://wa.me/24166198918?text=${encodeURIComponent(whatsappMsg)}`,
-          "_blank"
+          "_blank",
         );
       }, 2000);
     } catch (error) {
       console.error("Erreur:", error);
       showMessage(
         "error",
-        "❌ Oups ! Une erreur est survenue. Veuillez réessayer ou nous contacter directement via WhatsApp."
+        "❌ Oups ! Une erreur est survenue. Veuillez réessayer ou nous contacter directement via WhatsApp.",
       );
     } finally {
       // Réactiver le bouton
@@ -193,17 +198,15 @@ if (contactForm) {
 }
 
 // Fonction pour simuler l'envoi d'email (pour les tests)
-function simulateEmailSend(data) {
+function simulateEmailSend() {
   return new Promise((resolve) => {
-    console.log("📧 Formulaire envoyé:", data);
-    // ✅ NE PAS sauvegarder les données sensibles en localStorage
-    // Les données sont déjà envoyées via Formspree/EmailJS
+    // Intentionally silent en prod pour éviter de logguer des PII
     setTimeout(resolve, 1500);
   });
 }
 
 // Fonction pour afficher les messages
-function showMessage(type, text) {
+function showMessage(type, text, container) {
   const messageDiv = document.createElement("div");
   messageDiv.className = `${type}-message`;
   messageDiv.innerHTML = `
@@ -213,8 +216,9 @@ function showMessage(type, text) {
     <span>${text}</span>
   `;
 
-  const form = document.getElementById("contactForm");
-  form.insertBefore(messageDiv, form.firstChild);
+  const target =
+    container || document.querySelector(".contact-form form") || document.body;
+  target.insertBefore(messageDiv, target.firstChild);
 
   // Scroll vers le message
   messageDiv.scrollIntoView({ behavior: "smooth", block: "nearest" });
@@ -237,7 +241,7 @@ if (newsletterForm) {
       // ✅ Validation stricte de l'email
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(email)) {
-        showMessage("error", "❌ Email invalide");
+        showMessage("error", "❌ Email invalide", this);
         return;
       }
 
@@ -309,7 +313,7 @@ if (portfolioFilters.length > 0) {
 // === Animations on Scroll ===
 function animateOnScroll() {
   const elements = document.querySelectorAll(
-    ".feature-card, .service-card, .portfolio-item, .testimonial-card, .blog-card, .pricing-card"
+    ".feature-card, .service-card, .portfolio-item, .testimonial-card, .blog-card, .pricing-card",
   );
 
   const observer = new IntersectionObserver(
@@ -332,7 +336,7 @@ function animateOnScroll() {
     {
       threshold: 0.1,
       rootMargin: "0px 0px -50px 0px",
-    }
+    },
   );
 
   elements.forEach((el) => observer.observe(el));
@@ -378,7 +382,7 @@ if (statNumbers.length > 0) {
         }
       });
     },
-    { threshold: 0.5 }
+    { threshold: 0.5 },
   );
 
   statNumbers.forEach((stat) => statsObserver.observe(stat));
@@ -410,7 +414,7 @@ function getURLParameter(name) {
 }
 
 // Pré-remplir le formulaire de contact si un pack est sélectionné
-const typeProjetSelect = document.querySelector('[name="typeProjet"]');
+const typeProjetSelect = document.getElementById("typeProjet");
 if (typeProjetSelect) {
   const packParam = getURLParameter("pack");
   if (packParam) {
@@ -511,15 +515,15 @@ function copyToClipboard(text) {
 // === Console Easter Egg ===
 console.log(
   "%c👋 Salut Développeur!",
-  "font-size: 20px; font-weight: bold; color: #2563eb;"
+  "font-size: 20px; font-weight: bold; color: #2563eb;",
 );
 console.log(
   "%cSite créé par M.G.N CodeWave 🇬🇦",
-  "font-size: 14px; color: #6b7280;"
+  "font-size: 14px; color: #6b7280;",
 );
 console.log(
   "%cBesoin d'un site comme celui-ci? Contactez-nous: +241 66 19 89 18",
-  "font-size: 12px; color: #10b981;"
+  "font-size: 12px; color: #10b981;",
 );
 
 // === Performance Monitoring ===

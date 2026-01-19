@@ -61,7 +61,7 @@ function showCookieBanner() {
         cursor: pointer;
         font-size: 0.875rem;
         transition: all 0.3s ease;
-      " onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='transparent'">
+      ">
         Refuser
       </button>
       <button id="accept-cookies" style="
@@ -73,7 +73,7 @@ function showCookieBanner() {
         cursor: pointer;
         font-size: 0.875rem;
         transition: all 0.3s ease;
-      " onmouseover="this.style.background='#2563eb'" onmouseout="this.style.background='#3b82f6'">
+      ">
         Accepter
       </button>
     </div>
@@ -81,15 +81,32 @@ function showCookieBanner() {
 
   document.body.appendChild(banner);
 
+  const acceptBtn = document.getElementById("accept-cookies");
+  const rejectBtn = document.getElementById("reject-cookies");
+
+  // Effets hover via JS (compatibles CSP strictes)
+  acceptBtn.addEventListener("mouseenter", () => {
+    acceptBtn.style.background = "#2563eb";
+  });
+  acceptBtn.addEventListener("mouseleave", () => {
+    acceptBtn.style.background = "#3b82f6";
+  });
+  rejectBtn.addEventListener("mouseenter", () => {
+    rejectBtn.style.background = "rgba(255,255,255,0.1)";
+  });
+  rejectBtn.addEventListener("mouseleave", () => {
+    rejectBtn.style.background = "transparent";
+  });
+
   // Événement: Accepter les cookies
-  document.getElementById("accept-cookies").addEventListener("click", () => {
+  acceptBtn.addEventListener("click", () => {
     localStorage.setItem("cookieConsent", "true");
     banner.remove();
     loadGoogleAnalytics();
   });
 
   // Événement: Refuser les cookies
-  document.getElementById("reject-cookies").addEventListener("click", () => {
+  rejectBtn.addEventListener("click", () => {
     localStorage.setItem("cookieConsent", "false");
     banner.remove();
   });
