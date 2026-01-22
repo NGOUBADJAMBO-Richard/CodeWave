@@ -223,15 +223,12 @@ Pour remplacer :
 
 ## 👥 Équipe
 
-- **Richard NGOUBADJAMBO** - CEO & Lead Developer
-- **Grâce EBONGA** - UI/UX Designer
-- **Edith LOEMBATANDIKA** - Chef de Projet
-- **Brice IYOKO** - Marketing Manager
+- **Richard NGOUBADJAMBO** - Project Manager & Web Developper
 
 ## 📞 Contact
 
 - **Téléphone** : +241 66 19 89 18
-- **Email** : contact@mgncodewave.com
+- **Email** : mgncodewave18@gmail.com
 - **Adresse** : Libreville, Gabon
 - **WhatsApp** : [Lien direct](https://wa.me/24166198918)
 - **Facebook** : [M.G.N CodeWave](https://facebook.com/mgncodewave)
