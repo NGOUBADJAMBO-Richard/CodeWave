@@ -1,6 +1,12 @@
 {
   "buildCommand": "echo 'Static site, no build required'",
   "outputDirectory": ".",
+  "builds": [
+    {
+      "src": "*.html",
+      "use": "@vercel/static"
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",
