@@ -8,6 +8,8 @@ Site web officiel de **M.G.N CodeWave**, agence de développement web basée à 
 
 🔗 **Site en ligne** : [https://mgncodewave-com.vercel.app/](https://mgncodewave-com.vercel.app/)
 
+🚀 **Dernière mise à jour** : Janvier 2026 - Ajout du projet Portfolio Richard
+
 ## ✨ Fonctionnalités
 
 ### Pages Principales
