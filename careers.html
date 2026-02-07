@@ -29,7 +29,7 @@
 
     <style>
       .job-card {
-        background: white;
+        background: var(--surface);
         border-radius: var(--radius-2xl);
         padding: 2rem;
         box-shadow: var(--shadow-lg);
@@ -107,7 +107,7 @@
       }
 
       .benefit-card {
-        background: white;
+        background: var(--surface);
         padding: 2rem;
         border-radius: var(--radius-xl);
         box-shadow: var(--shadow-md);
@@ -157,7 +157,7 @@
       }
 
       .modal-content {
-        background: white;
+        background: var(--surface);
         border-radius: var(--radius-2xl);
         max-width: 700px;
         width: 100%;
@@ -230,6 +230,15 @@
 
           <div class="nav-cta">
             <a href="contact.html" class="btn btn-primary">Devis Gratuit</a>
+            <button
+              class="theme-toggle"
+              type="button"
+              aria-label="Passer en mode sombre"
+              aria-pressed="false"
+            >
+              <i class="fas fa-moon" aria-hidden="true"></i>
+              <span class="sr-only">Basculer le theme</span>
+            </button>
             <button class="menu-toggle" id="menuToggle">
               <span></span>
               <span></span>
@@ -478,7 +487,7 @@
         </div>
 
         <div style="max-width: 72rem; margin: 0 auto; display: grid; gap: 2rem">
-          <!-- Poste 1 : D�veloppeur Full-Stack -->
+          <!-- Poste 1 : Développeur Full-Stack -->
           <div class="job-card" onclick="openJobModal(1)">
             <div class="job-header">
               <div class="job-icon">
@@ -658,7 +667,7 @@
             </div>
           </div>
 
-          <!-- Poste 4 : D�veloppeur Backend -->
+          <!-- Poste 4 : Développeur Backend -->
           <div class="job-card" onclick="openJobModal(4)">
             <div class="job-header">
               <div
@@ -981,7 +990,7 @@
     <!-- YouTube Video Section - Join CodeWave Team -->
     <!-- <section
       class="section-padding"
-      style="background: linear-gradient(135deg, #f3f4f6 0%, #ffffff 100%)"
+      style="background: var(--section-tint)"
     >
       <div class="container">
         <div class="section-header text-center">
@@ -1753,10 +1762,14 @@
         }
       });
     </script>
-    
+
     <!-- Vercel Speed Insights -->
     <script>
-      window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+      window.si =
+        window.si ||
+        function () {
+          (window.siq = window.siq || []).push(arguments);
+        };
     </script>
     <script defer src="/_vercel/speed-insights/script.js"></script>
   </body>

@@ -39,7 +39,7 @@
     />
     <style>
       .blog-card {
-        background: white;
+        background: var(--surface);
         border-radius: 12px;
         overflow: hidden;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
@@ -170,6 +170,11 @@
 
           <div class="nav-cta">
             <a href="../contact.html" class="btn btn-primary">Devis Gratuit</a>
+            <button class="lang-toggle" type="button" aria-label="Passer en anglais" aria-pressed="false">EN</button>
+            <button class="theme-toggle" type="button" aria-label="Passer en mode sombre" aria-pressed="false">
+              <i class="fas fa-moon" aria-hidden="true"></i>
+              <span class="sr-only">Basculer le theme</span>
+            </button>
             <button class="menu-toggle" id="menuToggle">
               <span></span>
               <span></span>
@@ -201,7 +206,7 @@
           <div
             style="
               display: inline-block;
-              background: rgba(255, 255, 255, 0.2);
+              background: var(--glass-bg);
               color: white;
               padding: 0.5rem 1rem;
               border-radius: var(--radius-full);
@@ -388,7 +393,7 @@
                 width: 100%;
                 border-collapse: collapse;
                 margin: 2rem 0;
-                background: white;
+                background: var(--surface);
                 border-radius: 8px;
                 overflow: hidden;
                 box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
@@ -565,7 +570,7 @@
                 href="../contact.html"
                 style="
                   display: inline-block;
-                  background: white;
+                  background: var(--surface);
                   color: #f59e0b;
                   padding: 0.75rem 2rem;
                   border-radius: 8px;

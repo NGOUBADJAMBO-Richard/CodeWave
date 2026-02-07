@@ -54,6 +54,15 @@
 
           <div class="nav-cta">
             <a href="contact.html" class="btn btn-primary">Devis Gratuit</a>
+            <button
+              class="theme-toggle"
+              type="button"
+              aria-label="Passer en mode sombre"
+              aria-pressed="false"
+            >
+              <i class="fas fa-moon" aria-hidden="true"></i>
+              <span class="sr-only">Basculer le theme</span>
+            </button>
             <button class="menu-toggle" id="menuToggle">
               <span></span>
               <span></span>
@@ -152,7 +161,7 @@
               <div
                 style="
                   display: inline-block;
-                  background: rgba(255, 255, 255, 0.2);
+                  background: var(--glass-bg);
                   color: white;
                   padding: 0.5rem 1rem;
                   border-radius: var(--radius-full);
@@ -540,7 +549,7 @@
               </h3>
               <p class="blog-excerpt">
                 Avec la connexion internet au Gabon, la vitesse est cruciale.
-                Apprenez � optimiser votre site pour des temps de chargement
+                Apprenez à optimiser votre site pour des temps de chargement
                 rapides.
               </p>
               <div
@@ -971,10 +980,14 @@
     <!-- JavaScript -->
     <script src="assets/js/main.js"></script>
     <script src="assets/js/animations.js"></script>
-    
+
     <!-- Vercel Speed Insights -->
     <script>
-      window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+      window.si =
+        window.si ||
+        function () {
+          (window.siq = window.siq || []).push(arguments);
+        };
     </script>
     <script defer src="/_vercel/speed-insights/script.js"></script>
   </body>

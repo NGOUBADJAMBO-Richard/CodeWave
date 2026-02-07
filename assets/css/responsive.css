@@ -33,11 +33,11 @@
     top: 100%;
     left: 0;
     right: 0;
-    background: white;
+    background: var(--surface);
     flex-direction: column;
     padding: 2rem;
     box-shadow: var(--shadow-xl);
-    border-top: 1px solid var(--gray-200);
+    border-top: 1px solid var(--border);
     z-index: 999;
   }
 

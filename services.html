@@ -59,6 +59,15 @@
 
           <div class="nav-cta">
             <a href="contact.html" class="btn btn-primary">Devis Gratuit</a>
+            <button
+              class="theme-toggle"
+              type="button"
+              aria-label="Passer en mode sombre"
+              aria-pressed="false"
+            >
+              <i class="fas fa-moon" aria-hidden="true"></i>
+              <span class="sr-only">Basculer le theme</span>
+            </button>
             <button class="menu-toggle" id="menuToggle">
               <span></span>
               <span></span>
@@ -253,7 +262,7 @@
         <!-- Processus de Création -->
         <div
           style="
-            background: white;
+            background: var(--surface);
             padding: 2rem;
             border-radius: var(--radius-2xl);
             box-shadow: var(--shadow-lg);
@@ -562,7 +571,7 @@
     <!-- YouTube Video Section - Services Expliqués -->
     <!-- <section
       class="section-padding"
-      style="background: linear-gradient(135deg, #f3f4f6 0%, #ffffff 100%)"
+      style="background: var(--section-tint)"
     >
       <div class="container">
         <div class="section-header text-center">
@@ -858,7 +867,7 @@
           >
             <div
               style="
-                background: white;
+                background: var(--surface);
                 padding: 1.5rem;
                 border-radius: var(--radius-lg);
                 box-shadow: var(--shadow-md);
@@ -888,7 +897,7 @@
             </div>
             <div
               style="
-                background: white;
+                background: var(--surface);
                 padding: 1.5rem;
                 border-radius: var(--radius-lg);
                 box-shadow: var(--shadow-md);
@@ -918,7 +927,7 @@
             </div>
             <div
               style="
-                background: white;
+                background: var(--surface);
                 padding: 1.5rem;
                 border-radius: var(--radius-lg);
                 box-shadow: var(--shadow-md);
@@ -948,7 +957,7 @@
             </div>
             <div
               style="
-                background: white;
+                background: var(--surface);
                 padding: 1.5rem;
                 border-radius: var(--radius-lg);
                 box-shadow: var(--shadow-md);
@@ -1111,7 +1120,7 @@
         <div style="display: grid; gap: 2rem; max-width: 56rem; margin: 0 auto">
           <div
             style="
-              background: white;
+              background: var(--surface);
               padding: 2rem;
               border-radius: var(--radius-2xl);
               box-shadow: var(--shadow-lg);
@@ -1254,7 +1263,7 @@
 
           <div
             style="
-              background: white;
+              background: var(--surface);
               padding: 2rem;
               border-radius: var(--radius-2xl);
               box-shadow: var(--shadow-lg);
@@ -1960,7 +1969,7 @@
             ❤️ Fait avec ❤️ au Gabon
           </p>
           <div class="footer-legal">
-            <a href="../mentions-legales.html">Mentions L��gales</a>
+            <a href="../mentions-legales.html">Mentions Légales</a>
             <a href="../politique-confidentialite.html"
               >Politique de Confidentialité</a
             >
@@ -1987,10 +1996,14 @@
     <!-- JavaScript -->
     <script src="assets/js/main.js"></script>
     <script src="assets/js/animations.js"></script>
-    
+
     <!-- Vercel Speed Insights -->
     <script>
-      window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+      window.si =
+        window.si ||
+        function () {
+          (window.siq = window.siq || []).push(arguments);
+        };
     </script>
     <script defer src="/_vercel/speed-insights/script.js"></script>
   </body>

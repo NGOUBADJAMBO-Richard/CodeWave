@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
@@ -84,6 +84,23 @@
 
           <div class="nav-cta">
             <a href="contact.html" class="btn btn-primary">Devis Gratuit</a>
+            <button
+              class="lang-toggle"
+              type="button"
+              aria-label="Passer en anglais"
+              aria-pressed="false"
+            >
+              EN
+            </button>
+            <button
+              class="theme-toggle"
+              type="button"
+              aria-label="Passer en mode sombre"
+              aria-pressed="false"
+            >
+              <i class="fas fa-moon" aria-hidden="true"></i>
+              <span class="sr-only">Basculer le theme</span>
+            </button>
             <button class="menu-toggle" id="menuToggle">
               <span></span>
               <span></span>
@@ -233,7 +250,7 @@
     <!-- YouTube Video Section - Voir Comment ça Marche -->
     <!-- <section
       class="section-padding"
-      style="background: linear-gradient(135deg, #f3f4f6 0%, #ffffff 100%)"
+      style="background: var(--section-tint)"
     >
       <div class="container">
         <div class="section-header text-center">
@@ -781,10 +798,14 @@
     <!-- JavaScript -->
     <script src="assets/js/main.js?v=1.2.0"></script>
     <script src="assets/js/animations.js?v=1.2.0"></script>
-    
+
     <!-- Vercel Speed Insights -->
     <script>
-      window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+      window.si =
+        window.si ||
+        function () {
+          (window.siq = window.siq || []).push(arguments);
+        };
     </script>
     <script defer src="/_vercel/speed-insights/script.js"></script>
   </body>
