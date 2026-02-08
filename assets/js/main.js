@@ -479,26 +479,6 @@ function applyPageTranslations(lang) {
   if (page === "tarifs.html") {
     translateTarifs(lang);
   }
-
-  if (page === "portfolio.html") {
-    translatePortfolio(lang);
-  }
-
-  if (page === "blog.html") {
-    translateBlog(lang);
-  }
-
-  if (page === "contact.html") {
-    translateContact(lang);
-  }
-
-  if (page === "a-propos.html") {
-    translateAbout(lang);
-  }
-
-  if (page === "careers.html") {
-    translateCareers(lang);
-  }
 }
 
 function translateIndex(lang) {
