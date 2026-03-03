@@ -27,6 +27,7 @@ Site web officiel de **M.G.N CodeWave**, agence de développement web basée à 
 
 - ✅ Design 100% responsive (mobile-first)
 - ✅ Animations CSS personnalisées
+- ✅ Barre de recherche (blog, portfolio, ressources)
 - ✅ SEO optimisé avec balises meta complètes
 - ✅ Performance optimisée (lazy loading, minification)
 - ✅ Sécurité renforcée (CSP headers, HTTPS strict)
@@ -89,6 +90,11 @@ codewave-website-com/
 ├── cgv.html                  # CGV
 ├── plan-du-site.html         # Sitemap HTML
 ├── vercel.json               # Configuration Vercel
+├── sitemap.xml               # Sitemap SEO XML
+├── robots.txt                # Règles robots SEO
+├── package.json              # Scripts d'optimisation
+├── scripts/
+│   └── minify-assets.mjs     # Minification CSS/JS
 ├── deploy.ps1                # Script déploiement
 └── README.md                 # Ce fichier
 ```
@@ -119,6 +125,25 @@ code .
 # 3. Accéder au site
 # http://localhost:5500 (ou port configuré)
 ```
+
+## ⚡ Minification des Assets
+
+```bash
+# 1. Installer les dépendances de build
+npm install
+
+# 2. Générer les fichiers minifiés
+npm run minify
+```
+
+Le script génère automatiquement :
+
+- `assets/css/style.min.css`
+- `assets/css/responsive.min.css`
+- `assets/css/animations.min.css`
+- `assets/js/main.min.js`
+- `assets/js/animations.min.js`
+- `assets/js/portfolio.min.js`
 
 ## 📦 Déploiement
 

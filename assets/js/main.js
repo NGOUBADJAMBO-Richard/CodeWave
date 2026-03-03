@@ -8224,10 +8224,150 @@ function validateInput(type, value) {
   }
 }
 
+function normalizeTextInput(value) {
+  return String(value || "")
+    .replace(/[\u0000-\u001F\u007F]/g, "")
+    .replace(/[<>]/g, "")
+    .trim();
+}
+
+function initRuntimePerformance() {
+  const images = document.querySelectorAll("img");
+  images.forEach((img, index) => {
+    if (!img.hasAttribute("loading")) {
+      img.setAttribute("loading", index < 2 ? "eager" : "lazy");
+    }
+    if (!img.hasAttribute("decoding")) {
+      img.setAttribute("decoding", "async");
+    }
+    if (index > 2 && !img.hasAttribute("fetchpriority")) {
+      img.setAttribute("fetchpriority", "low");
+    }
+  });
+
+  document.querySelectorAll("iframe").forEach((frame) => {
+    if (!frame.hasAttribute("loading")) {
+      frame.setAttribute("loading", "lazy");
+    }
+    if (!frame.hasAttribute("referrerpolicy")) {
+      frame.setAttribute("referrerpolicy", "strict-origin-when-cross-origin");
+    }
+  });
+}
+
+function enforceExternalLinkSecurity() {
+  document
+    .querySelectorAll('a[target="_blank"]:not([rel*="noopener"])')
+    .forEach((link) => {
+      const currentRel = link.getAttribute("rel") || "";
+      const tokens = new Set(
+        currentRel
+          .split(/\s+/)
+          .map((token) => token.trim())
+          .filter(Boolean),
+      );
+      tokens.add("noopener");
+      tokens.add("noreferrer");
+      link.setAttribute("rel", Array.from(tokens).join(" "));
+    });
+}
+
+function hardenForms() {
+  document.querySelectorAll("form").forEach((form) => {
+    form.setAttribute("autocomplete", "on");
+
+    form
+      .querySelectorAll('input[type="text"], input[type="email"], textarea')
+      .forEach((field) => {
+        const maxLength = field.tagName === "TEXTAREA" ? 5000 : 255;
+        if (!field.hasAttribute("maxlength")) {
+          field.setAttribute("maxlength", String(maxLength));
+        }
+      });
+
+    const telInput = form.querySelector('input[type="tel"]');
+    if (telInput && !telInput.hasAttribute("pattern")) {
+      telInput.setAttribute("pattern", "^[0-9+()\\-\\s]{8,20}$");
+      telInput.setAttribute("inputmode", "tel");
+    }
+
+    form.addEventListener("submit", () => {
+      form
+        .querySelectorAll(
+          'input[type="text"], input[type="email"], input[type="tel"], textarea',
+        )
+        .forEach((field) => {
+          field.value = normalizeTextInput(field.value);
+        });
+    });
+  });
+}
+
+function initDynamicSeo() {
+  const baseUrl = "https://ngoubadjambo-richard.github.io/CodeWave";
+  const path = window.location.pathname.replace(/\/index\.html$/i, "/");
+  const pageUrl = `${baseUrl}${path.startsWith("/") ? path : `/${path}`}`;
+
+  const canonical = document.querySelector('link[rel="canonical"]');
+  if (canonical) {
+    canonical.setAttribute("href", pageUrl);
+  }
+
+  setOg("og:url", pageUrl);
+  const robotsMeta = document.querySelector('meta[name="robots"]');
+  if (!robotsMeta) {
+    const meta = document.createElement("meta");
+    meta.setAttribute("name", "robots");
+    meta.setAttribute("content", "index, follow, max-image-preview:large");
+    document.head.appendChild(meta);
+  }
+}
+
+function initContentSearch() {
+  const scopes = document.querySelectorAll("[data-search-scope]");
+  scopes.forEach((scope) => {
+    const input = scope.querySelector("[data-search-input]");
+    const items = scope.querySelectorAll(
+      "[data-search-item], .sitemap-link, .sitemap-subsection a, .resource-card, .blog-card",
+    );
+    const result = scope.querySelector("[data-search-result]");
+    if (!input || items.length === 0) return;
+
+    const applyFilter = () => {
+      const query = normalizeTextInput(input.value).toLowerCase();
+      let visible = 0;
+
+      items.forEach((item) => {
+        const haystack = (
+          item.getAttribute("data-search-text") ||
+          item.textContent ||
+          ""
+        ).toLowerCase();
+        const match = !query || haystack.includes(query);
+        item.hidden = !match;
+        if (match) visible += 1;
+      });
+
+      if (result) {
+        result.textContent = `${visible} résultat${visible > 1 ? "s" : ""}`;
+      }
+    };
+
+    input.addEventListener("input", applyFilter);
+    applyFilter();
+  });
+}
+
 // Configuration EmailJS (optionnel - commentée par défaut)
 
 // === Navigation ===
 document.addEventListener("DOMContentLoaded", function () {
+  initRuntimePerformance();
+  enforceExternalLinkSecurity();
+  hardenForms();
+  initDynamicSeo();
+  initContentSearch();
+
   updateThemeToggles(activeTheme);
   applyLanguage(activeLang, { updateToggle: false });
   updateLangToggles(activeLang);
@@ -8356,12 +8496,22 @@ if (contactForm) {
 
     // ✅ SÉCURITÉ: Récupérer et valider les données du formulaire
     const formData = {
-      nom: document.getElementById("nom")?.value.trim() || "",
-      email: document.getElementById("email")?.value.trim().toLowerCase() || "",
-      telephone: document.getElementById("telephone")?.value.trim() || "",
-      typeProjet: document.getElementById("typeProjet")?.value || "",
-      budget: document.getElementById("budget")?.value || "Non spécifié",
-      message: document.getElementById("message")?.value.trim() || "",
+      nom: normalizeTextInput(document.getElementById("nom")?.value || ""),
+      email: normalizeTextInput(
+        document.getElementById("email")?.value || "",
+      ).toLowerCase(),
+      telephone: normalizeTextInput(
+        document.getElementById("telephone")?.value || "",
+      ),
+      typeProjet: normalizeTextInput(
+        document.getElementById("typeProjet")?.value || "",
+      ),
+      budget: normalizeTextInput(
+        document.getElementById("budget")?.value || "Non spécifié",
+      ),
+      message: normalizeTextInput(
+        document.getElementById("message")?.value || "",
+      ),
     };
 
     // ✅ SÉCURITÉ: Valider tous les champs
@@ -8466,12 +8616,14 @@ function simulateEmailSend() {
 function showMessage(type, text, container) {
   const messageDiv = document.createElement("div");
   messageDiv.className = `${type}-message`;
-  messageDiv.innerHTML = `
-    <i class="fas fa-${
-      type === "success" ? "check-circle" : "exclamation-circle"
-    }"></i>
-    <span>${text}</span>
-  `;
+  const icon = document.createElement("i");
+  icon.className = `fas fa-${
+    type === "success" ? "check-circle" : "exclamation-circle"
+  }`;
+  const span = document.createElement("span");
+  span.textContent = text;
+  messageDiv.appendChild(icon);
+  messageDiv.appendChild(span);
 
   const target =
     container || document.querySelector(".contact-form form") || document.body;
@@ -8723,9 +8875,13 @@ if (contactForm) {
 
 // === Lazy Loading Images ===
 if ("loading" in HTMLImageElement.prototype) {
-  const images = document.querySelectorAll("img[data-src]");
+  const images = document.querySelectorAll(
+    "img[data-src], img[loading='lazy']",
+  );
   images.forEach((img) => {
-    img.src = img.dataset.src;
+    if (img.dataset.src) {
+      img.src = img.dataset.src;
+    }
   });
 } else {
   // Fallback pour les navigateurs plus anciens

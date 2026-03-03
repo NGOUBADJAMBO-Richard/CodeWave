@@ -182,7 +182,11 @@
               <i class="fas fa-moon" aria-hidden="true"></i>
               <span class="sr-only">Basculer le theme</span>
             </button>
-            <button class="menu-toggle" id="menuToggle">
+            <button
+              class="menu-toggle"
+              id="menuToggle"
+              aria-label="Ouvrir le menu"
+            >
               <span></span>
               <span></span>
               <span></span>
@@ -219,7 +223,7 @@
     <!-- Sitemap Content -->
     <section class="section-padding">
       <div class="container">
-        <div style="max-width: 72rem; margin: 0 auto">
+        <div style="max-width: 72rem; margin: 0 auto" data-search-scope>
           <!-- Introduction -->
           <div
             style="
@@ -257,6 +261,28 @@
               Retrouvez ici l'ensemble des pages de notre site pour une
               navigation rapide et intuitive
             </p>
+
+            <div
+              data-search-scope
+              style="max-width: 40rem; margin: 1.5rem auto 0; text-align: left"
+            >
+              <label for="sitemapSearch" class="sr-only"
+                >Rechercher dans le plan du site</label
+              >
+              <input
+                id="sitemapSearch"
+                type="search"
+                class="content-search-input"
+                data-search-input
+                placeholder="Rechercher une page, un pack ou une ressource..."
+                aria-label="Rechercher dans le plan du site"
+              />
+              <p
+                class="content-search-result"
+                data-search-result
+                style="margin-top: 0.5rem; text-align: center"
+              ></p>
+            </div>
           </div>
 
           <div style="display: grid; gap: 2rem">
@@ -729,6 +755,7 @@
                 <a
                   href="https://wa.me/24166198918"
                   target="_blank"
+                  rel="noopener noreferrer"
                   class="sitemap-link"
                 >
                   <i class="fab fa-whatsapp"></i>
@@ -743,6 +770,7 @@
                 <a
                   href="https://m-g-n-code-wave.vercel.app/"
                   target="_blank"
+                  rel="noopener noreferrer"
                   class="sitemap-link"
                 >
                   <i class="fas fa-globe"></i>
@@ -797,6 +825,7 @@
               <a
                 href="https://wa.me/24166198918"
                 target="_blank"
+                rel="noopener noreferrer"
                 class="btn btn-outline-white btn-lg"
               >
                 <i class="fab fa-whatsapp"></i>
@@ -936,6 +965,7 @@
       href="https://wa.me/24166198918?text=Bonjour,%20je%20souhaite%20discuter%20d'un%20projet%20web"
       class="whatsapp-float"
       target="_blank"
+      rel="noopener noreferrer"
       aria-label="Contact WhatsApp"
     >
       <i class="fab fa-whatsapp"></i>

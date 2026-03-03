@@ -1,0 +1,12 @@
+{
+  "name": "codewave-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Build tooling for CodeWave static website optimization",
+  "scripts": {
+    "minify": "node scripts/minify-assets.mjs"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.3"
+  }
+}

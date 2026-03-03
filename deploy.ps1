@@ -3,6 +3,17 @@
 
 Write-Host "🚀 Déploiement automatique avec cache busting..." -ForegroundColor Cyan
 
+# 0. Minifier les assets si Node.js est disponible
+if (Test-Path ".\package.json") {
+    Write-Host "⚙️ Minification des assets..." -ForegroundColor Cyan
+    npm run minify
+    if ($LASTEXITCODE -ne 0) {
+        Write-Host "❌ Échec de la minification. Déploiement annulé." -ForegroundColor Red
+        exit 1
+    }
+    Write-Host "✅ Assets minifiés" -ForegroundColor Green
+}
+
 # 1. Extraire la version actuelle du fichier index.html
 $indexContent = Get-Content -Path ".\index.html" -Raw
 $versionMatch = $indexContent -match 'v=(\d+\.\d+\.\d+)'

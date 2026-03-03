@@ -104,7 +104,11 @@
               <i class="fas fa-moon" aria-hidden="true"></i>
               <span class="sr-only">Basculer le theme</span>
             </button>
-            <button class="menu-toggle" id="menuToggle">
+            <button
+              class="menu-toggle"
+              id="menuToggle"
+              aria-label="Ouvrir le menu"
+            >
               <span></span>
               <span></span>
               <span></span>
@@ -114,144 +118,149 @@
       </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-      <div class="hero-media" data-mode="video">
-        <video
-          class="hero-video"
-          autoplay
-          muted
-          loop
-          playsinline
-          webkit-playsinline
-          preload="auto"
-          poster="assets/images/og-image.jpg"
-        >
-          <source
-            src="assets/video/CodeWave-Presentation.mp4"
-            type="video/mp4"
-          />
-        </video>
-        <div
-          class="hero-image"
-          style="background-image: url(&quot;assets/images/og-image.jpg&quot;)"
-        ></div>
-        <div class="hero-media-overlay"></div>
-      </div>
-      <div class="hero-background"></div>
-      <div class="container">
-        <div class="hero-content">
-          <div class="hero-left">
-            <div class="hero-badge fade-in">
-              <span class="badge-dot"></span>
-              <span>🇬🇦 Basé à Libreville, Gabon</span>
+    <main>
+      <!-- Hero Section -->
+      <section class="hero">
+        <div class="hero-media" data-mode="video">
+          <video
+            class="hero-video"
+            autoplay
+            muted
+            loop
+            playsinline
+            webkit-playsinline
+            preload="auto"
+            poster="assets/images/og-image.jpg"
+          >
+            <source
+              src="assets/video/CodeWave-Presentation.mp4"
+              type="video/mp4"
+            />
+          </video>
+          <div
+            class="hero-image"
+            style="
+              background-image: url(&quot;assets/images/og-image.jpg&quot;);
+            "
+          ></div>
+          <div class="hero-media-overlay"></div>
+        </div>
+        <div class="hero-background"></div>
+        <div class="container">
+          <div class="hero-content">
+            <div class="hero-left">
+              <div class="hero-badge fade-in">
+                <span class="badge-dot"></span>
+                <span>🇬🇦 Basé à Libreville, Gabon</span>
+              </div>
+
+              <h1 class="hero-title fade-in-up">
+                Votre Site Web
+                <span class="gradient-text">Prêt en 2 Semaines</span>
+              </h1>
+
+              <p class="hero-description fade-in-up delay-1">
+                Développement de <strong>sites web professionnels</strong>,
+                boutiques en ligne et applications sur mesure. Des solutions
+                modernes et abordables pour propulser votre entreprise.
+              </p>
+
+              <div class="hero-cta fade-in-up delay-2">
+                <a href="contact.html" class="btn btn-primary btn-lg">
+                  Démarrer Mon Projet
+                  <i class="fas fa-arrow-right"></i>
+                </a>
+                <a
+                  href="https://wa.me/24166198918?text=Bonjour,%20je%20souhaite%20discuter%20d'un%20projet%20web"
+                  class="btn btn-secondary btn-lg"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <i class="fab fa-whatsapp"></i>
+                  WhatsApp Direct
+                </a>
+              </div>
             </div>
 
-            <h1 class="hero-title fade-in-up">
-              Votre Site Web
-              <span class="gradient-text">Prêt en 2 Semaines</span>
-            </h1>
-
-            <p class="hero-description fade-in-up delay-1">
-              Développement de <strong>sites web professionnels</strong>,
-              boutiques en ligne et applications sur mesure. Des solutions
-              modernes et abordables pour propulser votre entreprise.
-            </p>
-
-            <div class="hero-cta fade-in-up delay-2">
-              <a href="contact.html" class="btn btn-primary btn-lg">
-                Démarrer Mon Projet
-                <i class="fas fa-arrow-right"></i>
-              </a>
-              <a
-                href="https://wa.me/24166198918?text=Bonjour,%20je%20souhaite%20discuter%20d'un%20projet%20web"
-                class="btn btn-secondary btn-lg"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <i class="fab fa-whatsapp"></i>
-                WhatsApp Direct
-              </a>
-            </div>
-          </div>
-
-          <div class="hero-right fade-in-right">
-            <div class="hero-mockup">
-              <div class="mockup-browser">
-                <div class="browser-header">
-                  <div class="browser-dots">
-                    <span class="dot red"></span>
-                    <span class="dot yellow"></span>
-                    <span class="dot green"></span>
+            <div class="hero-right fade-in-right">
+              <div class="hero-mockup">
+                <div class="mockup-browser">
+                  <div class="browser-header">
+                    <div class="browser-dots">
+                      <span class="dot red"></span>
+                      <span class="dot yellow"></span>
+                      <span class="dot green"></span>
+                    </div>
                   </div>
-                </div>
-                <div class="browser-content">
-                  <div class="content-bar"></div>
-                  <div class="content-bar short"></div>
-                  <div class="content-grid">
-                    <div class="grid-item blue"></div>
-                    <div class="grid-item purple"></div>
-                    <div class="grid-item pink"></div>
-                  </div>
-                  <div class="content-bar medium"></div>
-                  <div class="content-buttons">
-                    <div class="button-mock green">Responsive</div>
-                    <div class="button-mock orange">SEO Ready</div>
+                  <div class="browser-content">
+                    <div class="content-bar"></div>
+                    <div class="content-bar short"></div>
+                    <div class="content-grid">
+                      <div class="grid-item blue"></div>
+                      <div class="grid-item purple"></div>
+                      <div class="grid-item pink"></div>
+                    </div>
+                    <div class="content-bar medium"></div>
+                    <div class="content-buttons">
+                      <div class="button-mock green">Responsive</div>
+                      <div class="button-mock orange">SEO Ready</div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Why Choose Us -->
-    <section class="why-choose section-padding">
-      <div class="container">
-        <div class="section-header text-center">
-          <h2 class="section-title">Pourquoi Choisir CodeWave ?</h2>
-          <p class="section-subtitle">Votre partenaire digital de confiance</p>
+      <!-- Why Choose Us -->
+      <section class="why-choose section-padding">
+        <div class="container">
+          <div class="section-header text-center">
+            <h2 class="section-title">Pourquoi Choisir CodeWave ?</h2>
+            <p class="section-subtitle">
+              Votre partenaire digital de confiance
+            </p>
+          </div>
+
+          <div class="features-grid">
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="fas fa-shield-alt"></i>
+              </div>
+              <h3>Qualité Garantie</h3>
+              <p>Des designs modernes testés sur tous les appareils</p>
+            </div>
+
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="fas fa-clock"></i>
+              </div>
+              <h3>Livraison Rapide</h3>
+              <p>Votre site prêt en 2-4 semaines selon le pack</p>
+            </div>
+
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="fas fa-users"></i>
+              </div>
+              <h3>Support Dédié</h3>
+              <p>Assistance rapide par WhatsApp, email ou téléphone</p>
+            </div>
+
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="fas fa-chart-line"></i>
+              </div>
+              <h3>Prix Compétitifs</h3>
+              <p>Les meilleurs tarifs au Gabon avec paiement flexible</p>
+            </div>
+          </div>
         </div>
+      </section>
 
-        <div class="features-grid">
-          <div class="feature-card">
-            <div class="feature-icon">
-              <i class="fas fa-shield-alt"></i>
-            </div>
-            <h3>Qualité Garantie</h3>
-            <p>Des designs modernes testés sur tous les appareils</p>
-          </div>
-
-          <div class="feature-card">
-            <div class="feature-icon">
-              <i class="fas fa-clock"></i>
-            </div>
-            <h3>Livraison Rapide</h3>
-            <p>Votre site prêt en 2-4 semaines selon le pack</p>
-          </div>
-
-          <div class="feature-card">
-            <div class="feature-icon">
-              <i class="fas fa-users"></i>
-            </div>
-            <h3>Support Dédié</h3>
-            <p>Assistance rapide par WhatsApp, email ou téléphone</p>
-          </div>
-
-          <div class="feature-card">
-            <div class="feature-icon">
-              <i class="fas fa-chart-line"></i>
-            </div>
-            <h3>Prix Compétitifs</h3>
-            <p>Les meilleurs tarifs au Gabon avec paiement flexible</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- YouTube Video Section - Voir Comment ça Marche -->
-    <!-- <section
+      <!-- YouTube Video Section - Voir Comment ça Marche -->
+      <!-- <section
       class="section-padding"
       style="background: var(--section-tint)"
     >
@@ -388,176 +397,259 @@
       </div>
     </section> -->
 
-    <!-- Services Preview -->
-    <section class="services-preview section-padding bg-light">
-      <div class="container">
-        <div class="section-header text-center">
-          <h2 class="section-title">Nos Services</h2>
-          <p class="section-subtitle">
-            Des solutions complètes pour tous vos besoins web
-          </p>
-        </div>
+      <!-- Services Preview -->
+      <section class="services-preview section-padding bg-light">
+        <div class="container">
+          <div class="section-header text-center">
+            <h2 class="section-title">Nos Services</h2>
+            <p class="section-subtitle">
+              Des solutions complètes pour tous vos besoins web
+            </p>
+          </div>
 
-        <div class="services-grid">
-          <div class="service-card">
-            <div class="service-icon">
-              <i class="fas fa-desktop"></i>
+          <div class="services-grid">
+            <div class="service-card">
+              <div class="service-icon">
+                <i class="fas fa-desktop"></i>
+              </div>
+              <h3>Sites Vitrines</h3>
+              <p>Sites web professionnels pour présenter votre activité</p>
+              <div class="service-price">À partir de 100 000 FCFA</div>
+              <ul class="service-features">
+                <li><i class="fas fa-check"></i> Design responsive</li>
+                <li><i class="fas fa-check"></i> Optimisation SEO</li>
+                <li><i class="fas fa-check"></i> Formulaire de contact</li>
+              </ul>
+              <a href="services.html#vitrines" class="btn btn-outline"
+                >En Savoir Plus</a
+              >
             </div>
-            <h3>Sites Vitrines</h3>
-            <p>Sites web professionnels pour présenter votre activité</p>
-            <div class="service-price">À partir de 100 000 FCFA</div>
-            <ul class="service-features">
-              <li><i class="fas fa-check"></i> Design responsive</li>
-              <li><i class="fas fa-check"></i> Optimisation SEO</li>
-              <li><i class="fas fa-check"></i> Formulaire de contact</li>
-            </ul>
-            <a href="services.html#vitrines" class="btn btn-outline"
-              >En Savoir Plus</a
+
+            <div class="service-card featured">
+              <div class="popular-badge">⭐ PLUS POPULAIRE</div>
+              <div class="service-icon">
+                <i class="fas fa-shopping-cart"></i>
+              </div>
+              <h3>E-Commerce</h3>
+              <p>Boutiques en ligne complètes avec paiement sécurisé</p>
+              <div class="service-price">À partir de 300 000 FCFA</div>
+              <ul class="service-features">
+                <li><i class="fas fa-check"></i> Gestion produits</li>
+                <li><i class="fas fa-check"></i> Paiement en ligne</li>
+                <li><i class="fas fa-check"></i> Suivi commandes</li>
+              </ul>
+              <a href="services.html#ecommerce" class="btn btn-primary"
+                >Commander</a
+              >
+            </div>
+
+            <div class="service-card">
+              <div class="service-icon">
+                <i class="fas fa-palette"></i>
+              </div>
+              <h3>Blogs & Portfolios</h3>
+              <p>Plateformes pour partager votre passion et vos réalisations</p>
+              <div class="service-price">À partir de 80 000 FCFA</div>
+              <ul class="service-features">
+                <li><i class="fas fa-check"></i> Design épuré</li>
+                <li><i class="fas fa-check"></i> SEO optimisé</li>
+                <li><i class="fas fa-check"></i> Gestion facile</li>
+              </ul>
+              <a href="services.html#blogs" class="btn btn-outline"
+                >Découvrir</a
+              >
+            </div>
+          </div>
+
+          <div class="text-center mt-5">
+            <a href="services.html" class="btn btn-primary btn-lg"
+              >Voir Tous Nos Services</a
             >
           </div>
+        </div>
+      </section>
 
-          <div class="service-card featured">
-            <div class="popular-badge">⭐ PLUS POPULAIRE</div>
-            <div class="service-icon">
-              <i class="fas fa-shopping-cart"></i>
+      <!-- Portfolio Preview -->
+      <section class="portfolio-preview section-padding">
+        <div class="container">
+          <div class="section-header text-center">
+            <h2 class="section-title">Nos Réalisations</h2>
+            <p class="section-subtitle">
+              Découvrez des projets qui ont transformé des entreprises
+            </p>
+          </div>
+
+          <div class="portfolio-grid">
+            <!-- Waz'UP -->
+            <div class="portfolio-item">
+              <div
+                class="portfolio-image"
+                style="
+                  background: linear-gradient(135deg, #1d4ed8 0%, #06b6d4 100%);
+                "
+              >
+                <div class="portfolio-overlay">
+                  <h4>Waz'UP</h4>
+                  <p>Super-app Flutter</p>
+                  <a
+                    href="portfolio/wazup-details.html"
+                    class="portfolio-link"
+                    aria-label="Voir le projet Waz'UP"
+                    title="Voir le projet Waz'UP"
+                  >
+                    <i class="fas fa-arrow-right"></i>
+                  </a>
+                </div>
+              </div>
+              <div class="portfolio-info">
+                <div class="portfolio-tag">Application mobile</div>
+                <div class="portfolio-result">
+                  <i class="fas fa-bolt"></i>
+                  E-commerce & livraison
+                </div>
+              </div>
             </div>
-            <h3>E-Commerce</h3>
-            <p>Boutiques en ligne complètes avec paiement sécurisé</p>
-            <div class="service-price">À partir de 300 000 FCFA</div>
-            <ul class="service-features">
-              <li><i class="fas fa-check"></i> Gestion produits</li>
-              <li><i class="fas fa-check"></i> Paiement en ligne</li>
-              <li><i class="fas fa-check"></i> Suivi commandes</li>
-            </ul>
-            <a href="services.html#ecommerce" class="btn btn-primary"
-              >Commander</a
+
+            <!-- H2P Group -->
+            <div class="portfolio-item">
+              <div
+                class="portfolio-image"
+                style="
+                  background: linear-gradient(135deg, #8b5cf6 0%, #c084fc 100%);
+                "
+              >
+                <div class="portfolio-overlay">
+                  <h4>H2P Group</h4>
+                  <p>Site & Identité</p>
+                  <a
+                    href="portfolio/h2p-details.html"
+                    class="portfolio-link"
+                    aria-label="Voir le projet H2P Group"
+                    title="Voir le projet H2P Group"
+                  >
+                    <i class="fas fa-arrow-right"></i>
+                  </a>
+                </div>
+              </div>
+              <div class="portfolio-info">
+                <div class="portfolio-tag">Site vitrine</div>
+                <div class="portfolio-result">
+                  <i class="fas fa-calendar-check"></i>
+                  Prise de RDV
+                </div>
+              </div>
+            </div>
+
+            <!-- Le Bon Waz -->
+            <div class="portfolio-item">
+              <div
+                class="portfolio-image"
+                style="
+                  background: linear-gradient(135deg, #f97316 0%, #f59e0b 100%);
+                "
+              >
+                <div class="portfolio-overlay">
+                  <h4>Le Bon Waz</h4>
+                  <p>Marketplace</p>
+                  <a
+                    href="portfolio/lebonwaz-details.html"
+                    class="portfolio-link"
+                    aria-label="Voir le projet Le Bon Waz"
+                    title="Voir le projet Le Bon Waz"
+                  >
+                    <i class="fas fa-arrow-right"></i>
+                  </a>
+                </div>
+              </div>
+              <div class="portfolio-info">
+                <div class="portfolio-tag">E-Commerce</div>
+                <div class="portfolio-result">
+                  <i class="fas fa-store"></i>
+                  Annonces & messagerie
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="text-center mt-5">
+            <a href="portfolio.html" class="btn btn-primary btn-lg"
+              >Voir Tous Nos Projets</a
             >
           </div>
+        </div>
+      </section>
 
-          <div class="service-card">
-            <div class="service-icon">
-              <i class="fas fa-palette"></i>
-            </div>
-            <h3>Blogs & Portfolios</h3>
-            <p>Plateformes pour partager votre passion et vos réalisations</p>
-            <div class="service-price">À partir de 80 000 FCFA</div>
-            <ul class="service-features">
-              <li><i class="fas fa-check"></i> Design épuré</li>
-              <li><i class="fas fa-check"></i> SEO optimisé</li>
-              <li><i class="fas fa-check"></i> Gestion facile</li>
-            </ul>
-            <a href="services.html#blogs" class="btn btn-outline">Découvrir</a>
+      <section class="section-padding" data-search-scope>
+        <div class="container">
+          <div class="section-header text-center">
+            <h2 class="section-title">Ressources & Documentation</h2>
+            <p class="section-subtitle">
+              Accédez rapidement aux guides, pages légales et contenus utiles
+            </p>
           </div>
-        </div>
 
-        <div class="text-center mt-5">
-          <a href="services.html" class="btn btn-primary btn-lg"
-            >Voir Tous Nos Services</a
-          >
-        </div>
-      </div>
-    </section>
-
-    <!-- Portfolio Preview -->
-    <section class="portfolio-preview section-padding">
-      <div class="container">
-        <div class="section-header text-center">
-          <h2 class="section-title">Nos Réalisations</h2>
-          <p class="section-subtitle">
-            Découvrez des projets qui ont transformé des entreprises
-          </p>
-        </div>
-
-        <div class="portfolio-grid">
-          <!-- Waz'UP -->
-          <div class="portfolio-item">
-            <div
-              class="portfolio-image"
-              style="
-                background: linear-gradient(135deg, #1d4ed8 0%, #06b6d4 100%);
-              "
+          <div class="content-search-box">
+            <label for="resourceSearch" class="sr-only"
+              >Rechercher une ressource</label
             >
-              <div class="portfolio-overlay">
-                <h4>Waz'UP</h4>
-                <p>Super-app Flutter</p>
-                <a href="portfolio/wazup-details.html" class="portfolio-link">
-                  <i class="fas fa-arrow-right"></i>
-                </a>
-              </div>
-            </div>
-            <div class="portfolio-info">
-              <div class="portfolio-tag">Application mobile</div>
-              <div class="portfolio-result">
-                <i class="fas fa-bolt"></i>
-                E-commerce & livraison
-              </div>
-            </div>
+            <input
+              id="resourceSearch"
+              type="search"
+              class="content-search-input"
+              data-search-input
+              placeholder="Rechercher une ressource, un guide, une page..."
+              aria-label="Rechercher une ressource"
+            />
+            <p class="content-search-result" data-search-result></p>
           </div>
 
-          <!-- H2P Group -->
-          <div class="portfolio-item">
-            <div
-              class="portfolio-image"
-              style="
-                background: linear-gradient(135deg, #8b5cf6 0%, #c084fc 100%);
-              "
+          <div class="resources-grid">
+            <a href="blog.html" class="resource-card" data-search-item>
+              <h3>Blog CodeWave</h3>
+              <p>Articles, tutoriels SEO, performance et e-commerce</p>
+            </a>
+            <a
+              href="blogs/optimiser-seo-gabon.html"
+              class="resource-card"
+              data-search-item
             >
-              <div class="portfolio-overlay">
-                <h4>H2P Group</h4>
-                <p>Site & Identité</p>
-                <a href="portfolio/h2p-details.html" class="portfolio-link">
-                  <i class="fas fa-arrow-right"></i>
-                </a>
-              </div>
-            </div>
-            <div class="portfolio-info">
-              <div class="portfolio-tag">Site vitrine</div>
-              <div class="portfolio-result">
-                <i class="fas fa-calendar-check"></i>
-                Prise de RDV
-              </div>
-            </div>
-          </div>
-
-          <!-- Le Bon Waz -->
-          <div class="portfolio-item">
-            <div
-              class="portfolio-image"
-              style="
-                background: linear-gradient(135deg, #f97316 0%, #f59e0b 100%);
-              "
+              <h3>Guide SEO Gabon</h3>
+              <p>Bonnes pratiques locales pour améliorer la visibilité</p>
+            </a>
+            <a
+              href="blogs/vitesse-chargement-site-web.html"
+              class="resource-card"
+              data-search-item
             >
-              <div class="portfolio-overlay">
-                <h4>Le Bon Waz</h4>
-                <p>Marketplace</p>
-                <a
-                  href="portfolio/lebonwaz-details.html"
-                  class="portfolio-link"
-                >
-                  <i class="fas fa-arrow-right"></i>
-                </a>
-              </div>
-            </div>
-            <div class="portfolio-info">
-              <div class="portfolio-tag">E-Commerce</div>
-              <div class="portfolio-result">
-                <i class="fas fa-store"></i>
-                Annonces & messagerie
-              </div>
-            </div>
+              <h3>Guide Performance Web</h3>
+              <p>Optimisation du chargement et expérience utilisateur</p>
+            </a>
+            <a href="plan-du-site.html" class="resource-card" data-search-item>
+              <h3>Plan du Site</h3>
+              <p>Navigation complète de toutes les pages du site</p>
+            </a>
+            <a
+              href="politique-confidentialite.html"
+              class="resource-card"
+              data-search-item
+            >
+              <h3>Politique de Confidentialité</h3>
+              <p>Protection des données et engagements de sécurité</p>
+            </a>
+            <a
+              href="mentions-legales.html"
+              class="resource-card"
+              data-search-item
+            >
+              <h3>Mentions Légales</h3>
+              <p>Informations éditeur, hébergement et responsabilités</p>
+            </a>
           </div>
         </div>
+      </section>
 
-        <div class="text-center mt-5">
-          <a href="portfolio.html" class="btn btn-primary btn-lg"
-            >Voir Tous Nos Projets</a
-          >
-        </div>
-      </div>
-    </section>
-
-    <!-- Testimonials -->
-    <!-- <section class="testimonials section-padding bg-gradient">
+      <!-- Testimonials -->
+      <!-- <section class="testimonials section-padding bg-gradient">
       <div class="container">
         <div class="section-header text-center">
           <h2 class="section-title text-white">Ce Que Disent Nos Clients</h2>
@@ -624,46 +716,47 @@
       </div>
     </section> -->
 
-    <!-- CTA Section -->
-    <section class="cta-section section-padding">
-      <div class="container">
-        <div class="cta-content text-center">
-          <h2 class="cta-title">Prêt à Lancer Votre Projet ?</h2>
-          <!-- <p class="cta-text">
+      <!-- CTA Section -->
+      <section class="cta-section section-padding">
+        <div class="container">
+          <div class="cta-content text-center">
+            <h2 class="cta-title">Prêt à Lancer Votre Projet ?</h2>
+            <!-- <p class="cta-text">
             Rejoignez plus de 80 entreprises gabonaises qui nous font confiance
           </p> -->
-          <div class="cta-buttons">
-            <a href="contact.html#contactForm" class="btn btn-white btn-lg">
-              Demander un Devis Gratuit
-              <i class="fas fa-arrow-right"></i>
-            </a>
-            <a
-              href="https://wa.me/24166198918?text=Bonjour,%20je%20souhaite%20discuter%20d'un%20projet%20web."
-              class="btn btn-outline-white btn-lg"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <i class="fab fa-whatsapp"></i>
-              WhatsApp Direct
-            </a>
-          </div>
-          <div class="cta-features">
-            <div class="cta-feature">
-              <i class="fas fa-check"></i>
-              <span>Devis en 24h</span>
+            <div class="cta-buttons">
+              <a href="contact.html#contactForm" class="btn btn-white btn-lg">
+                Demander un Devis Gratuit
+                <i class="fas fa-arrow-right"></i>
+              </a>
+              <a
+                href="https://wa.me/24166198918?text=Bonjour,%20je%20souhaite%20discuter%20d'un%20projet%20web."
+                class="btn btn-outline-white btn-lg"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i class="fab fa-whatsapp"></i>
+                WhatsApp Direct
+              </a>
             </div>
-            <div class="cta-feature">
-              <i class="fas fa-check"></i>
-              <span>Paiement flexible</span>
-            </div>
-            <div class="cta-feature">
-              <i class="fas fa-check"></i>
-              <span>Support 24/7</span>
+            <div class="cta-features">
+              <div class="cta-feature">
+                <i class="fas fa-check"></i>
+                <span>Devis en 24h</span>
+              </div>
+              <div class="cta-feature">
+                <i class="fas fa-check"></i>
+                <span>Paiement flexible</span>
+              </div>
+              <div class="cta-feature">
+                <i class="fas fa-check"></i>
+                <span>Support 24/7</span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </main>
 
     <!-- Footer -->
     <footer class="footer">
