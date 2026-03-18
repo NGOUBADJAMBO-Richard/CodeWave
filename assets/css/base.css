@@ -1,0 +1,153 @@
+* { font-family: 'DM Sans', sans-serif; }
+    h1, h2, h3, h4, .font-display { font-family: 'Syne', sans-serif; }
+    
+    :root {
+      --bg: #f4f3f3;
+      --fg: #0f172a;
+      --card: #ffffff;
+      --border: #e2e8f0;
+      --muted: #64748b;
+      --primary: #1a56db;
+    }
+    .dark {
+      --bg: #1e293b;
+      --fg: #f1f5f9;
+      --card: #0f172a;
+      --border: #334155;
+      --muted: #94a3b8;
+      --primary: #3b82f6;
+    }
+
+    body { background-color: var(--bg); color: var(--fg); transition: background 0.3s, color 0.3s; }
+
+    /* Scroll progress bar */
+    #scroll-progress {
+      position: fixed; top: 0; left: 0; height: 3px;
+      background: linear-gradient(90deg, #1a56db, #3b82f6);
+      z-index: 9999; transition: width 0.1s linear;
+      width: 0%;
+    }
+
+    /* Wavy SVG background */
+    .wave-bg { position: absolute; inset: 0; overflow: hidden; pointer-events: none; opacity: 0.06; }
+    .dark .wave-bg { opacity: 0.12; }
+
+    /* Nav */
+    nav { backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
+
+    /* Cards */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(26,86,219,0.12); }
+
+    /* Buttons */
+    .btn-primary {
+      background: #1a56db;
+      color: white;
+      padding: 12px 28px;
+      font-family: 'Syne', sans-serif;
+      font-weight: 600;
+      border-radius: 0;
+      transition: all 0.2s;
+      display: inline-flex; align-items: center; gap: 8px;
+      border: 2px solid #1a56db;
+    }
+    .btn-primary:hover { background: transparent; color: #1a56db; }
+    .dark .btn-primary:hover { color: #3b82f6; border-color: #3b82f6; }
+
+    .btn-outline {
+      border: 2px solid var(--border);
+      color: var(--fg);
+      padding: 12px 28px;
+      font-family: 'Syne', sans-serif;
+      font-weight: 600;
+      border-radius: 0;
+      transition: all 0.2s;
+      background: transparent;
+    }
+    .btn-outline:hover { border-color: #1a56db; color: #1a56db; }
+
+    /* Filter pills */
+    .filter-pill {
+      padding: 6px 18px;
+      border: 1.5px solid var(--border);
+      background: transparent;
+      color: var(--muted);
+      font-family: 'Syne', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      border-radius: 0;
+    }
+    .filter-pill.active, .filter-pill:hover {
+      background: #1a56db;
+      border-color: #1a56db;
+      color: white;
+    }
+
+    /* Section title */
+    .section-label {
+      font-family: 'Syne', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #1a56db;
+    }
+
+    /* Floating WhatsApp */
+    #whatsapp-btn {
+      position: fixed; bottom: 24px; right: 24px; z-index: 1000;
+      width: 56px; height: 56px; border-radius: 50%;
+      background: #25D366;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 8px 24px rgba(37,211,102,0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+    }
+    #whatsapp-btn:hover { transform: scale(1.1); box-shadow: 0 12px 32px rgba(37,211,102,0.5); }
+
+    /* Page transitions */
+    .page { animation: fadeIn 0.3s ease; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* Hero gradient */
+    .hero-gradient {
+      background: linear-gradient(135deg, var(--card) 0%, rgba(26,86,219,0.04) 100%);
+    }
+
+    /* Blog card category badge */
+    .badge {
+      font-size: 11px; font-weight: 700; font-family: 'Syne', sans-serif;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 4px 10px; border-radius: 0;
+    }
+    .badge-blue { background: rgba(26,86,219,0.1); color: #1a56db; }
+    .badge-teal { background: rgba(20,184,166,0.1); color: #0d9488; }
+    .badge-orange { background: rgba(249,115,22,0.1); color: #ea580c; }
+    .badge-purple { background: rgba(139,92,246,0.1); color: #7c3aed; }
+
+    /* Pricing card highlight */
+    .pricing-highlight {
+      border: 2px solid #1a56db !important;
+      position: relative;
+    }
+    .pricing-highlight::before {
+      content: 'POPULAIRE';
+      position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+      background: #1a56db; color: white;
+      font-size: 10px; font-weight: 800; font-family: 'Syne', sans-serif;
+      letter-spacing: 0.15em; padding: 3px 12px;
+    }
+
+    /* Language toggle */
+    .lang-btn { font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700; cursor: pointer; }
+    .lang-btn.active { color: #1a56db; }
+
+    /* Scroll reveal */
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.5s, transform 0.5s; }
+    .reveal.visible { opacity: 1; transform: none; }

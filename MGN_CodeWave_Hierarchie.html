@@ -1,0 +1,664 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HiÃ©rarchie du Projet â€” MGN CodeWave</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=JetBrains+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0f1e;
+    --card: #0f172a;
+    --border: #1e293b;
+    --muted: #475569;
+    --text: #e2e8f0;
+    --blue: #3b82f6;
+    --blue-dim: rgba(59,130,246,0.12);
+    --green: #10b981;
+    --purple: #8b5cf6;
+    --orange: #f59e0b;
+    --pink: #ec4899;
+    --teal: #14b8a6;
+    --red: #ef4444;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+    padding: 40px 20px 80px;
+  }
+
+  /* Page layout */
+  .page { max-width: 960px; margin: 0 auto; }
+
+  /* Header */
+  .header {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 32px;
+    margin-bottom: 48px;
+  }
+  .header-label {
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--blue); font-family: 'Syne', sans-serif; font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .header-title {
+    font-family: 'Syne', sans-serif; font-weight: 800;
+    font-size: clamp(2rem, 4vw, 3.2rem); line-height: 1.1;
+    color: white; margin-bottom: 12px;
+  }
+  .header-title span { color: var(--blue); }
+  .header-meta { display: flex; gap: 24px; flex-wrap: wrap; margin-top: 20px; }
+  .meta-pill {
+    display: flex; align-items: center; gap: 7px;
+    font-size: 12px; color: var(--muted);
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--border);
+    padding: 5px 12px;
+  }
+  .meta-pill strong { color: var(--text); font-weight: 600; }
+
+  /* Stats row */
+  .stats-row {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 12px; margin-bottom: 48px;
+  }
+  .stat-card {
+    background: var(--card); border: 1px solid var(--border);
+    padding: 18px 16px; text-align: center;
+  }
+  .stat-number {
+    font-family: 'Syne', sans-serif; font-weight: 800;
+    font-size: 2rem; line-height: 1; margin-bottom: 4px;
+  }
+  .stat-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); }
+
+  /* Section title */
+  .section-title {
+    font-family: 'Syne', sans-serif; font-weight: 700;
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 20px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-title::after { content:''; flex:1; height:1px; background: var(--border); }
+
+  /* Tree container */
+  .tree { margin-bottom: 48px; }
+
+  /* File tree rows */
+  .tree-item {
+    display: flex; align-items: flex-start; gap: 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px; line-height: 1;
+    position: relative;
+    padding: 0;
+  }
+
+  /* Folder / file row itself */
+  .tree-row {
+    display: flex; align-items: center; gap: 10px;
+    padding: 7px 12px; width: 100%;
+    border-radius: 0;
+    transition: background 0.15s;
+    cursor: default;
+    position: relative;
+  }
+  .tree-row:hover { background: rgba(59,130,246,0.05); }
+
+  /* Indent guides */
+  .indent {
+    display: inline-flex; align-items: stretch;
+    flex-shrink: 0; gap: 0;
+  }
+  .guide {
+    width: 20px; flex-shrink: 0;
+    position: relative; display: flex; align-items: center;
+  }
+  .guide::before {
+    content: '';
+    position: absolute; left: 9px; top: 0; bottom: 0;
+    width: 1px; background: var(--border);
+  }
+  .guide.last::before { height: 50%; top: 0; }
+  .guide .branch {
+    position: absolute; left: 9px; top: 50%;
+    width: 10px; height: 1px; background: var(--border);
+  }
+
+  /* Icons */
+  .icon { flex-shrink: 0; width: 18px; text-align: center; font-size: 13px; }
+
+  /* File name */
+  .name { flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .name.folder { color: var(--text); font-weight: 500; }
+  .name.file { color: #94a3b8; }
+  .name.page-file { color: #7dd3fc; }
+  .name.data-file { color: #86efac; }
+  .name.style-file { color: #c4b5fd; }
+  .name.config-file { color: #fde68a; }
+  .name.entry-file { color: var(--blue); font-weight: 600; }
+
+  /* Tag badge */
+  .tag {
+    font-size: 10px; padding: 2px 7px;
+    font-family: 'DM Sans', sans-serif;
+    white-space: nowrap; flex-shrink: 0;
+    letter-spacing: 0.04em;
+  }
+  .tag-blue { background: rgba(59,130,246,0.12); color: #7dd3fc; }
+  .tag-green { background: rgba(16,185,129,0.12); color: #6ee7b7; }
+  .tag-purple { background: rgba(139,92,246,0.12); color: #c4b5fd; }
+  .tag-orange { background: rgba(245,158,11,0.12); color: #fde68a; }
+  .tag-pink { background: rgba(236,72,153,0.12); color: #f9a8d4; }
+  .tag-muted { background: rgba(100,116,139,0.1); color: var(--muted); }
+
+  /* Description */
+  .desc {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px; color: var(--muted); flex-shrink: 0;
+    margin-left: auto; padding-left: 16px;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    max-width: 260px;
+  }
+  @media (max-width: 700px) { .desc { display: none; } }
+
+  /* Pages legend table */
+  .legend-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 10px; margin-bottom: 48px;
+  }
+  .legend-item {
+    background: var(--card); border: 1px solid var(--border);
+    padding: 14px 16px; display: flex; align-items: flex-start; gap: 12px;
+  }
+  .legend-icon {
+    width: 32px; height: 32px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 15px;
+  }
+  .legend-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 13px; color: var(--text); margin-bottom: 3px; }
+  .legend-path { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--muted); margin-bottom: 5px; }
+  .legend-desc { font-size: 11px; color: #64748b; line-height: 1.4; }
+
+  /* Router table */
+  .route-table { width: 100%; border-collapse: collapse; margin-bottom: 48px; }
+  .route-table th {
+    text-align: left; padding: 10px 14px;
+    font-family: 'Syne', sans-serif; font-weight: 700; font-size: 11px;
+    letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted);
+    border-bottom: 1px solid var(--border); background: rgba(255,255,255,0.01);
+  }
+  .route-table td {
+    padding: 9px 14px; border-bottom: 1px solid rgba(255,255,255,0.03);
+    font-size: 13px; vertical-align: top;
+  }
+  .route-table tr:hover td { background: rgba(59,130,246,0.03); }
+  .code { font-family: 'JetBrains Mono', monospace; color: #7dd3fc; font-size: 12px; }
+  .code.green { color: #6ee7b7; }
+  .code.purple { color: #c4b5fd; }
+
+  /* Footer credit */
+  .credit {
+    text-align: center; padding-top: 40px; border-top: 1px solid var(--border);
+    font-size: 12px; color: var(--muted);
+  }
+  .credit strong { color: var(--blue); }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <p class="header-label">Documentation Technique</p>
+    <h1 class="header-title">HiÃ©rarchie du Projet<br><span>MGN CodeWave</span></h1>
+    <p style="color:#64748b;font-size:14px;max-width:520px;line-height:1.6;">Application web Many-Page haute performance â€” fichier HTML unique auto-contenu avec systÃ¨me de routing, i18n FR/EN, dark/light mode et 19 pages navigables.</p>
+    <div class="header-meta">
+      <div class="meta-pill">ðŸ“ Architecture <strong>Single-File App</strong></div>
+      <div class="meta-pill">ðŸ—‚ï¸ Source <strong>5 fichiers JS modulaires</strong></div>
+      <div class="meta-pill">ðŸ“¦ Build <strong>1 fichier HTML</strong></div>
+      <div class="meta-pill">âš–ï¸ Poids <strong>222 KB</strong></div>
+      <div class="meta-pill">ðŸ“… Version <strong>v4 â€” finale</strong></div>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats-row">
+    <div class="stat-card"><div class="stat-number" style="color:#3b82f6">19</div><div class="stat-label">Pages</div></div>
+    <div class="stat-card"><div class="stat-number" style="color:#10b981">12</div><div class="stat-label">Portfolio</div></div>
+    <div class="stat-card"><div class="stat-number" style="color:#8b5cf6">7</div><div class="stat-label">Articles</div></div>
+    <div class="stat-card"><div class="stat-number" style="color:#f59e0b">8</div><div class="stat-label">Offres emploi</div></div>
+    <div class="stat-card"><div class="stat-number" style="color:#ec4899">5</div><div class="stat-label">Pages lÃ©gales</div></div>
+    <div class="stat-card"><div class="stat-number" style="color:#14b8a6">2</div><div class="stat-label">Langues</div></div>
+  </div>
+
+  <!-- ==================== SOURCE TREE ==================== -->
+  <p class="section-title">Structure des fichiers sources (dÃ©veloppement)</p>
+  <div class="tree" style="background:var(--card);border:1px solid var(--border);padding:8px 0;">
+
+    <!-- Root -->
+    <div class="tree-row">
+      <span class="icon">ðŸ“‚</span>
+      <span class="name folder">mgn-codewave/</span>
+      <span class="tag tag-muted">racine du projet</span>
+      <span class="desc">Dossier de travail local</span>
+    </div>
+
+    <!-- index.html -->
+    <div class="tree-row" style="padding-left:32px">
+      <span class="icon">ðŸ”µ</span>
+      <span class="name entry-file">index.html</span>
+      <span class="tag tag-blue">EntrÃ©e</span>
+      <span class="desc">Shell HTML, CSS global, meta SEO, WhatsApp btn</span>
+    </div>
+
+    <!-- translations.js -->
+    <div class="tree-row" style="padding-left:32px">
+      <span class="icon">ðŸŒ</span>
+      <span class="name data-file">translations.js</span>
+      <span class="tag tag-green">i18n</span>
+      <span class="desc">Objets FR/EN pour tous les textes du site</span>
+    </div>
+
+    <!-- app.js -->
+    <div class="tree-row" style="padding-left:32px">
+      <span class="icon">âš™ï¸</span>
+      <span class="name page-file">app.js</span>
+      <span class="tag tag-blue">Core</span>
+      <span class="desc">State, router, nav, footer, pages principales</span>
+    </div>
+
+    <!-- pages_addon.js -->
+    <div class="tree-row" style="padding-left:32px">
+      <span class="icon">ðŸ–¼ï¸</span>
+      <span class="name page-file">pages_addon.js</span>
+      <span class="tag tag-purple">Addon 1</span>
+      <span class="desc">DÃ©tails portfolio Ã—12, dÃ©tails blog Ã—7, carriÃ¨res</span>
+    </div>
+
+    <!-- legal_social_addon.js -->
+    <div class="tree-row" style="padding-left:32px">
+      <span class="icon">âš–ï¸</span>
+      <span class="name page-file">legal_social_addon.js</span>
+      <span class="tag tag-orange">Addon 2</span>
+      <span class="desc">Mentions lÃ©gales, CGV, confidentialitÃ©, plan du site, rÃ©seaux</span>
+    </div>
+
+    <!-- /outputs -->
+    <div class="tree-row" style="padding-left:32px; margin-top:6px;">
+      <span class="icon">ðŸ“‚</span>
+      <span class="name folder">outputs/</span>
+      <span class="tag tag-muted">livraison</span>
+      <span class="desc">Fichiers HTML compilÃ©s finaux</span>
+    </div>
+
+    <div class="tree-row" style="padding-left:52px">
+      <span class="icon">âœ…</span>
+      <span class="name file" style="color:#fde68a">MGN_CodeWave_App_v4.html</span>
+      <span class="tag tag-orange">Final</span>
+      <span class="desc">Build complet â€” 222 KB, tout-en-un</span>
+    </div>
+    <div class="tree-row" style="padding-left:52px">
+      <span class="icon">ðŸ“„</span>
+      <span class="name file">MGN_CodeWave_App_v3.html</span>
+      <span class="tag tag-muted">v3</span>
+      <span class="desc">Pages lÃ©gales + rÃ©seaux sociaux</span>
+    </div>
+    <div class="tree-row" style="padding-left:52px">
+      <span class="icon">ðŸ“„</span>
+      <span class="name file">MGN_CodeWave_App_v2.html</span>
+      <span class="tag tag-muted">v2</span>
+      <span class="desc">DÃ©tails portfolio/blog + carriÃ¨res</span>
+    </div>
+    <div class="tree-row" style="padding-left:52px">
+      <span class="icon">ðŸ“„</span>
+      <span class="name file">MGN_CodeWave_App.html</span>
+      <span class="tag tag-muted">v1</span>
+      <span class="desc">Version initiale â€” pages de base</span>
+    </div>
+
+  </div>
+
+  <!-- ==================== BUILD ARCHITECTURE ==================== -->
+  <p class="section-title">Architecture du build (fichier livrÃ©)</p>
+  <div class="tree" style="background:var(--card);border:1px solid var(--border);padding:8px 0;">
+
+    <div class="tree-row">
+      <span class="icon">ðŸ“„</span>
+      <span class="name entry-file">MGN_CodeWave_App_v4.html</span>
+      <span class="tag tag-orange">222 KB</span>
+      <span class="desc">Fichier unique auto-contenu</span>
+    </div>
+
+    <div class="tree-row" style="padding-left:32px">
+      <span class="icon">ðŸ”·</span>
+      <span class="name folder">&lt;head&gt;</span>
+      <span class="desc">Meta SEO, fonts Google, Tailwind CDN</span>
+    </div>
+    <div class="tree-row" style="padding-left:52px">
+      <span class="icon">ðŸŽ¨</span>
+      <span class="name file">CSS global inline</span>
+      <span class="tag tag-purple">~120 lignes</span>
+      <span class="desc">Variables CSS, animations, composants</span>
+    </div>
+    <div class="tree-row" style="padding-left:52px">
+      <span class="icon">ðŸ”¤</span>
+      <span class="name file">Google Fonts</span>
+      <span class="tag tag-muted">CDN</span>
+      <span class="desc">Syne (display) + DM Sans (body)</span>
+    </div>
+    <div class="tree-row" style="padding-left:52px">
+      <span class="icon">ðŸ’¨</span>
+      <span class="name file">Tailwind CSS</span>
+      <span class="tag tag-muted">CDN</span>
+      <span class="desc">Classes utilitaires, dark mode config</span>
+    </div>
+
+    <div class="tree-row" style="padding-left:32px; margin-top:4px;">
+      <span class="icon">ðŸ”·</span>
+      <span class="name folder">&lt;body&gt;</span>
+    </div>
+    <div class="tree-row" style="padding-left:52px">
+      <span class="icon">ðŸ“Š</span>
+      <span class="name file">#scroll-progress</span>
+      <span class="desc">Barre de progression lecture (fixed top)</span>
+    </div>
+    <div class="tree-row" style="padding-left:52px">
+      <span class="icon">ðŸŒ¿</span>
+      <span class="name file">#root</span>
+      <span class="desc">Conteneur SPA â€” tout le HTML rendu ici</span>
+    </div>
+    <div class="tree-row" style="padding-left:52px">
+      <span class="icon">ðŸ’¬</span>
+      <span class="name file">#whatsapp-btn</span>
+      <span class="desc">Bouton flottant vert (fixed bottom-right)</span>
+    </div>
+
+    <div class="tree-row" style="padding-left:32px; margin-top:4px;">
+      <span class="icon">ðŸ”·</span>
+      <span class="name folder">&lt;script&gt; â€” JS inline</span>
+      <span class="tag tag-blue">~2200 lignes</span>
+    </div>
+
+    <div class="tree-row" style="padding-left:52px">
+      <span class="icon">ðŸŒ</span>
+      <span class="name data-file">translations { fr, en }</span>
+      <span class="tag tag-green">i18n</span>
+      <span class="desc">Tous les textes UI en 2 langues</span>
+    </div>
+
+    <div class="tree-row" style="padding-left:52px; margin-top:2px;">
+      <span class="icon">ðŸ“¦</span>
+      <span class="name data-file">portfolioDetails [12]</span>
+      <span class="tag tag-purple">Data</span>
+      <span class="desc">Contenu complet des 12 projets</span>
+    </div>
+    <div class="tree-row" style="padding-left:52px">
+      <span class="icon">ðŸ“¦</span>
+      <span class="name data-file">blogDetails [7]</span>
+      <span class="tag tag-purple">Data</span>
+      <span class="desc">Contenu complet des 7 articles</span>
+    </div>
+    <div class="tree-row" style="padding-left:52px">
+      <span class="icon">ðŸ“¦</span>
+      <span class="name data-file">careersData { freelance[3], cdi[5] }</span>
+      <span class="tag tag-purple">Data</span>
+      <span class="desc">8 offres d'emploi avec missions/profil</span>
+    </div>
+    <div class="tree-row" style="padding-left:52px">
+      <span class="icon">ðŸ“¦</span>
+      <span class="name data-file">portfolioProjects [12]</span>
+      <span class="tag tag-purple">Data</span>
+      <span class="desc">DonnÃ©es des cartes de la galerie</span>
+    </div>
+    <div class="tree-row" style="padding-left:52px">
+      <span class="icon">ðŸ“¦</span>
+      <span class="name data-file">blogPosts [7]</span>
+      <span class="tag tag-purple">Data</span>
+      <span class="desc">MÃ©tadonnÃ©es des articles (liste)</span>
+    </div>
+
+    <div class="tree-row" style="padding-left:52px; margin-top:4px;">
+      <span class="icon">âš™ï¸</span>
+      <span class="name page-file">state { theme, lang, page, ... }</span>
+      <span class="tag tag-blue">Store</span>
+      <span class="desc">Ã‰tat global de l'application</span>
+    </div>
+    <div class="tree-row" style="padding-left:52px">
+      <span class="icon">ðŸ”€</span>
+      <span class="name page-file">render() + switch(state.page)</span>
+      <span class="tag tag-blue">Router</span>
+      <span class="desc">19 cas de routing â†’ renderXxx()</span>
+    </div>
+    <div class="tree-row" style="padding-left:52px">
+      <span class="icon">ðŸ§­</span>
+      <span class="name page-file">renderNav()</span>
+      <span class="desc">Navbar sticky, backdrop-blur, scroll-progress</span>
+    </div>
+    <div class="tree-row" style="padding-left:52px">
+      <span class="icon">ðŸ¦¶</span>
+      <span class="name page-file">renderFooter()</span>
+      <span class="desc">Footer dark premium, CTA, rÃ©seaux, lÃ©gal</span>
+    </div>
+
+  </div>
+
+  <!-- ==================== PAGES CATALOGUE ==================== -->
+  <p class="section-title">Catalogue des 19 pages navigables</p>
+  <div class="legend-grid">
+
+    <div class="legend-item">
+      <div class="legend-icon" style="background:rgba(59,130,246,0.1)">ðŸ </div>
+      <div>
+        <div class="legend-name">Accueil</div>
+        <div class="legend-path">state.page = 'home'</div>
+        <div class="legend-desc">Hero animÃ©, stats, aperÃ§u services & portfolio, banniÃ¨re CTA bleue</div>
+      </div>
+    </div>
+
+    <div class="legend-item">
+      <div class="legend-icon" style="background:rgba(16,185,129,0.1)">âš™ï¸</div>
+      <div>
+        <div class="legend-name">Services</div>
+        <div class="legend-path">state.page = 'services'</div>
+        <div class="legend-desc">6 services + packages social media (3 plans) + tableau complÃ©mentaire</div>
+      </div>
+    </div>
+
+    <div class="legend-item">
+      <div class="legend-icon" style="background:rgba(139,92,246,0.1)">ðŸ–¼ï¸</div>
+      <div>
+        <div class="legend-name">Portfolio</div>
+        <div class="legend-path">state.page = 'portfolio'</div>
+        <div class="legend-desc">Galerie filtrable Ã—12 projets, 5 filtres de catÃ©gories</div>
+      </div>
+    </div>
+
+    <div class="legend-item">
+      <div class="legend-icon" style="background:rgba(139,92,246,0.08)">ðŸ”</div>
+      <div>
+        <div class="legend-name">Portfolio â€” DÃ©tail (Ã—12)</div>
+        <div class="legend-path">state.page = 'portfolio-detail'<br>state.currentProjectId = 1â€¦12</div>
+        <div class="legend-desc">Hero couleur, description, fonctionnalitÃ©s, dÃ©fi/rÃ©sultat, stack, nav prev/next</div>
+      </div>
+    </div>
+
+    <div class="legend-item">
+      <div class="legend-icon" style="background:rgba(14,165,233,0.1)">ðŸ“</div>
+      <div>
+        <div class="legend-name">Blog</div>
+        <div class="legend-path">state.page = 'blog'</div>
+        <div class="legend-desc">Article en vedette + grille Ã—6 articles, badges catÃ©gories</div>
+      </div>
+    </div>
+
+    <div class="legend-item">
+      <div class="legend-icon" style="background:rgba(14,165,233,0.08)">ðŸ“–</div>
+      <div>
+        <div class="legend-name">Blog â€” DÃ©tail (Ã—7)</div>
+        <div class="legend-path">state.page = 'blog-detail'<br>state.currentBlogId = 1â€¦7</div>
+        <div class="legend-desc">Contenu complet, sections numÃ©rotÃ©es, partage WhatsApp/LinkedIn, articles liÃ©s</div>
+      </div>
+    </div>
+
+    <div class="legend-item">
+      <div class="legend-icon" style="background:rgba(245,158,11,0.1)">ðŸ’¼</div>
+      <div>
+        <div class="legend-name">CarriÃ¨res</div>
+        <div class="legend-path">state.page = 'careers'</div>
+        <div class="legend-desc">6 avantages + 3 postes Freelance + 5 postes CDI, candidature spontanÃ©e</div>
+      </div>
+    </div>
+
+    <div class="legend-item">
+      <div class="legend-icon" style="background:rgba(245,158,11,0.08)">ðŸ“‹</div>
+      <div>
+        <div class="legend-name">Fiche Poste (Ã—8)</div>
+        <div class="legend-path">state.activeJob = 'fullstack'â€¦</div>
+        <div class="legend-desc">Missions, profil recherchÃ©, salaire, CTA email + WhatsApp</div>
+      </div>
+    </div>
+
+    <div class="legend-item">
+      <div class="legend-icon" style="background:rgba(236,72,153,0.1)">ðŸ‘¤</div>
+      <div>
+        <div class="legend-name">Ã€ Propos</div>
+        <div class="legend-path">state.page = 'about'</div>
+        <div class="legend-desc">Mission, valeurs, stack technique, timeline 2023â†’2025</div>
+      </div>
+    </div>
+
+    <div class="legend-item">
+      <div class="legend-icon" style="background:rgba(20,184,166,0.1)">âœ‰ï¸</div>
+      <div>
+        <div class="legend-name">Contact</div>
+        <div class="legend-path">state.page = 'contact'</div>
+        <div class="legend-desc">Formulaire, WhatsApp, email, adresse â€” validation inline</div>
+      </div>
+    </div>
+
+    <div class="legend-item">
+      <div class="legend-icon" style="background:rgba(100,116,139,0.1)">âš–ï¸</div>
+      <div>
+        <div class="legend-name">Mentions LÃ©gales</div>
+        <div class="legend-path">state.page = 'legal'</div>
+        <div class="legend-desc">Ã‰diteur, hÃ©bergeur, propriÃ©tÃ© intellectuelle, droit gabonais</div>
+      </div>
+    </div>
+
+    <div class="legend-item">
+      <div class="legend-icon" style="background:rgba(100,116,139,0.1)">ðŸ”’</div>
+      <div>
+        <div class="legend-name">Politique de ConfidentialitÃ©</div>
+        <div class="legend-path">state.page = 'privacy'</div>
+        <div class="legend-desc">RGPD, donnÃ©es collectÃ©es, 6 droits utilisateurs, cookies</div>
+      </div>
+    </div>
+
+    <div class="legend-item">
+      <div class="legend-icon" style="background:rgba(100,116,139,0.1)">ðŸ“‹</div>
+      <div>
+        <div class="legend-name">CGV</div>
+        <div class="legend-path">state.page = 'cgv'</div>
+        <div class="legend-desc">Devis, paiement (Mobile Money), dÃ©lais, garantie, rÃ©siliation</div>
+      </div>
+    </div>
+
+    <div class="legend-item">
+      <div class="legend-icon" style="background:rgba(100,116,139,0.1)">ðŸ—ºï¸</div>
+      <div>
+        <div class="legend-name">Plan du Site</div>
+        <div class="legend-path">state.page = 'sitemap'</div>
+        <div class="legend-desc">4 groupes navigables : pages, portfolio, blog, lÃ©gal</div>
+      </div>
+    </div>
+
+    <div class="legend-item">
+      <div class="legend-icon" style="background:rgba(59,130,246,0.1)">ðŸ“¡</div>
+      <div>
+        <div class="legend-name">Nos RÃ©seaux Sociaux</div>
+        <div class="legend-path">state.page = 'social'</div>
+        <div class="legend-desc">6 cartes rÃ©seaux (WhatsApp, IG, FB, LinkedIn, GitHub, Email)</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ==================== ROUTER TABLE ==================== -->
+  <p class="section-title">Table de routing complÃ¨te</p>
+  <table class="route-table">
+    <thead>
+      <tr>
+        <th>state.page</th>
+        <th>Fonction rendue</th>
+        <th>ParamÃ¨tre d'Ã©tat</th>
+        <th>Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><code class="code">'home'</code></td><td><code class="code green">renderHome()</code></td><td>â€”</td><td><span class="tag tag-blue">Page principale</span></td></tr>
+      <tr><td><code class="code">'services'</code></td><td><code class="code green">renderServices()</code></td><td>â€”</td><td><span class="tag tag-blue">Page principale</span></td></tr>
+      <tr><td><code class="code">'portfolio'</code></td><td><code class="code green">renderPortfolio()</code></td><td><code class="code purple">state.portfolioFilter</code></td><td><span class="tag tag-blue">Page principale</span></td></tr>
+      <tr><td><code class="code">'portfolio-detail'</code></td><td><code class="code green">renderPortfolioDetail(id)</code></td><td><code class="code purple">state.currentProjectId</code> (1â€“12)</td><td><span class="tag tag-purple">Sous-page Ã—12</span></td></tr>
+      <tr><td><code class="code">'blog'</code></td><td><code class="code green">renderBlog()</code></td><td>â€”</td><td><span class="tag tag-blue">Page principale</span></td></tr>
+      <tr><td><code class="code">'blog-detail'</code></td><td><code class="code green">renderBlogDetail(id)</code></td><td><code class="code purple">state.currentBlogId</code> (1â€“7)</td><td><span class="tag tag-purple">Sous-page Ã—7</span></td></tr>
+      <tr><td><code class="code">'careers'</code></td><td><code class="code green">renderCareers()</code></td><td><code class="code purple">state.activeJob</code> (null ou id)</td><td><span class="tag tag-orange">Page + sous-page</span></td></tr>
+      <tr><td><code class="code">'about'</code></td><td><code class="code green">renderAbout()</code></td><td>â€”</td><td><span class="tag tag-blue">Page principale</span></td></tr>
+      <tr><td><code class="code">'contact'</code></td><td><code class="code green">renderContact()</code></td><td>â€”</td><td><span class="tag tag-blue">Page principale</span></td></tr>
+      <tr><td><code class="code">'legal'</code></td><td><code class="code green">renderMentionsLegales()</code></td><td>â€”</td><td><span class="tag tag-muted">LÃ©gal</span></td></tr>
+      <tr><td><code class="code">'privacy'</code></td><td><code class="code green">renderPrivacy()</code></td><td>â€”</td><td><span class="tag tag-muted">LÃ©gal</span></td></tr>
+      <tr><td><code class="code">'cgv'</code></td><td><code class="code green">renderCGV()</code></td><td>â€”</td><td><span class="tag tag-muted">LÃ©gal</span></td></tr>
+      <tr><td><code class="code">'sitemap'</code></td><td><code class="code green">renderSitemap()</code></td><td>â€”</td><td><span class="tag tag-muted">Navigation</span></td></tr>
+      <tr><td><code class="code">'social'</code></td><td><code class="code green">renderSocial()</code></td><td>â€”</td><td><span class="tag tag-green">RÃ©seaux</span></td></tr>
+    </tbody>
+  </table>
+
+  <!-- ==================== FEATURES ==================== -->
+  <p class="section-title">FonctionnalitÃ©s transversales</p>
+  <div class="legend-grid" style="margin-bottom:48px;">
+    <div class="legend-item">
+      <div class="legend-icon" style="background:rgba(59,130,246,0.1)">ðŸŒ“</div>
+      <div><div class="legend-name">Dark / Light Mode</div><div class="legend-desc">Toggle natif, persistÃ© localStorage, fond #1e293b / #f4f3f3</div></div>
+    </div>
+    <div class="legend-item">
+      <div class="legend-icon" style="background:rgba(16,185,129,0.1)">ðŸŒ</div>
+      <div><div class="legend-name">i18n FR / EN</div><div class="legend-desc">Objet translations complet, switch instantanÃ©, persistÃ© localStorage</div></div>
+    </div>
+    <div class="legend-item">
+      <div class="legend-icon" style="background:rgba(245,158,11,0.1)">ðŸ“Š</div>
+      <div><div class="legend-name">Scroll Progress Bar</div><div class="legend-desc">Barre bleue fixed top, mise Ã  jour en temps rÃ©el via scroll event</div></div>
+    </div>
+    <div class="legend-item">
+      <div class="legend-icon" style="background:rgba(37,211,102,0.1)">ðŸ’¬</div>
+      <div><div class="legend-name">WhatsApp Flottant</div><div class="legend-desc">Bouton vert fixed bottom-right, lien prÃ©-rempli, hover scale</div></div>
+    </div>
+    <div class="legend-item">
+      <div class="legend-icon" style="background:rgba(139,92,246,0.1)">âœ¨</div>
+      <div><div class="legend-name">Animations Reveal</div><div class="legend-desc">Classe .reveal â†’ .visible au scroll, stagger delays, IntersectionObserver</div></div>
+    </div>
+    <div class="legend-item">
+      <div class="legend-icon" style="background:rgba(236,72,153,0.1)">ðŸŒŠ</div>
+      <div><div class="legend-name">SVG Wave Background</div><div class="legend-desc">Lignes ondulÃ©es SVG en arriÃ¨re-plan, opacity adaptÃ©e dark/light</div></div>
+    </div>
+    <div class="legend-item">
+      <div class="legend-icon" style="background:rgba(20,184,166,0.1)">ðŸ“±</div>
+      <div><div class="legend-name">Menu Mobile</div><div class="legend-desc">Burger toggle, backdrop-blur, Ã©tat mobileMenuOpen dans state</div></div>
+    </div>
+    <div class="legend-item">
+      <div class="legend-icon" style="background:rgba(59,130,246,0.1)">ðŸŽ¨</div>
+      <div><div class="legend-name">Design System</div><div class="legend-desc">CSS variables, Syne + DM Sans, border-radius 0, palette #1a56db</div></div>
+    </div>
+  </div>
+
+  <!-- Credit -->
+  <div class="credit">
+    <p>GÃ©nÃ©rÃ© par <strong>Claude (Anthropic)</strong> Â· Projet <strong>MGN CodeWave</strong> Â· Libreville, Gabon ðŸ‡¬ðŸ‡¦</p>
+    <p style="margin-top:6px;color:#334155;">Application web complÃ¨te â€” 19 pages Â· 222 KB Â· Single HTML file</p>
+  </div>
+
+</div>
+</body>
+</html>
+

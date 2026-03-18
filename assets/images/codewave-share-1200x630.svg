@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">M.G.N CodeWave</title>
+  <desc id="desc">Image de partage pour M.G.N CodeWave, agence web au Gabon.</desc>
+
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1a56db" />
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#22d3ee" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)" />
+
+  <circle cx="1020" cy="120" r="180" fill="#ffffff" opacity="0.07" />
+  <circle cx="160" cy="560" r="220" fill="#ffffff" opacity="0.05" />
+
+  <rect x="90" y="86" width="220" height="10" rx="5" fill="url(#accent)" />
+
+  <text x="90" y="180" font-family="Segoe UI, Arial, sans-serif" font-size="68" font-weight="700" fill="#ffffff">
+    M.G.N CodeWave
+  </text>
+
+  <text x="90" y="250" font-family="Segoe UI, Arial, sans-serif" font-size="34" fill="#dbeafe">
+    Agence web, e-commerce, SEO et maintenance au Gabon
+  </text>
+
+  <text x="90" y="327" font-family="Segoe UI, Arial, sans-serif" font-size="26" fill="#cbd5e1">
+    Solutions digitales pour PME et entrepreneurs
+  </text>
+
+  <rect x="90" y="406" width="420" height="62" rx="14" fill="#ffffff" opacity="0.12" />
+  <text x="118" y="447" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="600" fill="#ffffff">
+    www.mgncodewave.com
+  </text>
+</svg>

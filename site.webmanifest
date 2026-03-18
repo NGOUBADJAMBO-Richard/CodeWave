@@ -1,0 +1,21 @@
+{
+  "name": "M.G.N CodeWave",
+  "short_name": "CodeWave",
+  "description": "Agence web gabonaise: sites vitrines, e-commerce, SEO et maintenance.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#1a56db",
+  "icons": [
+    {
+      "src": "./assets/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "./assets/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
