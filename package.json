@@ -1,0 +1,29 @@
+{
+  "name": "codewave",
+  "version": "1.0.0",
+  "description": "M.G.N CodeWave - Agence Web au Gabon",
+  "main": "index.html",
+  "type": "module",
+  "scripts": {
+    "dev": "npx http-server -p 8080",
+    "test": "echo \"No tests specified\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NGOUBADJAMBO-Richard/CodeWave.git"
+  },
+  "keywords": [
+    "web-agency",
+    "gabon",
+    "codewave"
+  ],
+  "author": "M.G.N CodeWave",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NGOUBADJAMBO-Richard/CodeWave/issues"
+  },
+  "homepage": "https://github.com/NGOUBADJAMBO-Richard/CodeWave#readme",
+  "dependencies": {
+    "@vercel/speed-insights": "^2.0.0"
+  }
+}
