@@ -883,21 +883,14 @@ function renderAbout() {
         <div class="space-y-6">
           ${[
             [
-              "2023",
+              "2025",
               state.lang === "fr"
                 ? "Fondation de M.G.N CodeWave à Libreville"
                 : "Foundation of M.G.N CodeWave in Libreville",
               "bg-blue-600",
             ],
             [
-              "2024",
-              state.lang === "fr"
-                ? "20+ clients accompagnés, lancement des services SEO et maintenance"
-                : "20+ clients supported, launch of SEO and maintenance services",
-              "bg-blue-500",
-            ],
-            [
-              "2025",
+              "2026",
               state.lang === "fr"
                 ? "Expansion vers la gestion des réseaux sociaux et le développement mobile"
                 : "Expansion into social media management and mobile development",
