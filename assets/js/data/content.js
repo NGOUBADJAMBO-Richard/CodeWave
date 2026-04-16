@@ -144,6 +144,76 @@ const translations = {
       skills_title: "Technologies Maîtrisées",
       cta: "Travaillons Ensemble",
     },
+    partnership: {
+      label: "Partenariat",
+      title: "Devenez Partenaire\nde CodeWave",
+      sub: "Rejoignez notre écosystème d'experts et développez votre activité digitale au Gabon. Ensemble, créons l'impact numérique du futur.",
+      section1: {
+        title: "Pourquoi nous rejoindre ?",
+        items: [
+          {
+            icon: "🤝",
+            title: "Réseau Établi",
+            desc: "Accédez à notre réseau de clients, partenaires et experts digitaux au Gabon.",
+          },
+          {
+            icon: "📈",
+            title: "Croissance Partagée",
+            desc: "Participez à la croissance de l'agence et bénéficiez d'opportunités commerciales.",
+          },
+          {
+            icon: "🎓",
+            title: "Formation & Support",
+            desc: "Accès aux ressources, formations et support technique pour vous perfectionner.",
+          },
+          {
+            icon: "💼",
+            title: "Opportunités B2B",
+            desc: "Développez des projets conjoints et créez des synergies commerciales.",
+          },
+        ],
+      },
+      section2: {
+        title: "Profils Recherchés",
+        intro: "Nous cherchons des partenaires dans les domaines suivants :",
+        profiles: [
+          "Développeurs Web (Frontend/Backend)",
+          "Designers UI/UX",
+          "Spécialistes SEO & Marketing Digital",
+          "Consultants Digital & Business",
+          "Freelances et Agences Complémentaires",
+          "Fournisseurs & Prestataires Techniques",
+        ],
+      },
+      section3: {
+        title: "Comment ça marche ?",
+        steps: [
+          {
+            num: "1",
+            title: "Candidature",
+            desc: "Remplissez le formulaire de partenariat avec vos informations.",
+          },
+          {
+            num: "2",
+            title: "Évaluation",
+            desc: "Notre équipe examine votre profil et vos compétences.",
+          },
+          {
+            num: "3",
+            title: "Discussion",
+            desc: "Rencontre pour discuter des opportunités et des conditions.",
+          },
+          {
+            num: "4",
+            title: "Collaboration",
+            desc: "Démarrage officiel du partenariat et premiers projets.",
+          },
+        ],
+      },
+      cta: "Remplir le Formulaire de Partenariat",
+      ctaSub:
+        "Cliquez ci-dessous pour accéder au formulaire de candidature sécurisé.",
+    },
     contact: {
       label: "Contact",
       title: "Démarrons Votre\nProjet Ensemble",
@@ -313,6 +383,75 @@ const translations = {
       ],
       skills_title: "Technologies We Master",
       cta: "Let's Work Together",
+    },
+    partnership: {
+      label: "Partnership",
+      title: "Become a CodeWave\nPartner",
+      sub: "Join our ecosystem of experts and grow your digital business in Gabon. Together, let's create the digital impact of the future.",
+      section1: {
+        title: "Why Join Us?",
+        items: [
+          {
+            icon: "🤝",
+            title: "Established Network",
+            desc: "Access our network of clients, partners and digital experts in Gabon.",
+          },
+          {
+            icon: "📈",
+            title: "Shared Growth",
+            desc: "Participate in the agency's growth and benefit from business opportunities.",
+          },
+          {
+            icon: "🎓",
+            title: "Training & Support",
+            desc: "Access to resources, training and technical support to improve your skills.",
+          },
+          {
+            icon: "💼",
+            title: "B2B Opportunities",
+            desc: "Develop joint projects and create commercial synergies.",
+          },
+        ],
+      },
+      section2: {
+        title: "Profiles We're Looking For",
+        intro: "We are looking for partners in the following areas:",
+        profiles: [
+          "Web Developers (Frontend/Backend)",
+          "UI/UX Designers",
+          "SEO & Digital Marketing Specialists",
+          "Digital & Business Consultants",
+          "Freelancers and Complementary Agencies",
+          "Technical Providers & Suppliers",
+        ],
+      },
+      section3: {
+        title: "How It Works",
+        steps: [
+          {
+            num: "1",
+            title: "Application",
+            desc: "Fill in the partnership form with your information.",
+          },
+          {
+            num: "2",
+            title: "Evaluation",
+            desc: "Our team reviews your profile and expertise.",
+          },
+          {
+            num: "3",
+            title: "Discussion",
+            desc: "Meeting to discuss opportunities and terms.",
+          },
+          {
+            num: "4",
+            title: "Collaboration",
+            desc: "Official partnership start and first projects.",
+          },
+        ],
+      },
+      cta: "Fill in the Partnership Form",
+      ctaSub: "Click below to access the secure application form.",
     },
     contact: {
       label: "Contact",
@@ -839,6 +978,47 @@ const portfolioDetails = {
       "Taux de conversion des prospects augmenté de 28%, temps de suivi réduit de 3h à 30min par semaine.",
     resultEn:
       "Prospect conversion rate increased by 28%, follow-up time reduced from 3h to 30min per week.",
+  },
+  13: {
+    title: "Portfolio Caleb",
+    subtitle: "Portfolio développeur full-stack",
+    client: "Caleb Grace OKAMBA",
+    deliverable: "Portfolio interactif",
+    role: "Design & Développement",
+    color: "#f59e0b",
+    category: "Portfolio",
+    liveUrl: "https://ngoubadjambo-richard.github.io/Portfolio-Caleb/",
+    description:
+      "Portfolio professionnel d'un développeur full-stack basé à Rabat. Présentation complète des compétences techniques en web/mobile, 10+ projets réalisés, parcours universitaire et expérience chez Altwork. Design moderne et responsif.",
+    descriptionEn:
+      "Professional portfolio of a full-stack developer based in Rabat. Complete presentation of web/mobile technical skills, 10+ completed projects, academic background and experience at Altwork. Modern and responsive design.",
+    features: [
+      "Présentation des compétences front-end et back-end",
+      "Galerie de 10+ projets filtrables",
+      "Timeline de l'expérience professionnelle",
+      "Parcours académique et formations",
+      "Section des technologies maîtrisées",
+      "Formulaire de contact et liens réseaux",
+    ],
+    featuresEn: [
+      "Front-end and back-end skills showcase",
+      "Gallery of 10+ filterable projects",
+      "Timeline of professional experience",
+      "Academic background and training",
+      "Section of mastered technologies",
+      "Contact form and social links",
+    ],
+    stack: ["HTML5", "CSS3", "JavaScript", "Bootstrap", "Node.js", "Express.js", "MongoDB", "MySQL"],
+    duration: "3 semaines",
+    year: "2025",
+    challenge:
+      "Créer un portfolio qui reflète à la fois les compétences full-stack du développeur, son expérience académique et professionnelle, tout en restant simple et performant.",
+    challengeEn:
+      "Create a portfolio that reflects both the developer's full-stack skills, academic and professional experience, while remaining simple and high-performing.",
+    result:
+      "Portfolio consulté par des recruteurs et clients potentiels, source de plusieurs opportunités professionnelles et collaborations.",
+    resultEn:
+      "Portfolio visited by recruiters and potential clients, source of several professional opportunities and collaborations.",
   },
 };
 
@@ -1854,6 +2034,15 @@ const portfolioProjects = [
     tags: ["Application", "Prospection"],
     url: "https://ngoubadjambo-richard.github.io/CodeWave/portfolio/gestion-prospects-details.html",
     color: "#0284c7",
+  },
+  {
+    id: 13,
+    title: "Portfolio Caleb",
+    subtitle: "Portfolio développeur",
+    category: "Portfolio",
+    tags: ["Portfolio", "Full-Stack Developer"],
+    url: "https://ngoubadjambo-richard.github.io/Portfolio-Caleb/",
+    color: "#f59e0b",
   },
 ];
 

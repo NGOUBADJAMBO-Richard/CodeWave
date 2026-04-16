@@ -8,6 +8,7 @@ function renderNav() {
     ["portfolio", t.nav.portfolio],
     ["blog", t.nav.blog],
     ["careers", state.lang === "fr" ? "Carrières" : "Careers"],
+    ["partnership", state.lang === "fr" ? "Partenariat" : "Partnership"],
     ["about", t.nav.about],
     ["contact", t.nav.contact],
   ];
@@ -914,6 +915,108 @@ function renderAbout() {
 }
 
 // ==================== CONTACT PAGE ====================
+// ==================== PARTNERSHIP ====================
+function renderPartnership() {
+  const t = translations[state.lang].partnership;
+  const isDark = state.theme === "dark";
+
+  return `
+  <div class="page pt-28 pb-16">
+    <div class="max-w-6xl mx-auto px-4 md:px-8">
+
+      <!-- Hero Section -->
+      <div class="mb-20 text-center">
+        <p class="section-label mb-3">${t.label}</p>
+        <h1 class="font-display font-800 leading-tight mb-6" style="font-size:clamp(2rem,5vw,4rem); color:var(--fg); white-space:pre-line">${t.title}</h1>
+        <p class="text-lg max-w-3xl mx-auto mb-10" style="color:var(--muted)">${t.sub}</p>
+
+        <!-- Main CTA Button -->
+        <a href="https://docs.google.com/forms/d/1viH1bGb7YTWTVj-i2xGllViKp3JVFsvm9FJEGXAdSZU/edit#responses" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 btn-primary text-lg py-3 px-8 mb-3">
+          🚀 ${t.cta}
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
+        </a>
+        <p style="color:var(--muted); font-size:14px;">${t.ctaSub}</p>
+      </div>
+
+      <!-- Why Join Section -->
+      <div class="mb-20">
+        <h2 class="font-display font-800 text-2xl md:text-3xl mb-12 text-center" style="color:var(--fg)">${t.section1.title}</h2>
+        <div class="grid md:grid-cols-4 gap-6">
+          ${t.section1.items
+            .map(
+              (item) => `
+            <div class="card p-6 reveal hover:shadow-lg transition-all">
+              <div class="text-4xl mb-4">${item.icon}</div>
+              <h3 class="font-display font-700 mb-2" style="color:var(--fg)">${item.title}</h3>
+              <p class="text-sm" style="color:var(--muted)">${item.desc}</p>
+            </div>
+          `,
+            )
+            .join("")}
+        </div>
+      </div>
+
+      <!-- Profiles Section -->
+      <div class="mb-20" style="background:linear-gradient(135deg, var(--card) 0%, rgba(26,86,219,0.04) 100%); border:1px solid var(--border); padding:3rem; border-radius:8px;">
+        <h2 class="font-display font-800 text-2xl md:text-3xl mb-4" style="color:var(--fg)">${t.section2.title}</h2>
+        <p class="mb-8 text-lg" style="color:var(--muted)">${t.section2.intro}</p>
+
+        <div class="grid md:grid-cols-2 gap-4">
+          ${t.section2.profiles
+            .map(
+              (profile) => `
+            <div class="flex items-center gap-3 p-4" style="background:var(--bg); border:1px solid var(--border); border-radius:6px;">
+              <span style="color:#1a56db; font-size:18px;">✓</span>
+              <span style="color:var(--fg)">${profile}</span>
+            </div>
+          `,
+            )
+            .join("")}
+        </div>
+      </div>
+
+      <!-- Process Section -->
+      <div class="mb-20">
+        <h2 class="font-display font-800 text-2xl md:text-3xl mb-12 text-center" style="color:var(--fg)">${t.section3.title}</h2>
+
+        <div class="grid md:grid-cols-4 gap-6 relative">
+          <!-- Connector line (hidden on mobile) -->
+          <div class="hidden md:block absolute top-20 left-0 right-0 h-1" style="background:linear-gradient(90deg, #1a56db 0%, #3b82f6 50%, #8b5cf6 100%); transform:translateY(-50%);"></div>
+
+          ${t.section3.steps
+            .map(
+              (step, idx) => `
+            <div class="relative reveal">
+              <div class="flex flex-col items-center">
+                <div class="w-16 h-16 flex items-center justify-center font-display font-800 text-xl text-white mb-4 relative z-10" style="background:#1a56db; border-radius:50%; border:4px solid ${isDark ? "#1e293b" : "#f4f3f3"}">
+                  ${step.num}
+                </div>
+                <div class="card p-6 text-center">
+                  <h3 class="font-display font-700 mb-2" style="color:var(--fg)">${step.title}</h3>
+                  <p class="text-sm" style="color:var(--muted)">${step.desc}</p>
+                </div>
+              </div>
+            </div>
+          `,
+            )
+            .join("")}
+        </div>
+      </div>
+
+      <!-- Final CTA -->
+      <div class="text-center card p-10" style="background:linear-gradient(135deg, #1a56db 0%, #3b82f6 100%); color:white; border:none;">
+        <h3 class="font-display font-800 text-2xl mb-4">Rejoignez notre équipe d'experts</h3>
+        <p class="mb-6 text-white/90">Ensemble, créons l'impact numérique du futur au Gabon.</p>
+        <a href="https://docs.google.com/forms/d/1viH1bGb7YTWTVj-i2xGllViKp3JVFsvm9FJEGXAdSZU/edit#responses" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 font-display font-700 text-lg px-8 py-3" style="background:white; color:#1a56db; border-radius:4px; text-decoration:none; transition:transform 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='none'">
+          Candidater Maintenant 🚀
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </div>`;
+}
+
 function renderContact() {
   const t = translations[state.lang].contact;
   return `

@@ -6,6 +6,7 @@ const pageFileMap = {
   blog: "blog.html",
   careers: "careers.html",
   about: "about.html",
+  partnership: "partnership.html",
   contact: "contact.html",
   legal: "legal.html",
   privacy: "privacy.html",
