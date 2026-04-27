@@ -1020,6 +1020,47 @@ const portfolioDetails = {
     resultEn:
       "Portfolio visited by recruiters and potential clients, source of several professional opportunities and collaborations.",
   },
+  14: {
+    title: "Asaph-music",
+    subtitle: "Plateforme musicale",
+    client: "Asaph Music",
+    deliverable: "Site web vitrine",
+    role: "Design & Développement",
+    color: "#db2777",
+    category: "Site Vitrine",
+    liveUrl: "https://asaph-music.vercel.app/",
+    description:
+      "Conception d'un site vitrine moderne pour Asaph Music afin de présenter l'univers artistique, valoriser les contenus musicaux et faciliter la prise de contact avec le public.",
+    descriptionEn:
+      "Design and development of a modern showcase website for Asaph Music to present the artistic universe, highlight music content and simplify audience contact.",
+    features: [
+      "Présentation de l'artiste et de l'identité visuelle",
+      "Mise en avant des contenus musicaux",
+      "Navigation fluide sur mobile et desktop",
+      "Section de contact rapide",
+      "Interface moderne et responsive",
+      "Déploiement optimisé sur Vercel",
+    ],
+    featuresEn: [
+      "Artist and visual identity presentation",
+      "Highlighted music content sections",
+      "Smooth navigation on mobile and desktop",
+      "Quick contact section",
+      "Modern responsive interface",
+      "Optimized deployment on Vercel",
+    ],
+    stack: ["HTML", "CSS", "JavaScript", "Vercel"],
+    duration: "1 semaine",
+    year: "2026",
+    challenge:
+      "Créer une présence web artistique forte, avec une expérience immersive tout en conservant des performances rapides.",
+    challengeEn:
+      "Build a strong artistic web presence with an immersive experience while keeping fast performance.",
+    result:
+      "Plateforme en ligne qui améliore la visibilité du projet musical et facilite les interactions avec les visiteurs.",
+    resultEn:
+      "Online platform that improves visibility of the music project and makes interactions with visitors easier.",
+  },
 };
 
 const blogDetails = {
@@ -2043,6 +2084,15 @@ const portfolioProjects = [
     tags: ["Portfolio", "Full-Stack Developer"],
     url: "https://ngoubadjambo-richard.github.io/Portfolio-Caleb/",
     color: "#f59e0b",
+  },
+  {
+    id: 14,
+    title: "Asaph-music",
+    subtitle: "Plateforme musicale",
+    category: "Site Vitrine",
+    tags: ["Site web", "Musique"],
+    url: "https://asaph-music.vercel.app/",
+    color: "#db2777",
   },
 ];
 
