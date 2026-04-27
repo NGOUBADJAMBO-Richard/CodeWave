@@ -1008,7 +1008,16 @@ const portfolioDetails = {
       "Section of mastered technologies",
       "Contact form and social links",
     ],
-    stack: ["HTML5", "CSS3", "JavaScript", "Bootstrap", "Node.js", "Express.js", "MongoDB", "MySQL"],
+    stack: [
+      "HTML5",
+      "CSS3",
+      "JavaScript",
+      "Bootstrap",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "MySQL",
+    ],
     duration: "3 semaines",
     year: "2025",
     challenge:
