@@ -839,26 +839,24 @@ function renderAbout() {
           </div>
           <button onclick="navigate('contact')" class="btn-primary">${t.cta} <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
         </div>
-        <!-- Right: Visual card -->
+        <!-- Right: Portrait card -->
         <div class="reveal">
-          <div class="relative">
-            <div class="card p-8 relative overflow-hidden">
-              ${waveSVG()}
-              <div class="relative">
-                <div class="w-20 h-20 flex items-center justify-center mb-5 text-4xl font-display font-800" style="background:rgba(26,86,219,0.08); color:#1a56db">
-                  MG
-                </div>
-                <h3 class="font-display font-700 text-xl mb-1" style="color:var(--fg)">M.G.N CodeWave</h3>
-                <p class="text-sm mb-4" style="color:var(--muted)">${state.lang === "fr" ? "Studio de Solutions Digitales — Libreville, Gabon" : "Digital Solutions Studio — Libreville, Gabon"}</p>
-                <div class="flex gap-3 flex-wrap">
-                  <span class="badge badge-blue">${state.lang === "fr" ? "Développement Web" : "Web Development"}</span>
-                  <span class="badge badge-teal">${state.lang === "fr" ? "Design UI/UX" : "UI/UX Design"}</span>
-                  <span class="badge badge-orange">SEO</span>
-                  <span class="badge badge-purple">${state.lang === "fr" ? "Mobile App" : "Mobile App"}</span>
-                </div>
+          <div class="card p-4 md:p-6 relative overflow-hidden">
+            ${waveSVG()}
+            <div class="relative space-y-5">
+              <div class="rounded-2xl overflow-hidden border" style="border-color:var(--border); background:var(--bg)">
+                <img
+                  src="./assets/images/MGN-Richard.png"
+                  alt="Portrait de M.G.N A. Richard"
+                  class="w-full aspect-[2/3] max-h-[560px] object-cover object-center"
+                />
+              </div>
+              <div>
+                <p class="section-label mb-2">${t.visionary_label}</p>
+                <h3 class="font-display font-800 text-2xl mb-3" style="color:var(--fg)">${t.visionary_title}</h3>
+                <p class="leading-relaxed" style="color:var(--muted)">${t.visionary_desc}</p>
               </div>
             </div>
-            <!-- Accent line -->
             <div class="absolute -bottom-2 left-6 right-6 h-1" style="background:linear-gradient(90deg,#1a56db,transparent)"></div>
           </div>
         </div>

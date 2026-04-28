@@ -135,6 +135,10 @@ const translations = {
       label: "À Propos",
       title: "L'Agence Digitale\nde Référence au Gabon",
       desc: "M.G.N CodeWave est un studio de solutions digitales basé au Gabon. Nous accompagnons les PME, startups et entrepreneurs dans leur transformation numérique avec des solutions web sur mesure, performantes et adaptées au marché local.",
+      visionary_label: "Le Visionnaire",
+      visionary_title: "M.G.N A. Richard",
+      visionary_desc:
+        "Visionnaire du projet, M.G.N A. Richard porte une approche centrée sur l'impact, la qualité et l'innovation. Il imagine des solutions digitales utiles, durables et pensées pour aider les marques à grandir avec clarté et confiance.",
       values: [
         "Innovation & Excellence",
         "Proximité Client",
@@ -375,6 +379,10 @@ const translations = {
       label: "About Us",
       title: "Gabon's Premier\nDigital Agency",
       desc: "M.G.N CodeWave is a digital solutions studio based in Gabon. We support SMEs, startups and entrepreneurs in their digital transformation with custom, high-performance web solutions adapted to the local market.",
+      visionary_label: "The Visionary",
+      visionary_title: "M.G.N A. Richard",
+      visionary_desc:
+        "As the visionary behind the project, M.G.N A. Richard champions impact, quality and innovation. He envisions useful, durable digital solutions that help brands grow with clarity and confidence.",
       values: [
         "Innovation & Excellence",
         "Client Proximity",
