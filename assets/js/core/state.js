@@ -51,6 +51,47 @@ let state = {
   mobileMenuOpen: false,
 };
 
+// Fiches de détail adressables par URL (portfolio.html?projet=3, blog.html?article=2) :
+// liens depuis l'accueil, partages, indexation. Les données de détail ne sont chargées que sur leur page.
+const DETAIL_ROUTES = {
+  portfolio: { param: "projet", page: "portfolio-detail", stateKey: "currentProjectId" },
+  blog: { param: "article", page: "blog-detail", stateKey: "currentBlogId" },
+};
+
+function applyDetailFromUrl() {
+  const route = DETAIL_ROUTES[state.page];
+  if (!route) return;
+  const id = Number(new URLSearchParams(window.location.search).get(route.param));
+  if (!Number.isInteger(id) || id <= 0) return;
+  state.page = route.page;
+  state[route.stateKey] = id;
+}
+
+function setDetailParam(param, id) {
+  const url = new URL(window.location.href);
+  Object.values(DETAIL_ROUTES).forEach((r) => url.searchParams.delete(r.param));
+  if (param) url.searchParams.set(param, String(id));
+  if (url.href !== window.location.href) history.replaceState(null, "", url);
+  syncCanonical();
+}
+
+// Ouvre une fiche : sur place si ses données sont chargées, sinon sur la page qui les porte.
+function openDetail(section, id) {
+  const route = DETAIL_ROUTES[section];
+  if (getCurrentFileName() !== pageFileMap[section]) {
+    const lang = state.lang === "en" ? "&lang=en" : "";
+    window.location.href = `./${pageFileMap[section]}?${route.param}=${id}${lang}`;
+    return;
+  }
+  state.page = route.page;
+  state[route.stateKey] = id;
+  setDetailParam(route.param, id);
+  window.scrollTo({ top: 0, behavior: "smooth" });
+  render();
+}
+
+applyDetailFromUrl();
+
 // ==================== INIT ====================
 function applyTheme() {
   if (state.theme === "dark") {
@@ -84,14 +125,22 @@ function syncLangInUrl() {
   if (url.href !== window.location.href) history.replaceState(null, "", url);
 
   document.documentElement.lang = state.lang;
+  syncCanonical();
+}
+
+// La canonical suit la fiche affichée et la langue, pour que chaque article ou projet soit indexable.
+function syncCanonical() {
   const canonical = document.querySelector('link[rel="canonical"]');
-  if (canonical) {
-    const target = new URL(canonical.dataset.base || canonical.href);
-    canonical.dataset.base = target.origin + target.pathname;
-    if (state.lang === "en") target.searchParams.set("lang", "en");
-    else target.searchParams.delete("lang");
-    canonical.href = target.href;
-  }
+  if (!canonical) return;
+  const target = new URL(canonical.dataset.base || canonical.href);
+  canonical.dataset.base = target.origin + target.pathname;
+  target.search = "";
+  const current = new URLSearchParams(window.location.search);
+  Object.values(DETAIL_ROUTES).forEach((r) => {
+    if (current.has(r.param)) target.searchParams.set(r.param, current.get(r.param));
+  });
+  if (state.lang === "en") target.searchParams.set("lang", "en");
+  canonical.href = target.href;
 }
 
 function navigate(page) {
@@ -106,6 +155,7 @@ function navigate(page) {
 
   state.page = page;
   state.mobileMenuOpen = false;
+  setDetailParam(null);
   window.scrollTo({ top: 0, behavior: "smooth" });
   render();
 }

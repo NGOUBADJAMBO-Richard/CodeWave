@@ -62,8 +62,16 @@ function render() {
     `</main>` +
     renderFooter();
 
+  syncDocumentTitle();
   observeReveals();
   updateScrollProgress();
+}
+
+// Sur une fiche (projet, article), l'onglet et les résultats de recherche affichent son titre.
+const PAGE_TITLE = document.title;
+function syncDocumentTitle() {
+  const heading = state.page.endsWith("-detail") ? document.querySelector("main h1") : null;
+  document.title = heading ? `${heading.textContent.trim()} | M.G.N CodeWave` : PAGE_TITLE;
 }
 
 // Initial render

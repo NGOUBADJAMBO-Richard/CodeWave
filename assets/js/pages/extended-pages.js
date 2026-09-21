@@ -189,10 +189,7 @@ function renderPortfolioDetail(projectId) {
 }
 
 function navigateToPortfolioDetail(id) {
-  state.page = "portfolio-detail";
-  state.currentProjectId = id;
-  window.scrollTo({ top: 0, behavior: "smooth" });
-  render();
+  openDetail("portfolio", id);
 }
 
 // ==================== BLOG DETAIL PAGE ====================
@@ -353,10 +350,7 @@ function renderBlogDetail(postId) {
 }
 
 function navigateToBlogDetail(id) {
-  state.page = "blog-detail";
-  state.currentBlogId = id;
-  window.scrollTo({ top: 0, behavior: "smooth" });
-  render();
+  openDetail("blog", id);
 }
 
 // ==================== CAREERS PAGE ====================

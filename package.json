@@ -5,7 +5,8 @@
   "scripts": {
     "build:css": "tailwindcss -i ./assets/css/tailwind.input.css -o ./assets/css/tailwind.min.css --minify",
     "watch:css": "tailwindcss -i ./assets/css/tailwind.input.css -o ./assets/css/tailwind.min.css --watch",
-    "check:content": "node scripts/check-content.js"
+    "check:content": "node scripts/check-content.js",
+    "build:sitemap": "node scripts/build-sitemap.js"
   },
   "devDependencies": {
     "tailwindcss": "3.4.19"

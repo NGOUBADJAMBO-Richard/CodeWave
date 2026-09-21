@@ -19,10 +19,11 @@ function renderNav() {
       <!-- Logo -->
       <button onclick="navigate('home')" class="flex items-center gap-2" aria-label="Retour a l'accueil">
         <img
-          src="./assets/images/logo-black.png"
+          src="./assets/images/logo-180.png"
           alt="Logo M.G.N CodeWave"
+          width="40"
+          height="40"
           class="h-10 w-auto object-contain"
-          style="filter: "brightness(0) invert(1)""
         />
         <span class="text-xs font-body font-500 tracking-widest uppercase" style="color:var(--muted);">CodeWave</span>
       </button>
@@ -213,9 +214,12 @@ function renderFooter() {
             <!-- Logo -->
             <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
               <img
-                src="./assets/images/logo-black.png"
+                src="./assets/images/logo-180.png"
                 alt="Logo M.G.N CodeWave"
-                style="height:52px;width:auto;object-fit:contain;filter: "brightness(0) invert(1)";"
+                width="52"
+                height="52"
+                loading="lazy"
+                style="height:52px;width:auto;object-fit:contain;"
               />
             </div>
 
@@ -831,11 +835,18 @@ function renderAbout() {
             ${waveSVG()}
             <div class="relative space-y-5">
               <div class="rounded-2xl overflow-hidden border" style="border-color:var(--border); background:var(--bg)">
-                <img
-                  src="./assets/images/MGN-Richard.png"
-                  alt="Portrait de M.G.N A. Richard"
-                  class="w-full aspect-[2/3] max-h-[560px] object-cover object-center"
-                />
+                <picture>
+                  <source srcset="./assets/images/MGN-Richard.webp" type="image/webp" />
+                  <img
+                    src="./assets/images/MGN-Richard.jpg"
+                    alt="Portrait de M.G.N A. Richard"
+                    width="750"
+                    height="1125"
+                    loading="lazy"
+                    decoding="async"
+                    class="w-full aspect-[2/3] max-h-[560px] object-cover object-center"
+                  />
+                </picture>
               </div>
               <div>
                 <p class="section-label mb-2">${t.visionary_label}</p>
