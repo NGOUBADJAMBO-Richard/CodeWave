@@ -469,7 +469,7 @@ function renderCareers() {
 function renderJobCard(job, delay, isEn) {
   const isCDI = job.type === "CDI";
   return `
-    <div class="card overflow-hidden reveal cursor-pointer hover:border-blue-400 transition-colors" style="transition-delay:${delay * 60}ms" onclick="openJobDetail('${job.id}')">
+    <div role="link" tabindex="0" onkeydown="activateOnEnter(event)" class="card overflow-hidden reveal cursor-pointer hover:border-blue-400 transition-colors" style="transition-delay:${delay * 60}ms" onclick="openJobDetail('${job.id}')">
       <div class="h-2" style="background:${job.color}"></div>
       <div class="p-5">
         <div class="flex items-start justify-between mb-3">
@@ -1238,13 +1238,19 @@ function renderCGV() {
       "Droit Applicable et Litiges",
       `<p>Les présentes CGV sont régies par le <strong style="color:var(--fg)">droit gabonais</strong>. En cas de litige, les parties s'efforceront de trouver une solution amiable. À défaut, les <strong style="color:var(--fg)">tribunaux de Libreville, Gabon</strong>, seront seuls compétents.</p>`,
     ),
+    legalSection(
+      "12",
+      "Formations CodeWave Academy",
+      `<p>Les formations proposées sous l'enseigne <strong style="color:var(--fg)">CodeWave Academy</strong> (bootcamp, modules, ateliers, formations en entreprise et abonnements) sont présentées avec leurs tarifs en XAF sur la page <button onclick="navigate('formations')" class="underline" style="color:var(--primary-fg)">Formations</button>.</p>
+      <p>L'inscription, le paiement, les conditions d'annulation et de remboursement ainsi que la résiliation des abonnements font l'objet de conditions spécifiques, communiquées au moment de l'inscription sur la plateforme de formation. Les présentes CGV s'appliquent aux prestations de développement web et aux services associés.</p>`,
+    ),
   ].join("");
 
   return legalLayout(
     "📋",
     "Conditions Générales de Vente",
     "Nos conditions applicables aux services de développement web",
-    "18 Mars 2026",
+    "21 Septembre 2026",
     sections,
     [
       ["Mentions Légales", "legal"],

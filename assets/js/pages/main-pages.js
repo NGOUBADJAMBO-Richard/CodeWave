@@ -413,6 +413,9 @@ function renderHome() {
       </div>
     </section>
 
+    <!-- ACADEMY (renvoi vers la page Formations) -->
+    <div class="max-w-6xl mx-auto px-4 md:px-8">${renderServicesTrainings()}</div>
+
     <!-- PORTFOLIO PREVIEW -->
     <section class="py-20" style="background:var(--card); border-top:1px solid var(--border); border-bottom:1px solid var(--border)">
       <div class="max-w-6xl mx-auto px-4 md:px-8">
@@ -426,22 +429,7 @@ function renderHome() {
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           ${featuredProjects
             .map(
-              (p, i) => `
-            <div onclick="navigateToPortfolioDetail(${p.id})" class="card block overflow-hidden reveal cursor-pointer" style="transition-delay:${i * 60}ms">
-              <div class="h-40 flex items-center justify-center relative overflow-hidden" style="background:${p.color}18">
-                <div class="absolute inset-0 opacity-5" style="background-image:repeating-linear-gradient(45deg,${p.color} 0,${p.color} 1px,transparent 0,transparent 50%);background-size:8px 8px"></div>
-                <span class="font-display font-700 text-4xl opacity-30" style="color:${p.color};color:color-mix(in srgb, ${p.color} 50%, var(--fg))">${p.title.substring(0, 1)}</span>
-                <div class="absolute bottom-3 left-3">
-                  <span class="badge" style="background:${p.color}22;color:${p.color};color:color-mix(in srgb, ${p.color} 50%, var(--fg))">${p.category}</span>
-                </div>
-              </div>
-              <div class="p-4">
-                <h3 class="font-display font-700 text-base mb-1" style="color:var(--fg)">${p.title}</h3>
-                <p class="text-xs" style="color:var(--muted)">${p.subtitle}</p>
-                <div class="flex gap-2 mt-3 flex-wrap">${p.tags.map((tag) => `<span class="text-xs" style="color:var(--muted)">• ${tag}</span>`).join("")}</div>
-              </div>
-            </div>
-          `,
+              (p, i) => renderProjectCard(p, i, "h3"),
             )
             .join("")}
         </div>
@@ -603,6 +591,44 @@ function renderServicesTrainings() {
       </div>`;
 }
 
+// Carte projet partagée (accueil et page Portfolio). Vrai lien : clavier, nouvel onglet, partage ;
+// le clic ouvre la fiche sur place quand ses données sont chargées.
+function renderProjectCard(p, i, headingTag) {
+  const tint = `color:${p.color};color:color-mix(in srgb, ${p.color} 50%, var(--fg))`;
+  return `
+          <a href="./portfolio.html?projet=${p.id}" onclick="event.preventDefault(); navigateToPortfolioDetail(${p.id})" class="card block overflow-hidden reveal group" style="transition-delay:${i * 50}ms">
+            <div class="h-48 relative overflow-hidden flex items-center justify-center" style="background:${p.color}14">
+              <div class="absolute inset-0" style="background:linear-gradient(135deg,${p.color}22,${p.color}08)"></div>
+              <svg aria-hidden="true" class="absolute inset-0 w-full h-full opacity-10" viewBox="0 0 300 200" preserveAspectRatio="xMidYMid slice">
+                <path d="M-50,80 C50,30 100,130 200,80 C300,30 350,130 450,80" fill="none" stroke="${p.color}" stroke-width="2"/>
+                <path d="M-50,100 C50,50 100,150 200,100 C300,50 350,150 450,100" fill="none" stroke="${p.color}" stroke-width="1.5"/>
+                <path d="M-50,120 C50,70 100,170 200,120 C300,70 350,170 450,120" fill="none" stroke="${p.color}" stroke-width="1"/>
+              </svg>
+              <span aria-hidden="true" class="relative font-display font-700 text-5xl" style="${tint}; opacity:0.25">${p.title.substring(0, 2)}</span>
+              <div aria-hidden="true" class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity" style="background:rgba(15,23,42,0.85);background:color-mix(in srgb, ${p.color} 35%, #0f172a)">
+                <span class="text-white font-display font-700 text-sm">${state.lang === "fr" ? "Voir le détail →" : "View details →"}</span>
+              </div>
+              <div class="absolute bottom-3 left-3">
+                <span class="badge" style="background:var(--card);${tint}">${p.category}</span>
+              </div>
+            </div>
+            <div class="p-5">
+              <${headingTag} class="font-display font-700 text-base mb-1" style="color:var(--fg)">${p.title}</${headingTag}>
+              <p class="text-sm mb-3" style="color:var(--muted)">${p.subtitle}</p>
+              <div class="flex flex-wrap gap-2">
+                ${p.tags.map((tag) => `<span class="text-xs px-2 py-0.5" style="background:var(--border);color:var(--fg)">${tag}</span>`).join("")}
+              </div>
+            </div>
+          </a>`;
+}
+
+// Éléments cliquables non natifs (role="link") : Entrée les active, comme un lien.
+function activateOnEnter(event) {
+  if (event.key !== "Enter") return;
+  event.preventDefault();
+  event.currentTarget.click();
+}
+
 // ==================== PORTFOLIO PAGE ====================
 function renderPortfolio() {
   const t = translations[state.lang].portfolio;
@@ -655,35 +681,7 @@ function renderPortfolio() {
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         ${filtered
           .map(
-            (p, i) => `
-          <div onclick="navigateToPortfolioDetail(${p.id})" class="card block overflow-hidden reveal group cursor-pointer" style="transition-delay:${i * 50}ms">
-            <!-- Thumbnail -->
-            <div class="h-48 relative overflow-hidden flex items-center justify-center" style="background:${p.color}14">
-              <div class="absolute inset-0 transition-opacity duration-300" style="background:linear-gradient(135deg,${p.color}22,${p.color}08)"></div>
-              <!-- Wave pattern -->
-              <svg class="absolute inset-0 w-full h-full opacity-10" viewBox="0 0 300 200" preserveAspectRatio="xMidYMid slice">
-                <path d="M-50,80 C50,30 100,130 200,80 C300,30 350,130 450,80" fill="none" stroke="${p.color}" stroke-width="2"/>
-                <path d="M-50,100 C50,50 100,150 200,100 C300,50 350,150 450,100" fill="none" stroke="${p.color}" stroke-width="1.5"/>
-                <path d="M-50,120 C50,70 100,170 200,120 C300,70 350,170 450,120" fill="none" stroke="${p.color}" stroke-width="1"/>
-              </svg>
-              <span aria-hidden="true" class="relative font-display font-700 text-5xl" style="color:${p.color};color:color-mix(in srgb, ${p.color} 50%, var(--fg)); opacity:0.25">${p.title.substring(0, 2)}</span>
-              <!-- Hover overlay -->
-              <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity" style="background:rgba(15,23,42,0.85);background:color-mix(in srgb, ${p.color} 35%, #0f172a)">
-                <span class="text-white font-display font-700 text-sm">${state.lang === "fr" ? "Voir le détail →" : "View details →"}</span>
-              </div>
-              <div class="absolute bottom-3 left-3">
-                <span class="badge" style="background:white;color:${p.color};color:color-mix(in srgb, ${p.color} 50%, var(--fg))">${p.category}</span>
-              </div>
-            </div>
-            <div class="p-5">
-              <h2 class="font-display font-700 text-base mb-1" style="color:var(--fg)">${p.title}</h2>
-              <p class="text-sm mb-3" style="color:var(--muted)">${p.subtitle}</p>
-              <div class="flex flex-wrap gap-2">
-                ${p.tags.map((tag) => `<span class="text-xs px-2 py-0.5" style="background:var(--border);color:var(--fg)">${tag}</span>`).join("")}
-              </div>
-            </div>
-          </div>
-        `,
+            (p, i) => renderProjectCard(p, i, "h2"),
           )
           .join("")}
       </div>
@@ -732,7 +730,7 @@ function renderBlog() {
       </div>
 
       <!-- Featured Article -->
-      <div onclick="navigateToBlogDetail(${featured.id})" class="card block mb-10 overflow-hidden reveal group cursor-pointer">
+      <div onclick="navigateToBlogDetail(${featured.id})" role="link" tabindex="0" onkeydown="activateOnEnter(event)" class="card block mb-10 overflow-hidden reveal group cursor-pointer">
         <div class="md:flex">
           <div class="md:w-2/5 h-56 md:h-auto relative overflow-hidden flex items-center justify-center" style="background:linear-gradient(135deg,#004AAD,#0062E6)">
             ${waveSVG()}
@@ -759,7 +757,7 @@ function renderBlog() {
         ${rest
           .map(
             (post, i) => `
-          <div onclick="navigateToBlogDetail(${post.id})" class="card block overflow-hidden reveal group cursor-pointer" style="transition-delay:${i * 60}ms">
+          <div onclick="navigateToBlogDetail(${post.id})" role="link" tabindex="0" onkeydown="activateOnEnter(event)" class="card block overflow-hidden reveal group cursor-pointer" style="transition-delay:${i * 60}ms">
             <div class="h-36 flex items-center justify-center relative overflow-hidden" style="background:var(--card); border-bottom:1px solid var(--border)">
               <div class="absolute inset-0 opacity-5" style="background-image:repeating-linear-gradient(0deg,#004AAD 0,#004AAD 1px,transparent 0,transparent 20px),repeating-linear-gradient(90deg,#004AAD 0,#004AAD 1px,transparent 0,transparent 20px)"></div>
               <span class="text-3xl relative z-10">${["🔍", "🛒", "🎨", "💰", "📝", "⚡"][i]}</span>
