@@ -55,13 +55,19 @@ function render() {
       pageContent = renderHome();
   }
 
+  // Le rendu remplace tout le DOM : l'élément qui avait le focus (bouton de langue, de thème, de menu)
+  // le retrouve ensuite, pour ne pas renvoyer l'utilisateur clavier en haut de page.
+  const focusedId = document.activeElement?.id;
+
   root.innerHTML =
+    `<a href="#main" class="skip-link">${state.lang === "en" ? "Skip to main content" : "Aller au contenu principal"}</a>` +
     renderNav() +
-    `<main style="min-height:100vh">` +
+    `<main id="main" tabindex="-1" style="min-height:100vh">` +
     pageContent +
     `</main>` +
     renderFooter();
 
+  if (focusedId) document.getElementById(focusedId)?.focus();
   syncDocumentTitle();
   observeReveals();
   updateScrollProgress();

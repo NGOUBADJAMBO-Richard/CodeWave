@@ -44,14 +44,14 @@ function renderNav() {
       <!-- Right Controls -->
       <div class="flex items-center gap-2 md:gap-3">
         <!-- Lang Toggle -->
-        <div class="flex items-center gap-1 text-xs" style="color:var(--muted)">
-          <button onclick="setLang('fr')" class="lang-btn ${state.lang === "fr" ? "active" : ""}" style="color:${state.lang === "fr" ? "var(--primary-fg)" : "var(--muted)"}">FR</button>
-          <span style="color:var(--border)">|</span>
-          <button onclick="setLang('en')" class="lang-btn ${state.lang === "en" ? "active" : ""}" style="color:${state.lang === "en" ? "var(--primary-fg)" : "var(--muted)"}">EN</button>
+        <div class="flex items-center gap-1 text-xs" style="color:var(--muted)" role="group" aria-label="${state.lang === "fr" ? "Langue" : "Language"}">
+          <button id="lang-fr" onclick="setLang('fr')" lang="fr" aria-label="Français" aria-pressed="${state.lang === "fr"}" class="lang-btn ${state.lang === "fr" ? "active" : ""}" style="color:${state.lang === "fr" ? "var(--primary-fg)" : "var(--muted)"}">FR</button>
+          <span aria-hidden="true" style="color:var(--border)">|</span>
+          <button id="lang-en" onclick="setLang('en')" lang="en" aria-label="English" aria-pressed="${state.lang === "en"}" class="lang-btn ${state.lang === "en" ? "active" : ""}" style="color:${state.lang === "en" ? "var(--primary-fg)" : "var(--muted)"}">EN</button>
         </div>
 
         <!-- Theme Toggle -->
-        <button onclick="toggleTheme()" class="w-8 h-8 flex items-center justify-center transition-colors hover:text-blue-600" style="color:var(--muted)" title="Toggle theme">
+        <button id="theme-toggle" onclick="toggleTheme()" class="w-8 h-8 flex items-center justify-center transition-colors hover:text-blue-600" style="color:var(--muted)" aria-label="${isDark ? (state.lang === "fr" ? "Passer en mode clair" : "Switch to light mode") : (state.lang === "fr" ? "Passer en mode sombre" : "Switch to dark mode")}">
           ${isDark ? `<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>` : `<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>`}
         </button>
 
@@ -61,8 +61,8 @@ function renderNav() {
         </button>
 
         <!-- Mobile menu toggle -->
-        <button onclick="toggleMobileMenu()" class="md:hidden w-8 h-8 flex items-center justify-center" style="color:var(--fg)">
-          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <button id="mobile-menu-toggle" onclick="toggleMobileMenu()" class="md:hidden w-8 h-8 flex items-center justify-center" style="color:var(--fg)" aria-controls="mobile-menu" aria-expanded="${state.mobileMenuOpen}" aria-label="Menu">
+          <svg aria-hidden="true" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             ${state.mobileMenuOpen ? '<path d="M18 6L6 18M6 6l12 12"/>' : '<path d="M3 12h18M3 6h18M3 18h18"/>'}
           </svg>
         </button>
@@ -73,7 +73,7 @@ function renderNav() {
     ${
       state.mobileMenuOpen
         ? `
-    <div class="md:hidden border-t px-4 py-3 space-y-1" style="border-color:var(--border);">
+    <div id="mobile-menu" class="md:hidden border-t px-4 py-3 space-y-1" style="border-color:var(--border);">
       ${pages
         .map(
           ([p, l]) => `
@@ -171,9 +171,9 @@ function renderFooter() {
     <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#004AAD,#0062E6,#8b5cf6,#004AAD);background-size:200% 100%;animation:footerGrad 4s linear infinite;"></div>
     <style>
       @keyframes footerGrad{0%{background-position:0% 0}100%{background-position:200% 0}}
-      .footer-link { color:#64748b; transition:color 0.2s; font-size:13px; text-decoration:none; display:block; padding:3px 0; background:none; border:none; cursor:pointer; text-align:left; }
+      .footer-link { color:#94a3b8; transition:color 0.2s; font-size:13px; text-decoration:none; display:block; padding:3px 0; background:none; border:none; cursor:pointer; text-align:left; }
       .footer-link:hover { color:#60A5FA; }
-      .social-icon { width:38px; height:38px; display:flex; align-items:center; justify-content:center; border:1px solid rgba(255,255,255,0.08); color:#64748b; transition:all 0.2s; text-decoration:none; }
+      .social-icon { width:38px; height:38px; display:flex; align-items:center; justify-content:center; border:1px solid rgba(255,255,255,0.08); color:#94a3b8; transition:all 0.2s; text-decoration:none; }
       .social-icon:hover { border-color:rgba(0,98,230,0.5); color:white; background:rgba(0,98,230,0.12); transform:translateY(-2px); }
       .footer-col-title { font-family:'Syne',sans-serif; font-weight:700; font-size:11px; letter-spacing:0.15em; text-transform:uppercase; color:#e2e8f0; margin-bottom:18px; }
     </style>
@@ -189,7 +189,7 @@ function renderFooter() {
             <p style="font-family:'Syne',sans-serif;font-size:clamp(1.4rem,3vw,2rem);font-weight:800;color:white;line-height:1.2;margin-bottom:8px;">
               ${isEn ? "Ready to launch your project?" : "Prêt à lancer votre projet ?"}
             </p>
-            <p style="color:#64748b;font-size:14px;">${isEn ? "Free quote in 24h — payment in 2 or 3 instalments available." : "Devis gratuit en 24h — paiement en 2 ou 3 fois disponible."}</p>
+            <p style="color:#94a3b8;font-size:14px;">${isEn ? "Free quote in 24h — payment in 2 or 3 instalments available." : "Devis gratuit en 24h — paiement en 2 ou 3 fois disponible."}</p>
           </div>
           <div style="display:flex;gap:12px;flex-wrap:wrap;">
             <button onclick="navigate('contact')" style="background:#004AAD;color:white;padding:12px 28px;font-family:'Syne',sans-serif;font-weight:700;font-size:13px;border:none;cursor:pointer;letter-spacing:0.05em;white-space:nowrap;transition:background 0.2s;" onmouseover="this.style.background='#0062E6'" onmouseout="this.style.background='#004AAD'">
@@ -223,23 +223,23 @@ function renderFooter() {
               />
             </div>
 
-            <p style="font-size:13px;line-height:1.7;color:#64748b;max-width:280px;margin-bottom:24px;">${t.tagline}</p>
+            <p style="font-size:13px;line-height:1.7;color:#94a3b8;max-width:280px;margin-bottom:24px;">${t.tagline}</p>
 
             <!-- Contact info -->
             <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:28px;">
-              <a href="tel:+24166198918" style="display:flex;align-items:center;gap:10px;color:#64748b;text-decoration:none;font-size:13px;transition:color 0.2s;" onmouseover="this.style.color='#60A5FA'" onmouseout="this.style.color='#64748b'">
+              <a href="tel:+24166198918" style="display:flex;align-items:center;gap:10px;color:#94a3b8;text-decoration:none;font-size:13px;transition:color 0.2s;" onmouseover="this.style.color='#60A5FA'" onmouseout="this.style.color='#94a3b8'">
                 <span style="width:28px;height:28px;background:rgba(0,98,230,0.08);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
                   <svg width="13" height="13" fill="none" stroke="#60A5FA" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>
                 </span>
                 +241 66 19 89 18
               </a>
-              <a href="mailto:mgncodewave18@gmail.com" style="display:flex;align-items:center;gap:10px;color:#64748b;text-decoration:none;font-size:13px;transition:color 0.2s;" onmouseover="this.style.color='#60A5FA'" onmouseout="this.style.color='#64748b'">
+              <a href="mailto:mgncodewave18@gmail.com" style="display:flex;align-items:center;gap:10px;color:#94a3b8;text-decoration:none;font-size:13px;transition:color 0.2s;" onmouseover="this.style.color='#60A5FA'" onmouseout="this.style.color='#94a3b8'">
                 <span style="width:28px;height:28px;background:rgba(0,98,230,0.08);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
                   <svg width="13" height="13" fill="none" stroke="#60A5FA" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                 </span>
                 mgncodewave18@gmail.com
               </a>
-              <div style="display:flex;align-items:center;gap:10px;color:#64748b;font-size:13px;">
+              <div style="display:flex;align-items:center;gap:10px;color:#94a3b8;font-size:13px;">
                 <span style="width:28px;height:28px;background:rgba(0,98,230,0.08);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
                   <svg width="13" height="13" fill="none" stroke="#60A5FA" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
                 </span>
@@ -285,15 +285,18 @@ function renderFooter() {
 
             <!-- Newsletter mini -->
             <p class="footer-col-title">${isEn ? "Newsletter" : "Newsletter"}</p>
-            <p style="font-size:12px;color:#475569;margin-bottom:12px;line-height:1.5;">${isEn ? "Web tips every month. No spam." : "Conseils web chaque mois. Sans spam."}</p>
-            <div style="display:flex;gap:0;">
-              <input type="email" placeholder="${isEn ? "Your email" : "Votre email"}"
-                style="flex:1;padding:9px 12px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);color:#e2e8f0;font-size:12px;outline:none;min-width:0;"
+            <p style="font-size:12px;color:#94a3b8;margin-bottom:12px;line-height:1.5;">${isEn ? "Web tips every month. No spam." : "Conseils web chaque mois. Sans spam."}</p>
+            <form action="https://formspree.io/f/mpweqqzz" method="POST" onsubmit="handleNewsletterSubmit(event)" style="display:flex;gap:0;">
+              <input type="hidden" name="_subject" value="Inscription newsletter">
+              <label for="newsletter-email" class="sr-only">${isEn ? "Your email" : "Votre email"}</label>
+              <input id="newsletter-email" name="email" type="email" required autocomplete="email" placeholder="${isEn ? "Your email" : "Votre email"}"
+                style="flex:1;padding:9px 12px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);color:#e2e8f0;font-size:12px;min-width:0;"
                 onfocus="this.style.borderColor='rgba(0,98,230,0.5)'" onblur="this.style.borderColor='rgba(255,255,255,0.08)'">
-              <button style="padding:9px 14px;background:#004AAD;border:none;cursor:pointer;color:white;font-size:12px;transition:background 0.2s;" onmouseover="this.style.background='#0062E6'" onmouseout="this.style.background='#004AAD'">
+              <button type="submit" aria-label="${isEn ? "Subscribe" : "S'inscrire"}" style="padding:9px 14px;background:#004AAD;border:none;cursor:pointer;color:white;font-size:12px;transition:background 0.2s;" onmouseover="this.style.background='#0062E6'" onmouseout="this.style.background='#004AAD'">
                 <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </button>
-            </div>
+            </form>
+            <div id="newsletter-status" role="status" aria-live="polite" style="font-size:12px;margin-top:8px;"></div>
           </div>
 
         </div>
@@ -304,12 +307,12 @@ function renderFooter() {
     <div style="position:relative;border-top:1px solid rgba(255,255,255,0.05);padding:20px 0;">
       <div class="max-w-6xl mx-auto px-4 md:px-8">
         <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;">
-          <p style="font-size:12px;color:#334155;">© 2025 M.G.N CodeWave. ${t.rights}</p>
+          <p style="font-size:12px;color:#94a3b8;">© 2025 M.G.N CodeWave. ${t.rights}</p>
           <div style="display:flex;align-items:center;gap:6px;">
             <span style="display:inline-block;width:6px;height:6px;background:#25D366;border-radius:50%;animation:pulse 2s ease-in-out infinite;"></span>
-            <p style="font-size:12px;color:#334155;">${isEn ? "Available for new projects" : "Disponible pour de nouveaux projets"}</p>
+            <p style="font-size:12px;color:#94a3b8;">${isEn ? "Available for new projects" : "Disponible pour de nouveaux projets"}</p>
           </div>
-          <p style="font-size:12px;color:#334155;">${t.made}</p>
+          <p style="font-size:12px;color:#94a3b8;">${t.made}</p>
         </div>
       </div>
     </div>
@@ -362,7 +365,7 @@ function renderHome() {
               </div>
               <!-- Floating cards -->
               <div class="absolute -top-4 -right-4 card px-3 py-2 text-xs font-display font-700" style="animation:float1 3s ease-in-out infinite">
-                <span style="color:#10b981">✓</span> React / Flutter
+                <span aria-hidden="true" style="color:#10b981">✓</span> React / Flutter
               </div>
               <div class="absolute -bottom-4 -left-4 card px-3 py-2 text-xs font-display font-700" style="animation:float2 3.5s ease-in-out infinite">
                 📍 Libreville, Gabon
@@ -427,9 +430,9 @@ function renderHome() {
             <div onclick="navigateToPortfolioDetail(${p.id})" class="card block overflow-hidden reveal cursor-pointer" style="transition-delay:${i * 60}ms">
               <div class="h-40 flex items-center justify-center relative overflow-hidden" style="background:${p.color}18">
                 <div class="absolute inset-0 opacity-5" style="background-image:repeating-linear-gradient(45deg,${p.color} 0,${p.color} 1px,transparent 0,transparent 50%);background-size:8px 8px"></div>
-                <span class="font-display font-800 text-4xl opacity-30" style="color:${p.color}">${p.title.substring(0, 1)}</span>
+                <span class="font-display font-800 text-4xl opacity-30" style="color:${p.color};color:color-mix(in srgb, ${p.color} 50%, var(--fg))">${p.title.substring(0, 1)}</span>
                 <div class="absolute bottom-3 left-3">
-                  <span class="badge" style="background:${p.color}22;color:${p.color}">${p.category}</span>
+                  <span class="badge" style="background:${p.color}22;color:${p.color};color:color-mix(in srgb, ${p.color} 50%, var(--fg))">${p.category}</span>
                 </div>
               </div>
               <div class="p-4">
@@ -500,7 +503,7 @@ function renderServices() {
               <div class="w-12 h-12 flex items-center justify-center text-2xl" style="background:rgba(0,74,173,0.08)">${s.icon}</div>
               ${s.tag ? `<span class="badge badge-blue">${s.tag}</span>` : ""}
             </div>
-            <h3 class="font-display font-700 text-xl mb-3" style="color:var(--fg)">${s.title}</h3>
+            <h2 class="font-display font-700 text-xl mb-3" style="color:var(--fg)">${s.title}</h2>
             <p class="text-sm leading-relaxed mb-5" style="color:var(--muted)">${s.desc}</p>
             <div class="pt-4" style="border-top:1px solid var(--border)">
               <p class="font-display font-700" style="color:var(--primary-fg)">${s.price}</p>
@@ -524,7 +527,7 @@ function renderServices() {
               <p class="font-display font-700 text-lg mb-1" style="color:var(--fg)">${pkg.name}</p>
               <p class="text-xs uppercase tracking-wider mb-4" style="color:var(--muted)">${pkg.posts}</p>
               <ul class="space-y-2 mb-6">
-                ${pkg.items.map((item) => `<li class="flex items-center gap-2 text-sm" style="color:var(--muted)"><span style="color:#10b981">✓</span>${item}</li>`).join("")}
+                ${pkg.items.map((item) => `<li class="flex items-center gap-2 text-sm" style="color:var(--muted)"><span aria-hidden="true" style="color:#10b981">✓</span>${item}</li>`).join("")}
               </ul>
               <div style="border-top:1px solid var(--border)" class="pt-4">
                 <span class="font-display font-800 text-3xl" style="color:${pkg.highlight ? "var(--primary-fg)" : "var(--fg)"}">${pkg.price}</span>
@@ -640,7 +643,7 @@ function renderPortfolio() {
         ${filterKeys
           .map(
             (k, i) => `
-          <button onclick="setPortfolioFilter('${k}')" class="filter-pill ${state.portfolioFilter === k ? "active" : ""}">
+          <button id="filter-${k}" onclick="setPortfolioFilter('${k}')" aria-pressed="${state.portfolioFilter === k}" class="filter-pill ${state.portfolioFilter === k ? "active" : ""}">
             ${filterLabels[i]}
           </button>
         `,
@@ -663,20 +666,20 @@ function renderPortfolio() {
                 <path d="M-50,100 C50,50 100,150 200,100 C300,50 350,150 450,100" fill="none" stroke="${p.color}" stroke-width="1.5"/>
                 <path d="M-50,120 C50,70 100,170 200,120 C300,70 350,170 450,120" fill="none" stroke="${p.color}" stroke-width="1"/>
               </svg>
-              <span class="relative font-display font-800 text-5xl" style="color:${p.color}; opacity:0.25">${p.title.substring(0, 2)}</span>
+              <span aria-hidden="true" class="relative font-display font-800 text-5xl" style="color:${p.color};color:color-mix(in srgb, ${p.color} 50%, var(--fg)); opacity:0.25">${p.title.substring(0, 2)}</span>
               <!-- Hover overlay -->
-              <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity" style="background:${p.color}cc">
+              <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity" style="background:rgba(15,23,42,0.85);background:color-mix(in srgb, ${p.color} 35%, #0f172a)">
                 <span class="text-white font-display font-700 text-sm">${state.lang === "fr" ? "Voir le détail →" : "View details →"}</span>
               </div>
               <div class="absolute bottom-3 left-3">
-                <span class="badge" style="background:white;color:${p.color}">${p.category}</span>
+                <span class="badge" style="background:white;color:${p.color};color:color-mix(in srgb, ${p.color} 50%, var(--fg))">${p.category}</span>
               </div>
             </div>
             <div class="p-5">
-              <h3 class="font-display font-700 text-base mb-1" style="color:var(--fg)">${p.title}</h3>
+              <h2 class="font-display font-700 text-base mb-1" style="color:var(--fg)">${p.title}</h2>
               <p class="text-sm mb-3" style="color:var(--muted)">${p.subtitle}</p>
               <div class="flex flex-wrap gap-2">
-                ${p.tags.map((tag) => `<span class="text-xs px-2 py-0.5" style="background:var(--border);color:var(--muted)">${tag}</span>`).join("")}
+                ${p.tags.map((tag) => `<span class="text-xs px-2 py-0.5" style="background:var(--border);color:var(--fg)">${tag}</span>`).join("")}
               </div>
             </div>
           </div>
@@ -850,7 +853,7 @@ function renderAbout() {
               </div>
               <div>
                 <p class="section-label mb-2">${t.visionary_label}</p>
-                <h3 class="font-display font-800 text-2xl mb-3" style="color:var(--fg)">${t.visionary_title}</h3>
+                <h2 class="font-display font-800 text-2xl mb-3" style="color:var(--fg)">${t.visionary_title}</h2>
                 <p class="leading-relaxed" style="color:var(--muted)">${t.visionary_desc}</p>
               </div>
             </div>
@@ -1057,42 +1060,84 @@ function renderContact() {
 
         <!-- Right: Form -->
         <div class="card p-6 md:p-8 reveal">
-          <h3 class="font-display font-700 text-lg mb-6" style="color:var(--fg)">${state.lang === "fr" ? "Envoyez un message" : "Send a message"}</h3>
+          <h2 class="font-display font-700 text-lg mb-6" style="color:var(--fg)">${state.lang === "fr" ? "Envoyez un message" : "Send a message"}</h2>
           <form
           action="https://formspree.io/f/mpweqqzz"
           method="POST"
           onsubmit="handleFormSubmit(event)" class="space-y-4">
             <div class="grid grid-cols-2 gap-4">
               <div>
-                <label class="block text-xs font-display font-700 mb-1.5 uppercase tracking-wider" style="color:var(--muted)">${t.name}</label>
-                <input type="text" required placeholder="${t.name}" class="w-full px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-blue-500 transition" style="background:var(--bg);border:1px solid var(--border);color:var(--fg)">
+                <label for="contact-name" class="block text-xs font-display font-700 mb-1.5 uppercase tracking-wider" style="color:var(--muted)">${t.name}</label>
+                <input id="contact-name" name="name" type="text" required autocomplete="name" placeholder="${t.name}" class="w-full px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-blue-500 transition" style="background:var(--bg);border:1px solid var(--border);color:var(--fg)">
               </div>
               <div>
-                <label class="block text-xs font-display font-700 mb-1.5 uppercase tracking-wider" style="color:var(--muted)">${t.email}</label>
-                <input type="email" required placeholder="${t.email}" class="w-full px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-blue-500 transition" style="background:var(--bg);border:1px solid var(--border);color:var(--fg)">
+                <label for="contact-email" class="block text-xs font-display font-700 mb-1.5 uppercase tracking-wider" style="color:var(--muted)">${t.email}</label>
+                <input id="contact-email" name="email" type="email" required autocomplete="email" placeholder="${t.email}" class="w-full px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-blue-500 transition" style="background:var(--bg);border:1px solid var(--border);color:var(--fg)">
               </div>
             </div>
             <div>
-              <label class="block text-xs font-display font-700 mb-1.5 uppercase tracking-wider" style="color:var(--muted)">${t.subject}</label>
-              <input type="text" placeholder="${t.subject}" class="w-full px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-blue-500 transition" style="background:var(--bg);border:1px solid var(--border);color:var(--fg)">
+              <label for="contact-subject" class="block text-xs font-display font-700 mb-1.5 uppercase tracking-wider" style="color:var(--muted)">${t.subject}</label>
+              <input id="contact-subject" name="subject" type="text" placeholder="${t.subject}" class="w-full px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-blue-500 transition" style="background:var(--bg);border:1px solid var(--border);color:var(--fg)">
             </div>
             <div>
-              <label class="block text-xs font-display font-700 mb-1.5 uppercase tracking-wider" style="color:var(--muted)">${t.message}</label>
-              <textarea rows="5" placeholder="${t.message}" class="w-full px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-blue-500 transition resize-none" style="background:var(--bg);border:1px solid var(--border);color:var(--fg)"></textarea>
+              <label for="contact-message" class="block text-xs font-display font-700 mb-1.5 uppercase tracking-wider" style="color:var(--muted)">${t.message}</label>
+              <textarea id="contact-message" name="message" rows="5" required placeholder="${t.message}" class="w-full px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-blue-500 transition resize-none" style="background:var(--bg);border:1px solid var(--border);color:var(--fg)"></textarea>
             </div>
             <button type="submit" class="btn-primary w-full justify-center">${t.send} <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg></button>
           </form>
-          <div id="form-success" class="hidden mt-4 p-4 text-center" style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3)">
-            <p class="text-green-600 font-display font-700">${state.lang === "fr" ? "✓ Message envoyé ! Nous vous répondons sous 24h." : "✓ Message sent! We'll reply within 24h."}</p>
-          </div>
+          <div id="form-status" role="status" aria-live="polite" class="mt-4"></div>
         </div>
       </div>
     </div>
   </div>`;
 }
 
+// ==================== ENVOI DES FORMULAIRES (Formspree) ====================
+const FORM_TIMEOUT_MS = 15000;
+
+// Envoie un formulaire à son action Formspree. Ne vide le formulaire qu'en cas de succès confirmé :
+// sur une connexion instable, la saisie n'est jamais perdue.
+async function submitForm(form, statusEl, messages) {
+  const button = form.querySelector("[type=submit]");
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), FORM_TIMEOUT_MS);
+  button.disabled = true;
+  statusEl.innerHTML = `<p style="color:var(--muted)">${messages.sending}</p>`;
+  try {
+    const response = await fetch(form.action, {
+      method: "POST",
+      body: new FormData(form),
+      headers: { Accept: "application/json" },
+      signal: controller.signal,
+    });
+    if (!response.ok) throw new Error(`Formspree HTTP ${response.status}`);
+    statusEl.innerHTML = `<p class="p-4 font-display font-700" style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);color:var(--fg)">${messages.success}</p>`;
+    form.reset();
+  } catch (error) {
+    console.error("Envoi du formulaire impossible :", error);
+    statusEl.innerHTML = `<p class="p-4" style="background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.4);color:var(--fg)">${messages.error} <a href="https://wa.me/24166198918" target="_blank" rel="noopener noreferrer" class="underline font-700">WhatsApp</a>.</p>`;
+  } finally {
+    clearTimeout(timer);
+    button.disabled = false;
+  }
+}
+
 function handleFormSubmit(e) {
   e.preventDefault();
-  document.getElementById("form-success").classList.remove("hidden");
-  e.target.reset();
+  const isEn = state.lang === "en";
+  submitForm(e.target, document.getElementById("form-status"), {
+    sending: isEn ? "Sending…" : "Envoi en cours…",
+    success: isEn ? "✓ Message sent! We'll reply within 24h." : "✓ Message envoyé ! Nous vous répondons sous 24h.",
+    error: isEn ? "Your message could not be sent (connection or server issue). Your text is still here: try again, or write to us on" : "Votre message n'a pas pu partir (connexion ou serveur). Votre texte est conservé : réessayez, ou écrivez-nous sur",
+  });
+}
+
+function handleNewsletterSubmit(e) {
+  e.preventDefault();
+  const isEn = state.lang === "en";
+  submitForm(e.target, document.getElementById("newsletter-status"), {
+    sending: isEn ? "Sending…" : "Envoi…",
+    success: isEn ? "✓ Subscribed." : "✓ Inscription enregistrée.",
+    error: isEn ? "Subscription failed. Try again or contact us on" : "Échec de l'inscription. Réessayez ou contactez-nous sur",
+  });
 }

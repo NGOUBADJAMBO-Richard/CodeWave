@@ -42,9 +42,9 @@ function renderPortfolioDetail(projectId) {
       <div class="absolute inset-0 flex items-center">
         <div class="max-w-6xl mx-auto px-4 md:px-8 w-full">
           <div class="flex items-center gap-6">
-            <div class="w-20 h-20 flex items-center justify-center text-4xl font-display font-800 flex-shrink-0" style="background:${p.color}25; color:${p.color}">${p.title.substring(0, 2)}</div>
+            <div aria-hidden="true" class="w-20 h-20 flex items-center justify-center text-4xl font-display font-800 flex-shrink-0" style="background:${p.color}25; color:${p.color}">${p.title.substring(0, 2)}</div>
             <div>
-              <span class="badge mb-2" style="background:${p.color}20;color:${p.color}">${p.category}</span>
+              <span class="badge mb-2" style="background:${p.color}20;color:${p.color};color:color-mix(in srgb, ${p.color} 50%, var(--fg))">${p.category}</span>
               <h1 class="font-display font-800 text-3xl md:text-4xl" style="color:var(--fg)">${p.title}</h1>
               <p class="text-lg mt-1" style="color:var(--muted)">${p.subtitle}</p>
             </div>
@@ -71,7 +71,7 @@ function renderPortfolioDetail(projectId) {
                 .map(
                   (f) => `
                 <li class="flex items-start gap-3 text-sm" style="color:var(--muted)">
-                  <span class="mt-0.5 flex-shrink-0 w-5 h-5 flex items-center justify-center text-xs font-bold" style="background:${p.color}18;color:${p.color}">✓</span>
+                  <span class="mt-0.5 flex-shrink-0 w-5 h-5 flex items-center justify-center text-xs font-bold" style="background:${p.color}18;color:${p.color};color:color-mix(in srgb, ${p.color} 50%, var(--fg))">✓</span>
                   ${f}
                 </li>
               `,
@@ -129,7 +129,7 @@ function renderPortfolioDetail(projectId) {
               </a>
             `
                 : `
-              <div class="mt-6 p-3 text-xs text-center" style="background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.2);color:#ef4444">
+              <div class="mt-6 p-3 text-xs text-center" style="background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.2);color:#ef4444;color:color-mix(in srgb, #ef4444 60%, var(--fg))">
                 ⚠️ ${isEn ? "Live link temporarily unavailable" : "Lien indisponible temporairement"}
               </div>
             `
@@ -140,7 +140,7 @@ function renderPortfolioDetail(projectId) {
           <div class="card p-6 reveal">
             <h3 class="font-display font-700 text-sm uppercase tracking-wider mb-4" style="color:var(--muted)">Stack & Outils</h3>
             <div class="flex flex-wrap gap-2">
-              ${p.stack.map((s) => `<span class="text-xs px-3 py-1.5 font-display font-600" style="background:${p.color}12;color:${p.color};border:1px solid ${p.color}30">${s}</span>`).join("")}
+              ${p.stack.map((s) => `<span class="text-xs px-3 py-1.5 font-display font-600" style="background:${p.color}12;color:${p.color};color:color-mix(in srgb, ${p.color} 50%, var(--fg));border:1px solid ${p.color}30">${s}</span>`).join("")}
             </div>
           </div>
 
@@ -148,7 +148,7 @@ function renderPortfolioDetail(projectId) {
           <div class="card p-6 reveal" style="background:linear-gradient(135deg,${p.color},${p.color}cc)">
             <p class="font-display font-700 text-white text-base mb-2">${isEn ? "Similar project?" : "Projet similaire ?"}</p>
             <p class="text-sm mb-4" style="color:rgba(255,255,255,0.8)">${isEn ? "Let's discuss your idea." : "Discutons de votre idée."}</p>
-            <button onclick="navigate('contact')" class="btn-primary w-full justify-center text-sm py-2" style="background:white;color:${p.color};border-color:white">
+            <button onclick="navigate('contact')" class="btn-primary w-full justify-center text-sm py-2" style="background:white;color:${p.color};color:color-mix(in srgb, ${p.color} 50%, var(--fg));border-color:white">
               ${isEn ? "Get a Quote" : "Demander un Devis"}
             </button>
           </div>
@@ -238,7 +238,7 @@ function renderBlogDetail(postId) {
       <!-- Article Header -->
       <div class="mb-10">
         <div class="flex items-center gap-3 mb-5">
-          <span class="badge" style="background:${catColor}18;color:${catColor}">${cat}</span>
+          <span class="badge" style="background:${catColor}18;color:${catColor};color:color-mix(in srgb, ${catColor} 50%, var(--fg))">${cat}</span>
           <span class="text-sm" style="color:var(--muted)">${isEn ? post.dateEn : post.date}</span>
           <span class="text-sm" style="color:var(--muted)">· ${post.read} ${isEn ? "min read" : "min de lecture"}</span>
         </div>
@@ -246,7 +246,7 @@ function renderBlogDetail(postId) {
         <p class="text-lg leading-relaxed" style="color:var(--muted)">${intro}</p>
         <!-- Author -->
         <div class="flex items-center gap-3 mt-6 pt-6" style="border-top:1px solid var(--border)">
-          <div class="w-10 h-10 flex items-center justify-center font-display font-800 text-sm" style="background:${catColor}18;color:${catColor}">MG</div>
+          <div class="w-10 h-10 flex items-center justify-center font-display font-800 text-sm" style="background:${catColor}18;color:${catColor};color:color-mix(in srgb, ${catColor} 50%, var(--fg))">MG</div>
           <div>
             <p class="font-display font-700 text-sm" style="color:var(--fg)">${post.author}</p>
             <p class="text-xs" style="color:var(--muted)">Libreville, Gabon</p>
@@ -277,7 +277,7 @@ function renderBlogDetail(postId) {
               <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center text-2xl" style="background:${catColor}10;border:1px solid ${catColor}20">${s.icon}</div>
               <div class="flex-1">
                 <h2 class="font-display font-700 text-xl mb-3" style="color:var(--fg)">
-                  <span class="mr-2 text-sm" style="color:${catColor}">${String(i + 1).padStart(2, "0")}.</span>
+                  <span class="mr-2 text-sm" style="color:${catColor};color:color-mix(in srgb, ${catColor} 50%, var(--fg))">${String(i + 1).padStart(2, "0")}.</span>
                   ${isEn ? s.titleEn : s.title}
                 </h2>
                 <p class="leading-relaxed" style="color:var(--muted)">${isEn ? s.bodyEn : s.body}</p>
@@ -313,7 +313,7 @@ function renderBlogDetail(postId) {
       <!-- Share -->
       <div class="flex items-center gap-4 mb-12 p-5 card reveal">
         <p class="font-display font-700 text-sm flex-shrink-0" style="color:var(--fg)">${isEn ? "Share:" : "Partager :"}</p>
-        <a href="https://wa.me/?text=${encodeURIComponent(title + " - MGN CodeWave")}" target="_blank" class="flex items-center gap-2 text-sm px-4 py-2 hover:opacity-80 transition-opacity" style="background:#25D366;color:white">
+        <a href="https://wa.me/?text=${encodeURIComponent(title + " - MGN CodeWave")}" target="_blank" class="flex items-center gap-2 text-sm px-4 py-2 hover:opacity-80 transition-opacity" style="background:#25D366;color:#0f172a">
           <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
           WhatsApp
         </a>
@@ -333,10 +333,10 @@ function renderBlogDetail(postId) {
               return `
               <button onclick="navigateToBlogDetail(${rid})" class="card text-left overflow-hidden hover:border-blue-400 transition-colors">
                 <div class="h-24 flex items-center justify-center" style="background:${related.color}12">
-                  <span class="font-display font-800 text-3xl" style="color:${related.color};opacity:0.3">${rid}</span>
+                  <span class="font-display font-800 text-3xl" style="color:${related.color};color:color-mix(in srgb, ${related.color} 50%, var(--fg));opacity:0.3">${rid}</span>
                 </div>
                 <div class="p-4">
-                  <span class="badge mb-2" style="background:${related.color}18;color:${related.color}">${rcat}</span>
+                  <span class="badge mb-2" style="background:${related.color}18;color:${related.color};color:color-mix(in srgb, ${related.color} 50%, var(--fg))">${rcat}</span>
                   <p class="font-display font-700 text-sm leading-snug" style="color:var(--fg)">${isEn ? related.titleEn : related.title}</p>
                 </div>
               </button>
@@ -435,7 +435,7 @@ function renderCareers() {
       <div class="mb-12">
         <div class="flex items-center gap-3 mb-6">
           <h2 class="font-display font-700 text-xl" style="color:var(--fg)">${isEn ? "Freelance & Partnership" : "Freelance & Partenariat"}</h2>
-          <span class="badge" style="background:rgba(16,185,129,0.12);color:#10b981">${careersData.freelance.length} ${isEn ? "positions" : "postes"}</span>
+          <span class="badge" style="background:rgba(16,185,129,0.12);color:#10b981;color:color-mix(in srgb, #10b981 50%, var(--fg))">${careersData.freelance.length} ${isEn ? "positions" : "postes"}</span>
         </div>
         <div class="grid md:grid-cols-3 gap-5">
           ${careersData.freelance.map((job, i) => renderJobCard(job, i, isEn)).join("")}
@@ -474,7 +474,7 @@ function renderJobCard(job, delay, isEn) {
       <div class="p-5">
         <div class="flex items-start justify-between mb-3">
           <div class="text-3xl">${job.icon}</div>
-          <span class="badge" style="background:${isCDI ? "rgba(0,74,173,0.1)" : "rgba(16,185,129,0.1)"};color:${isCDI ? "var(--primary-fg)" : "#10b981"}">${job.type}</span>
+          <span class="badge" style="background:${isCDI ? "rgba(0,74,173,0.1)" : "rgba(16,185,129,0.1)"};color:${isCDI ? "var(--primary-fg)" : "color-mix(in srgb, #10b981 50%, var(--fg))"}">${job.type}</span>
         </div>
         <h3 class="font-display font-700 text-base mb-0.5" style="color:var(--fg)">${isEn ? job.titleEn || job.title : job.title}</h3>
         <p class="text-xs mb-3" style="color:var(--muted)">${job.subtitle}</p>
@@ -483,7 +483,7 @@ function renderJobCard(job, delay, isEn) {
           <span class="text-xs flex items-center gap-1" style="color:var(--muted)">⏰ ${job.schedule}</span>
         </div>
         <div class="pt-3 flex items-center justify-between" style="border-top:1px solid var(--border)">
-          <span class="font-display font-700 text-sm" style="color:${job.color}">${isEn ? job.payEn : job.pay}</span>
+          <span class="font-display font-700 text-sm" style="color:${job.color};color:color-mix(in srgb, ${job.color} 50%, var(--fg))">${isEn ? job.payEn : job.pay}</span>
           <span class="text-xs font-display font-600 hover:text-blue-500 transition-colors" style="color:var(--muted)">${isEn ? "Details →" : "Détails →"}</span>
         </div>
       </div>
@@ -522,7 +522,7 @@ function renderJobDetail(jobId) {
               <div class="text-4xl">${job.icon}</div>
               <div>
                 <div class="flex items-center gap-2 mb-1">
-                  <span class="badge" style="background:${job.color}18;color:${job.color}">${job.type}</span>
+                  <span class="badge" style="background:${job.color}18;color:${job.color};color:color-mix(in srgb, ${job.color} 50%, var(--fg))">${job.type}</span>
                   <span class="badge" style="background:rgba(100,116,139,0.1);color:var(--muted)">${job.level}</span>
                 </div>
                 <h1 class="font-display font-800 text-2xl md:text-3xl" style="color:var(--fg)">${isEn ? job.titleEn || job.title : job.title}</h1>
@@ -530,7 +530,7 @@ function renderJobDetail(jobId) {
               </div>
             </div>
             <div class="text-right flex-shrink-0">
-              <p class="font-display font-800 text-2xl" style="color:${job.color}">${isEn ? job.payEn : job.pay}</p>
+              <p class="font-display font-800 text-2xl" style="color:${job.color};color:color-mix(in srgb, ${job.color} 50%, var(--fg))">${isEn ? job.payEn : job.pay}</p>
               <div class="flex gap-3 mt-2 justify-end text-xs" style="color:var(--muted)">
                 <span>📍 ${isEn ? job.locationEn : job.location}</span>
                 <span>⏰ ${job.schedule}</span>
@@ -552,7 +552,7 @@ function renderJobDetail(jobId) {
               .map(
                 (m) => `
               <li class="flex items-start gap-3 text-sm" style="color:var(--muted)">
-                <span class="flex-shrink-0 mt-0.5" style="color:${job.color}">→</span>${m}
+                <span class="flex-shrink-0 mt-0.5" style="color:${job.color};color:color-mix(in srgb, ${job.color} 50%, var(--fg))">→</span>${m}
               </li>
             `,
               )
@@ -569,7 +569,7 @@ function renderJobDetail(jobId) {
               .map(
                 (r) => `
               <li class="flex items-start gap-3 text-sm" style="color:var(--muted)">
-                <span class="flex-shrink-0 mt-0.5" style="color:#10b981">✓</span>${r}
+                <span class="flex-shrink-0 mt-0.5" aria-hidden="true" style="color:#10b981">✓</span>${r}
               </li>
             `,
               )
@@ -895,7 +895,7 @@ function renderPrivacy() {
       "Partage de Vos Données",
       `
       <div class="card p-5 mb-3" style="border-left:3px solid #10b981">
-        <p class="font-700 text-sm mb-1" style="color:#10b981">✓ Nous ne vendons jamais vos données personnelles.</p>
+        <p class="font-700 text-sm mb-1" aria-hidden="true" style="color:#10b981">✓ Nous ne vendons jamais vos données personnelles.</p>
         <p>Nous pouvons les partager uniquement avec :</p>
       </div>
       <ul class="space-y-2 ml-4">
@@ -1024,7 +1024,7 @@ function renderPrivacy() {
             ([icon, color, title, desc]) => `
           <div class="card p-4 flex gap-3">
             <span class="text-xl">${icon}</span>
-            <div><p class="font-600 text-sm mb-1" style="color:${color}">${title}</p><p class="text-xs">${desc}</p></div>
+            <div><p class="font-600 text-sm mb-1" style="color:${color};color:color-mix(in srgb, ${color} 50%, var(--fg))">${title}</p><p class="text-xs">${desc}</p></div>
           </div>
         `,
           )
@@ -1076,7 +1076,7 @@ function renderCGV() {
       `
       <div class="space-y-4">
         <div><p class="font-600 mb-1" style="color:var(--fg)">2.1 Devis</p><p>Tout devis est gratuit, sans engagement et valable <strong style="color:var(--fg)">30 jours</strong> à compter de sa date d'émission. Passé ce délai, le Prestataire se réserve le droit de modifier les tarifs.</p></div>
-        <div><p class="font-600 mb-1" style="color:var(--fg)">2.2 Commande ferme après</p><ul class="space-y-1 ml-4">${["Signature du devis par le Client", "Réception de l'acompte initial (généralement 50%)", "Fourniture des éléments nécessaires (textes, images, etc.)"].map((i) => `<li class="flex items-start gap-2"><span style="color:#10b981">✓</span>${i}</li>`).join("")}</ul></div>
+        <div><p class="font-600 mb-1" style="color:var(--fg)">2.2 Commande ferme après</p><ul class="space-y-1 ml-4">${["Signature du devis par le Client", "Réception de l'acompte initial (généralement 50%)", "Fourniture des éléments nécessaires (textes, images, etc.)"].map((i) => `<li class="flex items-start gap-2"><span aria-hidden="true" style="color:#10b981">✓</span>${i}</li>`).join("")}</ul></div>
       </div>`,
     ),
     legalSection(
@@ -1107,7 +1107,7 @@ function renderCGV() {
             ${["🏦 Virement bancaire", "📱 Airtel Money", "📱 Moov Money", "💵 Espèces (Libreville)"].map((m) => `<span class="px-3 py-1.5 text-sm" style="background:rgba(0,74,173,0.06);border:1px solid rgba(0,74,173,0.15);color:var(--fg)">${m}</span>`).join("")}
           </div>
         </div>
-        <div class="card p-4" style="border-left:3px solid #ef4444"><p class="font-600 text-sm mb-1" style="color:#ef4444">⚠️ Retard de paiement</p><p class="text-xs">Tout retard entraîne la suspension des travaux. Pénalités de 10% du montant dû après relance sans réponse.</p></div>
+        <div class="card p-4" style="border-left:3px solid #ef4444"><p class="font-600 text-sm mb-1" style="color:#ef4444;color:color-mix(in srgb, #ef4444 60%, var(--fg))">⚠️ Retard de paiement</p><p class="text-xs">Tout retard entraîne la suspension des travaux. Pénalités de 10% du montant dû après relance sans réponse.</p></div>
       </div>`,
     ),
     legalSection(
@@ -1117,14 +1117,14 @@ function renderCGV() {
       <ul class="space-y-2">
         ${["Fournir tous les éléments nécessaires (textes, images, logos) dans les délais convenus", "S'assurer que les contenus fournis ne violent aucun droit de propriété intellectuelle", "Répondre aux demandes de validation dans un délai de 7 jours ouvrés", "Effectuer les paiements selon l'échéancier convenu", "Informer le Prestataire de toute modification souhaitée dans les meilleurs délais"].map((i) => `<li class="flex items-start gap-3"><span class="flex-shrink-0 mt-0.5 w-5 h-5 flex items-center justify-center text-xs" style="background:rgba(0,74,173,0.08);color:var(--primary-fg)">→</span>${i}</li>`).join("")}
       </ul>
-      <p class="mt-3 text-xs px-4 py-2" style="background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.2);color:#d97706">⚠️ Tout retard dans la fourniture des éléments par le Client entraîne un report proportionnel du délai de livraison.</p>`,
+      <p class="mt-3 text-xs px-4 py-2" style="background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.2);color:#d97706;color:color-mix(in srgb, #d97706 60%, var(--fg))">⚠️ Tout retard dans la fourniture des éléments par le Client entraîne un report proportionnel du délai de livraison.</p>`,
     ),
     legalSection(
       "5",
       "Obligations du Prestataire",
       `
       <ul class="space-y-2">
-        ${["Réaliser les prestations conformément aux spécifications du devis accepté", "Respecter les délais de livraison convenus (sauf cas de force majeure)", "Livrer un site web fonctionnel, testé et optimisé", "Former le Client à l'utilisation de son site web", "Assurer un support technique selon les modalités convenues", "Maintenir la confidentialité des informations du Client"].map((i) => `<li class="flex items-start gap-3"><span style="color:#10b981">✓</span>${i}</li>`).join("")}
+        ${["Réaliser les prestations conformément aux spécifications du devis accepté", "Respecter les délais de livraison convenus (sauf cas de force majeure)", "Livrer un site web fonctionnel, testé et optimisé", "Former le Client à l'utilisation de son site web", "Assurer un support technique selon les modalités convenues", "Maintenir la confidentialité des informations du Client"].map((i) => `<li class="flex items-start gap-3"><span aria-hidden="true" style="color:#10b981">✓</span>${i}</li>`).join("")}
       </ul>`,
     ),
     legalSection(
@@ -1187,7 +1187,7 @@ function renderCGV() {
       `
       <div class="grid md:grid-cols-2 gap-3">
         <div class="card p-5"><p class="font-700 mb-2" style="color:var(--fg)">🛡️ Garantie 30 jours</p><p class="text-xs">CodeWave garantit le bon fonctionnement du site pendant 30 jours après livraison. Couvre uniquement les bugs liés à la réalisation initiale.</p></div>
-        <div class="card p-5"><p class="font-700 mb-2" style="color:var(--fg)">🔧 Maintenance mensuelle</p><p class="text-xs mb-2">Au-delà, contrat disponible à <strong style="color:var(--primary-fg)">${priceLabel("maintenance", "fr")}</strong> incluant :</p><ul class="text-xs space-y-1">${["Mises à jour techniques", "Sauvegardes régulières", "Support technique prioritaire", "Corrections de bugs"].map((i) => `<li class="flex items-center gap-1"><span style="color:#10b981">✓</span>${i}</li>`).join("")}</ul></div>
+        <div class="card p-5"><p class="font-700 mb-2" style="color:var(--fg)">🔧 Maintenance mensuelle</p><p class="text-xs mb-2">Au-delà, contrat disponible à <strong style="color:var(--primary-fg)">${priceLabel("maintenance", "fr")}</strong> incluant :</p><ul class="text-xs space-y-1">${["Mises à jour techniques", "Sauvegardes régulières", "Support technique prioritaire", "Corrections de bugs"].map((i) => `<li class="flex items-center gap-1"><span aria-hidden="true" style="color:#10b981">✓</span>${i}</li>`).join("")}</ul></div>
       </div>`,
     ),
     legalSection(
@@ -1230,7 +1230,7 @@ function renderCGV() {
       `
       <div class="grid md:grid-cols-2 gap-3">
         <div class="card p-5"><p class="font-700 text-sm mb-2" style="color:var(--fg)">Par le Client</p><p class="text-xs">Annulation avant le début des travaux : perte de l'acompte. Une fois les travaux commencés : minimum 50% du devis dû.</p></div>
-        <div class="card p-5"><p class="font-700 text-sm mb-2" style="color:var(--fg)">Par le Prestataire</p><p class="text-xs mb-2">CodeWave peut résilier en cas de :</p><ul class="text-xs space-y-1">${["Non-paiement après relance", "Non-fourniture des éléments après 30 jours", "Comportement abusif ou irrespectueux", "Demandes contraires à la loi ou à l'éthique"].map((i) => `<li class="flex items-center gap-1"><span style="color:#ef4444">•</span>${i}</li>`).join("")}</ul></div>
+        <div class="card p-5"><p class="font-700 text-sm mb-2" style="color:var(--fg)">Par le Prestataire</p><p class="text-xs mb-2">CodeWave peut résilier en cas de :</p><ul class="text-xs space-y-1">${["Non-paiement après relance", "Non-fourniture des éléments après 30 jours", "Comportement abusif ou irrespectueux", "Demandes contraires à la loi ou à l'éthique"].map((i) => `<li class="flex items-center gap-1"><span style="color:#ef4444;color:color-mix(in srgb, #ef4444 60%, var(--fg))">•</span>${i}</li>`).join("")}</ul></div>
       </div>`,
     ),
     legalSection(
@@ -1570,7 +1570,7 @@ function renderSitemap() {
           .map(
             ([n, l, c]) => `
           <div class="card p-4 text-center">
-            <p class="font-display font-800 text-3xl mb-1" style="color:${c}">${n}</p>
+            <p class="font-display font-800 text-3xl mb-1" style="color:${c};color:color-mix(in srgb, ${c} 50%, var(--fg))">${n}</p>
             <p class="text-xs uppercase tracking-wider" style="color:var(--muted)">${l}</p>
           </div>
         `,
@@ -1704,16 +1704,16 @@ function renderSocial() {
           <a href="${n.url}" target="_blank" rel="noopener noreferrer"
              class="card block p-6 group reveal" style="transition-delay:${i * 70}ms; transition: all 0.25s">
             <div class="flex items-start justify-between mb-5">
-              <div class="w-14 h-14 flex items-center justify-center" style="background:${n.bg};color:${n.color}">
+              <div class="w-14 h-14 flex items-center justify-center" style="background:${n.bg};color:${n.color};color:color-mix(in srgb, ${n.color} 50%, var(--fg))">
                 ${n.icon}
               </div>
-              <span class="badge" style="background:${n.bg};color:${n.color};font-size:10px">${n.badge}</span>
+              <span class="badge" style="background:${n.bg};color:${n.color};color:color-mix(in srgb, ${n.color} 50%, var(--fg));font-size:10px">${n.badge}</span>
             </div>
-            <h3 class="font-display font-800 text-xl mb-0.5" style="color:var(--fg)">${n.name}</h3>
-            <p class="text-sm mb-3 font-600" style="color:${n.color}">${n.handle}</p>
+            <h2 class="font-display font-800 text-xl mb-0.5" style="color:var(--fg)">${n.name}</h2>
+            <p class="text-sm mb-3 font-600" style="color:${n.color};color:color-mix(in srgb, ${n.color} 50%, var(--fg))">${n.handle}</p>
             <p class="text-sm leading-relaxed mb-5" style="color:var(--muted)">${n.desc}</p>
             <div class="flex items-center justify-between pt-4" style="border-top:1px solid var(--border)">
-              <span class="text-sm font-display font-700 group-hover:gap-3 transition-all flex items-center gap-2" style="color:${n.color}">
+              <span class="text-sm font-display font-700 group-hover:gap-3 transition-all flex items-center gap-2" style="color:${n.color};color:color-mix(in srgb, ${n.color} 50%, var(--fg))">
                 ${n.cta}
                 <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" class="group-hover:translate-x-1 transition-transform"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </span>

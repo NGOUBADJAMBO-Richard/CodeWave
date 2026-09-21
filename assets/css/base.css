@@ -6,7 +6,8 @@
       --fg: #0f172a;
       --card: #ffffff;
       --border: #e2e8f0;
-      --muted: #64748b;
+      /* #64748b ne faisait que 4,3:1 sur #f4f3f3 ; #475569 = 6,4:1. */
+      --muted: #475569;
       --primary: #004AAD;
       /* Texte d'accent : #004AAD sur fond clair = 7,4:1 (AA). */
       --primary-fg: #004AAD;
@@ -131,9 +132,13 @@
       padding: 4px 10px; border-radius: 0;
     }
     .badge-blue { background: rgba(0,74,173,0.1); color:var(--primary-fg); }
-    .badge-teal { background: rgba(20,184,166,0.1); color: #0d9488; }
-    .badge-orange { background: rgba(249,115,22,0.1); color: #ea580c; }
-    .badge-purple { background: rgba(139,92,246,0.1); color: #7c3aed; }
+    /* Teintes -700 en clair, -300 en sombre : texte AA sur leur fond teinté. */
+    .badge-teal { background: rgba(20,184,166,0.1); color: #0f766e; }
+    .badge-orange { background: rgba(249,115,22,0.1); color: #c2410c; }
+    .badge-purple { background: rgba(139,92,246,0.1); color: #6d28d9; }
+    .dark .badge-teal { color: #5eead4; }
+    .dark .badge-orange { color: #fdba74; }
+    .dark .badge-purple { color: #c4b5fd; }
 
     /* Pricing card highlight */
     .pricing-highlight {
@@ -155,6 +160,28 @@
     /* Scroll reveal */
     .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.5s, transform 0.5s; }
     .reveal.visible { opacity: 1; transform: none; }
+
+    /* Accessibilité : lien d'évitement, focus visible, cibles tactiles */
+    .skip-link {
+      position: fixed; top: 8px; left: 8px; z-index: 10000;
+      padding: 12px 20px; background: #004AAD; color: white;
+      font-family: 'Syne', sans-serif; font-weight: 700;
+      transform: translateY(-200%); transition: transform 0.2s;
+    }
+    .skip-link:focus { transform: none; }
+    main:focus { outline: none; }
+
+    /* Classes Tailwind bleues utilisées en texte : #0062E6 / #004AAD illisibles sur fond sombre. */
+    .dark .text-blue-500, .dark .text-blue-600, .dark .hover\:text-blue-600:hover { color: var(--primary-fg); }
+
+    :focus-visible { outline: 2px solid var(--primary-fg); outline-offset: 2px; }
+    /* Les champs du site retirent le contour natif au profit d'un anneau : on le rétablit au clavier. */
+    input:focus-visible, textarea:focus-visible, select:focus-visible { outline: 2px solid var(--primary-fg); outline-offset: 0; }
+
+    @media (pointer: coarse) {
+      nav button, .lang-btn, .filter-pill, .footer-link, .social-icon { min-height: 44px; min-width: 44px; }
+      .footer-link { display: flex; align-items: center; }
+    }
 
     @media (prefers-reduced-motion: reduce) {
       .reveal, .page { opacity: 1; transform: none; transition: none; animation: none; }
