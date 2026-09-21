@@ -38,7 +38,7 @@ function renderFormationCard(item, lang) {
             <p class="text-xs uppercase tracking-wider mb-2" style="color:var(--muted)">${formationMeta(item, lang)}</p>
             <h4 class="font-display font-700 text-lg mb-2" style="color:var(--fg)">${title}</h4>
             ${item.summary ? `<p class="text-sm mb-4" style="color:var(--muted)">${item.summary[lang]}</p>` : ""}
-            <p class="font-display font-800 text-2xl mt-auto mb-4" style="color:var(--primary-fg)">${price}</p>
+            <p class="font-display font-700 text-2xl mt-auto mb-4" style="color:var(--primary-fg)">${price}</p>
             ${formationInfoLink(title, price, lang, "w-full")}
           </article>`;
 }
@@ -58,7 +58,7 @@ function renderBootcampBlock(lang) {
       <div class="grid lg:grid-cols-2 gap-10">
         <div>
           <p class="section-label mb-3">${lang === "en" ? "Flagship programme" : "Formation phare"}</p>
-          <h2 id="bootcamp-title" class="font-display font-800 leading-tight mb-4" style="font-size:clamp(1.8rem,3.5vw,2.6rem); color:var(--fg)">${b.title[lang]}</h2>
+          <h2 id="bootcamp-title" class="font-display font-700 leading-tight mb-4" style="font-size:clamp(1.8rem,3.5vw,2.6rem); color:var(--fg)">${b.title[lang]}</h2>
           <p class="mb-6" style="color:var(--muted)">${b.summary[lang]}</p>
           <ul class="space-y-2 mb-6">
             ${facts.map((f) => `<li class="flex items-center gap-2 text-sm" style="color:var(--fg)"><span aria-hidden="true" style="color:var(--primary-fg)">✓</span>${f}</li>`).join("")}
@@ -73,7 +73,7 @@ function renderBootcampBlock(lang) {
                 (o) => `
             <li class="flex items-center justify-between gap-4 p-4" style="border:${o.highlight ? "2px solid var(--primary)" : "1px solid var(--border)"}">
               <span class="text-sm" style="color:var(--fg)">${o.label[lang]}</span>
-              <span class="font-display font-800 text-lg" style="color:var(--primary-fg);white-space:nowrap">${optionPrice(o)}</span>
+              <span class="font-display font-700 text-lg" style="color:var(--primary-fg);white-space:nowrap">${optionPrice(o)}</span>
             </li>`,
               )
               .join("")}
@@ -108,7 +108,7 @@ function renderSubscriptions(lang) {
   return `
     <section class="mb-16" aria-labelledby="subscriptions-title">
       <p class="section-label mb-3">${lang === "en" ? "Subscriptions" : "Abonnements"}</p>
-      <h2 id="subscriptions-title" class="font-display font-800 leading-tight mb-8" style="font-size:clamp(1.8rem,3.5vw,2.6rem); color:var(--fg)">${lang === "en" ? "Learn at your own pace" : "Apprenez à votre rythme"}</h2>
+      <h2 id="subscriptions-title" class="font-display font-700 leading-tight mb-8" style="font-size:clamp(1.8rem,3.5vw,2.6rem); color:var(--fg)">${lang === "en" ? "Learn at your own pace" : "Apprenez à votre rythme"}</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         ${subscriptionPlans
           .map((plan) => {
@@ -117,7 +117,7 @@ function renderSubscriptions(lang) {
         <article class="card p-6 flex flex-col reveal ${plan.highlight ? "pricing-highlight" : ""}" data-badge="${lang === "en" ? "POPULAR" : "POPULAIRE"}">
           <h3 class="font-display font-700 text-lg mb-2" style="color:var(--fg)">${plan.title[lang]}</h3>
           <p class="text-sm mb-4" style="color:var(--muted)">${plan.summary[lang]}</p>
-          <p class="font-display font-800 text-2xl mt-auto" style="color:var(--primary-fg)">${monthly}</p>
+          <p class="font-display font-700 text-2xl mt-auto" style="color:var(--primary-fg)">${monthly}</p>
           <p class="text-xs mb-4" style="color:var(--muted)">${plan.yearly ? `${lang === "en" ? "or" : "ou"} ${xafLabel(plan.yearly, lang, "year")}` : "&nbsp;"}</p>
           ${formationInfoLink(plan.title[lang], monthly, lang, "w-full")}
         </article>`;
@@ -133,7 +133,7 @@ function renderSubscriptions(lang) {
 function renderAcademyFaq(lang) {
   return `
     <section class="mb-16" aria-labelledby="faq-title">
-      <h2 id="faq-title" class="font-display font-800 leading-tight mb-6" style="font-size:clamp(1.6rem,3vw,2.2rem); color:var(--fg)">${lang === "en" ? "Frequently asked questions" : "Questions fréquentes"}</h2>
+      <h2 id="faq-title" class="font-display font-700 leading-tight mb-6" style="font-size:clamp(1.6rem,3vw,2.2rem); color:var(--fg)">${lang === "en" ? "Frequently asked questions" : "Questions fréquentes"}</h2>
       <div class="space-y-3">
         ${academyFaq
           .map(
@@ -159,7 +159,7 @@ function renderFormations() {
       ${waveSVG()}
       <div class="relative max-w-6xl mx-auto px-4 md:px-8 py-10">
         <p class="section-label mb-3">${academyUI.label[lang]}</p>
-        <h1 class="font-display font-800 leading-tight mb-4" style="font-size:clamp(2.5rem,5vw,4rem); color:var(--fg)">${academyUI.title[lang]}</h1>
+        <h1 class="font-display font-700 leading-tight mb-4" style="font-size:clamp(2.5rem,5vw,4rem); color:var(--fg)">${academyUI.title[lang]}</h1>
         <p class="max-w-2xl mb-8" style="color:var(--muted)">${academyUI.sub[lang]}</p>
         <div class="flex flex-wrap gap-3">
           <a href="#catalogue" class="btn-primary">${lang === "en" ? "See the courses" : "Voir les formations"}</a>
@@ -173,7 +173,7 @@ function renderFormations() {
 
       <div id="catalogue" style="scroll-margin-top:6rem">
         <p class="section-label mb-3">${lang === "en" ? "Catalogue" : "Catalogue"}</p>
-        <h2 class="font-display font-800 leading-tight mb-10" style="font-size:clamp(1.8rem,3.5vw,2.6rem); color:var(--fg)">${lang === "en" ? "All our courses and prices" : "Toutes nos formations et leurs prix"}</h2>
+        <h2 class="font-display font-700 leading-tight mb-10" style="font-size:clamp(1.8rem,3.5vw,2.6rem); color:var(--fg)">${lang === "en" ? "All our courses and prices" : "Toutes nos formations et leurs prix"}</h2>
         ${renderCatalogGroups(lang)}
       </div>
 

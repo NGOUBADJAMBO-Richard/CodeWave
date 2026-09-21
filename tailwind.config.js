@@ -24,8 +24,10 @@ module.exports = {
       },
       fontFamily: {
         display: ["Syne", "sans-serif"],
-        body: ["DM Sans", "sans-serif"],
+        body: ["Space Grotesk", "DM Sans", "system-ui", "sans-serif"],
       },
+      // Le code emploie font-500 à font-800 ; charte : titres Syne 700 / 800.
+      fontWeight: { 400: "400", 500: "500", 600: "600", 700: "700", 800: "800" },
     },
   },
 };

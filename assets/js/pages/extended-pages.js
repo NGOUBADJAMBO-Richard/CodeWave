@@ -42,10 +42,10 @@ function renderPortfolioDetail(projectId) {
       <div class="absolute inset-0 flex items-center">
         <div class="max-w-6xl mx-auto px-4 md:px-8 w-full">
           <div class="flex items-center gap-6">
-            <div aria-hidden="true" class="w-20 h-20 flex items-center justify-center text-4xl font-display font-800 flex-shrink-0" style="background:${p.color}25; color:${p.color}">${p.title.substring(0, 2)}</div>
+            <div aria-hidden="true" class="w-20 h-20 flex items-center justify-center text-4xl font-display font-700 flex-shrink-0" style="background:${p.color}25; color:${p.color}">${p.title.substring(0, 2)}</div>
             <div>
               <span class="badge mb-2" style="background:${p.color}20;color:${p.color};color:color-mix(in srgb, ${p.color} 50%, var(--fg))">${p.category}</span>
-              <h1 class="font-display font-800 text-3xl md:text-4xl" style="color:var(--fg)">${p.title}</h1>
+              <h1 class="font-display font-700 text-3xl md:text-4xl" style="color:var(--fg)">${p.title}</h1>
               <p class="text-lg mt-1" style="color:var(--muted)">${p.subtitle}</p>
             </div>
           </div>
@@ -242,11 +242,11 @@ function renderBlogDetail(postId) {
           <span class="text-sm" style="color:var(--muted)">${isEn ? post.dateEn : post.date}</span>
           <span class="text-sm" style="color:var(--muted)">· ${post.read} ${isEn ? "min read" : "min de lecture"}</span>
         </div>
-        <h1 class="font-display font-800 leading-tight mb-5" style="font-size:clamp(1.8rem,4vw,2.8rem);color:var(--fg)">${title}</h1>
+        <h1 class="font-display font-700 leading-tight mb-5" style="font-size:clamp(1.8rem,4vw,2.8rem);color:var(--fg)">${title}</h1>
         <p class="text-lg leading-relaxed" style="color:var(--muted)">${intro}</p>
         <!-- Author -->
         <div class="flex items-center gap-3 mt-6 pt-6" style="border-top:1px solid var(--border)">
-          <div class="w-10 h-10 flex items-center justify-center font-display font-800 text-sm" style="background:${catColor}18;color:${catColor};color:color-mix(in srgb, ${catColor} 50%, var(--fg))">MG</div>
+          <div class="w-10 h-10 flex items-center justify-center font-display font-700 text-sm" style="background:${catColor}18;color:${catColor};color:color-mix(in srgb, ${catColor} 50%, var(--fg))">MG</div>
           <div>
             <p class="font-display font-700 text-sm" style="color:var(--fg)">${post.author}</p>
             <p class="text-xs" style="color:var(--muted)">Libreville, Gabon</p>
@@ -263,7 +263,7 @@ function renderBlogDetail(postId) {
             <path d="M0,140 C200,80 400,200 600,140 C800,80 1000,200 1200,140" fill="none" stroke="white" stroke-width="1"/>
           </svg>
         </div>
-        <span class="relative text-5xl font-display font-800 text-white opacity-30">${post.sections.length}</span>
+        <span class="relative text-5xl font-display font-700 text-white opacity-30">${post.sections.length}</span>
         <span class="relative ml-3 text-white font-display font-700 text-lg">${isEn ? `Key Points` : `Points Clés`}</span>
       </div>
 
@@ -303,7 +303,7 @@ function renderBlogDetail(postId) {
 
       <!-- CTA inline -->
       <div class="p-7 mb-12 text-center reveal" style="background:linear-gradient(135deg,#004AAD,#0062E6)">
-        <p class="font-display font-800 text-white text-xl mb-2">${isEn ? "Ready to take action?" : "Prêt à passer à l'action ?"}</p>
+        <p class="font-display font-700 text-white text-xl mb-2">${isEn ? "Ready to take action?" : "Prêt à passer à l'action ?"}</p>
         <p class="text-blue-100 mb-5">${isEn ? "Get a free quote and let's build your digital presence." : "Obtenez un devis gratuit et construisons votre présence digitale."}</p>
         <button onclick="navigate('contact')" class="btn-primary" style="background:white;color:#004AAD;border-color:white">
           ${isEn ? "Request Free Quote" : "Demander un Devis Gratuit"}
@@ -333,7 +333,7 @@ function renderBlogDetail(postId) {
               return `
               <button onclick="navigateToBlogDetail(${rid})" class="card text-left overflow-hidden hover:border-blue-400 transition-colors">
                 <div class="h-24 flex items-center justify-center" style="background:${related.color}12">
-                  <span class="font-display font-800 text-3xl" style="color:${related.color};color:color-mix(in srgb, ${related.color} 50%, var(--fg));opacity:0.3">${rid}</span>
+                  <span class="font-display font-700 text-3xl" style="color:${related.color};color:color-mix(in srgb, ${related.color} 50%, var(--fg));opacity:0.3">${rid}</span>
                 </div>
                 <div class="p-4">
                   <span class="badge mb-2" style="background:${related.color}18;color:${related.color};color:color-mix(in srgb, ${related.color} 50%, var(--fg))">${rcat}</span>
@@ -366,7 +366,7 @@ function renderCareers() {
       <!-- Header -->
       <div class="mb-14 max-w-2xl">
         <p class="section-label mb-3">${isEn ? "Careers" : "Recrutement"}</p>
-        <h1 class="font-display font-800 leading-tight mb-4" style="font-size:clamp(2.5rem,5vw,4rem);color:var(--fg)">${isEn ? "Join our\nTeam" : "Rejoignez\nnotre Équipe"}</h1>
+        <h1 class="font-display font-700 leading-tight mb-4" style="font-size:clamp(2.5rem,5vw,4rem);color:var(--fg)">${isEn ? "Join our\nTeam" : "Rejoignez\nnotre Équipe"}</h1>
         <p style="color:var(--muted)">${isEn ? "We're a growing digital startup based in Libreville. We're looking for motivated, autonomous talents ready to grow with us." : "Nous sommes une start-up digitale en croissance basée à Libreville. Nous cherchons des talents motivés et autonomes, prêts à grandir avec nous."}</p>
       </div>
 
@@ -456,7 +456,7 @@ function renderCareers() {
       <!-- Spontaneous application -->
       <div class="p-8 text-center reveal" style="background:linear-gradient(135deg,#1e293b,#0f172a);border:1px solid #334155">
         <div class="text-4xl mb-4">💌</div>
-        <h3 class="font-display font-800 text-white text-2xl mb-3">${isEn ? "Don't see the right position?" : "Vous ne trouvez pas le poste idéal ?"}</h3>
+        <h3 class="font-display font-700 text-white text-2xl mb-3">${isEn ? "Don't see the right position?" : "Vous ne trouvez pas le poste idéal ?"}</h3>
         <p class="mb-6" style="color:#94a3b8">${isEn ? "Send us a spontaneous application! We're always looking for motivated talent." : "Envoyez-nous une candidature spontanée ! Nous sommes toujours à la recherche de talents motivés."}</p>
         <a href="mailto:mgncodewave18@gmail.com?subject=Candidature Spontanée CodeWave" class="btn-primary" style="background:#004AAD;border-color:var(--primary-fg)">
           ${isEn ? "Send My Application" : "Envoyer Ma Candidature"} ✉️
@@ -525,12 +525,12 @@ function renderJobDetail(jobId) {
                   <span class="badge" style="background:${job.color}18;color:${job.color};color:color-mix(in srgb, ${job.color} 50%, var(--fg))">${job.type}</span>
                   <span class="badge" style="background:rgba(100,116,139,0.1);color:var(--muted)">${job.level}</span>
                 </div>
-                <h1 class="font-display font-800 text-2xl md:text-3xl" style="color:var(--fg)">${isEn ? job.titleEn || job.title : job.title}</h1>
+                <h1 class="font-display font-700 text-2xl md:text-3xl" style="color:var(--fg)">${isEn ? job.titleEn || job.title : job.title}</h1>
                 <p class="text-base" style="color:var(--muted)">${job.subtitle}</p>
               </div>
             </div>
             <div class="text-right flex-shrink-0">
-              <p class="font-display font-800 text-2xl" style="color:${job.color};color:color-mix(in srgb, ${job.color} 50%, var(--fg))">${isEn ? job.payEn : job.pay}</p>
+              <p class="font-display font-700 text-2xl" style="color:${job.color};color:color-mix(in srgb, ${job.color} 50%, var(--fg))">${isEn ? job.payEn : job.pay}</p>
               <div class="flex gap-3 mt-2 justify-end text-xs" style="color:var(--muted)">
                 <span>📍 ${isEn ? job.locationEn : job.location}</span>
                 <span>⏰ ${job.schedule}</span>
@@ -580,7 +580,7 @@ function renderJobDetail(jobId) {
 
       <!-- Apply CTA -->
       <div class="card p-8 text-center reveal" style="background:linear-gradient(135deg,${job.color}18,${job.color}08);border-color:${job.color}30">
-        <h3 class="font-display font-800 text-xl mb-3" style="color:var(--fg)">${isEn ? "Interested in this position?" : "Ce poste vous intéresse ?"}</h3>
+        <h3 class="font-display font-700 text-xl mb-3" style="color:var(--fg)">${isEn ? "Interested in this position?" : "Ce poste vous intéresse ?"}</h3>
         <p class="mb-6" style="color:var(--muted)">${isEn ? "Send your application to our email with your CV and portfolio (if applicable)." : "Envoyez votre candidature par email avec votre CV et portfolio (si applicable)."}</p>
         <div class="flex flex-wrap gap-3 justify-center">
           <a href="mailto:mgncodewave18@gmail.com?subject=Candidature — ${job.title}" class="btn-primary">
@@ -636,7 +636,7 @@ function legalLayout(
         <div class="flex items-center gap-4">
           <div class="w-14 h-14 flex items-center justify-center text-3xl" style="background:rgba(0,74,173,0.08)">${icon}</div>
           <div>
-            <h1 class="font-display font-800 text-3xl md:text-4xl" style="color:var(--fg)">${title}</h1>
+            <h1 class="font-display font-700 text-3xl md:text-4xl" style="color:var(--fg)">${title}</h1>
             <p style="color:var(--muted)">${subtitle}</p>
           </div>
         </div>
@@ -685,7 +685,7 @@ function legalSection(num, title, content, accent) {
   <div class="reveal mb-0" style="border-bottom:1px solid var(--border)">
     <div class="py-8">
       <div class="flex items-start gap-4">
-        <span class="flex-shrink-0 w-8 h-8 flex items-center justify-center text-xs font-display font-800" style="background:rgba(0,74,173,0.08);color:var(--primary-fg)">${num}</span>
+        <span class="flex-shrink-0 w-8 h-8 flex items-center justify-center text-xs font-display font-700" style="background:rgba(0,74,173,0.08);color:var(--primary-fg)">${num}</span>
         <div class="flex-1">
           <h2 class="font-display font-700 text-lg mb-3" style="color:var(--fg)">${title}</h2>
           <div class="text-sm leading-relaxed space-y-3" style="color:var(--muted)">${content}</div>
@@ -1516,7 +1516,7 @@ function renderSitemap() {
         <div class="flex items-center gap-4">
           <div class="w-14 h-14 flex items-center justify-center text-3xl" style="background:rgba(0,74,173,0.08)">🗺️</div>
           <div>
-            <h1 class="font-display font-800 text-3xl md:text-4xl" style="color:var(--fg)">${isEn ? "Sitemap" : "Plan du Site"}</h1>
+            <h1 class="font-display font-700 text-3xl md:text-4xl" style="color:var(--fg)">${isEn ? "Sitemap" : "Plan du Site"}</h1>
             <p style="color:var(--muted)">${isEn ? "Find all our pages easily" : "Naviguez facilement sur notre site et trouvez ce que vous cherchez"}</p>
           </div>
         </div>
@@ -1570,7 +1570,7 @@ function renderSitemap() {
           .map(
             ([n, l, c]) => `
           <div class="card p-4 text-center">
-            <p class="font-display font-800 text-3xl mb-1" style="color:${c};color:color-mix(in srgb, ${c} 50%, var(--fg))">${n}</p>
+            <p class="font-display font-700 text-3xl mb-1" style="color:${c};color:color-mix(in srgb, ${c} 50%, var(--fg))">${n}</p>
             <p class="text-xs uppercase tracking-wider" style="color:var(--muted)">${l}</p>
           </div>
         `,
@@ -1690,7 +1690,7 @@ function renderSocial() {
       </div>`}
       <div class="relative max-w-5xl mx-auto px-4 md:px-8 py-16 text-center">
         <p class="section-label mb-4" style="color:#60A5FA">${isEn ? "Community & Networks" : "Communauté & Réseaux"}</p>
-        <h1 class="font-display font-800 leading-tight mb-4 text-white" style="font-size:clamp(2.5rem,5vw,4rem)">${isEn ? "Find us\nEverywhere" : "Retrouvez-nous\nPartout"}</h1>
+        <h1 class="font-display font-700 leading-tight mb-4 text-white" style="font-size:clamp(2.5rem,5vw,4rem)">${isEn ? "Find us\nEverywhere" : "Retrouvez-nous\nPartout"}</h1>
         <p class="max-w-xl mx-auto" style="color:#94a3b8">${isEn ? "Follow our digital adventure on all platforms and stay connected with the MGN CodeWave community." : "Suivez notre aventure digitale sur toutes les plateformes et restez connecté avec la communauté MGN CodeWave."}</p>
       </div>
     </div>
@@ -1709,7 +1709,7 @@ function renderSocial() {
               </div>
               <span class="badge" style="background:${n.bg};color:${n.color};color:color-mix(in srgb, ${n.color} 50%, var(--fg));font-size:10px">${n.badge}</span>
             </div>
-            <h2 class="font-display font-800 text-xl mb-0.5" style="color:var(--fg)">${n.name}</h2>
+            <h2 class="font-display font-700 text-xl mb-0.5" style="color:var(--fg)">${n.name}</h2>
             <p class="text-sm mb-3 font-600" style="color:${n.color};color:color-mix(in srgb, ${n.color} 50%, var(--fg))">${n.handle}</p>
             <p class="text-sm leading-relaxed mb-5" style="color:var(--muted)">${n.desc}</p>
             <div class="flex items-center justify-between pt-4" style="border-top:1px solid var(--border)">
@@ -1730,7 +1730,7 @@ function renderSocial() {
       <!-- Community CTA banner -->
       <div class="card p-8 md:p-12 text-center reveal" style="background:linear-gradient(135deg,#004AAD08,#8b5cf608);border:1px solid rgba(0,74,173,0.15)">
         <div class="text-4xl mb-4">🇬🇦</div>
-        <h2 class="font-display font-800 text-2xl md:text-3xl mb-3" style="color:var(--fg)">${isEn ? "Proud digital ambassador\nof Gabon" : "Ambassadeurs digitaux\nfiers du Gabon"}</h2>
+        <h2 class="font-display font-700 text-2xl md:text-3xl mb-3" style="color:var(--fg)">${isEn ? "Proud digital ambassador\nof Gabon" : "Ambassadeurs digitaux\nfiers du Gabon"}</h2>
         <p class="max-w-lg mx-auto mb-6" style="color:var(--muted)">${isEn ? "Every share, every follow, every recommendation helps us grow and support more Gabonese businesses in their digital transformation." : "Chaque partage, chaque abonnement, chaque recommandation nous aide à grandir et à accompagner davantage d'entreprises gabonaises dans leur transformation digitale."}</p>
         <div class="flex flex-wrap gap-3 justify-center">
           <a href="https://wa.me/24166198918" target="_blank" class="btn-primary">${isEn ? "Contact us on WhatsApp" : "Nous contacter sur WhatsApp"}</a>

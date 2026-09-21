@@ -17,7 +17,7 @@ function renderNav() {
   <nav class="fixed top-3 left-0 right-0 z-50 mx-4 md:mx-auto md:max-w-6xl rounded-none" style="background:${isDark ? "rgba(15,23,42,0.85)" : "rgba(244,243,243,0.85)"}; border:1px solid var(--border);">
     <div class="px-4 md:px-6 py-3 flex items-center justify-between">
       <!-- Logo -->
-      <button onclick="navigate('home')" class="flex items-center gap-2" aria-label="Retour a l'accueil">
+      <button onclick="navigate('home')" class="flex items-center gap-2 shrink-0" aria-label="${state.lang === "en" ? "Back to home page" : "Retour à l'accueil"}">
         <img
           src="./assets/images/logo-180.png"
           alt="Logo M.G.N CodeWave"
@@ -25,15 +25,15 @@ function renderNav() {
           height="40"
           class="h-10 w-auto object-contain"
         />
-        <span class="text-xs font-body font-500 tracking-widest uppercase" style="color:var(--muted);">CodeWave</span>
+        <span class="lg:hidden text-xs font-body font-500 tracking-widest uppercase" style="color:var(--muted);">CodeWave</span>
       </button>
 
       <!-- Desktop Nav -->
-      <div class="hidden md:flex items-center gap-1">
+      <div class="hidden lg:flex items-center gap-1">
         ${pages
           .map(
             ([p, l]) => `
-          <button onclick="navigate('${p}')" class="px-3 py-1.5 text-sm font-display font-600 transition-colors ${state.page === p ? "text-blue-600" : "hover:text-blue-600"}" style="color:${state.page === p ? "var(--primary-fg)" : "var(--muted)"}">
+          <button onclick="navigate('${p}')" class="px-2.5 py-1.5 text-sm font-display font-600 whitespace-nowrap transition-colors ${state.page === p ? "text-blue-600" : "hover:text-blue-600"}" style="color:${state.page === p ? "var(--primary-fg)" : "var(--muted)"}">
             ${l}
           </button>
         `,
@@ -56,12 +56,12 @@ function renderNav() {
         </button>
 
         <!-- CTA Button (desktop) -->
-        <button onclick="navigate('contact')" class="hidden md:flex btn-primary text-sm py-2 px-4">
+        <button onclick="navigate('contact')" class="hidden xl:flex btn-primary text-sm py-2 px-4 whitespace-nowrap">
           ${t.nav.quote}
         </button>
 
         <!-- Mobile menu toggle -->
-        <button id="mobile-menu-toggle" onclick="toggleMobileMenu()" class="md:hidden w-8 h-8 flex items-center justify-center" style="color:var(--fg)" aria-controls="mobile-menu" aria-expanded="${state.mobileMenuOpen}" aria-label="Menu">
+        <button id="mobile-menu-toggle" onclick="toggleMobileMenu()" class="lg:hidden w-8 h-8 flex items-center justify-center" style="color:var(--fg)" aria-controls="mobile-menu" aria-expanded="${state.mobileMenuOpen}" aria-label="Menu">
           <svg aria-hidden="true" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             ${state.mobileMenuOpen ? '<path d="M18 6L6 18M6 6l12 12"/>' : '<path d="M3 12h18M3 6h18M3 18h18"/>'}
           </svg>
@@ -73,7 +73,7 @@ function renderNav() {
     ${
       state.mobileMenuOpen
         ? `
-    <div id="mobile-menu" class="md:hidden border-t px-4 py-3 space-y-1" style="border-color:var(--border);">
+    <div id="mobile-menu" class="lg:hidden border-t px-4 py-3 space-y-1" style="border-color:var(--border);">
       ${pages
         .map(
           ([p, l]) => `
@@ -337,21 +337,21 @@ function renderHome() {
       ${waveSVG()}
       <div class="max-w-6xl mx-auto px-4 md:px-8 w-full">
         <div class="grid md:grid-cols-2 gap-12 items-center">
-          <div>
+          <div class="min-w-0">
             <p class="section-label mb-5 reveal visible">${ht.label}</p>
-            <h1 class="font-display font-800 leading-none mb-6 reveal visible" style="font-size:clamp(3rem,6vw,5.5rem); color:var(--fg); white-space:pre-line">${ht.headline}</h1>
+            <h1 class="font-display font-700 leading-none mb-6 reveal visible" style="font-size:clamp(2.75rem,5.2vw,4.75rem); color:var(--fg); white-space:pre-line">${ht.headline}</h1>
             <p class="text-base md:text-lg leading-relaxed mb-8 max-w-lg reveal" style="color:var(--muted)">${ht.sub}</p>
             <div class="flex flex-wrap gap-3 reveal">
               <button onclick="navigate('contact')" class="btn-primary">${ht.cta1} <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
               <button onclick="navigate('portfolio')" class="btn-outline">${ht.cta2}</button>
             </div>
             <!-- Stats -->
-            <div class="flex gap-8 mt-12 reveal">
-              <div><p class="font-display font-800 text-3xl" style="color:var(--primary-fg)">${ht.stat1_n}</p><p class="text-xs uppercase tracking-wider" style="color:var(--muted)">${ht.stat1_l}</p></div>
+            <div class="flex flex-wrap gap-x-8 gap-y-4 mt-12 reveal">
+              <div><p class="font-display font-700 text-3xl" style="color:var(--primary-fg)">${ht.stat1_n}</p><p class="text-xs uppercase tracking-wider" style="color:var(--muted)">${ht.stat1_l}</p></div>
               <div style="width:1px;background:var(--border)"></div>
-              <div><p class="font-display font-800 text-3xl" style="color:var(--primary-fg)">${ht.stat2_n}</p><p class="text-xs uppercase tracking-wider" style="color:var(--muted)">${ht.stat2_l}</p></div>
+              <div><p class="font-display font-700 text-3xl" style="color:var(--primary-fg)">${ht.stat2_n}</p><p class="text-xs uppercase tracking-wider" style="color:var(--muted)">${ht.stat2_l}</p></div>
               <div style="width:1px;background:var(--border)"></div>
-              <div><p class="font-display font-800 text-3xl" style="color:var(--primary-fg)">${ht.stat3_n}</p><p class="text-xs uppercase tracking-wider" style="color:var(--muted)">${ht.stat3_l}</p></div>
+              <div><p class="font-display font-700 text-3xl" style="color:var(--primary-fg)">${ht.stat3_n}</p><p class="text-xs uppercase tracking-wider" style="color:var(--muted)">${ht.stat3_l}</p></div>
             </div>
           </div>
           <!-- Hero Visual -->
@@ -359,7 +359,7 @@ function renderHome() {
             <div class="relative w-80 h-80">
               <div class="absolute inset-0 rounded-full" style="background:radial-gradient(circle, rgba(0,74,173,0.12) 0%, transparent 70%)"></div>
               <div class="absolute inset-8 flex items-center justify-center">
-                <div class="font-display font-800 text-center" style="font-size:5rem; line-height:1">
+                <div class="font-display font-700 text-center" style="font-size:5rem; line-height:1">
                   <span style="color:rgba(var(--fg),0.15); -webkit-text-stroke:2px rgba(0,74,173,0.3)">M</span><span style="color:var(--primary-fg); font-size:6rem">G</span><span style="color:rgba(var(--fg),0.15); -webkit-text-stroke:2px rgba(0,74,173,0.3)">N</span>
                 </div>
               </div>
@@ -390,7 +390,7 @@ function renderHome() {
       <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
         <div>
           <p class="section-label mb-3 reveal">${st.label}</p>
-          <h2 class="font-display font-800 leading-tight reveal" style="font-size:clamp(2rem,4vw,3rem); color:var(--fg); white-space:pre-line">${st.title}</h2>
+          <h2 class="font-display font-700 leading-tight reveal" style="font-size:clamp(2rem,4vw,3rem); color:var(--fg); white-space:pre-line">${st.title}</h2>
         </div>
         <button onclick="navigate('services')" class="btn-outline reveal">${st.cta} →</button>
       </div>
@@ -419,7 +419,7 @@ function renderHome() {
         <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
           <div>
             <p class="section-label mb-3 reveal">${pt.label}</p>
-            <h2 class="font-display font-800 leading-tight reveal" style="font-size:clamp(2rem,4vw,3rem); color:var(--fg); white-space:pre-line">${pt.title}</h2>
+            <h2 class="font-display font-700 leading-tight reveal" style="font-size:clamp(2rem,4vw,3rem); color:var(--fg); white-space:pre-line">${pt.title}</h2>
           </div>
           <button onclick="navigate('portfolio')" class="btn-outline reveal">${state.lang === "fr" ? "Voir tout →" : "View all →"}</button>
         </div>
@@ -430,7 +430,7 @@ function renderHome() {
             <div onclick="navigateToPortfolioDetail(${p.id})" class="card block overflow-hidden reveal cursor-pointer" style="transition-delay:${i * 60}ms">
               <div class="h-40 flex items-center justify-center relative overflow-hidden" style="background:${p.color}18">
                 <div class="absolute inset-0 opacity-5" style="background-image:repeating-linear-gradient(45deg,${p.color} 0,${p.color} 1px,transparent 0,transparent 50%);background-size:8px 8px"></div>
-                <span class="font-display font-800 text-4xl opacity-30" style="color:${p.color};color:color-mix(in srgb, ${p.color} 50%, var(--fg))">${p.title.substring(0, 1)}</span>
+                <span class="font-display font-700 text-4xl opacity-30" style="color:${p.color};color:color-mix(in srgb, ${p.color} 50%, var(--fg))">${p.title.substring(0, 1)}</span>
                 <div class="absolute bottom-3 left-3">
                   <span class="badge" style="background:${p.color}22;color:${p.color};color:color-mix(in srgb, ${p.color} 50%, var(--fg))">${p.category}</span>
                 </div>
@@ -455,7 +455,7 @@ function renderHome() {
     <section class="py-20 text-center relative overflow-hidden" style="background:linear-gradient(135deg,#004AAD,#0062E6)">
       ${waveSVG()}
       <div class="relative max-w-2xl mx-auto px-4">
-        <h2 class="font-display font-800 text-white mb-4 reveal" style="font-size:clamp(1.8rem,4vw,2.8rem)">${state.lang === "fr" ? "Prêt à transformer votre présence digitale ?" : "Ready to transform your digital presence?"}</h2>
+        <h2 class="font-display font-700 text-white mb-4 reveal" style="font-size:clamp(1.8rem,4vw,2.8rem)">${state.lang === "fr" ? "Prêt à transformer votre présence digitale ?" : "Ready to transform your digital presence?"}</h2>
         <p class="text-blue-100 mb-8 reveal">${state.lang === "fr" ? "Discutons de votre projet — réponse sous 24h garantie." : "Let's discuss your project — response within 24h guaranteed."}</p>
         <div class="flex flex-wrap gap-3 justify-center reveal">
           <button onclick="navigate('contact')" class="btn-primary" style="background:white;color:#004AAD;border-color:white">${state.lang === "fr" ? "Demander un Devis Gratuit" : "Request a Free Quote"}</button>
@@ -489,7 +489,7 @@ function renderServices() {
     <div class="max-w-6xl mx-auto px-4 md:px-8">
       <div class="mb-16">
         <p class="section-label mb-3">${st.label}</p>
-        <h1 class="font-display font-800 leading-tight mb-4" style="font-size:clamp(2.5rem,5vw,4rem); color:var(--fg); white-space:pre-line">${st.title}</h1>
+        <h1 class="font-display font-700 leading-tight mb-4" style="font-size:clamp(2.5rem,5vw,4rem); color:var(--fg); white-space:pre-line">${st.title}</h1>
         <p class="max-w-xl" style="color:var(--muted)">${st.sub}</p>
       </div>
 
@@ -517,7 +517,7 @@ function renderServices() {
       <!-- Social Media Packages -->
       <div class="mb-16">
         <p class="section-label mb-3">${soc.label}</p>
-        <h2 class="font-display font-800 leading-tight mb-3 reveal" style="font-size:clamp(1.8rem,3.5vw,2.8rem); color:var(--fg); white-space:pre-line">${soc.title}</h2>
+        <h2 class="font-display font-700 leading-tight mb-3 reveal" style="font-size:clamp(1.8rem,3.5vw,2.8rem); color:var(--fg); white-space:pre-line">${soc.title}</h2>
         <p class="mb-10 reveal" style="color:var(--muted)">${soc.sub}</p>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           ${soc.packages
@@ -530,7 +530,7 @@ function renderServices() {
                 ${pkg.items.map((item) => `<li class="flex items-center gap-2 text-sm" style="color:var(--muted)"><span aria-hidden="true" style="color:#10b981">✓</span>${item}</li>`).join("")}
               </ul>
               <div style="border-top:1px solid var(--border)" class="pt-4">
-                <span class="font-display font-800 text-3xl" style="color:${pkg.highlight ? "var(--primary-fg)" : "var(--fg)"}">${pkg.price}</span>
+                <span class="font-display font-700 text-3xl" style="color:${pkg.highlight ? "var(--primary-fg)" : "var(--fg)"}">${pkg.price}</span>
                 <span class="text-sm" style="color:var(--muted)"> XAF ${pkg.period}</span>
               </div>
               <button onclick="contactSocialPackage('${pkg.name}', '${pkg.price}', '${pkg.period}')" class="btn-primary w-full mt-4 justify-center text-sm py-2" ${pkg.highlight ? "" : 'style="background:transparent;color:var(--primary-fg);border-color:var(--primary-fg)"'}>
@@ -559,7 +559,7 @@ function renderPricingGrid() {
   return `
       <section class="mb-12" aria-labelledby="pricing-grid-title">
         <p class="section-label mb-3">${lang === "fr" ? "Tarifs" : "Pricing"}</p>
-        <h2 id="pricing-grid-title" class="font-display font-800 leading-tight mb-3" style="font-size:clamp(1.8rem,3.5vw,2.8rem); color:var(--fg)">${lang === "fr" ? "Grille tarifaire complète" : "Full price list"}</h2>
+        <h2 id="pricing-grid-title" class="font-display font-700 leading-tight mb-3" style="font-size:clamp(1.8rem,3.5vw,2.8rem); color:var(--fg)">${lang === "fr" ? "Grille tarifaire complète" : "Full price list"}</h2>
         <p class="mb-8" style="color:var(--muted)">${lang === "fr" ? "Prix affichés en francs CFA (XAF). Devis gratuit sous 24 h, paiement Mobile Money accepté." : "Prices in CFA francs (XAF). Free quote within 24h, Mobile Money accepted."}</p>
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
           ${pricingGrid
@@ -625,17 +625,17 @@ function renderPortfolio() {
     <div class="max-w-6xl mx-auto px-4 md:px-8">
       <div class="text-center mb-12">
         <p class="section-label mb-3">${t.label}</p>
-        <h1 class="font-display font-800 leading-tight mb-4" style="font-size:clamp(2.5rem,5vw,4rem); color:var(--fg); white-space:pre-line">${t.title}</h1>
+        <h1 class="font-display font-700 leading-tight mb-4" style="font-size:clamp(2.5rem,5vw,4rem); color:var(--fg); white-space:pre-line">${t.title}</h1>
         <p class="max-w-xl mx-auto" style="color:var(--muted)">${t.sub}</p>
       </div>
 
       <!-- Stats bar -->
       <div class="flex justify-center gap-8 mb-10 p-5 card">
-        <div class="text-center"><p class="font-display font-800 text-2xl" style="color:var(--primary-fg)">50+</p><p class="text-xs uppercase tracking-wider" style="color:var(--muted)">Projets</p></div>
+        <div class="text-center"><p class="font-display font-700 text-2xl" style="color:var(--primary-fg)">50+</p><p class="text-xs uppercase tracking-wider" style="color:var(--muted)">Projets</p></div>
         <div style="width:1px;background:var(--border)"></div>
-        <div class="text-center"><p class="font-display font-800 text-2xl" style="color:var(--primary-fg)">20+</p><p class="text-xs uppercase tracking-wider" style="color:var(--muted)">${state.lang === "fr" ? "Clients" : "Clients"}</p></div>
+        <div class="text-center"><p class="font-display font-700 text-2xl" style="color:var(--primary-fg)">20+</p><p class="text-xs uppercase tracking-wider" style="color:var(--muted)">${state.lang === "fr" ? "Clients" : "Clients"}</p></div>
         <div style="width:1px;background:var(--border)"></div>
-        <div class="text-center"><p class="font-display font-800 text-2xl" style="color:var(--primary-fg)">100%</p><p class="text-xs uppercase tracking-wider" style="color:var(--muted)">${state.lang === "fr" ? "Satisfaction" : "Satisfaction"}</p></div>
+        <div class="text-center"><p class="font-display font-700 text-2xl" style="color:var(--primary-fg)">100%</p><p class="text-xs uppercase tracking-wider" style="color:var(--muted)">${state.lang === "fr" ? "Satisfaction" : "Satisfaction"}</p></div>
       </div>
 
       <!-- Filters -->
@@ -666,7 +666,7 @@ function renderPortfolio() {
                 <path d="M-50,100 C50,50 100,150 200,100 C300,50 350,150 450,100" fill="none" stroke="${p.color}" stroke-width="1.5"/>
                 <path d="M-50,120 C50,70 100,170 200,120 C300,70 350,170 450,120" fill="none" stroke="${p.color}" stroke-width="1"/>
               </svg>
-              <span aria-hidden="true" class="relative font-display font-800 text-5xl" style="color:${p.color};color:color-mix(in srgb, ${p.color} 50%, var(--fg)); opacity:0.25">${p.title.substring(0, 2)}</span>
+              <span aria-hidden="true" class="relative font-display font-700 text-5xl" style="color:${p.color};color:color-mix(in srgb, ${p.color} 50%, var(--fg)); opacity:0.25">${p.title.substring(0, 2)}</span>
               <!-- Hover overlay -->
               <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity" style="background:rgba(15,23,42,0.85);background:color-mix(in srgb, ${p.color} 35%, #0f172a)">
                 <span class="text-white font-display font-700 text-sm">${state.lang === "fr" ? "Voir le détail →" : "View details →"}</span>
@@ -692,7 +692,7 @@ function renderPortfolio() {
 
       <!-- CTA -->
       <div class="mt-16 p-8 text-center" style="background:linear-gradient(135deg,#004AAD,#0062E6)">
-        <h3 class="font-display font-800 text-white text-2xl mb-3">${state.lang === "fr" ? "Votre Projet Sera Le Prochain !" : "Your Project Is Next!"}</h3>
+        <h3 class="font-display font-700 text-white text-2xl mb-3">${state.lang === "fr" ? "Votre Projet Sera Le Prochain !" : "Your Project Is Next!"}</h3>
         <p class="text-blue-100 mb-6">${state.lang === "fr" ? "Discutons de votre idée et créons ensemble quelque chose d'extraordinaire." : "Let's discuss your idea and create something extraordinary together."}</p>
         <button onclick="navigate('contact')" class="btn-primary" style="background:white;color:#004AAD;border-color:white">${t.cta}</button>
       </div>
@@ -727,7 +727,7 @@ function renderBlog() {
     <div class="max-w-6xl mx-auto px-4 md:px-8">
       <div class="mb-12">
         <p class="section-label mb-3">${t.label}</p>
-        <h1 class="font-display font-800 leading-tight mb-4" style="font-size:clamp(2.5rem,5vw,4rem); color:var(--fg); white-space:pre-line">${t.title}</h1>
+        <h1 class="font-display font-700 leading-tight mb-4" style="font-size:clamp(2.5rem,5vw,4rem); color:var(--fg); white-space:pre-line">${t.title}</h1>
         <p class="max-w-xl" style="color:var(--muted)">${t.sub}</p>
       </div>
 
@@ -736,7 +736,7 @@ function renderBlog() {
         <div class="md:flex">
           <div class="md:w-2/5 h-56 md:h-auto relative overflow-hidden flex items-center justify-center" style="background:linear-gradient(135deg,#004AAD,#0062E6)">
             ${waveSVG()}
-            <span class="relative font-display font-800 text-6xl text-white opacity-20">✍️</span>
+            <span class="relative font-display font-700 text-6xl text-white opacity-20">✍️</span>
             <div class="absolute top-4 left-4">
               <span class="badge" style="background:white;color:#004AAD">${state.lang === "fr" ? "⭐ Article à la Une" : "⭐ Featured"}</span>
             </div>
@@ -817,7 +817,7 @@ function renderAbout() {
         <!-- Left: Text -->
         <div>
           <p class="section-label mb-3">${t.label}</p>
-          <h1 class="font-display font-800 leading-tight mb-6" style="font-size:clamp(2rem,4vw,3.5rem); color:var(--fg); white-space:pre-line">${t.title}</h1>
+          <h1 class="font-display font-700 leading-tight mb-6" style="font-size:clamp(2rem,4vw,3.5rem); color:var(--fg); white-space:pre-line">${t.title}</h1>
           <p class="leading-relaxed mb-8" style="color:var(--muted)">${t.desc}</p>
           <div class="grid grid-cols-2 gap-3 mb-8">
             ${t.values
@@ -853,7 +853,7 @@ function renderAbout() {
               </div>
               <div>
                 <p class="section-label mb-2">${t.visionary_label}</p>
-                <h2 class="font-display font-800 text-2xl mb-3" style="color:var(--fg)">${t.visionary_title}</h2>
+                <h2 class="font-display font-700 text-2xl mb-3" style="color:var(--fg)">${t.visionary_title}</h2>
                 <p class="leading-relaxed" style="color:var(--muted)">${t.visionary_desc}</p>
               </div>
             </div>
@@ -899,7 +899,7 @@ function renderAbout() {
             .map(
               ([year, desc, bg]) => `
             <div class="flex gap-4 items-start">
-              <div class="w-16 text-right flex-shrink-0"><span class="font-display font-800 text-sm" style="color:var(--primary-fg)">${year}</span></div>
+              <div class="w-16 text-right flex-shrink-0"><span class="font-display font-700 text-sm" style="color:var(--primary-fg)">${year}</span></div>
               <div class="w-3 h-3 mt-1 flex-shrink-0 rounded-full ${bg}" style="background:#004AAD"></div>
               <p class="text-sm" style="color:var(--muted)">${desc}</p>
             </div>
@@ -925,7 +925,7 @@ function renderPartnership() {
       <!-- Hero Section -->
       <div class="mb-20 text-center">
         <p class="section-label mb-3">${t.label}</p>
-        <h1 class="font-display font-800 leading-tight mb-6" style="font-size:clamp(2rem,5vw,4rem); color:var(--fg); white-space:pre-line">${t.title}</h1>
+        <h1 class="font-display font-700 leading-tight mb-6" style="font-size:clamp(2rem,5vw,4rem); color:var(--fg); white-space:pre-line">${t.title}</h1>
         <p class="text-lg max-w-3xl mx-auto mb-10" style="color:var(--muted)">${t.sub}</p>
 
         <!-- Main CTA Button -->
@@ -938,7 +938,7 @@ function renderPartnership() {
 
       <!-- Why Join Section -->
       <div class="mb-20">
-        <h2 class="font-display font-800 text-2xl md:text-3xl mb-12 text-center" style="color:var(--fg)">${t.section1.title}</h2>
+        <h2 class="font-display font-700 text-2xl md:text-3xl mb-12 text-center" style="color:var(--fg)">${t.section1.title}</h2>
         <div class="grid md:grid-cols-4 gap-6">
           ${t.section1.items
             .map(
@@ -956,7 +956,7 @@ function renderPartnership() {
 
       <!-- Profiles Section -->
       <div class="mb-20" style="background:linear-gradient(135deg, var(--card) 0%, rgba(0,74,173,0.04) 100%); border:1px solid var(--border); padding:3rem; border-radius:8px;">
-        <h2 class="font-display font-800 text-2xl md:text-3xl mb-4" style="color:var(--fg)">${t.section2.title}</h2>
+        <h2 class="font-display font-700 text-2xl md:text-3xl mb-4" style="color:var(--fg)">${t.section2.title}</h2>
         <p class="mb-8 text-lg" style="color:var(--muted)">${t.section2.intro}</p>
 
         <div class="grid md:grid-cols-2 gap-4">
@@ -975,7 +975,7 @@ function renderPartnership() {
 
       <!-- Process Section -->
       <div class="mb-20">
-        <h2 class="font-display font-800 text-2xl md:text-3xl mb-12 text-center" style="color:var(--fg)">${t.section3.title}</h2>
+        <h2 class="font-display font-700 text-2xl md:text-3xl mb-12 text-center" style="color:var(--fg)">${t.section3.title}</h2>
 
         <div class="grid md:grid-cols-4 gap-6 relative">
           <!-- Connector line (hidden on mobile) -->
@@ -986,7 +986,7 @@ function renderPartnership() {
               (step, idx) => `
             <div class="relative reveal">
               <div class="flex flex-col items-center">
-                <div class="w-16 h-16 flex items-center justify-center font-display font-800 text-xl text-white mb-4 relative z-10" style="background:#004AAD; border-radius:50%; border:4px solid ${isDark ? "#1e293b" : "#f4f3f3"}">
+                <div class="w-16 h-16 flex items-center justify-center font-display font-700 text-xl text-white mb-4 relative z-10" style="background:#004AAD; border-radius:50%; border:4px solid ${isDark ? "#1e293b" : "#f4f3f3"}">
                   ${step.num}
                 </div>
                 <div class="card p-6 text-center">
@@ -1003,7 +1003,7 @@ function renderPartnership() {
 
       <!-- Final CTA -->
       <div class="text-center card p-10" style="background:linear-gradient(135deg, #004AAD 0%, #0062E6 100%); color:white; border:none;">
-        <h3 class="font-display font-800 text-2xl mb-4">Rejoignez notre équipe d'experts</h3>
+        <h3 class="font-display font-700 text-2xl mb-4">Rejoignez notre équipe d'experts</h3>
         <p class="mb-6 text-white/90">Ensemble, créons l'impact numérique du futur au Gabon.</p>
         <a href="https://docs.google.com/forms/d/1viH1bGb7YTWTVj-i2xGllViKp3JVFsvm9FJEGXAdSZU/edit#responses" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 font-display font-700 text-lg px-8 py-3" style="background:white;color:#004AAD; border-radius:4px; text-decoration:none; transition:transform 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='none'">
           Candidater Maintenant 🚀
@@ -1024,7 +1024,7 @@ function renderContact() {
         <!-- Left: Info -->
         <div>
           <p class="section-label mb-3">${t.label}</p>
-          <h1 class="font-display font-800 leading-tight mb-4" style="font-size:clamp(2rem,4vw,3.5rem); color:var(--fg); white-space:pre-line">${t.title}</h1>
+          <h1 class="font-display font-700 leading-tight mb-4" style="font-size:clamp(2rem,4vw,3.5rem); color:var(--fg); white-space:pre-line">${t.title}</h1>
           <p class="mb-10" style="color:var(--muted)">${t.sub}</p>
 
           <div class="space-y-5 mb-10">

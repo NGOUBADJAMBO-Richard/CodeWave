@@ -1,4 +1,5 @@
-* { font-family: 'DM Sans', sans-serif; }
+/* Charte : Space Grotesk pour le corps et l'interface, Syne pour les titres. */
+* { font-family: 'Space Grotesk', 'DM Sans', system-ui, sans-serif; }
     h1, h2, h3, h4, .font-display { font-family: 'Syne', sans-serif; }
     
     :root {
@@ -41,20 +42,24 @@
     nav { backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
 
     /* Cards */
+    /* Charte : bordure supérieure bleue de 3 px sur les cartes. */
     .card {
       background: var(--card);
       border: 1px solid var(--border);
+      border-top: 3px solid var(--primary);
       transition: transform 0.2s, box-shadow 0.2s;
     }
-    .card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,74,173,0.12); }
+    .card:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(0,74,173,0.12); }
 
     /* Buttons */
     .btn-primary {
       background: #004AAD;
       color: white;
-      padding: 12px 28px;
+      padding: 12px 24px;
       font-family: 'Syne', sans-serif;
-      font-weight: 600;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
       border-radius: 0;
       transition: all 0.2s;
       display: inline-flex; align-items: center; gap: 8px;
@@ -66,9 +71,11 @@
     .btn-outline {
       border: 2px solid var(--border);
       color: var(--fg);
-      padding: 12px 28px;
+      padding: 12px 24px;
       font-family: 'Syne', sans-serif;
-      font-weight: 600;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
       border-radius: 0;
       transition: all 0.2s;
       background: transparent;
