@@ -5,6 +5,7 @@ function renderNav() {
   const pages = [
     ["home", t.nav.home],
     ["services", t.nav.services],
+    ["formations", t.nav.formations],
     ["portfolio", t.nav.portfolio],
     ["blog", t.nav.blog],
     ["careers", state.lang === "fr" ? "Carrières" : "Careers"],
@@ -31,7 +32,7 @@ function renderNav() {
         ${pages
           .map(
             ([p, l]) => `
-          <button onclick="navigate('${p}')" class="px-3 py-1.5 text-sm font-display font-600 transition-colors ${state.page === p ? "text-blue-600" : "hover:text-blue-600"}" style="color:${state.page === p ? "#1a56db" : "var(--muted)"}">
+          <button onclick="navigate('${p}')" class="px-3 py-1.5 text-sm font-display font-600 transition-colors ${state.page === p ? "text-blue-600" : "hover:text-blue-600"}" style="color:${state.page === p ? "var(--primary-fg)" : "var(--muted)"}">
             ${l}
           </button>
         `,
@@ -43,9 +44,9 @@ function renderNav() {
       <div class="flex items-center gap-2 md:gap-3">
         <!-- Lang Toggle -->
         <div class="flex items-center gap-1 text-xs" style="color:var(--muted)">
-          <button onclick="setLang('fr')" class="lang-btn ${state.lang === "fr" ? "active" : ""}" style="color:${state.lang === "fr" ? "#1a56db" : "var(--muted)"}">FR</button>
+          <button onclick="setLang('fr')" class="lang-btn ${state.lang === "fr" ? "active" : ""}" style="color:${state.lang === "fr" ? "var(--primary-fg)" : "var(--muted)"}">FR</button>
           <span style="color:var(--border)">|</span>
-          <button onclick="setLang('en')" class="lang-btn ${state.lang === "en" ? "active" : ""}" style="color:${state.lang === "en" ? "#1a56db" : "var(--muted)"}">EN</button>
+          <button onclick="setLang('en')" class="lang-btn ${state.lang === "en" ? "active" : ""}" style="color:${state.lang === "en" ? "var(--primary-fg)" : "var(--muted)"}">EN</button>
         </div>
 
         <!-- Theme Toggle -->
@@ -75,7 +76,7 @@ function renderNav() {
       ${pages
         .map(
           ([p, l]) => `
-        <button onclick="navigate('${p}')" class="w-full text-left px-3 py-2 text-sm font-display font-600 block" style="color:${state.page === p ? "#1a56db" : "var(--fg)"}">
+        <button onclick="navigate('${p}')" class="w-full text-left px-3 py-2 text-sm font-display font-600 block" style="color:${state.page === p ? "var(--primary-fg)" : "var(--fg)"}">
           ${l}
         </button>
       `,
@@ -138,6 +139,7 @@ function renderFooter() {
   const navLinks = [
     { label: isEn ? "Home" : "Accueil", page: "home" },
     { label: isEn ? "Services" : "Services", page: "services" },
+    { label: isEn ? "Training" : "Formations", page: "formations" },
     { label: "Portfolio", page: "portfolio" },
     { label: "Blog", page: "blog" },
     { label: isEn ? "Careers" : "Carrières", page: "careers" },
@@ -165,18 +167,18 @@ function renderFooter() {
   <footer style="background:#0a0f1e; color:#94a3b8; margin-top:6rem; position:relative; overflow:hidden;">
 
     <!-- Animated wave top border -->
-    <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#1a56db,#3b82f6,#8b5cf6,#1a56db);background-size:200% 100%;animation:footerGrad 4s linear infinite;"></div>
+    <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#004AAD,#0062E6,#8b5cf6,#004AAD);background-size:200% 100%;animation:footerGrad 4s linear infinite;"></div>
     <style>
       @keyframes footerGrad{0%{background-position:0% 0}100%{background-position:200% 0}}
       .footer-link { color:#64748b; transition:color 0.2s; font-size:13px; text-decoration:none; display:block; padding:3px 0; background:none; border:none; cursor:pointer; text-align:left; }
-      .footer-link:hover { color:#3b82f6; }
+      .footer-link:hover { color:#60A5FA; }
       .social-icon { width:38px; height:38px; display:flex; align-items:center; justify-content:center; border:1px solid rgba(255,255,255,0.08); color:#64748b; transition:all 0.2s; text-decoration:none; }
-      .social-icon:hover { border-color:rgba(59,130,246,0.5); color:white; background:rgba(59,130,246,0.12); transform:translateY(-2px); }
+      .social-icon:hover { border-color:rgba(0,98,230,0.5); color:white; background:rgba(0,98,230,0.12); transform:translateY(-2px); }
       .footer-col-title { font-family:'Syne',sans-serif; font-weight:700; font-size:11px; letter-spacing:0.15em; text-transform:uppercase; color:#e2e8f0; margin-bottom:18px; }
     </style>
 
     <!-- Background grid texture -->
-    <div style="position:absolute;inset:0;opacity:0.025;background-image:repeating-linear-gradient(0deg,#3b82f6 0,#3b82f6 1px,transparent 0,transparent 60px),repeating-linear-gradient(90deg,#3b82f6 0,#3b82f6 1px,transparent 0,transparent 60px);pointer-events:none;"></div>
+    <div style="position:absolute;inset:0;opacity:0.025;background-image:repeating-linear-gradient(0deg,#0062E6 0,#0062E6 1px,transparent 0,transparent 60px),repeating-linear-gradient(90deg,#0062E6 0,#0062E6 1px,transparent 0,transparent 60px);pointer-events:none;"></div>
 
     <!-- CTA Banner -->
     <div style="position:relative;border-bottom:1px solid rgba(255,255,255,0.05);padding:48px 0;">
@@ -189,7 +191,7 @@ function renderFooter() {
             <p style="color:#64748b;font-size:14px;">${isEn ? "Free quote in 24h — payment in 2 or 3 instalments available." : "Devis gratuit en 24h — paiement en 2 ou 3 fois disponible."}</p>
           </div>
           <div style="display:flex;gap:12px;flex-wrap:wrap;">
-            <button onclick="navigate('contact')" style="background:#1a56db;color:white;padding:12px 28px;font-family:'Syne',sans-serif;font-weight:700;font-size:13px;border:none;cursor:pointer;letter-spacing:0.05em;white-space:nowrap;transition:background 0.2s;" onmouseover="this.style.background='#1e40af'" onmouseout="this.style.background='#1a56db'">
+            <button onclick="navigate('contact')" style="background:#004AAD;color:white;padding:12px 28px;font-family:'Syne',sans-serif;font-weight:700;font-size:13px;border:none;cursor:pointer;letter-spacing:0.05em;white-space:nowrap;transition:background 0.2s;" onmouseover="this.style.background='#0062E6'" onmouseout="this.style.background='#004AAD'">
               ${isEn ? "Request a Quote →" : "Demander un Devis →"}
             </button>
             <a href="https://wa.me/24166198918?text=Bonjour,%20je%20souhaite%20un%20devis%20MGN%20CodeWave" target="_blank" style="background:rgba(37,211,102,0.1);color:#25D366;padding:12px 28px;font-family:'Syne',sans-serif;font-weight:700;font-size:13px;border:1px solid rgba(37,211,102,0.25);cursor:pointer;letter-spacing:0.05em;white-space:nowrap;text-decoration:none;display:flex;align-items:center;gap:8px;transition:background 0.2s;" onmouseover="this.style.background='rgba(37,211,102,0.18)'" onmouseout="this.style.background='rgba(37,211,102,0.1)'">
@@ -221,21 +223,21 @@ function renderFooter() {
 
             <!-- Contact info -->
             <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:28px;">
-              <a href="tel:+24166198918" style="display:flex;align-items:center;gap:10px;color:#64748b;text-decoration:none;font-size:13px;transition:color 0.2s;" onmouseover="this.style.color='#3b82f6'" onmouseout="this.style.color='#64748b'">
-                <span style="width:28px;height:28px;background:rgba(59,130,246,0.08);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-                  <svg width="13" height="13" fill="none" stroke="#3b82f6" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>
+              <a href="tel:+24166198918" style="display:flex;align-items:center;gap:10px;color:#64748b;text-decoration:none;font-size:13px;transition:color 0.2s;" onmouseover="this.style.color='#60A5FA'" onmouseout="this.style.color='#64748b'">
+                <span style="width:28px;height:28px;background:rgba(0,98,230,0.08);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                  <svg width="13" height="13" fill="none" stroke="#60A5FA" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>
                 </span>
                 +241 66 19 89 18
               </a>
-              <a href="mailto:mgncodewave18@gmail.com" style="display:flex;align-items:center;gap:10px;color:#64748b;text-decoration:none;font-size:13px;transition:color 0.2s;" onmouseover="this.style.color='#3b82f6'" onmouseout="this.style.color='#64748b'">
-                <span style="width:28px;height:28px;background:rgba(59,130,246,0.08);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-                  <svg width="13" height="13" fill="none" stroke="#3b82f6" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <a href="mailto:mgncodewave18@gmail.com" style="display:flex;align-items:center;gap:10px;color:#64748b;text-decoration:none;font-size:13px;transition:color 0.2s;" onmouseover="this.style.color='#60A5FA'" onmouseout="this.style.color='#64748b'">
+                <span style="width:28px;height:28px;background:rgba(0,98,230,0.08);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                  <svg width="13" height="13" fill="none" stroke="#60A5FA" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                 </span>
                 mgncodewave18@gmail.com
               </a>
               <div style="display:flex;align-items:center;gap:10px;color:#64748b;font-size:13px;">
-                <span style="width:28px;height:28px;background:rgba(59,130,246,0.08);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-                  <svg width="13" height="13" fill="none" stroke="#3b82f6" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span style="width:28px;height:28px;background:rgba(0,98,230,0.08);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                  <svg width="13" height="13" fill="none" stroke="#60A5FA" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
                 </span>
                 Libreville, Gabon 🇬🇦
               </div>
@@ -283,8 +285,8 @@ function renderFooter() {
             <div style="display:flex;gap:0;">
               <input type="email" placeholder="${isEn ? "Your email" : "Votre email"}"
                 style="flex:1;padding:9px 12px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);color:#e2e8f0;font-size:12px;outline:none;min-width:0;"
-                onfocus="this.style.borderColor='rgba(59,130,246,0.5)'" onblur="this.style.borderColor='rgba(255,255,255,0.08)'">
-              <button style="padding:9px 14px;background:#1a56db;border:none;cursor:pointer;color:white;font-size:12px;transition:background 0.2s;" onmouseover="this.style.background='#1e40af'" onmouseout="this.style.background='#1a56db'">
+                onfocus="this.style.borderColor='rgba(0,98,230,0.5)'" onblur="this.style.borderColor='rgba(255,255,255,0.08)'">
+              <button style="padding:9px 14px;background:#004AAD;border:none;cursor:pointer;color:white;font-size:12px;transition:background 0.2s;" onmouseover="this.style.background='#0062E6'" onmouseout="this.style.background='#004AAD'">
                 <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </button>
             </div>
@@ -338,20 +340,20 @@ function renderHome() {
             </div>
             <!-- Stats -->
             <div class="flex gap-8 mt-12 reveal">
-              <div><p class="font-display font-800 text-3xl" style="color:#1a56db">${ht.stat1_n}</p><p class="text-xs uppercase tracking-wider" style="color:var(--muted)">${ht.stat1_l}</p></div>
+              <div><p class="font-display font-800 text-3xl" style="color:var(--primary-fg)">${ht.stat1_n}</p><p class="text-xs uppercase tracking-wider" style="color:var(--muted)">${ht.stat1_l}</p></div>
               <div style="width:1px;background:var(--border)"></div>
-              <div><p class="font-display font-800 text-3xl" style="color:#1a56db">${ht.stat2_n}</p><p class="text-xs uppercase tracking-wider" style="color:var(--muted)">${ht.stat2_l}</p></div>
+              <div><p class="font-display font-800 text-3xl" style="color:var(--primary-fg)">${ht.stat2_n}</p><p class="text-xs uppercase tracking-wider" style="color:var(--muted)">${ht.stat2_l}</p></div>
               <div style="width:1px;background:var(--border)"></div>
-              <div><p class="font-display font-800 text-3xl" style="color:#1a56db">${ht.stat3_n}</p><p class="text-xs uppercase tracking-wider" style="color:var(--muted)">${ht.stat3_l}</p></div>
+              <div><p class="font-display font-800 text-3xl" style="color:var(--primary-fg)">${ht.stat3_n}</p><p class="text-xs uppercase tracking-wider" style="color:var(--muted)">${ht.stat3_l}</p></div>
             </div>
           </div>
           <!-- Hero Visual -->
           <div class="hidden md:flex items-center justify-center relative reveal">
             <div class="relative w-80 h-80">
-              <div class="absolute inset-0 rounded-full" style="background:radial-gradient(circle, rgba(26,86,219,0.12) 0%, transparent 70%)"></div>
+              <div class="absolute inset-0 rounded-full" style="background:radial-gradient(circle, rgba(0,74,173,0.12) 0%, transparent 70%)"></div>
               <div class="absolute inset-8 flex items-center justify-center">
                 <div class="font-display font-800 text-center" style="font-size:5rem; line-height:1">
-                  <span style="color:rgba(var(--fg),0.15); -webkit-text-stroke:2px rgba(26,86,219,0.3)">M</span><span style="color:#1a56db; font-size:6rem">G</span><span style="color:rgba(var(--fg),0.15); -webkit-text-stroke:2px rgba(26,86,219,0.3)">N</span>
+                  <span style="color:rgba(var(--fg),0.15); -webkit-text-stroke:2px rgba(0,74,173,0.3)">M</span><span style="color:var(--primary-fg); font-size:6rem">G</span><span style="color:rgba(var(--fg),0.15); -webkit-text-stroke:2px rgba(0,74,173,0.3)">N</span>
                 </div>
               </div>
               <!-- Floating cards -->
@@ -396,7 +398,7 @@ function renderHome() {
             </div>
             <h3 class="font-display font-700 text-lg mb-2" style="color:var(--fg)">${s.title}</h3>
             <p class="text-sm leading-relaxed mb-4" style="color:var(--muted)">${s.desc}</p>
-            <p class="font-display font-700 text-sm" style="color:#1a56db">${s.price}</p>
+            <p class="font-display font-700 text-sm" style="color:var(--primary-fg)">${s.price}</p>
           </div>
         `,
           )
@@ -443,13 +445,13 @@ function renderHome() {
     </section>
 
     <!-- CTA BANNER -->
-    <section class="py-20 text-center relative overflow-hidden" style="background:linear-gradient(135deg,#1a56db,#1e40af)">
+    <section class="py-20 text-center relative overflow-hidden" style="background:linear-gradient(135deg,#004AAD,#0062E6)">
       ${waveSVG()}
       <div class="relative max-w-2xl mx-auto px-4">
         <h2 class="font-display font-800 text-white mb-4 reveal" style="font-size:clamp(1.8rem,4vw,2.8rem)">${state.lang === "fr" ? "Prêt à transformer votre présence digitale ?" : "Ready to transform your digital presence?"}</h2>
         <p class="text-blue-100 mb-8 reveal">${state.lang === "fr" ? "Discutons de votre projet — réponse sous 24h garantie." : "Let's discuss your project — response within 24h guaranteed."}</p>
         <div class="flex flex-wrap gap-3 justify-center reveal">
-          <button onclick="navigate('contact')" class="btn-primary" style="background:white;color:#1a56db;border-color:white">${state.lang === "fr" ? "Demander un Devis Gratuit" : "Request a Free Quote"}</button>
+          <button onclick="navigate('contact')" class="btn-primary" style="background:white;color:#004AAD;border-color:white">${state.lang === "fr" ? "Demander un Devis Gratuit" : "Request a Free Quote"}</button>
           <a href="https://wa.me/24166198918" target="_blank" class="btn-outline" style="border-color:rgba(255,255,255,0.5);color:white">WhatsApp →</a>
         </div>
       </div>
@@ -491,13 +493,13 @@ function renderServices() {
             (s, i) => `
           <div class="card p-7 reveal" style="transition-delay:${i * 60}ms">
             <div class="flex items-start justify-between mb-5">
-              <div class="w-12 h-12 flex items-center justify-center text-2xl" style="background:rgba(26,86,219,0.08)">${s.icon}</div>
+              <div class="w-12 h-12 flex items-center justify-center text-2xl" style="background:rgba(0,74,173,0.08)">${s.icon}</div>
               ${s.tag ? `<span class="badge badge-blue">${s.tag}</span>` : ""}
             </div>
             <h3 class="font-display font-700 text-xl mb-3" style="color:var(--fg)">${s.title}</h3>
             <p class="text-sm leading-relaxed mb-5" style="color:var(--muted)">${s.desc}</p>
             <div class="pt-4" style="border-top:1px solid var(--border)">
-              <p class="font-display font-700" style="color:#1a56db">${s.price}</p>
+              <p class="font-display font-700" style="color:var(--primary-fg)">${s.price}</p>
             </div>
           </div>
         `,
@@ -514,17 +516,17 @@ function renderServices() {
           ${soc.packages
             .map(
               (pkg, i) => `
-            <div class="card p-7 reveal ${pkg.highlight ? "pricing-highlight" : ""}" style="transition-delay:${i * 80}ms">
+            <div class="card p-7 reveal ${pkg.highlight ? "pricing-highlight" : ""}" data-badge="${state.lang === "en" ? "POPULAR" : "POPULAIRE"}" style="transition-delay:${i * 80}ms">
               <p class="font-display font-700 text-lg mb-1" style="color:var(--fg)">${pkg.name}</p>
               <p class="text-xs uppercase tracking-wider mb-4" style="color:var(--muted)">${pkg.posts}</p>
               <ul class="space-y-2 mb-6">
                 ${pkg.items.map((item) => `<li class="flex items-center gap-2 text-sm" style="color:var(--muted)"><span style="color:#10b981">✓</span>${item}</li>`).join("")}
               </ul>
               <div style="border-top:1px solid var(--border)" class="pt-4">
-                <span class="font-display font-800 text-3xl" style="color:${pkg.highlight ? "#1a56db" : "var(--fg)"}">${pkg.price}</span>
+                <span class="font-display font-800 text-3xl" style="color:${pkg.highlight ? "var(--primary-fg)" : "var(--fg)"}">${pkg.price}</span>
                 <span class="text-sm" style="color:var(--muted)"> XAF ${pkg.period}</span>
               </div>
-              <button onclick="contactSocialPackage('${pkg.name}', '${pkg.price}', '${pkg.period}')" class="btn-primary w-full mt-4 justify-center text-sm py-2" ${pkg.highlight ? "" : 'style="background:transparent;color:#1a56db;border-color:#1a56db"'}>
+              <button onclick="contactSocialPackage('${pkg.name}', '${pkg.price}', '${pkg.period}')" class="btn-primary w-full mt-4 justify-center text-sm py-2" ${pkg.highlight ? "" : 'style="background:transparent;color:var(--primary-fg);border-color:var(--primary-fg)"'}>
                 ${state.lang === "fr" ? "Choisir ce plan" : "Choose this plan"}
               </button>
             </div>
@@ -534,74 +536,64 @@ function renderServices() {
         </div>
       </div>
 
-      <!-- Additional Services table -->
-      <div class="card p-6 md:p-8 mb-12 reveal">
-        <h3 class="font-display font-700 text-xl mb-6" style="color:var(--fg)">${state.lang === "fr" ? "Services Complémentaires" : "Additional Services"}</h3>
-        <div class="overflow-x-auto">
-          <table class="w-full text-sm">
-            <thead><tr style="border-bottom:2px solid var(--border)">
-              <th class="text-left py-3 font-display font-700" style="color:var(--fg)">${state.lang === "fr" ? "Service" : "Service"}</th>
-              <th class="text-left py-3 font-display font-700" style="color:var(--fg)">${state.lang === "fr" ? "Prix" : "Price"}</th>
-              <th class="text-left py-3 font-display font-700 hidden md:table-cell" style="color:var(--fg)">${state.lang === "fr" ? "Description" : "Description"}</th>
-            </tr></thead>
-            <tbody>
-              ${[
-                [
-                  'Atelier "Maîtriser mon CMS"',
-                  "35 000 XAF",
-                  state.lang === "fr"
-                    ? "Demi-journée — gérez votre site en autonomie"
-                    : "Half-day — manage your site autonomously",
-                ],
-                [
-                  "Formation SEO Débutants",
-                  "50 000 XAF",
-                  state.lang === "fr"
-                    ? "Journée complète — bases du référencement naturel"
-                    : "Full day — natural search basics",
-                ],
-                [
-                  "Accompagnement Emailing Pro",
-                  "40 000 XAF",
-                  state.lang === "fr"
-                    ? "Mise en place d'outil + 1ère campagne"
-                    : "Tool setup + first campaign",
-                ],
-                [
-                  "Contrat Support Matériel",
-                  "60 000 XAF / an",
-                  state.lang === "fr"
-                    ? "Support technique prioritaire, pannes & dépannages"
-                    : "Priority technical support, breakdowns & repairs",
-                ],
-                [
-                  "Sécurité WAF & CDN",
-                  "10 000 XAF / mois",
-                  state.lang === "fr"
-                    ? "Pare-feu applicatif + CDN + scans sécurité"
-                    : "Application firewall + CDN + security scans",
-                ],
-              ]
-                .map(
-                  ([s, p, d], i) => `
-                <tr style="border-bottom:1px solid var(--border)" class="${i % 2 === 0 ? "" : ""}">
-                  <td class="py-3 font-600" style="color:var(--fg)">${s}</td>
-                  <td class="py-3 font-display font-700" style="color:#1a56db;white-space:nowrap">${p}</td>
-                  <td class="py-3 hidden md:table-cell" style="color:var(--muted)">${d}</td>
-                </tr>
-              `,
-                )
-                .join("")}
-            </tbody>
-          </table>
-        </div>
-      </div>
+      ${renderPricingGrid()}
+
+      ${renderServicesTrainings()}
 
       <div class="text-center">
         <button onclick="navigate('contact')" class="btn-primary">${state.lang === "fr" ? "Demander un Devis Personnalisé" : "Request a Custom Quote"} <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
       </div>
     </div>
   </div>`;
+}
+
+function renderPricingGrid() {
+  const lang = state.lang;
+  return `
+      <section class="mb-12" aria-labelledby="pricing-grid-title">
+        <p class="section-label mb-3">${lang === "fr" ? "Tarifs" : "Pricing"}</p>
+        <h2 id="pricing-grid-title" class="font-display font-800 leading-tight mb-3" style="font-size:clamp(1.8rem,3.5vw,2.8rem); color:var(--fg)">${lang === "fr" ? "Grille tarifaire complète" : "Full price list"}</h2>
+        <p class="mb-8" style="color:var(--muted)">${lang === "fr" ? "Prix affichés en francs CFA (XAF). Devis gratuit sous 24 h, paiement Mobile Money accepté." : "Prices in CFA francs (XAF). Free quote within 24h, Mobile Money accepted."}</p>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          ${pricingGrid
+            .map(
+              (group) => `
+          <div class="card p-6 md:p-7 reveal">
+            <h3 class="font-display font-700 text-lg mb-4" style="color:var(--fg)">${group.title[lang]}</h3>
+            <table class="w-full text-sm">
+              <caption class="sr-only">${group.title[lang]}</caption>
+              <thead class="sr-only"><tr><th scope="col">${lang === "fr" ? "Prestation" : "Service"}</th><th scope="col">${lang === "fr" ? "Prix" : "Price"}</th></tr></thead>
+              <tbody>
+                ${group.items
+                  .map(
+                    (item) => `
+                <tr style="border-top:1px solid var(--border)">
+                  <td class="py-3 pr-4" style="color:var(--fg)">${item.label[lang]}</td>
+                  <td class="py-3 text-right font-display font-700" style="color:var(--primary-fg);white-space:nowrap">${priceLabel(item.id, lang)}</td>
+                </tr>`,
+                  )
+                  .join("")}
+              </tbody>
+            </table>
+          </div>`,
+            )
+            .join("")}
+        </div>
+      </section>`;
+}
+
+// Les formations ont leur propre page : un simple renvoi, sans dupliquer les prix.
+function renderServicesTrainings() {
+  const isEn = state.lang === "en";
+  return `
+      <div class="card p-6 md:p-8 mb-12 reveal flex flex-col md:flex-row md:items-center justify-between gap-6" style="border-top:3px solid var(--primary)">
+        <div>
+          <p class="section-label mb-2">CodeWave Academy</p>
+          <h3 class="font-display font-700 text-xl mb-2" style="color:var(--fg)">${isEn ? "Want to learn instead?" : "Envie d'apprendre à le faire vous-même ?"}</h3>
+          <p class="text-sm" style="color:var(--muted)">${isEn ? "FullStack MERN bootcamp, React and Node.js modules, WordPress, SEO and AI workshops — with prices shown." : "Bootcamp FullStack MERN, modules React et Node.js, ateliers WordPress, SEO et IA — prix affichés."}</p>
+        </div>
+        <button onclick="navigate('formations')" class="btn-primary whitespace-nowrap">${isEn ? "See our courses" : "Voir les formations"} →</button>
+      </div>`;
 }
 
 // ==================== PORTFOLIO PAGE ====================
@@ -632,11 +624,11 @@ function renderPortfolio() {
 
       <!-- Stats bar -->
       <div class="flex justify-center gap-8 mb-10 p-5 card">
-        <div class="text-center"><p class="font-display font-800 text-2xl" style="color:#1a56db">50+</p><p class="text-xs uppercase tracking-wider" style="color:var(--muted)">Projets</p></div>
+        <div class="text-center"><p class="font-display font-800 text-2xl" style="color:var(--primary-fg)">50+</p><p class="text-xs uppercase tracking-wider" style="color:var(--muted)">Projets</p></div>
         <div style="width:1px;background:var(--border)"></div>
-        <div class="text-center"><p class="font-display font-800 text-2xl" style="color:#1a56db">20+</p><p class="text-xs uppercase tracking-wider" style="color:var(--muted)">${state.lang === "fr" ? "Clients" : "Clients"}</p></div>
+        <div class="text-center"><p class="font-display font-800 text-2xl" style="color:var(--primary-fg)">20+</p><p class="text-xs uppercase tracking-wider" style="color:var(--muted)">${state.lang === "fr" ? "Clients" : "Clients"}</p></div>
         <div style="width:1px;background:var(--border)"></div>
-        <div class="text-center"><p class="font-display font-800 text-2xl" style="color:#1a56db">100%</p><p class="text-xs uppercase tracking-wider" style="color:var(--muted)">${state.lang === "fr" ? "Satisfaction" : "Satisfaction"}</p></div>
+        <div class="text-center"><p class="font-display font-800 text-2xl" style="color:var(--primary-fg)">100%</p><p class="text-xs uppercase tracking-wider" style="color:var(--muted)">${state.lang === "fr" ? "Satisfaction" : "Satisfaction"}</p></div>
       </div>
 
       <!-- Filters -->
@@ -692,10 +684,10 @@ function renderPortfolio() {
       ${filtered.length === 0 ? `<div class="text-center py-16" style="color:var(--muted)">${state.lang === "fr" ? "Aucun projet dans cette catégorie." : "No projects in this category."}</div>` : ""}
 
       <!-- CTA -->
-      <div class="mt-16 p-8 text-center" style="background:linear-gradient(135deg,#1a56db,#1e40af)">
+      <div class="mt-16 p-8 text-center" style="background:linear-gradient(135deg,#004AAD,#0062E6)">
         <h3 class="font-display font-800 text-white text-2xl mb-3">${state.lang === "fr" ? "Votre Projet Sera Le Prochain !" : "Your Project Is Next!"}</h3>
         <p class="text-blue-100 mb-6">${state.lang === "fr" ? "Discutons de votre idée et créons ensemble quelque chose d'extraordinaire." : "Let's discuss your idea and create something extraordinary together."}</p>
-        <button onclick="navigate('contact')" class="btn-primary" style="background:white;color:#1a56db;border-color:white">${t.cta}</button>
+        <button onclick="navigate('contact')" class="btn-primary" style="background:white;color:#004AAD;border-color:white">${t.cta}</button>
       </div>
     </div>
   </div>`;
@@ -704,12 +696,6 @@ function renderPortfolio() {
 function setPortfolioFilter(f) {
   state.portfolioFilter = f;
   render();
-  setTimeout(() => {
-    document.querySelectorAll(".reveal").forEach((el) => {
-      const rect = el.getBoundingClientRect();
-      if (rect.top < window.innerHeight) el.classList.add("visible");
-    });
-  }, 50);
 }
 
 // ==================== BLOG PAGE ====================
@@ -741,11 +727,11 @@ function renderBlog() {
       <!-- Featured Article -->
       <div onclick="navigateToBlogDetail(${featured.id})" class="card block mb-10 overflow-hidden reveal group cursor-pointer">
         <div class="md:flex">
-          <div class="md:w-2/5 h-56 md:h-auto relative overflow-hidden flex items-center justify-center" style="background:linear-gradient(135deg,#1a56db,#3b82f6)">
+          <div class="md:w-2/5 h-56 md:h-auto relative overflow-hidden flex items-center justify-center" style="background:linear-gradient(135deg,#004AAD,#0062E6)">
             ${waveSVG()}
             <span class="relative font-display font-800 text-6xl text-white opacity-20">✍️</span>
             <div class="absolute top-4 left-4">
-              <span class="badge" style="background:white;color:#1a56db">${state.lang === "fr" ? "⭐ Article à la Une" : "⭐ Featured"}</span>
+              <span class="badge" style="background:white;color:#004AAD">${state.lang === "fr" ? "⭐ Article à la Une" : "⭐ Featured"}</span>
             </div>
           </div>
           <div class="p-6 md:p-8 md:w-3/5 flex flex-col justify-center">
@@ -756,7 +742,7 @@ function renderBlog() {
               <span>📅 ${isEn ? featured.dateEn : featured.date}</span>
               <span>⏱ ${featured.read} ${t.minRead}</span>
             </div>
-            <span class="mt-4 inline-flex items-center gap-2 text-sm font-display font-700" style="color:#1a56db">${t.readMore} →</span>
+            <span class="mt-4 inline-flex items-center gap-2 text-sm font-display font-700" style="color:var(--primary-fg)">${t.readMore} →</span>
           </div>
         </div>
       </div>
@@ -768,7 +754,7 @@ function renderBlog() {
             (post, i) => `
           <div onclick="navigateToBlogDetail(${post.id})" class="card block overflow-hidden reveal group cursor-pointer" style="transition-delay:${i * 60}ms">
             <div class="h-36 flex items-center justify-center relative overflow-hidden" style="background:var(--card); border-bottom:1px solid var(--border)">
-              <div class="absolute inset-0 opacity-5" style="background-image:repeating-linear-gradient(0deg,#1a56db 0,#1a56db 1px,transparent 0,transparent 20px),repeating-linear-gradient(90deg,#1a56db 0,#1a56db 1px,transparent 0,transparent 20px)"></div>
+              <div class="absolute inset-0 opacity-5" style="background-image:repeating-linear-gradient(0deg,#004AAD 0,#004AAD 1px,transparent 0,transparent 20px),repeating-linear-gradient(90deg,#004AAD 0,#004AAD 1px,transparent 0,transparent 20px)"></div>
               <span class="text-3xl relative z-10">${["🔍", "🛒", "🎨", "💰", "📝", "⚡"][i]}</span>
             </div>
             <div class="p-5">
@@ -831,7 +817,7 @@ function renderAbout() {
               .map(
                 (v) => `
               <div class="flex items-center gap-2 text-sm font-600" style="color:var(--fg)">
-                <span style="color:#1a56db">◆</span> ${v}
+                <span style="color:var(--primary-fg)">◆</span> ${v}
               </div>
             `,
               )
@@ -857,7 +843,7 @@ function renderAbout() {
                 <p class="leading-relaxed" style="color:var(--muted)">${t.visionary_desc}</p>
               </div>
             </div>
-            <div class="absolute -bottom-2 left-6 right-6 h-1" style="background:linear-gradient(90deg,#1a56db,transparent)"></div>
+            <div class="absolute -bottom-2 left-6 right-6 h-1" style="background:linear-gradient(90deg,#004AAD,transparent)"></div>
           </div>
         </div>
       </div>
@@ -899,8 +885,8 @@ function renderAbout() {
             .map(
               ([year, desc, bg]) => `
             <div class="flex gap-4 items-start">
-              <div class="w-16 text-right flex-shrink-0"><span class="font-display font-800 text-sm" style="color:#1a56db">${year}</span></div>
-              <div class="w-3 h-3 mt-1 flex-shrink-0 rounded-full ${bg}" style="background:#1a56db"></div>
+              <div class="w-16 text-right flex-shrink-0"><span class="font-display font-800 text-sm" style="color:var(--primary-fg)">${year}</span></div>
+              <div class="w-3 h-3 mt-1 flex-shrink-0 rounded-full ${bg}" style="background:#004AAD"></div>
               <p class="text-sm" style="color:var(--muted)">${desc}</p>
             </div>
           `,
@@ -955,7 +941,7 @@ function renderPartnership() {
       </div>
 
       <!-- Profiles Section -->
-      <div class="mb-20" style="background:linear-gradient(135deg, var(--card) 0%, rgba(26,86,219,0.04) 100%); border:1px solid var(--border); padding:3rem; border-radius:8px;">
+      <div class="mb-20" style="background:linear-gradient(135deg, var(--card) 0%, rgba(0,74,173,0.04) 100%); border:1px solid var(--border); padding:3rem; border-radius:8px;">
         <h2 class="font-display font-800 text-2xl md:text-3xl mb-4" style="color:var(--fg)">${t.section2.title}</h2>
         <p class="mb-8 text-lg" style="color:var(--muted)">${t.section2.intro}</p>
 
@@ -964,7 +950,7 @@ function renderPartnership() {
             .map(
               (profile) => `
             <div class="flex items-center gap-3 p-4" style="background:var(--bg); border:1px solid var(--border); border-radius:6px;">
-              <span style="color:#1a56db; font-size:18px;">✓</span>
+              <span style="color:var(--primary-fg); font-size:18px;">✓</span>
               <span style="color:var(--fg)">${profile}</span>
             </div>
           `,
@@ -979,14 +965,14 @@ function renderPartnership() {
 
         <div class="grid md:grid-cols-4 gap-6 relative">
           <!-- Connector line (hidden on mobile) -->
-          <div class="hidden md:block absolute top-20 left-0 right-0 h-1" style="background:linear-gradient(90deg, #1a56db 0%, #3b82f6 50%, #8b5cf6 100%); transform:translateY(-50%);"></div>
+          <div class="hidden md:block absolute top-20 left-0 right-0 h-1" style="background:linear-gradient(90deg, #004AAD 0%, #0062E6 50%, #8b5cf6 100%); transform:translateY(-50%);"></div>
 
           ${t.section3.steps
             .map(
               (step, idx) => `
             <div class="relative reveal">
               <div class="flex flex-col items-center">
-                <div class="w-16 h-16 flex items-center justify-center font-display font-800 text-xl text-white mb-4 relative z-10" style="background:#1a56db; border-radius:50%; border:4px solid ${isDark ? "#1e293b" : "#f4f3f3"}">
+                <div class="w-16 h-16 flex items-center justify-center font-display font-800 text-xl text-white mb-4 relative z-10" style="background:#004AAD; border-radius:50%; border:4px solid ${isDark ? "#1e293b" : "#f4f3f3"}">
                   ${step.num}
                 </div>
                 <div class="card p-6 text-center">
@@ -1002,10 +988,10 @@ function renderPartnership() {
       </div>
 
       <!-- Final CTA -->
-      <div class="text-center card p-10" style="background:linear-gradient(135deg, #1a56db 0%, #3b82f6 100%); color:white; border:none;">
+      <div class="text-center card p-10" style="background:linear-gradient(135deg, #004AAD 0%, #0062E6 100%); color:white; border:none;">
         <h3 class="font-display font-800 text-2xl mb-4">Rejoignez notre équipe d'experts</h3>
         <p class="mb-6 text-white/90">Ensemble, créons l'impact numérique du futur au Gabon.</p>
-        <a href="https://docs.google.com/forms/d/1viH1bGb7YTWTVj-i2xGllViKp3JVFsvm9FJEGXAdSZU/edit#responses" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 font-display font-700 text-lg px-8 py-3" style="background:white; color:#1a56db; border-radius:4px; text-decoration:none; transition:transform 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='none'">
+        <a href="https://docs.google.com/forms/d/1viH1bGb7YTWTVj-i2xGllViKp3JVFsvm9FJEGXAdSZU/edit#responses" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 font-display font-700 text-lg px-8 py-3" style="background:white;color:#004AAD; border-radius:4px; text-decoration:none; transition:transform 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='none'">
           Candidater Maintenant 🚀
           <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
         </a>
@@ -1038,7 +1024,7 @@ function renderContact() {
               </div>
             </a>
             <div class="flex items-center gap-4 card p-4">
-              <div class="w-10 h-10 flex items-center justify-center" style="background:rgba(26,86,219,0.08); color:#1a56db">
+              <div class="w-10 h-10 flex items-center justify-center" style="background:rgba(0,74,173,0.08); color:var(--primary-fg)">
                 <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
               </div>
               <div>
@@ -1047,7 +1033,7 @@ function renderContact() {
               </div>
             </div>
             <div class="flex items-center gap-4 card p-4">
-              <div class="w-10 h-10 flex items-center justify-center" style="background:rgba(26,86,219,0.08); color:#1a56db">
+              <div class="w-10 h-10 flex items-center justify-center" style="background:rgba(0,74,173,0.08); color:var(--primary-fg)">
                 <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
               </div>
               <div>

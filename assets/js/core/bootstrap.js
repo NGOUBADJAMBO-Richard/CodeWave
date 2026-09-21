@@ -9,6 +9,9 @@ function render() {
     case "services":
       pageContent = renderServices();
       break;
+    case "formations":
+      pageContent = renderFormations();
+      break;
     case "portfolio":
       pageContent = renderPortfolio();
       break;
@@ -59,13 +62,8 @@ function render() {
     `</main>` +
     renderFooter();
 
-  // Trigger reveal on next frame
-  setTimeout(() => {
-    document.querySelectorAll(".reveal").forEach((el) => {
-      const rect = el.getBoundingClientRect();
-      if (rect.top < window.innerHeight - 40) el.classList.add("visible");
-    });
-  }, 50);
+  observeReveals();
+  updateScrollProgress();
 }
 
 // Initial render

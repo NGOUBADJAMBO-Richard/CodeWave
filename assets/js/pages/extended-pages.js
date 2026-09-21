@@ -206,8 +206,8 @@ function renderBlogDetail(postId) {
   const intro = isEn ? post.introEn : post.intro;
   const conclusion = isEn ? post.conclusionEn : post.conclusion;
   const catColors = {
-    Conseils: "#1a56db",
-    Tips: "#1a56db",
+    Conseils: "#004AAD",
+    Tips: "#004AAD",
     Tutoriels: "#0d9488",
     Tutorials: "#0d9488",
     Actualités: "#ea580c",
@@ -216,7 +216,7 @@ function renderBlogDetail(postId) {
     Entrepreneurship: "#7c3aed",
   };
   const cat = isEn ? post.categoryEn : post.category;
-  const catColor = catColors[cat] || "#1a56db";
+  const catColor = catColors[cat] || "#004AAD";
 
   // Related posts (3 others)
   const relatedIds = Object.keys(blogDetails)
@@ -305,10 +305,10 @@ function renderBlogDetail(postId) {
       </div>
 
       <!-- CTA inline -->
-      <div class="p-7 mb-12 text-center reveal" style="background:linear-gradient(135deg,#1a56db,#1e40af)">
+      <div class="p-7 mb-12 text-center reveal" style="background:linear-gradient(135deg,#004AAD,#0062E6)">
         <p class="font-display font-800 text-white text-xl mb-2">${isEn ? "Ready to take action?" : "Prêt à passer à l'action ?"}</p>
         <p class="text-blue-100 mb-5">${isEn ? "Get a free quote and let's build your digital presence." : "Obtenez un devis gratuit et construisons votre présence digitale."}</p>
-        <button onclick="navigate('contact')" class="btn-primary" style="background:white;color:#1a56db;border-color:white">
+        <button onclick="navigate('contact')" class="btn-primary" style="background:white;color:#004AAD;border-color:white">
           ${isEn ? "Request Free Quote" : "Demander un Devis Gratuit"}
         </button>
       </div>
@@ -464,7 +464,7 @@ function renderCareers() {
         <div class="text-4xl mb-4">💌</div>
         <h3 class="font-display font-800 text-white text-2xl mb-3">${isEn ? "Don't see the right position?" : "Vous ne trouvez pas le poste idéal ?"}</h3>
         <p class="mb-6" style="color:#94a3b8">${isEn ? "Send us a spontaneous application! We're always looking for motivated talent." : "Envoyez-nous une candidature spontanée ! Nous sommes toujours à la recherche de talents motivés."}</p>
-        <a href="mailto:mgncodewave18@gmail.com?subject=Candidature Spontanée CodeWave" class="btn-primary" style="background:#1a56db;border-color:#1a56db">
+        <a href="mailto:mgncodewave18@gmail.com?subject=Candidature Spontanée CodeWave" class="btn-primary" style="background:#004AAD;border-color:var(--primary-fg)">
           ${isEn ? "Send My Application" : "Envoyer Ma Candidature"} ✉️
         </a>
       </div>
@@ -480,7 +480,7 @@ function renderJobCard(job, delay, isEn) {
       <div class="p-5">
         <div class="flex items-start justify-between mb-3">
           <div class="text-3xl">${job.icon}</div>
-          <span class="badge" style="background:${isCDI ? "rgba(26,86,219,0.1)" : "rgba(16,185,129,0.1)"};color:${isCDI ? "#1a56db" : "#10b981"}">${job.type}</span>
+          <span class="badge" style="background:${isCDI ? "rgba(0,74,173,0.1)" : "rgba(16,185,129,0.1)"};color:${isCDI ? "var(--primary-fg)" : "#10b981"}">${job.type}</span>
         </div>
         <h3 class="font-display font-700 text-base mb-0.5" style="color:var(--fg)">${isEn ? job.titleEn || job.title : job.title}</h3>
         <p class="text-xs mb-3" style="color:var(--muted)">${job.subtitle}</p>
@@ -628,9 +628,9 @@ function legalLayout(
     <div class="relative overflow-hidden mb-12" style="background:var(--card); border-bottom:1px solid var(--border)">
       <div class="wave-bg" style="opacity:0.04">
         <svg width="100%" height="100%" viewBox="0 0 1440 200" preserveAspectRatio="xMidYMid slice">
-          <path d="M-100,60 C300,10 600,150 900,60 C1200,10 1400,150 1540,60" fill="none" stroke="#1a56db" stroke-width="1.5"/>
-          <path d="M-100,90 C300,40 600,180 900,90 C1200,40 1400,180 1540,90" fill="none" stroke="#1a56db" stroke-width="1"/>
-          <path d="M-100,120 C300,70 600,200 900,120 C1200,70 1400,200 1540,120" fill="none" stroke="#1a56db" stroke-width="0.7"/>
+          <path d="M-100,60 C300,10 600,150 900,60 C1200,10 1400,150 1540,60" fill="none" stroke="#004AAD" stroke-width="1.5"/>
+          <path d="M-100,90 C300,40 600,180 900,90 C1200,40 1400,180 1540,90" fill="none" stroke="#004AAD" stroke-width="1"/>
+          <path d="M-100,120 C300,70 600,200 900,120 C1200,70 1400,200 1540,120" fill="none" stroke="#004AAD" stroke-width="0.7"/>
         </svg>
       </div>
       <div class="max-w-4xl mx-auto px-4 md:px-8 py-14">
@@ -640,13 +640,13 @@ function legalLayout(
           <span style="color:var(--fg)">${title}</span>
         </nav>
         <div class="flex items-center gap-4">
-          <div class="w-14 h-14 flex items-center justify-center text-3xl" style="background:rgba(26,86,219,0.08)">${icon}</div>
+          <div class="w-14 h-14 flex items-center justify-center text-3xl" style="background:rgba(0,74,173,0.08)">${icon}</div>
           <div>
             <h1 class="font-display font-800 text-3xl md:text-4xl" style="color:var(--fg)">${title}</h1>
             <p style="color:var(--muted)">${subtitle}</p>
           </div>
         </div>
-        <p class="mt-5 text-xs inline-flex items-center gap-2 px-3 py-1.5" style="background:rgba(26,86,219,0.06);color:var(--muted)">
+        <p class="mt-5 text-xs inline-flex items-center gap-2 px-3 py-1.5" style="background:rgba(0,74,173,0.06);color:var(--muted)">
           📅 Dernière mise à jour : ${updateDate}
         </p>
       </div>
@@ -691,7 +691,7 @@ function legalSection(num, title, content, accent) {
   <div class="reveal mb-0" style="border-bottom:1px solid var(--border)">
     <div class="py-8">
       <div class="flex items-start gap-4">
-        <span class="flex-shrink-0 w-8 h-8 flex items-center justify-center text-xs font-display font-800" style="background:rgba(26,86,219,0.08);color:#1a56db">${num}</span>
+        <span class="flex-shrink-0 w-8 h-8 flex items-center justify-center text-xs font-display font-800" style="background:rgba(0,74,173,0.08);color:var(--primary-fg)">${num}</span>
         <div class="flex-1">
           <h2 class="font-display font-700 text-lg mb-3" style="color:var(--fg)">${title}</h2>
           <div class="text-sm leading-relaxed space-y-3" style="color:var(--muted)">${content}</div>
@@ -842,13 +842,13 @@ function renderPrivacy() {
         <div>
           <p class="font-600 mb-2" style="color:var(--fg)">2.1 Données que vous nous fournissez directement</p>
           <ul class="space-y-1 ml-4">
-            ${["Informations d'identité : nom, prénom, raison sociale", "Coordonnées : email, téléphone, adresse postale", "Informations professionnelles : entreprise, secteur, fonction", "Informations de projet : description, budget, délais", "Données de paiement : informations de facturation (sécurisées)"].map((i) => `<li class="flex items-start gap-2"><span style="color:#1a56db">•</span>${i}</li>`).join("")}
+            ${["Informations d'identité : nom, prénom, raison sociale", "Coordonnées : email, téléphone, adresse postale", "Informations professionnelles : entreprise, secteur, fonction", "Informations de projet : description, budget, délais", "Données de paiement : informations de facturation (sécurisées)"].map((i) => `<li class="flex items-start gap-2"><span style="color:var(--primary-fg)">•</span>${i}</li>`).join("")}
           </ul>
         </div>
         <div>
           <p class="font-600 mb-2" style="color:var(--fg)">2.2 Données collectées automatiquement</p>
           <ul class="space-y-1 ml-4">
-            ${["Données de navigation : pages visitées, durée, actions", "Données techniques : adresse IP, navigateur, OS", "Données de géolocalisation : pays, ville (non précise)", "Cookies : voir section dédiée ci-dessous"].map((i) => `<li class="flex items-start gap-2"><span style="color:#1a56db">•</span>${i}</li>`).join("")}
+            ${["Données de navigation : pages visitées, durée, actions", "Données techniques : adresse IP, navigateur, OS", "Données de géolocalisation : pays, ville (non précise)", "Cookies : voir section dédiée ci-dessous"].map((i) => `<li class="flex items-start gap-2"><span style="color:var(--primary-fg)">•</span>${i}</li>`).join("")}
           </ul>
         </div>
       </div>`,
@@ -905,7 +905,7 @@ function renderPrivacy() {
         <p>Nous pouvons les partager uniquement avec :</p>
       </div>
       <ul class="space-y-2 ml-4">
-        ${["Prestataires de services : hébergeur Vercel, outils d'analyse Google Analytics — uniquement pour les services nécessaires", "Partenaires de paiement : pour traiter vos paiements Mobile Money de manière sécurisée", "Autorités légales : si la loi l'exige ou pour protéger nos droits"].map((i) => `<li class="flex items-start gap-2"><span style="color:#1a56db">•</span>${i}</li>`).join("")}
+        ${["Prestataires de services : hébergeur Vercel, outils d'analyse Google Analytics — uniquement pour les services nécessaires", "Partenaires de paiement : pour traiter vos paiements Mobile Money de manière sécurisée", "Autorités légales : si la loi l'exige ou pour protéger nos droits"].map((i) => `<li class="flex items-start gap-2"><span style="color:var(--primary-fg)">•</span>${i}</li>`).join("")}
       </ul>`,
     ),
     legalSection(
@@ -914,7 +914,7 @@ function renderPrivacy() {
       `
       <div class="card overflow-hidden">
         <table class="w-full text-sm">
-          <thead><tr style="background:rgba(26,86,219,0.05)"><th class="text-left p-3 font-display font-700" style="color:var(--fg)">Type de données</th><th class="text-left p-3 font-display font-700" style="color:var(--fg)">Durée</th></tr></thead>
+          <thead><tr style="background:rgba(0,74,173,0.05)"><th class="text-left p-3 font-display font-700" style="color:var(--fg)">Type de données</th><th class="text-left p-3 font-display font-700" style="color:var(--fg)">Durée</th></tr></thead>
           <tbody>
             ${[
               ["Données clients actifs", "Durée relation + 5 ans"],
@@ -924,7 +924,7 @@ function renderPrivacy() {
             ]
               .map(
                 ([t, d], i) => `
-              <tr style="border-top:1px solid var(--border)${i % 2 === 0 ? ";background:rgba(26,86,219,0.02)" : ""}"><td class="p-3" style="color:var(--fg)">${t}</td><td class="p-3 font-600" style="color:#1a56db">${d}</td></tr>
+              <tr style="border-top:1px solid var(--border)${i % 2 === 0 ? ";background:rgba(0,74,173,0.02)" : ""}"><td class="p-3" style="color:var(--fg)">${t}</td><td class="p-3 font-600" style="color:var(--primary-fg)">${d}</td></tr>
             `,
               )
               .join("")}
@@ -1015,7 +1015,7 @@ function renderPrivacy() {
           ],
           [
             "📊",
-            "#1a56db",
+            "#004AAD",
             "Cookies analytiques (facultatifs)",
             "Google Analytics pour comprendre votre usage. Durée : 13 mois. Nécessite votre consentement.",
           ],
@@ -1072,7 +1072,7 @@ function renderCGV() {
       `
       <p>Les présentes CGV ont pour objet de définir les droits et obligations des parties dans le cadre de la vente de services de développement web par CodeWave, notamment :</p>
       <ul class="mt-2 space-y-1 ml-4">
-        ${["Création de sites web vitrines", "Développement de boutiques e-commerce", "Création de blogs et portfolios", "Services de maintenance et d'hébergement", "Services additionnels (SEO, design, réseaux sociaux, etc.)"].map((i) => `<li class="flex items-start gap-2"><span style="color:#1a56db">•</span>${i}</li>`).join("")}
+        ${["Création de sites web vitrines", "Développement de boutiques e-commerce", "Création de blogs et portfolios", "Services de maintenance et d'hébergement", "Services additionnels (SEO, design, réseaux sociaux, etc.)"].map((i) => `<li class="flex items-start gap-2"><span style="color:var(--primary-fg)">•</span>${i}</li>`).join("")}
       </ul>
       <p class="mt-3">Toute commande implique l'acceptation sans réserve des présentes CGV.</p>`,
     ),
@@ -1098,7 +1098,7 @@ function renderCGV() {
               [
                 "🔢",
                 "Paiement en 3 fois",
-                "Projets > 150 000 FCFA (33/33/34%)",
+                "Projets ≥ 120 000 XAF (33/33/34%)",
               ],
             ]
               .map(
@@ -1110,7 +1110,7 @@ function renderCGV() {
         </div>
         <div><p class="font-600 mb-2" style="color:var(--fg)">3.3 Moyens acceptés</p>
           <div class="flex flex-wrap gap-2">
-            ${["🏦 Virement bancaire", "📱 Airtel Money", "📱 Moov Money", "💵 Espèces (Libreville)"].map((m) => `<span class="px-3 py-1.5 text-sm" style="background:rgba(26,86,219,0.06);border:1px solid rgba(26,86,219,0.15);color:var(--fg)">${m}</span>`).join("")}
+            ${["🏦 Virement bancaire", "📱 Airtel Money", "📱 Moov Money", "💵 Espèces (Libreville)"].map((m) => `<span class="px-3 py-1.5 text-sm" style="background:rgba(0,74,173,0.06);border:1px solid rgba(0,74,173,0.15);color:var(--fg)">${m}</span>`).join("")}
           </div>
         </div>
         <div class="card p-4" style="border-left:3px solid #ef4444"><p class="font-600 text-sm mb-1" style="color:#ef4444">⚠️ Retard de paiement</p><p class="text-xs">Tout retard entraîne la suspension des travaux. Pénalités de 10% du montant dû après relance sans réponse.</p></div>
@@ -1121,7 +1121,7 @@ function renderCGV() {
       "Obligations du Client",
       `
       <ul class="space-y-2">
-        ${["Fournir tous les éléments nécessaires (textes, images, logos) dans les délais convenus", "S'assurer que les contenus fournis ne violent aucun droit de propriété intellectuelle", "Répondre aux demandes de validation dans un délai de 7 jours ouvrés", "Effectuer les paiements selon l'échéancier convenu", "Informer le Prestataire de toute modification souhaitée dans les meilleurs délais"].map((i) => `<li class="flex items-start gap-3"><span class="flex-shrink-0 mt-0.5 w-5 h-5 flex items-center justify-center text-xs" style="background:rgba(26,86,219,0.08);color:#1a56db">→</span>${i}</li>`).join("")}
+        ${["Fournir tous les éléments nécessaires (textes, images, logos) dans les délais convenus", "S'assurer que les contenus fournis ne violent aucun droit de propriété intellectuelle", "Répondre aux demandes de validation dans un délai de 7 jours ouvrés", "Effectuer les paiements selon l'échéancier convenu", "Informer le Prestataire de toute modification souhaitée dans les meilleurs délais"].map((i) => `<li class="flex items-start gap-3"><span class="flex-shrink-0 mt-0.5 w-5 h-5 flex items-center justify-center text-xs" style="background:rgba(0,74,173,0.08);color:var(--primary-fg)">→</span>${i}</li>`).join("")}
       </ul>
       <p class="mt-3 text-xs px-4 py-2" style="background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.2);color:#d97706">⚠️ Tout retard dans la fourniture des éléments par le Client entraîne un report proportionnel du délai de livraison.</p>`,
     ),
@@ -1138,7 +1138,7 @@ function renderCGV() {
       "Délais et Livraison",
       `
       <div class="card overflow-hidden mb-3">
-        <div class="p-4" style="background:rgba(26,86,219,0.04)"><p class="font-600 text-sm" style="color:var(--fg)">Délais indicatifs par type de projet</p></div>
+        <div class="p-4" style="background:rgba(0,74,173,0.04)"><p class="font-600 text-sm" style="color:var(--fg)">Délais indicatifs par type de projet</p></div>
         <table class="w-full text-sm">
           <tbody>
             ${[
@@ -1150,7 +1150,7 @@ function renderCGV() {
             ]
               .map(
                 ([t, d], i) =>
-                  `<tr style="border-top:1px solid var(--border)${i % 2 === 0 ? ";background:rgba(26,86,219,0.01)" : ""}"><td class="p-3" style="color:var(--fg)">${t}</td><td class="p-3 font-700 text-right" style="color:#1a56db">${d}</td></tr>`,
+                  `<tr style="border-top:1px solid var(--border)${i % 2 === 0 ? ";background:rgba(0,74,173,0.01)" : ""}"><td class="p-3" style="color:var(--fg)">${t}</td><td class="p-3 font-700 text-right" style="color:var(--primary-fg)">${d}</td></tr>`,
               )
               .join("")}
           </tbody>
@@ -1193,7 +1193,7 @@ function renderCGV() {
       `
       <div class="grid md:grid-cols-2 gap-3">
         <div class="card p-5"><p class="font-700 mb-2" style="color:var(--fg)">🛡️ Garantie 30 jours</p><p class="text-xs">CodeWave garantit le bon fonctionnement du site pendant 30 jours après livraison. Couvre uniquement les bugs liés à la réalisation initiale.</p></div>
-        <div class="card p-5"><p class="font-700 mb-2" style="color:var(--fg)">🔧 Maintenance mensuelle</p><p class="text-xs mb-2">Au-delà, contrat disponible à <strong style="color:#1a56db">15 000 FCFA/mois</strong> incluant :</p><ul class="text-xs space-y-1">${["Mises à jour techniques", "Sauvegardes régulières", "Support technique prioritaire", "Corrections de bugs"].map((i) => `<li class="flex items-center gap-1"><span style="color:#10b981">✓</span>${i}</li>`).join("")}</ul></div>
+        <div class="card p-5"><p class="font-700 mb-2" style="color:var(--fg)">🔧 Maintenance mensuelle</p><p class="text-xs mb-2">Au-delà, contrat disponible à <strong style="color:var(--primary-fg)">${priceLabel("maintenance", "fr")}</strong> incluant :</p><ul class="text-xs space-y-1">${["Mises à jour techniques", "Sauvegardes régulières", "Support technique prioritaire", "Corrections de bugs"].map((i) => `<li class="flex items-center gap-1"><span style="color:#10b981">✓</span>${i}</li>`).join("")}</ul></div>
       </div>`,
     ),
     legalSection(
@@ -1268,7 +1268,7 @@ function renderSitemap() {
     {
       icon: "🏠",
       title: isEn ? "Main Pages" : "Pages Principales",
-      color: "#1a56db",
+      color: "#004AAD",
       items: [
         {
           label: isEn ? "Home" : "Accueil",
@@ -1283,6 +1283,13 @@ function renderSitemap() {
             ? "All our web development services"
             : "Tous nos services de développement web",
           page: "services",
+        },
+        {
+          label: isEn ? "Training" : "Formations",
+          desc: isEn
+            ? "CodeWave Academy: bootcamp, modules and workshops with prices"
+            : "CodeWave Academy : bootcamp, modules et ateliers avec leurs prix",
+          page: "formations",
         },
         {
           label: "Portfolio",
@@ -1502,8 +1509,8 @@ function renderSitemap() {
     <div class="relative overflow-hidden mb-12" style="background:var(--card); border-bottom:1px solid var(--border)">
       <div class="wave-bg" style="opacity:0.04">
         <svg width="100%" height="100%" viewBox="0 0 1440 200" preserveAspectRatio="xMidYMid slice">
-          <path d="M-100,60 C300,10 600,150 900,60 C1200,10 1400,150 1540,60" fill="none" stroke="#1a56db" stroke-width="1.5"/>
-          <path d="M-100,100 C300,50 600,190 900,100 C1200,50 1400,190 1540,100" fill="none" stroke="#1a56db" stroke-width="1"/>
+          <path d="M-100,60 C300,10 600,150 900,60 C1200,10 1400,150 1540,60" fill="none" stroke="#004AAD" stroke-width="1.5"/>
+          <path d="M-100,100 C300,50 600,190 900,100 C1200,50 1400,190 1540,100" fill="none" stroke="#004AAD" stroke-width="1"/>
         </svg>
       </div>
       <div class="max-w-5xl mx-auto px-4 md:px-8 py-14">
@@ -1513,7 +1520,7 @@ function renderSitemap() {
           <span style="color:var(--fg)">${isEn ? "Sitemap" : "Plan du Site"}</span>
         </nav>
         <div class="flex items-center gap-4">
-          <div class="w-14 h-14 flex items-center justify-center text-3xl" style="background:rgba(26,86,219,0.08)">🗺️</div>
+          <div class="w-14 h-14 flex items-center justify-center text-3xl" style="background:rgba(0,74,173,0.08)">🗺️</div>
           <div>
             <h1 class="font-display font-800 text-3xl md:text-4xl" style="color:var(--fg)">${isEn ? "Sitemap" : "Plan du Site"}</h1>
             <p style="color:var(--muted)">${isEn ? "Find all our pages easily" : "Naviguez facilement sur notre site et trouvez ce que vous cherchez"}</p>
@@ -1561,7 +1568,7 @@ function renderSitemap() {
       <!-- Stats summary -->
       <div class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 reveal">
         ${[
-          ["9", isEn ? "Main pages" : "Pages principales", "#1a56db"],
+          ["10", isEn ? "Main pages" : "Pages principales", "#004AAD"],
           ["12", isEn ? "Portfolio details" : "Détails portfolio", "#8b5cf6"],
           ["7", isEn ? "Blog articles" : "Articles blog", "#0d9488"],
           ["4", isEn ? "Legal pages" : "Pages légales", "#64748b"],
@@ -1682,13 +1689,13 @@ function renderSocial() {
     <div class="relative overflow-hidden mb-14" style="background:linear-gradient(135deg,#0f172a,#1e293b)">
       ${`<div class="wave-bg" style="opacity:0.15">
         <svg width="100%" height="100%" viewBox="0 0 1440 300" preserveAspectRatio="xMidYMid slice">
-          <path d="M-100,100 C300,20 600,200 900,100 C1200,20 1400,200 1540,100" fill="none" stroke="#1a56db" stroke-width="2"/>
-          <path d="M-100,140 C300,60 600,240 900,140 C1200,60 1400,240 1540,140" fill="none" stroke="#3b82f6" stroke-width="1.5"/>
-          <path d="M-100,180 C300,100 600,280 900,180 C1200,100 1400,280 1540,180" fill="none" stroke="#1a56db" stroke-width="1"/>
+          <path d="M-100,100 C300,20 600,200 900,100 C1200,20 1400,200 1540,100" fill="none" stroke="#004AAD" stroke-width="2"/>
+          <path d="M-100,140 C300,60 600,240 900,140 C1200,60 1400,240 1540,140" fill="none" stroke="#0062E6" stroke-width="1.5"/>
+          <path d="M-100,180 C300,100 600,280 900,180 C1200,100 1400,280 1540,180" fill="none" stroke="#004AAD" stroke-width="1"/>
         </svg>
       </div>`}
       <div class="relative max-w-5xl mx-auto px-4 md:px-8 py-16 text-center">
-        <p class="section-label mb-4" style="color:#3b82f6">${isEn ? "Community & Networks" : "Communauté & Réseaux"}</p>
+        <p class="section-label mb-4" style="color:#60A5FA">${isEn ? "Community & Networks" : "Communauté & Réseaux"}</p>
         <h1 class="font-display font-800 leading-tight mb-4 text-white" style="font-size:clamp(2.5rem,5vw,4rem)">${isEn ? "Find us\nEverywhere" : "Retrouvez-nous\nPartout"}</h1>
         <p class="max-w-xl mx-auto" style="color:#94a3b8">${isEn ? "Follow our digital adventure on all platforms and stay connected with the MGN CodeWave community." : "Suivez notre aventure digitale sur toutes les plateformes et restez connecté avec la communauté MGN CodeWave."}</p>
       </div>
@@ -1727,7 +1734,7 @@ function renderSocial() {
       </div>
 
       <!-- Community CTA banner -->
-      <div class="card p-8 md:p-12 text-center reveal" style="background:linear-gradient(135deg,#1a56db08,#8b5cf608);border:1px solid rgba(26,86,219,0.15)">
+      <div class="card p-8 md:p-12 text-center reveal" style="background:linear-gradient(135deg,#004AAD08,#8b5cf608);border:1px solid rgba(0,74,173,0.15)">
         <div class="text-4xl mb-4">🇬🇦</div>
         <h2 class="font-display font-800 text-2xl md:text-3xl mb-3" style="color:var(--fg)">${isEn ? "Proud digital ambassador\nof Gabon" : "Ambassadeurs digitaux\nfiers du Gabon"}</h2>
         <p class="max-w-lg mx-auto mb-6" style="color:var(--muted)">${isEn ? "Every share, every follow, every recommendation helps us grow and support more Gabonese businesses in their digital transformation." : "Chaque partage, chaque abonnement, chaque recommandation nous aide à grandir et à accompagner davantage d'entreprises gabonaises dans leur transformation digitale."}</p>

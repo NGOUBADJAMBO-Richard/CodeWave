@@ -7,7 +7,9 @@
       --card: #ffffff;
       --border: #e2e8f0;
       --muted: #64748b;
-      --primary: #1a56db;
+      --primary: #004AAD;
+      /* Texte d'accent : #004AAD sur fond clair = 7,4:1 (AA). */
+      --primary-fg: #004AAD;
     }
     .dark {
       --bg: #1e293b;
@@ -15,7 +17,9 @@
       --card: #0f172a;
       --border: #334155;
       --muted: #94a3b8;
-      --primary: #3b82f6;
+      --primary: #0062E6;
+      /* #004AAD et #0062E6 tombent sous 3:1 en texte sur #1E293B : teinte claire pour rester AA (5,8:1). */
+      --primary-fg: #60A5FA;
     }
 
     body { background-color: var(--bg); color: var(--fg); transition: background 0.3s, color 0.3s; }
@@ -23,7 +27,7 @@
     /* Scroll progress bar */
     #scroll-progress {
       position: fixed; top: 0; left: 0; height: 3px;
-      background: linear-gradient(90deg, #1a56db, #3b82f6);
+      background: linear-gradient(90deg, #004AAD, #0062E6);
       z-index: 9999; transition: width 0.1s linear;
       width: 0%;
     }
@@ -41,11 +45,11 @@
       border: 1px solid var(--border);
       transition: transform 0.2s, box-shadow 0.2s;
     }
-    .card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(26,86,219,0.12); }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,74,173,0.12); }
 
     /* Buttons */
     .btn-primary {
-      background: #1a56db;
+      background: #004AAD;
       color: white;
       padding: 12px 28px;
       font-family: 'Syne', sans-serif;
@@ -53,10 +57,10 @@
       border-radius: 0;
       transition: all 0.2s;
       display: inline-flex; align-items: center; gap: 8px;
-      border: 2px solid #1a56db;
+      border: 2px solid #004AAD;
     }
-    .btn-primary:hover { background: transparent; color: #1a56db; }
-    .dark .btn-primary:hover { color: #3b82f6; border-color: #3b82f6; }
+    .btn-primary:hover { background: transparent; color:var(--primary-fg); }
+    .dark .btn-primary:hover { color:#60A5FA; border-color:#60A5FA; }
 
     .btn-outline {
       border: 2px solid var(--border);
@@ -68,7 +72,7 @@
       transition: all 0.2s;
       background: transparent;
     }
-    .btn-outline:hover { border-color: #1a56db; color: #1a56db; }
+    .btn-outline:hover { border-color:var(--primary-fg); color:var(--primary-fg); }
 
     /* Filter pills */
     .filter-pill {
@@ -84,8 +88,8 @@
       border-radius: 0;
     }
     .filter-pill.active, .filter-pill:hover {
-      background: #1a56db;
-      border-color: #1a56db;
+      background: #004AAD;
+      border-color:var(--primary-fg);
       color: white;
     }
 
@@ -96,7 +100,7 @@
       font-weight: 700;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: #1a56db;
+      color:var(--primary-fg);
     }
 
     /* Floating WhatsApp */
@@ -117,7 +121,7 @@
 
     /* Hero gradient */
     .hero-gradient {
-      background: linear-gradient(135deg, var(--card) 0%, rgba(26,86,219,0.04) 100%);
+      background: linear-gradient(135deg, var(--card) 0%, rgba(0,74,173,0.04) 100%);
     }
 
     /* Blog card category badge */
@@ -126,28 +130,33 @@
       letter-spacing: 0.1em; text-transform: uppercase;
       padding: 4px 10px; border-radius: 0;
     }
-    .badge-blue { background: rgba(26,86,219,0.1); color: #1a56db; }
+    .badge-blue { background: rgba(0,74,173,0.1); color:var(--primary-fg); }
     .badge-teal { background: rgba(20,184,166,0.1); color: #0d9488; }
     .badge-orange { background: rgba(249,115,22,0.1); color: #ea580c; }
     .badge-purple { background: rgba(139,92,246,0.1); color: #7c3aed; }
 
     /* Pricing card highlight */
     .pricing-highlight {
-      border: 2px solid #1a56db !important;
+      border: 2px solid #004AAD !important;
       position: relative;
     }
     .pricing-highlight::before {
-      content: 'POPULAIRE';
+      content: attr(data-badge);
       position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
-      background: #1a56db; color: white;
+      background: #004AAD; color: white;
       font-size: 10px; font-weight: 800; font-family: 'Syne', sans-serif;
       letter-spacing: 0.15em; padding: 3px 12px;
     }
 
     /* Language toggle */
     .lang-btn { font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700; cursor: pointer; }
-    .lang-btn.active { color: #1a56db; }
+    .lang-btn.active { color:var(--primary-fg); }
 
     /* Scroll reveal */
     .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.5s, transform 0.5s; }
     .reveal.visible { opacity: 1; transform: none; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal, .page { opacity: 1; transform: none; transition: none; animation: none; }
+      #scroll-progress { transition: none; }
+    }

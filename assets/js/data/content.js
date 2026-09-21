@@ -1,8 +1,98 @@
+// ==================== GRILLE TARIFAIRE (XAF) ====================
+// Source unique des prix des prestations : cartes, grille complète et messages WhatsApp en dérivent.
+// Pour changer un prix, modifier uniquement `amount` ici.
+const PRICE_UNITS = {
+  year: { fr: "/ an", en: "/ year" },
+  month: { fr: "/ mois", en: "/ month" },
+  hour: { fr: "/ h", en: "/ hour" },
+  seat: { fr: "/ poste", en: "/ workstation" },
+  yearSeat: { fr: "/ an / poste", en: "/ year / workstation" },
+  audit: { fr: "/ audit", en: "/ audit" },
+  group: { fr: "/ groupe", en: "/ group" },
+};
+
+const pricingGrid = [
+  {
+    id: "web",
+    title: { fr: "Création & développement web", en: "Web design & development" },
+    items: [
+      { id: "vitrine-essentiel", amount: 90000, label: { fr: "Site Vitrine — Essentiel (1 à 5 pages)", en: "Business Website — Essential (1 to 5 pages)" } },
+      { id: "vitrine-pro", amount: 175000, label: { fr: "Site Vitrine — Pro (jusqu'à 10 pages)", en: "Business Website — Pro (up to 10 pages)" } },
+      { id: "blog-portfolio", amount: 120000, label: { fr: "Blog / Portfolio", en: "Blog / Portfolio" } },
+      { id: "ecommerce-startup", amount: 250000, label: { fr: "E-commerce — Start-Up (jusqu'à 20 produits)", en: "E-commerce — Start-Up (up to 20 products)" } },
+      { id: "ecommerce-business", amount: 450000, label: { fr: "E-commerce — Business (produits illimités)", en: "E-commerce — Business (unlimited products)" } },
+      { id: "app-mobile", amount: 600000, from: true, label: { fr: "Application mobile (Flutter)", en: "Mobile app (Flutter)" } },
+      { id: "refonte", amount: 60000, from: true, label: { fr: "Refonte de site existant", en: "Existing website redesign" } },
+      { id: "fonctionnalite", amount: 20000, from: true, label: { fr: "Ajout de fonctionnalité", en: "New feature" } },
+      { id: "logo", amount: 25000, label: { fr: "Logo & identité visuelle", en: "Logo & visual identity" } },
+    ],
+  },
+  {
+    id: "visibilite",
+    title: { fr: "Croissance & visibilité", en: "Growth & visibility" },
+    items: [
+      { id: "audit-seo", amount: 45000, label: { fr: "Audit SEO complet", en: "Full SEO audit" } },
+      { id: "optimisation-seo", amount: 35000, from: true, label: { fr: "Optimisation SEO", en: "SEO optimization" } },
+      { id: "contenu-seo", amount: 30000, label: { fr: "Rédaction de contenu SEO (3 textes)", en: "SEO copywriting (3 texts)" } },
+      { id: "social-starter", amount: 35000, unit: "month", label: { fr: "Réseaux sociaux — Starter (10 posts / mois)", en: "Social media — Starter (10 posts / month)" } },
+      { id: "social-growth", amount: 60000, unit: "month", label: { fr: "Réseaux sociaux — Growth (20 posts / mois)", en: "Social media — Growth (20 posts / month)" } },
+      { id: "social-pro", amount: 90000, unit: "month", label: { fr: "Réseaux sociaux — Pro (illimité)", en: "Social media — Pro (unlimited)" } },
+      { id: "emailing", amount: 25000, label: { fr: "Accompagnement emailing", en: "Email marketing setup" } },
+    ],
+  },
+  {
+    id: "infogerance",
+    title: { fr: "Infogérance, hébergement & sécurité", en: "Managed services, hosting & security" },
+    items: [
+      { id: "hebergement", amount: 18000, unit: "year", label: { fr: "Hébergement web standard", en: "Standard web hosting" } },
+      { id: "domaine", amount: 12000, unit: "year", label: { fr: "Nom de domaine", en: "Domain name" } },
+      { id: "maintenance", amount: 12000, unit: "month", label: { fr: "Maintenance mensuelle", en: "Monthly maintenance" } },
+      { id: "forfait-annuel", amount: 85000, unit: "year", label: { fr: "Forfait annuel clé en main", en: "All-inclusive annual plan" } },
+      { id: "securite-waf", amount: 8000, unit: "month", label: { fr: "Sécurité avancée (WAF & CDN)", en: "Advanced security (WAF & CDN)" } },
+      { id: "audit-performance", amount: 40000, label: { fr: "Audit de performance web", en: "Web performance audit" } },
+    ],
+  },
+  {
+    id: "conseil",
+    title: { fr: "Conseil & équipement", en: "Consulting & equipment" },
+    items: [
+      { id: "consultation", amount: 15000, unit: "hour", label: { fr: "Consultation stratégie digitale", en: "Digital strategy consultation" } },
+      { id: "installation", amount: 20000, unit: "seat", label: { fr: "Installation & configuration", en: "Installation & setup" } },
+      { id: "workspace", amount: 15000, label: { fr: "Mise en place Google Workspace / Microsoft 365", en: "Google Workspace / Microsoft 365 setup" } },
+      { id: "support-materiel", amount: 40000, unit: "yearSeat", label: { fr: "Contrat de support matériel", en: "Hardware support contract" } },
+    ],
+  },
+];
+
+// Séparateur de milliers : espace insécable en français (pas de coupure de ligne), virgule en anglais.
+function formatXAF(amount, lang) {
+  return String(amount).replace(/\B(?=(\d{3})+(?!\d))/g, lang === "en" ? "," : " ");
+}
+
+function findPrice(id) {
+  for (const group of pricingGrid) {
+    const item = group.items.find((i) => i.id === id);
+    if (item) return item;
+  }
+  throw new Error(`Prix inconnu dans pricingGrid : ${id}`);
+}
+
+// Libellé complet, ex. « Dès 90 000 XAF / mois ». `options` surcharge `from` et `unit` de la grille.
+function priceLabel(id, lang, options = {}) {
+  const item = findPrice(id);
+  const from = options.from ?? item.from;
+  const unit = options.unit ?? item.unit;
+  const prefix = from ? (lang === "en" ? "From " : "Dès ") : "";
+  const suffix = unit ? ` ${PRICE_UNITS[unit][lang]}` : "";
+  return `${prefix}${formatXAF(item.amount, lang)} XAF${suffix}`;
+}
+
 const translations = {
   fr: {
     nav: {
       home: "Accueil",
       services: "Services",
+      formations: "Formations",
       portfolio: "Portfolio",
       blog: "Blog",
       about: "À Propos",
@@ -31,42 +121,42 @@ const translations = {
           icon: "🖥️",
           title: "Site Vitrine",
           desc: "Site professionnel responsive qui présente votre marque et convertit vos visiteurs en clients.",
-          price: "À partir de 150 000 XAF",
+          price: priceLabel("vitrine-essentiel", "fr", { from: true }),
           tag: "Populaire",
         },
         {
           icon: "🛒",
           title: "E-Commerce",
           desc: "Boutique en ligne complète avec paiement sécurisé, gestion des stocks et tableau de bord.",
-          price: "À partir de 350 000 XAF",
+          price: priceLabel("ecommerce-startup", "fr", { from: true }),
           tag: "Premium",
         },
         {
           icon: "🔍",
           title: "SEO & Référencement",
           desc: "Audit complet et optimisation de votre visibilité sur Google pour attirer plus de clients.",
-          price: "75 000 XAF / audit",
+          price: priceLabel("audit-seo", "fr", { unit: "audit" }),
           tag: "",
         },
         {
           icon: "🔧",
           title: "Maintenance",
           desc: "Mises à jour, sauvegardes, sécurité et support technique pour garder votre site au top.",
-          price: "À partir de 30 000 XAF / mois",
+          price: priceLabel("maintenance", "fr"),
           tag: "",
         },
         {
           icon: "📱",
           title: "Réseaux Sociaux",
           desc: "Gestion complète de vos réseaux sociaux : posts, community management et reporting mensuel.",
-          price: "À partir de 50 000 XAF / mois",
+          price: priceLabel("social-starter", "fr", { from: true }),
           tag: "Nouveau",
         },
         {
           icon: "📊",
           title: "Audit & Stratégie",
           desc: "Consultation personnalisée pour aligner vos objectifs business sur les bons outils numériques.",
-          price: "25 000 XAF / heure",
+          price: priceLabel("consultation", "fr"),
           tag: "",
         },
       ],
@@ -81,7 +171,7 @@ const translations = {
           name: "Starter",
           posts: "10 posts / mois",
           items: ["Création de visuels", "Rédaction textes", "Planification"],
-          price: "50 000",
+          price: formatXAF(findPrice("social-starter").amount, "fr"),
           period: "/ mois",
         },
         {
@@ -93,7 +183,7 @@ const translations = {
             "Planification",
             "Reporting mensuel",
           ],
-          price: "85 000",
+          price: formatXAF(findPrice("social-growth").amount, "fr"),
           period: "/ mois",
           highlight: true,
         },
@@ -106,7 +196,7 @@ const translations = {
             "Campagnes sponsorisées",
             "Rapport hebdo",
           ],
-          price: "120 000",
+          price: formatXAF(findPrice("social-pro").amount, "fr"),
           period: "/ mois",
         },
       ],
@@ -247,6 +337,7 @@ const translations = {
     nav: {
       home: "Home",
       services: "Services",
+      formations: "Training",
       portfolio: "Portfolio",
       blog: "Blog",
       about: "About",
@@ -275,42 +366,42 @@ const translations = {
           icon: "🖥️",
           title: "Business Website",
           desc: "Professional responsive site that showcases your brand and converts visitors into customers.",
-          price: "From 150,000 XAF",
+          price: priceLabel("vitrine-essentiel", "en", { from: true }),
           tag: "Popular",
         },
         {
           icon: "🛒",
           title: "E-Commerce",
           desc: "Full online store with secure payment, inventory management and dashboard.",
-          price: "From 350,000 XAF",
+          price: priceLabel("ecommerce-startup", "en", { from: true }),
           tag: "Premium",
         },
         {
           icon: "🔍",
           title: "SEO & Ranking",
           desc: "Full audit and optimization of your Google visibility to attract more customers.",
-          price: "75,000 XAF / audit",
+          price: priceLabel("audit-seo", "en", { unit: "audit" }),
           tag: "",
         },
         {
           icon: "🔧",
           title: "Maintenance",
           desc: "Updates, backups, security and tech support to keep your site at its best.",
-          price: "From 30,000 XAF / month",
+          price: priceLabel("maintenance", "en"),
           tag: "",
         },
         {
           icon: "📱",
           title: "Social Media",
           desc: "Complete social media management: posts, community management and monthly reports.",
-          price: "From 50,000 XAF / month",
+          price: priceLabel("social-starter", "en", { from: true }),
           tag: "New",
         },
         {
           icon: "📊",
           title: "Audit & Strategy",
           desc: "Personalized consultation to align your business goals with the right digital tools.",
-          price: "25,000 XAF / hour",
+          price: priceLabel("consultation", "en"),
           tag: "",
         },
       ],
@@ -325,7 +416,7 @@ const translations = {
           name: "Starter",
           posts: "10 posts / month",
           items: ["Visual creation", "Copywriting", "Scheduling"],
-          price: "50,000",
+          price: formatXAF(findPrice("social-starter").amount, "en"),
           period: "/ month",
         },
         {
@@ -337,7 +428,7 @@ const translations = {
             "Scheduling",
             "Monthly report",
           ],
-          price: "85,000",
+          price: formatXAF(findPrice("social-growth").amount, "en"),
           period: "/ month",
           highlight: true,
         },
@@ -350,7 +441,7 @@ const translations = {
             "Sponsored campaigns",
             "Weekly report",
           ],
-          price: "120,000",
+          price: formatXAF(findPrice("social-pro").amount, "en"),
           period: "/ month",
         },
       ],
@@ -582,7 +673,7 @@ const portfolioDetails = {
     client: "M.G.N CodeWave",
     deliverable: "Identité visuelle complète",
     role: "Branding & Design System",
-    color: "#1a56db",
+    color: "#004AAD",
     category: "Portfolio",
     liveUrl: "https://ngoubadjambo-richard.github.io/CodeWave/",
     description:
@@ -1092,7 +1183,7 @@ const blogDetails = {
     dateEn: "December 10, 2024",
     read: "8",
     author: "M.G.N CodeWave",
-    color: "#1a56db",
+    color: "#004AAD",
     intro:
       "En 2025, avoir un site web n'est plus un luxe, mais une nécessité pour toute entreprise gabonaise souhaitant prospérer dans un monde de plus en plus digital.",
     introEn:
@@ -1134,7 +1225,7 @@ const blogDetails = {
         icon: "💰",
         title: "Réduire Vos Coûts Marketing",
         titleEn: "Reduce Your Marketing Costs",
-        body: "Un site web bien référencé coûte beaucoup moins cher que la publicité traditionnelle (radio, affichage, flyers) et génère des résultats mesurables et durables. Un site professionnel revient à seulement 15 000 FCFA/mois contre 300 000+ FCFA pour un spot radio.",
+        body: "Un site web bien référencé coûte beaucoup moins cher que la publicité traditionnelle (radio, affichage, flyers) et génère des résultats mesurables et durables. Un site professionnel démarre à 90 000 XAF, puis 12 000 XAF/mois de maintenance, contre 300 000+ FCFA pour un spot radio.",
         bodyEn:
           "A well-ranked website costs much less than traditional advertising (radio, billboards, flyers) and generates measurable, lasting results.",
       },
@@ -1180,9 +1271,9 @@ const blogDetails = {
       },
     ],
     conclusion:
-      "Créer un site web pour votre entreprise au Gabon en 2025 n'est plus une option mais une nécessité stratégique. Avec des coûts abordables (à partir de 150 000 XAF chez CodeWave) et des bénéfices considérables, c'est un investissement qui se rentabilise rapidement.",
+      "Créer un site web pour votre entreprise au Gabon en 2025 n'est plus une option mais une nécessité stratégique. Avec des coûts abordables (dès 90 000 XAF chez CodeWave) et des bénéfices considérables, c'est un investissement qui se rentabilise rapidement.",
     conclusionEn:
-      "Creating a website for your business in Gabon in 2025 is no longer optional but a strategic necessity. With affordable costs (from 150,000 XAF at CodeWave) and considerable benefits, it's an investment that pays off quickly.",
+      "Creating a website for your business in Gabon in 2025 is no longer optional but a strategic necessity. With affordable costs (from 90,000 XAF at CodeWave) and considerable benefits, it's an investment that pays off quickly.",
   },
   2: {
     title: "Comment optimiser le référencement de votre site web au Gabon",
@@ -2010,7 +2101,7 @@ const portfolioProjects = [
     category: "Portfolio",
     tags: ["Identité", "Design system"],
     url: "https://ngoubadjambo-richard.github.io/CodeWave/portfolio/mgn-codewave-details.html",
-    color: "#1a56db",
+    color: "#004AAD",
   },
   {
     id: 4,

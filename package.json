@@ -1,0 +1,13 @@
+{
+  "name": "codewave-website",
+  "private": true,
+  "description": "Site vitrine statique M.G.N CodeWave (GitHub Pages).",
+  "scripts": {
+    "build:css": "tailwindcss -i ./assets/css/tailwind.input.css -o ./assets/css/tailwind.min.css --minify",
+    "watch:css": "tailwindcss -i ./assets/css/tailwind.input.css -o ./assets/css/tailwind.min.css --watch",
+    "check:content": "node scripts/check-content.js"
+  },
+  "devDependencies": {
+    "tailwindcss": "3.4.19"
+  }
+}
