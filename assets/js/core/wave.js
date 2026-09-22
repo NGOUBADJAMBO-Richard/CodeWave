@@ -19,6 +19,54 @@ function waveSVG(color = "#004AAD") {
   </div>`;
 }
 
+// Titre dont la dernière ligne (ou, sur une seule ligne, le dernier mot) passe en dégradé de marque.
+function accentTitle(title) {
+  const multiline = title.includes("\n");
+  const parts = multiline ? title.split("\n") : title.split(" ");
+  const accent = parts.pop();
+  const lead = parts.length ? parts.join(multiline ? "<br>" : " ") + (multiline ? "<br>" : " ") : "";
+  return `${lead}<span class="text-gradient">${accent}</span>`;
+}
+
+// En-tête des pages intérieures : ondes, halo, titre mis en valeur, onde de transition vers le contenu.
+function renderPageHero({ label, title, sub, center = false, actions = "" }) {
+  return `
+    <section class="page-hero relative overflow-hidden pt-32 pb-24 mb-12">
+      ${waveSVG()}
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="relative max-w-6xl mx-auto px-4 md:px-8 ${center ? "text-center" : ""}">
+        <p class="section-label mb-4">${label}</p>
+        <h1 class="font-display font-700 leading-tight mb-5" style="font-size:clamp(2.5rem,5vw,4rem); color:var(--fg)">${accentTitle(title)}</h1>
+        <p class="max-w-xl text-base md:text-lg ${center ? "mx-auto" : ""}" style="color:var(--muted)">${sub}</p>
+        ${actions ? `<div class="flex flex-wrap gap-3 mt-8 ${center ? "justify-center" : ""}">${actions}</div>` : ""}
+      </div>
+    </section>`;
+}
+
+// ==================== ARRIÈRE-PLAN ANIMÉ GLOBAL ====================
+// Calque fixe derrière tout le site : halos « aurore » qui dérivent + ondes plein écran
+// parcourues par des traits lumineux. Créé une seule fois, hors de #root (non recréé au rendu).
+function ensureBackgroundFx() {
+  if (document.getElementById("bg-fx")) return;
+  const waves = [
+    "M-100,180 C200,60 420,300 720,170 C1020,40 1220,300 1540,160",
+    "M-100,420 C220,300 440,540 740,410 C1040,280 1240,540 1540,400",
+    "M-100,640 C240,520 460,760 760,630 C1060,500 1260,760 1540,620",
+  ];
+  const layer = document.createElement("div");
+  layer.id = "bg-fx";
+  layer.setAttribute("aria-hidden", "true");
+  layer.innerHTML = `
+    <div class="aurora aurora-1"></div>
+    <div class="aurora aurora-2"></div>
+    <div class="aurora aurora-3"></div>
+    <svg class="flow-waves" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      ${waves.map((d) => `<path class="flow-base" d="${d}"/>`).join("")}
+      ${waves.map((d, i) => `<path class="flow-pulse flow-pulse-${i + 1}" d="${d}"/>`).join("")}
+    </svg>`;
+  document.body.prepend(layer);
+}
+
 // ==================== ICÔNES AU TRAIT ====================
 // Style de la charte : trait 1,75 px, extrémités arrondies, grille de 24 px.
 const LINE_ICONS = {

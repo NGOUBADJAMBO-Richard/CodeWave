@@ -154,19 +154,9 @@ function renderFormations() {
     lang === "en" ? "Hello, I would like information about CodeWave Academy training." : "Bonjour, je souhaite des informations sur les formations CodeWave Academy.";
   const generalInfoUrl = `https://wa.me/${ACADEMY_WHATSAPP_NUMBER}?text=${encodeURIComponent(generalMessage)}`;
   return `
-  <div class="page pt-28 pb-16">
-    <section class="relative overflow-hidden mb-16">
-      ${waveSVG()}
-      <div class="relative max-w-6xl mx-auto px-4 md:px-8 py-10">
-        <p class="section-label mb-3">${academyUI.label[lang]}</p>
-        <h1 class="font-display font-700 leading-tight mb-4" style="font-size:clamp(2.5rem,5vw,4rem); color:var(--fg)">${academyUI.title[lang]}</h1>
-        <p class="max-w-2xl mb-8" style="color:var(--muted)">${academyUI.sub[lang]}</p>
-        <div class="flex flex-wrap gap-3">
-          <a href="#catalogue" class="btn-primary">${lang === "en" ? "See the courses" : "Voir les formations"}</a>
-          ${ACADEMY_PLATFORM_URL ? `<a href="${ACADEMY_PLATFORM_URL}" target="_blank" rel="noopener noreferrer" class="btn-outline">${lang === "en" ? "Go to the platform" : "Accéder à la plateforme"}</a>` : `<a href="${generalInfoUrl}" target="_blank" rel="noopener noreferrer" class="btn-outline">${lang === "en" ? "Ask on WhatsApp" : "Poser une question sur WhatsApp"}</a>`}
-        </div>
-      </div>
-    </section>
+  <div class="page pb-16">
+    ${renderPageHero({ label: academyUI.label[lang], title: academyUI.title[lang], sub: academyUI.sub[lang], actions: `<a href="#catalogue" class="btn-primary">${lang === "en" ? "See the courses" : "Voir les formations"}</a>
+          ${ACADEMY_PLATFORM_URL ? `<a href="${ACADEMY_PLATFORM_URL}" target="_blank" rel="noopener noreferrer" class="btn-outline">${lang === "en" ? "Go to the platform" : "Accéder à la plateforme"}</a>` : `<a href="${generalInfoUrl}" target="_blank" rel="noopener noreferrer" class="btn-outline">${lang === "en" ? "Ask on WhatsApp" : "Poser une question sur WhatsApp"}</a>`}` })}
 
     <div class="max-w-6xl mx-auto px-4 md:px-8">
       ${renderBootcampBlock(lang)}

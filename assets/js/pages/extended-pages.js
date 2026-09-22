@@ -361,14 +361,9 @@ function renderCareers() {
   if (activeJob) return renderJobDetail(activeJob);
 
   return `
-  <div class="page pt-28 pb-16">
+  <div class="page pb-16">
+    ${renderPageHero({ label: isEn ? "Careers" : "Recrutement", title: isEn ? "Join our\nTeam" : "Rejoignez\nnotre Équipe", sub: isEn ? "We're a growing digital startup based in Libreville. We're looking for motivated, autonomous talents ready to grow with us." : "Nous sommes une start-up digitale en croissance basée à Libreville. Nous cherchons des talents motivés et autonomes, prêts à grandir avec nous." })}
     <div class="max-w-6xl mx-auto px-4 md:px-8">
-      <!-- Header -->
-      <div class="mb-14 max-w-2xl">
-        <p class="section-label mb-3">${isEn ? "Careers" : "Recrutement"}</p>
-        <h1 class="font-display font-700 leading-tight mb-4" style="font-size:clamp(2.5rem,5vw,4rem);color:var(--fg)">${isEn ? "Join our\nTeam" : "Rejoignez\nnotre Équipe"}</h1>
-        <p style="color:var(--muted)">${isEn ? "We're a growing digital startup based in Libreville. We're looking for motivated, autonomous talents ready to grow with us." : "Nous sommes une start-up digitale en croissance basée à Libreville. Nous cherchons des talents motivés et autonomes, prêts à grandir avec nous."}</p>
-      </div>
 
       <!-- Why join us -->
       <div class="mb-14">
@@ -617,18 +612,13 @@ function legalLayout(
   relatedLinks,
 ) {
   return `
-  <div class="page pt-28 pb-16">
+  <div class="page pb-16">
     <!-- Hero -->
-    <div class="relative overflow-hidden mb-12" style="background:var(--card); border-bottom:1px solid var(--border)">
-      <div class="wave-bg" style="opacity:0.04">
-        <svg width="100%" height="100%" viewBox="0 0 1440 200" preserveAspectRatio="xMidYMid slice">
-          <path d="M-100,60 C300,10 600,150 900,60 C1200,10 1400,150 1540,60" fill="none" stroke="#004AAD" stroke-width="1.5"/>
-          <path d="M-100,90 C300,40 600,180 900,90 C1200,40 1400,180 1540,90" fill="none" stroke="#004AAD" stroke-width="1"/>
-          <path d="M-100,120 C300,70 600,200 900,120 C1200,70 1400,200 1540,120" fill="none" stroke="#004AAD" stroke-width="0.7"/>
-        </svg>
-      </div>
-      <div class="max-w-4xl mx-auto px-4 md:px-8 py-14">
-        <nav class="flex items-center gap-2 text-sm mb-6" style="color:var(--muted)">
+    <div class="page-hero relative overflow-hidden mb-12">
+      ${waveSVG()}
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="relative max-w-4xl mx-auto px-4 md:px-8 pt-32 pb-24">
+        <nav aria-label="Fil d'Ariane" class="flex items-center gap-2 text-sm mb-6" style="color:var(--muted)">
           <button onclick="navigate('home')" class="hover:text-blue-500 transition-colors">Accueil</button>
           <span>/</span>
           <span style="color:var(--fg)">${title}</span>

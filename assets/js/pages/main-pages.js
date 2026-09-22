@@ -33,7 +33,7 @@ function renderNav() {
         ${pages
           .map(
             ([p, l]) => `
-          <button onclick="navigate('${p}')" class="px-2.5 py-1.5 text-sm font-display font-600 whitespace-nowrap transition-colors ${state.page === p ? "text-blue-600" : "hover:text-blue-600"}" style="color:${state.page === p ? "var(--primary-fg)" : "var(--muted)"}">
+          <button onclick="navigate('${p}')" ${state.page === p ? 'aria-current="page"' : ""} class="px-2.5 py-1.5 text-sm font-display font-600 whitespace-nowrap transition-colors ${state.page === p ? "text-blue-600" : "hover:text-blue-600"}" style="color:${state.page === p ? "var(--primary-fg)" : "var(--muted)"}">
             ${l}
           </button>
         `,
@@ -165,7 +165,7 @@ function renderFooter() {
   ];
 
   return `
-  <footer style="background:#0a0f1e; color:#94a3b8; margin-top:${state.page === 'home' ? '0' : '6rem'}; position:relative; overflow:hidden;">
+  <footer style="background:#0a0f1e; color:#94a3b8; margin-top:${['home', 'contact'].includes(state.page) ? '0' : '6rem'}; position:relative; overflow:hidden;">
 
     <!-- Animated wave top border -->
     <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#004AAD,#0062E6,#8b5cf6,#004AAD);background-size:200% 100%;animation:footerGrad 4s linear infinite;"></div>
@@ -346,7 +346,7 @@ function renderHome() {
   return `
   <div class="page">
     <!-- HERO -->
-    <section class="relative min-h-screen flex items-center pt-28 pb-16 overflow-hidden" style="background:var(--bg)">
+    <section class="relative min-h-screen flex items-center pt-28 pb-16 overflow-hidden">
       ${waveSVG()}
       <div class="hero-glow" aria-hidden="true"></div>
       <div class="relative max-w-6xl mx-auto px-4 md:px-8 w-full">
@@ -376,7 +376,7 @@ function renderHome() {
           </div>
 
           <!-- Visuel : maquette navigateur + téléphone (décoratif) -->
-          <div class="hidden lg:block relative h-[460px]" aria-hidden="true">
+          <div class="hidden lg:block relative h-[460px] hero-tilt" aria-hidden="true">
             <div class="mock-browser absolute left-0 top-6 w-[88%]">
               <div class="mock-bar"><i></i><i></i><i></i><span class="mock-url">www.votre-entreprise.ga</span></div>
               <div class="p-5 space-y-4">
@@ -461,8 +461,9 @@ function renderHome() {
     </section>
 
     <!-- MÉTHODE (section sombre) -->
-    <section class="section-deep py-20">
+    <section class="section-deep wave-edges pt-28 pb-28">
       ${waveSVG("#60A5FA")}
+      <svg class="flow-waves" aria-hidden="true" viewBox="0 0 1440 600" preserveAspectRatio="xMidYMid slice"><path class="flow-pulse flow-pulse-1" d="M-100,160 C200,40 420,280 720,150 C1020,20 1220,280 1540,140"/><path class="flow-pulse flow-pulse-3" d="M-100,460 C220,340 440,580 740,450 C1040,320 1240,580 1540,440"/></svg>
       <div class="relative max-w-6xl mx-auto px-4 md:px-8">
         <p class="section-label mb-3 reveal">${ht.process.label}</p>
         <h2 class="font-display font-700 leading-tight mb-12 text-white reveal" style="font-size:clamp(2rem,4vw,3rem)">${ht.process.title}</h2>
@@ -488,7 +489,7 @@ function renderHome() {
     <div class="max-w-6xl mx-auto px-4 md:px-8 pt-16">${renderServicesTrainings()}</div>
 
     <!-- PORTFOLIO PREVIEW -->
-    <section class="py-20" style="background:var(--card); border-top:1px solid var(--border); border-bottom:1px solid var(--border)">
+    <section class="py-20" style="background:color-mix(in srgb, var(--card) 60%, transparent); border-top:1px solid var(--border); border-bottom:1px solid var(--border)">
       <div class="max-w-6xl mx-auto px-4 md:px-8">
         <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
           <div>
@@ -511,7 +512,7 @@ function renderHome() {
     </section>
 
     <!-- CTA BANNER -->
-    <section class="py-20 text-center relative overflow-hidden" style="background:linear-gradient(135deg,#004AAD,#0062E6)">
+    <section class="py-20 text-center relative overflow-hidden cta-animated">
       ${waveSVG("white")}
       <div class="relative max-w-2xl mx-auto px-4">
         <h2 class="font-display font-700 text-white mb-4 reveal" style="font-size:clamp(1.8rem,4vw,2.8rem)">${state.lang === "fr" ? "Prêt à transformer votre présence digitale ?" : "Ready to transform your digital presence?"}</h2>
@@ -544,13 +545,9 @@ function renderServices() {
   const soc = t.social;
 
   return `
-  <div class="page pt-28 pb-16">
+  <div class="page pb-16">
+    ${renderPageHero({ label: st.label, title: st.title, sub: st.sub })}
     <div class="max-w-6xl mx-auto px-4 md:px-8">
-      <div class="mb-16">
-        <p class="section-label mb-3">${st.label}</p>
-        <h1 class="font-display font-700 leading-tight mb-4" style="font-size:clamp(2.5rem,5vw,4rem); color:var(--fg); white-space:pre-line">${st.title}</h1>
-        <p class="max-w-xl" style="color:var(--muted)">${st.sub}</p>
-      </div>
 
       <!-- Main Services Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
@@ -675,9 +672,14 @@ function renderProjectCard(p, i, headingTag) {
                 <path d="M-50,100 C50,50 100,150 200,100 C300,50 350,150 450,100" fill="none" stroke="${p.color}" stroke-width="1.5"/>
                 <path d="M-50,120 C50,70 100,170 200,120 C300,70 350,170 450,120" fill="none" stroke="${p.color}" stroke-width="1"/>
               </svg>
-              <span aria-hidden="true" class="relative font-display font-700 text-5xl" style="${tint}; opacity:0.25">${p.title.substring(0, 2)}</span>
-              <div aria-hidden="true" class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity" style="background:rgba(15,23,42,0.85);background:color-mix(in srgb, ${p.color} 35%, #0f172a)">
-                <span class="text-white font-display font-700 text-sm">${state.lang === "fr" ? "Voir le détail →" : "View details →"}</span>
+              <div aria-hidden="true" class="project-mock relative">
+                <div class="project-mock-bar"><i></i><i></i><i></i></div>
+                <div class="p-2.5 space-y-2">
+                  <div class="px-3 py-2.5 font-display font-700 text-white text-xs truncate" style="background:${p.color};background:color-mix(in srgb, ${p.color} 70%, #0f172a)">${p.title}</div>
+                  <div class="grid grid-cols-3 gap-1.5">${[0, 1, 2].map(() => `<div style="height:16px;background:${p.color}22"></div>`).join("")}</div>
+                  <div class="mock-line" style="width:80%"></div>
+                  <div class="mock-line" style="width:55%"></div>
+                </div>
               </div>
               <div class="absolute bottom-3 left-3">
                 <span class="badge" style="background:var(--card);${tint}">${p.category}</span>
@@ -689,6 +691,7 @@ function renderProjectCard(p, i, headingTag) {
               <div class="flex flex-wrap gap-2">
                 ${p.tags.map((tag) => `<span class="text-xs px-2 py-0.5" style="background:var(--border);color:var(--fg)">${tag}</span>`).join("")}
               </div>
+              <p class="mt-4 text-sm font-display font-700 flex items-center gap-2" style="color:var(--primary-fg)">${state.lang === "fr" ? "Voir le détail" : "View details"} <span aria-hidden="true" class="transition-transform group-hover:translate-x-1">→</span></p>
             </div>
           </a>`;
 }
@@ -718,13 +721,9 @@ function renderPortfolio() {
       : portfolioProjects.filter((p) => p.category === state.portfolioFilter);
 
   return `
-  <div class="page pt-28 pb-16">
+  <div class="page pb-16">
+    ${renderPageHero({ label: t.label, title: t.title, sub: t.sub, center: true })}
     <div class="max-w-6xl mx-auto px-4 md:px-8">
-      <div class="text-center mb-12">
-        <p class="section-label mb-3">${t.label}</p>
-        <h1 class="font-display font-700 leading-tight mb-4" style="font-size:clamp(2.5rem,5vw,4rem); color:var(--fg); white-space:pre-line">${t.title}</h1>
-        <p class="max-w-xl mx-auto" style="color:var(--muted)">${t.sub}</p>
-      </div>
 
       <!-- Stats bar -->
       <div class="flex justify-center gap-8 mb-10 p-5 card">
@@ -792,13 +791,9 @@ function renderBlog() {
   const rest = blogPosts.slice(1);
 
   return `
-  <div class="page pt-28 pb-16">
+  <div class="page pb-16">
+    ${renderPageHero({ label: t.label, title: t.title, sub: t.sub })}
     <div class="max-w-6xl mx-auto px-4 md:px-8">
-      <div class="mb-12">
-        <p class="section-label mb-3">${t.label}</p>
-        <h1 class="font-display font-700 leading-tight mb-4" style="font-size:clamp(2.5rem,5vw,4rem); color:var(--fg); white-space:pre-line">${t.title}</h1>
-        <p class="max-w-xl" style="color:var(--muted)">${t.sub}</p>
-      </div>
 
       <!-- Featured Article -->
       <div onclick="navigateToBlogDetail(${featured.id})" role="link" tabindex="0" onkeydown="activateOnEnter(event)" class="card block mb-10 overflow-hidden reveal group cursor-pointer">
@@ -880,13 +875,16 @@ function renderAbout() {
   ];
 
   return `
-  <div class="page pt-28 pb-16">
-    <div class="max-w-6xl mx-auto px-4 md:px-8">
-      <div class="grid md:grid-cols-2 gap-16 items-center mb-20">
+  <div class="page pb-16">
+    <section class="page-hero relative overflow-hidden pt-32 pb-24 mb-12">
+      ${waveSVG()}
+      <div class="hero-glow" aria-hidden="true"></div>
+    <div class="relative max-w-6xl mx-auto px-4 md:px-8">
+      <div class="grid md:grid-cols-2 gap-16 items-center">
         <!-- Left: Text -->
         <div>
           <p class="section-label mb-3">${t.label}</p>
-          <h1 class="font-display font-700 leading-tight mb-6" style="font-size:clamp(2rem,4vw,3.5rem); color:var(--fg); white-space:pre-line">${t.title}</h1>
+          <h1 class="font-display font-700 leading-tight mb-6" style="font-size:clamp(2rem,4vw,3.5rem); color:var(--fg);">${accentTitle(t.title)}</h1>
           <p class="leading-relaxed mb-8" style="color:var(--muted)">${t.desc}</p>
           <div class="grid grid-cols-2 gap-3 mb-8">
             ${t.values
@@ -930,6 +928,9 @@ function renderAbout() {
           </div>
         </div>
       </div>
+    </div>
+    </section>
+    <div class="max-w-6xl mx-auto px-4 md:px-8">
 
       <!-- Skills -->
       <div class="mb-16">
@@ -988,13 +989,14 @@ function renderPartnership() {
   const isDark = state.theme === "dark";
 
   return `
-  <div class="page pt-28 pb-16">
-    <div class="max-w-6xl mx-auto px-4 md:px-8">
-
-      <!-- Hero Section -->
-      <div class="mb-20 text-center">
+  <div class="page pb-16">
+    <section class="page-hero relative overflow-hidden pt-32 pb-24 mb-12">
+      ${waveSVG()}
+      <div class="hero-glow" aria-hidden="true"></div>
+    <div class="relative max-w-6xl mx-auto px-4 md:px-8">
+      <div class="text-center">
         <p class="section-label mb-3">${t.label}</p>
-        <h1 class="font-display font-700 leading-tight mb-6" style="font-size:clamp(2rem,5vw,4rem); color:var(--fg); white-space:pre-line">${t.title}</h1>
+        <h1 class="font-display font-700 leading-tight mb-6" style="font-size:clamp(2rem,5vw,4rem); color:var(--fg);">${accentTitle(t.title)}</h1>
         <p class="text-lg max-w-3xl mx-auto mb-10" style="color:var(--muted)">${t.sub}</p>
 
         <!-- Main CTA Button -->
@@ -1004,6 +1006,9 @@ function renderPartnership() {
         </a>
         <p style="color:var(--muted); font-size:14px;">${t.ctaSub}</p>
       </div>
+    </div>
+    </section>
+    <div class="max-w-6xl mx-auto px-4 md:px-8">
 
       <!-- Why Join Section -->
       <div class="mb-20">
@@ -1087,13 +1092,16 @@ function renderPartnership() {
 function renderContact() {
   const t = translations[state.lang].contact;
   return `
-  <div class="page pt-28 pb-16">
-    <div class="max-w-6xl mx-auto px-4 md:px-8">
+  <div class="page">
+    <section class="page-hero relative overflow-hidden pt-32 pb-28">
+      ${waveSVG()}
+      <div class="hero-glow" aria-hidden="true"></div>
+    <div class="relative max-w-6xl mx-auto px-4 md:px-8">
       <div class="grid md:grid-cols-2 gap-16">
         <!-- Left: Info -->
         <div>
           <p class="section-label mb-3">${t.label}</p>
-          <h1 class="font-display font-700 leading-tight mb-4" style="font-size:clamp(2rem,4vw,3.5rem); color:var(--fg); white-space:pre-line">${t.title}</h1>
+          <h1 class="font-display font-700 leading-tight mb-4" style="font-size:clamp(2rem,4vw,3.5rem); color:var(--fg);">${accentTitle(t.title)}</h1>
           <p class="mb-10" style="color:var(--muted)">${t.sub}</p>
 
           <div class="space-y-5 mb-10">
@@ -1158,6 +1166,7 @@ function renderContact() {
         </div>
       </div>
     </div>
+    </section>
   </div>`;
 }
 

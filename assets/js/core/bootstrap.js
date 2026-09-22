@@ -197,4 +197,5 @@ function syncStructuredData() {
 }
 
 // Initial render
+ensureBackgroundFx();
 render();

@@ -172,6 +172,7 @@ function updateScrollProgress() {
   const doc = document.documentElement;
   const scrollable = doc.scrollHeight - doc.clientHeight;
   el.style.width = scrollable > 0 ? (doc.scrollTop / scrollable) * 100 + "%" : "0%";
+  document.querySelector("nav")?.classList.toggle("nav-scrolled", doc.scrollTop > 24);
 }
 window.addEventListener(
   "scroll",
@@ -204,6 +205,43 @@ function observeReveals() {
   );
   targets.forEach((el) => revealObserver.observe(el));
 }
+
+// ==================== INTERACTIONS AU POINTEUR ====================
+// Un seul écouteur délégué (le DOM est recréé à chaque rendu) : halo des cartes et inclinaison
+// de la maquette du hero. Inactif sur écran tactile et si l'utilisateur réduit les animations.
+const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
+const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+let pointerFrame = 0;
+let lastPointer = null;
+
+function applyPointerEffects() {
+  pointerFrame = 0;
+  const { x, y, target } = lastPointer;
+  const card = target.closest?.(".card");
+  if (card) {
+    const r = card.getBoundingClientRect();
+    card.style.setProperty("--mx", `${x - r.left}px`);
+    card.style.setProperty("--my", `${y - r.top}px`);
+  }
+  const tilt = document.querySelector(".hero-tilt");
+  if (tilt && !reducedMotion.matches) {
+    const r = tilt.getBoundingClientRect();
+    const dx = Math.max(-1, Math.min(1, (x - (r.left + r.width / 2)) / (r.width / 2)));
+    const dy = Math.max(-1, Math.min(1, (y - (r.top + r.height / 2)) / (r.height / 2)));
+    const near = y > r.top - 200 && y < r.bottom + 200;
+    tilt.style.transform = near ? `perspective(1000px) rotateY(${dx * 5}deg) rotateX(${-dy * 4}deg)` : "";
+  }
+}
+
+document.addEventListener(
+  "pointermove",
+  (event) => {
+    if (!finePointer.matches) return;
+    lastPointer = { x: event.clientX, y: event.clientY, target: event.target };
+    if (!pointerFrame) pointerFrame = requestAnimationFrame(applyPointerEffects);
+  },
+  { passive: true },
+);
 
 // ==================== COMPTEURS ANIMÉS ====================
 // <span data-count>50+</span> : compte de 0 à 50 à l'apparition, suffixe conservé.
