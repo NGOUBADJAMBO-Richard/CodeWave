@@ -3,6 +3,8 @@
     h1, h2, h3, h4, .font-display { font-family: 'Syne', sans-serif; }
     /* La règle * ci-dessus viserait aussi les <span> internes (mots animés, dégradé) : ils héritent du titre. */
     h1 *, h2 *, h3 *, h4 *, .font-display * { font-family: inherit; }
+    /* Code : chasse fixe obligatoire (la frappe animée est calculée en ch). */
+    .code-editor, .code-editor *, .step-cmd, .step-cmd *, .section-label, .code-glyph { font-family: var(--font-code, monospace); }
     
     :root {
       --bg: #f4f3f3;
@@ -15,6 +17,7 @@
       /* Texte d'accent : #004AAD sur fond clair = 7,4:1 (AA). */
       --primary-fg: #004AAD;
       --hero-bg: #E8F0FB;
+      --font-code: ui-monospace, "SF Mono", "Cascadia Code", Consolas, "Liberation Mono", monospace;
     }
     .dark {
       --bg: #1e293b;
@@ -124,10 +127,8 @@
       text-transform: uppercase;
       color:var(--primary-fg);
     }
-    .section-label::before {
-      content: ""; display: inline-block; width: 22px; height: 2px;
-      background: currentColor; vertical-align: middle; margin-right: 10px;
-    }
+    .section-label { font-family: var(--font-code); letter-spacing: 0.12em; }
+    .section-label::before { content: "// "; opacity: 0.7; }
 
     /* Floating WhatsApp */
     #whatsapp-btn {
@@ -378,6 +379,41 @@
     /* Parallaxe douce de l'arrière-plan au défilement (--scroll mis à jour par updateScrollProgress) */
     #bg-fx .flow-waves { transform: translateY(calc(var(--scroll, 0) * -0.12px)); }
 
+
+    /* ==================== PASSE « CODE » ==================== */
+    /* Éditeur de code du hero (thème sombre dans les deux modes, comme un vrai éditeur) */
+    .code-editor { background: #0B1220; border: 1px solid #1E293B; box-shadow: 0 30px 70px rgba(2,6,23,0.35); font-family: var(--font-code); }
+    .code-bar { display: flex; align-items: center; gap: 6px; padding: 10px 14px; background: #0F172A; border-bottom: 1px solid #1E293B; }
+    .code-bar i { width: 10px; height: 10px; border-radius: 50%; background: #334155; }
+    .code-bar i:nth-child(1) { background: #EF4444; } .code-bar i:nth-child(2) { background: #F59E0B; } .code-bar i:nth-child(3) { background: #10B981; }
+    .code-bar span { margin-left: 12px; font-size: 12px; color: #94A3B8; }
+    .code-body { position: relative; padding: 18px 18px 22px 0; font-size: 13.5px; line-height: 1.85; color: #CBD5E1; }
+    .code-line { display: flex; white-space: nowrap; }
+    .code-ln { width: 3.2em; flex-shrink: 0; text-align: right; padding-right: 1.2em; color: #475569; user-select: none; }
+    .code-type { display: inline-block; overflow: hidden; width: calc(var(--n) * 1ch); }
+    .code-editor.is-typing .code-type { width: 0; animation: typeLine calc(var(--n) * var(--c, 26ms)) steps(var(--n)) forwards; animation-delay: var(--d); }
+    @keyframes typeLine { to { width: calc(var(--n) * 1ch); } }
+    .code-cursor { display: inline-block; width: 8px; height: 1.1em; margin-left: 4.4em; background: #60A5FA; vertical-align: middle; animation: blink 1s steps(2) infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
+    .tk-kw { color: #C792EA; } .tk-fn { color: #82AAFF; } .tk-var { color: #F1F5F9; } .tk-prop { color: #7FDBCA; }
+    .tk-str { color: #C3E88D; } .tk-pun { color: #94A3B8; } .tk-com { color: #64748B; font-style: italic; }
+
+    /* Symboles de code flottant dans l'arrière-plan global */
+    .code-glyph { position: absolute; font-family: var(--font-code); font-weight: 700; font-size: clamp(18px, 2.4vw, 34px);
+      color: #004AAD; opacity: 0.07; animation: glyphFloat calc(18s + var(--g) * 1.7s) ease-in-out infinite alternate; }
+    .dark .code-glyph { color: #60A5FA; opacity: 0.09; }
+    @keyframes glyphFloat { from { transform: translateY(0) rotate(-6deg); } to { transform: translateY(-40px) rotate(6deg); } }
+
+    /* Commande de terminal sous chaque étape */
+    .step-cmd { font-family: var(--font-code); font-size: 12.5px; color: #7FDBCA; }
+    .step-cmd span { color: #60A5FA; }
+
+    /* Bandeau défilant en police de code */
+    .marquee-track li { font-family: var(--font-code); font-weight: 600; letter-spacing: 0.02em; }
+
+    /* Icônes au trait issues des anciens emojis : couleur de marque, alignées sur le texte */
+    .ui-icon { display: inline-flex; align-items: center; justify-content: center; color: var(--primary-fg); vertical-align: middle; }
+
     @media (prefers-reduced-motion: reduce) {
       .reveal, .page { opacity: 1; transform: none; transition: none; animation: none; }
       .wave-drift, .float-a, .float-b, .float-c, .marquee-track, .mock-shimmer::after { animation: none; }
@@ -385,7 +421,8 @@
       .page-hero h1, .page-hero .section-label, .page-hero p, nav [aria-current="page"]::after { animation: none; }
       .project-mock, .group:hover .project-mock, .hero-tilt { transform: none; transition: none; }
       .reveal-left, .reveal-right, .reveal-zoom { transform: none; }
-      .aurora, .flow-pulse, .cta-animated, .word { animation: none; }
+      .aurora, .flow-pulse, .cta-animated, .word, .code-glyph, .code-cursor { animation: none; }
+      .code-editor.is-typing .code-type { animation: none; width: calc(var(--n) * 1ch); }
       .btn-primary::after { display: none; }
       #bg-fx .flow-waves { transform: none; }
       .flow-pulse { display: none; }

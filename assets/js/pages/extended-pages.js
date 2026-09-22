@@ -83,12 +83,12 @@ function renderPortfolioDetail(projectId) {
           <!-- Challenge & Result -->
           <div class="grid md:grid-cols-2 gap-5 reveal">
             <div class="card p-6">
-              <div class="w-10 h-10 flex items-center justify-center text-xl mb-4" style="background:rgba(239,68,68,0.1)">🎯</div>
+              <div class="w-10 h-10 flex items-center justify-center text-xl mb-4" style="background:rgba(239,68,68,0.1)">${iconFromEmoji("🎯", 16)} </div>
               <h3 class="font-display font-700 text-base mb-3" style="color:var(--fg)">${isEn ? "The Challenge" : "Le Défi"}</h3>
               <p class="text-sm leading-relaxed" style="color:var(--muted)">${challenge}</p>
             </div>
             <div class="card p-6">
-              <div class="w-10 h-10 flex items-center justify-center text-xl mb-4" style="background:rgba(16,185,129,0.1)">✅</div>
+              <div class="w-10 h-10 flex items-center justify-center text-xl mb-4" style="background:rgba(16,185,129,0.1)">${iconFromEmoji("✅", 16)} </div>
               <h3 class="font-display font-700 text-base mb-3" style="color:var(--fg)">${isEn ? "The Result" : "Le Résultat"}</h3>
               <p class="text-sm leading-relaxed" style="color:var(--muted)">${result}</p>
             </div>
@@ -130,7 +130,7 @@ function renderPortfolioDetail(projectId) {
             `
                 : `
               <div class="mt-6 p-3 text-xs text-center" style="background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.2);color:#ef4444;color:color-mix(in srgb, #ef4444 60%, var(--fg))">
-                ⚠️ ${isEn ? "Live link temporarily unavailable" : "Lien indisponible temporairement"}
+                ${iconFromEmoji("⚠", 16)} ${isEn ? "Live link temporarily unavailable" : "Lien indisponible temporairement"}
               </div>
             `
             }
@@ -274,7 +274,7 @@ function renderBlogDetail(postId) {
             (s, i) => `
           <div class="reveal" style="transition-delay:${i * 40}ms">
             <div class="flex items-start gap-4">
-              <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center text-2xl" style="background:${catColor}10;border:1px solid ${catColor}20">${s.icon}</div>
+              <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center text-2xl" style="background:${catColor}10;border:1px solid ${catColor}20">${iconFromEmoji(s.icon, 24)}</div>
               <div class="flex-1">
                 <h2 class="font-display font-700 text-xl mb-3" style="color:var(--fg)">
                   <span class="mr-2 text-sm" style="color:${catColor};color:color-mix(in srgb, ${catColor} 50%, var(--fg))">${String(i + 1).padStart(2, "0")}.</span>
@@ -293,7 +293,7 @@ function renderBlogDetail(postId) {
       <!-- Conclusion -->
       <div class="card p-7 mb-10 reveal" style="border-left:4px solid ${catColor}">
         <div class="flex items-start gap-3">
-          <span class="text-2xl">✨</span>
+          <span style="color:var(--primary-fg)">${lineIcon("award", 24)}</span>
           <div>
             <p class="font-display font-700 text-base mb-2" style="color:var(--fg)">${isEn ? "Conclusion" : "Conclusion"}</p>
             <p class="leading-relaxed" style="color:var(--muted)">${conclusion}</p>
@@ -416,7 +416,7 @@ function renderCareers() {
             .map(
               (item, i) => `
             <div class="card p-5 reveal" style="transition-delay:${i * 60}ms">
-              <div class="text-3xl mb-3">${item.icon}</div>
+              <div class="text-3xl mb-3">${iconFromEmoji(item.icon, 28)}</div>
               <h3 class="font-display font-700 text-base mb-1" style="color:var(--fg)">${item.title}</h3>
               <p class="text-sm" style="color:var(--muted)">${item.desc}</p>
             </div>
@@ -450,11 +450,11 @@ function renderCareers() {
 
       <!-- Spontaneous application -->
       <div class="p-8 text-center reveal" style="background:linear-gradient(135deg,#1e293b,#0f172a);border:1px solid #334155">
-        <div class="text-4xl mb-4">💌</div>
+        <div class="mb-4 flex justify-center" style="color:var(--primary-fg)">${lineIcon("mail", 40)}</div>
         <h3 class="font-display font-700 text-white text-2xl mb-3">${isEn ? "Don't see the right position?" : "Vous ne trouvez pas le poste idéal ?"}</h3>
         <p class="mb-6" style="color:#94a3b8">${isEn ? "Send us a spontaneous application! We're always looking for motivated talent." : "Envoyez-nous une candidature spontanée ! Nous sommes toujours à la recherche de talents motivés."}</p>
         <a href="mailto:mgncodewave18@gmail.com?subject=Candidature Spontanée CodeWave" class="btn-primary" style="background:#004AAD;border-color:var(--primary-fg)">
-          ${isEn ? "Send My Application" : "Envoyer Ma Candidature"} ✉️
+          ${isEn ? "Send My Application" : "Envoyer Ma Candidature"} ${iconFromEmoji("✉", 16)} 
         </a>
       </div>
     </div>
@@ -468,14 +468,14 @@ function renderJobCard(job, delay, isEn) {
       <div class="h-2" style="background:${job.color}"></div>
       <div class="p-5">
         <div class="flex items-start justify-between mb-3">
-          <div class="text-3xl">${job.icon}</div>
+          <div class="text-3xl">${iconFromEmoji(job.icon, 28)}</div>
           <span class="badge" style="background:${isCDI ? "rgba(0,74,173,0.1)" : "rgba(16,185,129,0.1)"};color:${isCDI ? "var(--primary-fg)" : "color-mix(in srgb, #10b981 50%, var(--fg))"}">${job.type}</span>
         </div>
         <h3 class="font-display font-700 text-base mb-0.5" style="color:var(--fg)">${isEn ? job.titleEn || job.title : job.title}</h3>
         <p class="text-xs mb-3" style="color:var(--muted)">${job.subtitle}</p>
         <div class="flex flex-wrap gap-2 mb-4">
-          <span class="text-xs flex items-center gap-1" style="color:var(--muted)">📍 ${isEn ? job.locationEn : job.location}</span>
-          <span class="text-xs flex items-center gap-1" style="color:var(--muted)">⏰ ${job.schedule}</span>
+          <span class="text-xs flex items-center gap-1" style="color:var(--muted)">${iconFromEmoji("📍", 16)} ${isEn ? job.locationEn : job.location}</span>
+          <span class="text-xs flex items-center gap-1" style="color:var(--muted)">${iconFromEmoji("⏰", 16)} ${job.schedule}</span>
         </div>
         <div class="pt-3 flex items-center justify-between" style="border-top:1px solid var(--border)">
           <span class="font-display font-700 text-sm" style="color:${job.color};color:color-mix(in srgb, ${job.color} 50%, var(--fg))">${isEn ? job.payEn : job.pay}</span>
@@ -514,7 +514,7 @@ function renderJobDetail(jobId) {
         <div class="p-7 md:p-10">
           <div class="flex flex-col md:flex-row md:items-start justify-between gap-5">
             <div class="flex items-start gap-4">
-              <div class="text-4xl">${job.icon}</div>
+              <div class="text-4xl">${iconFromEmoji(job.icon, 28)}</div>
               <div>
                 <div class="flex items-center gap-2 mb-1">
                   <span class="badge" style="background:${job.color}18;color:${job.color};color:color-mix(in srgb, ${job.color} 50%, var(--fg))">${job.type}</span>
@@ -527,8 +527,8 @@ function renderJobDetail(jobId) {
             <div class="text-right flex-shrink-0">
               <p class="font-display font-700 text-2xl" style="color:${job.color};color:color-mix(in srgb, ${job.color} 50%, var(--fg))">${isEn ? job.payEn : job.pay}</p>
               <div class="flex gap-3 mt-2 justify-end text-xs" style="color:var(--muted)">
-                <span>📍 ${isEn ? job.locationEn : job.location}</span>
-                <span>⏰ ${job.schedule}</span>
+                <span>${iconFromEmoji("📍", 16)} ${isEn ? job.locationEn : job.location}</span>
+                <span>${iconFromEmoji("⏰", 16)} ${job.schedule}</span>
               </div>
             </div>
           </div>
@@ -540,7 +540,7 @@ function renderJobDetail(jobId) {
         <!-- Missions -->
         <div class="card p-7 reveal">
           <h2 class="font-display font-700 text-lg mb-5" style="color:var(--fg)">
-            <span class="mr-2">🎯</span>${isEn ? "Missions" : "Vos Missions"}
+            <span class="mr-2">${iconFromEmoji("🎯", 16)} </span>${isEn ? "Missions" : "Vos Missions"}
           </h2>
           <ul class="space-y-3">
             ${missions
@@ -557,7 +557,7 @@ function renderJobDetail(jobId) {
         <!-- Requirements -->
         <div class="card p-7 reveal">
           <h2 class="font-display font-700 text-lg mb-5" style="color:var(--fg)">
-            <span class="mr-2">✅</span>${isEn ? "Requirements" : "Profil Recherché"}
+            <span class="mr-2">${iconFromEmoji("✅", 16)} </span>${isEn ? "Requirements" : "Profil Recherché"}
           </h2>
           <ul class="space-y-3">
             ${reqs
@@ -579,7 +579,7 @@ function renderJobDetail(jobId) {
         <p class="mb-6" style="color:var(--muted)">${isEn ? "Send your application to our email with your CV and portfolio (if applicable)." : "Envoyez votre candidature par email avec votre CV et portfolio (si applicable)."}</p>
         <div class="flex flex-wrap gap-3 justify-center">
           <a href="mailto:mgncodewave18@gmail.com?subject=Candidature — ${job.title}" class="btn-primary">
-            ${isEn ? "Apply Now" : "Postuler Maintenant"} ✉️
+            ${isEn ? "Apply Now" : "Postuler Maintenant"} ${iconFromEmoji("✉", 16)} 
           </a>
           <a href="https://wa.me/24166198918?text=Bonjour, je souhaite postuler au poste ${job.title}" target="_blank" class="btn-outline">
             WhatsApp →
@@ -624,14 +624,14 @@ function legalLayout(
           <span style="color:var(--fg)">${title}</span>
         </nav>
         <div class="flex items-center gap-4">
-          <div class="w-14 h-14 flex items-center justify-center text-3xl" style="background:rgba(0,74,173,0.08)">${icon}</div>
+          <div class="w-14 h-14 flex items-center justify-center text-3xl" style="background:rgba(0,74,173,0.08)">${iconFromEmoji(icon, 20)}</div>
           <div>
             <h1 class="font-display font-700 text-3xl md:text-4xl" style="color:var(--fg)">${title}</h1>
             <p style="color:var(--muted)">${subtitle}</p>
           </div>
         </div>
         <p class="mt-5 text-xs inline-flex items-center gap-2 px-3 py-1.5" style="background:rgba(0,74,173,0.06);color:var(--muted)">
-          📅 Dernière mise à jour : ${updateDate}
+          ${iconFromEmoji("📅", 16)} Dernière mise à jour : ${updateDate}
         </p>
       </div>
     </div>
@@ -644,13 +644,13 @@ function legalLayout(
 
       <!-- Contact box -->
       <div class="mt-12 card p-6 flex flex-col md:flex-row items-center gap-5 reveal">
-        <div class="text-3xl">💬</div>
+        <div style="color:var(--primary-fg)">${lineIcon("chat", 32)}</div>
         <div class="flex-1">
           <p class="font-display font-700 text-base mb-1" style="color:var(--fg)">Des questions ?</p>
           <p class="text-sm" style="color:var(--muted)">Contactez-nous pour toute demande relative à ce document.</p>
         </div>
         <div class="flex flex-wrap gap-3">
-          <a href="mailto:mgncodewave18@gmail.com" class="btn-primary text-sm py-2 px-4">✉️ Email</a>
+          <a href="mailto:mgncodewave18@gmail.com" class="btn-primary text-sm py-2 px-4">${iconFromEmoji("✉", 16)} Email</a>
           <a href="https://wa.me/24166198918" target="_blank" class="btn-outline text-sm py-2 px-4">WhatsApp</a>
         </div>
       </div>
@@ -872,7 +872,7 @@ function renderPrivacy() {
           .map(
             ([icon, title, desc]) => `
           <div class="card p-4">
-            <div class="flex items-center gap-2 mb-1"><span>${icon}</span><span class="font-600 text-sm" style="color:var(--fg)">${title}</span></div>
+            <div class="flex items-center gap-2 mb-1"><span>${iconFromEmoji(icon, 20)}</span><span class="font-600 text-sm" style="color:var(--fg)">${title}</span></div>
             <p class="text-xs">${desc}</p>
           </div>
         `,
@@ -945,7 +945,7 @@ function renderPrivacy() {
         ]
           .map(
             ([icon, title, desc]) => `
-          <div class="card p-4"><div class="flex items-center gap-2 mb-1"><span>${icon}</span><span class="font-600 text-sm" style="color:var(--fg)">${title}</span></div><p class="text-xs">${desc}</p></div>
+          <div class="card p-4"><div class="flex items-center gap-2 mb-1"><span>${iconFromEmoji(icon, 20)}</span><span class="font-600 text-sm" style="color:var(--fg)">${title}</span></div><p class="text-xs">${desc}</p></div>
         `,
           )
           .join("")}
@@ -978,7 +978,7 @@ function renderPrivacy() {
         ]
           .map(
             ([icon, title, desc]) => `
-          <div class="card p-4"><div class="flex items-center gap-2 mb-1"><span>${icon}</span><span class="font-600 text-xs" style="color:var(--fg)">${title}</span></div><p style="font-size:11px;color:var(--muted)">${desc}</p></div>
+          <div class="card p-4"><div class="flex items-center gap-2 mb-1"><span>${iconFromEmoji(icon, 20)}</span><span class="font-600 text-xs" style="color:var(--fg)">${title}</span></div><p style="font-size:11px;color:var(--muted)">${desc}</p></div>
         `,
           )
           .join("")}
@@ -1013,7 +1013,7 @@ function renderPrivacy() {
           .map(
             ([icon, color, title, desc]) => `
           <div class="card p-4 flex gap-3">
-            <span class="text-xl">${icon}</span>
+            <span class="text-xl">${iconFromEmoji(icon, 20)}</span>
             <div><p class="font-600 text-sm mb-1" style="color:${color};color:color-mix(in srgb, ${color} 50%, var(--fg))">${title}</p><p class="text-xs">${desc}</p></div>
           </div>
         `,
@@ -1087,17 +1087,17 @@ function renderCGV() {
             ]
               .map(
                 ([icon, title, desc]) =>
-                  `<div class="card p-4 text-center"><div class="text-2xl mb-1">${icon}</div><p class="font-700 text-sm mb-1" style="color:var(--fg)">${title}</p><p class="text-xs">${desc}</p></div>`,
+                  `<div class="card p-4 text-center"><div class="text-2xl mb-1">${iconFromEmoji(icon, 20)}</div><p class="font-700 text-sm mb-1" style="color:var(--fg)">${title}</p><p class="text-xs">${desc}</p></div>`,
               )
               .join("")}
           </div>
         </div>
         <div><p class="font-600 mb-2" style="color:var(--fg)">3.3 Moyens acceptés</p>
           <div class="flex flex-wrap gap-2">
-            ${["🏦 Virement bancaire", "📱 Airtel Money", "📱 Moov Money", "💵 Espèces (Libreville)"].map((m) => `<span class="px-3 py-1.5 text-sm" style="background:rgba(0,74,173,0.06);border:1px solid rgba(0,74,173,0.15);color:var(--fg)">${m}</span>`).join("")}
+            ${["Virement bancaire", "Airtel Money", "Moov Money", "Espèces (Libreville)"].map((m) => `<span class="px-3 py-1.5 text-sm" style="background:rgba(0,74,173,0.06);border:1px solid rgba(0,74,173,0.15);color:var(--fg)">${m}</span>`).join("")}
           </div>
         </div>
-        <div class="card p-4" style="border-left:3px solid #ef4444"><p class="font-600 text-sm mb-1" style="color:#ef4444;color:color-mix(in srgb, #ef4444 60%, var(--fg))">⚠️ Retard de paiement</p><p class="text-xs">Tout retard entraîne la suspension des travaux. Pénalités de 10% du montant dû après relance sans réponse.</p></div>
+        <div class="card p-4" style="border-left:3px solid #ef4444"><p class="font-600 text-sm mb-1" style="color:#ef4444;color:color-mix(in srgb, #ef4444 60%, var(--fg))">${iconFromEmoji("⚠", 16)} Retard de paiement</p><p class="text-xs">Tout retard entraîne la suspension des travaux. Pénalités de 10% du montant dû après relance sans réponse.</p></div>
       </div>`,
     ),
     legalSection(
@@ -1107,7 +1107,7 @@ function renderCGV() {
       <ul class="space-y-2">
         ${["Fournir tous les éléments nécessaires (textes, images, logos) dans les délais convenus", "S'assurer que les contenus fournis ne violent aucun droit de propriété intellectuelle", "Répondre aux demandes de validation dans un délai de 7 jours ouvrés", "Effectuer les paiements selon l'échéancier convenu", "Informer le Prestataire de toute modification souhaitée dans les meilleurs délais"].map((i) => `<li class="flex items-start gap-3"><span class="flex-shrink-0 mt-0.5 w-5 h-5 flex items-center justify-center text-xs" style="background:rgba(0,74,173,0.08);color:var(--primary-fg)">→</span>${i}</li>`).join("")}
       </ul>
-      <p class="mt-3 text-xs px-4 py-2" style="background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.2);color:#d97706;color:color-mix(in srgb, #d97706 60%, var(--fg))">⚠️ Tout retard dans la fourniture des éléments par le Client entraîne un report proportionnel du délai de livraison.</p>`,
+      <p class="mt-3 text-xs px-4 py-2" style="background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.2);color:#d97706;color:color-mix(in srgb, #d97706 60%, var(--fg))">${iconFromEmoji("⚠", 16)} Tout retard dans la fourniture des éléments par le Client entraîne un report proportionnel du délai de livraison.</p>`,
     ),
     legalSection(
       "5",
@@ -1166,7 +1166,7 @@ function renderCGV() {
         ]
           .map(
             ([icon, title, desc]) =>
-              `<div class="card p-4"><div class="text-xl mb-2">${icon}</div><p class="font-600 text-sm mb-1" style="color:var(--fg)">${title}</p><p class="text-xs">${desc}</p></div>`,
+              `<div class="card p-4"><div class="text-xl mb-2">${iconFromEmoji(icon, 20)}</div><p class="font-600 text-sm mb-1" style="color:var(--fg)">${title}</p><p class="text-xs">${desc}</p></div>`,
           )
           .join("")}
       </div>`,
@@ -1176,8 +1176,8 @@ function renderCGV() {
       "Garantie et Maintenance",
       `
       <div class="grid md:grid-cols-2 gap-3">
-        <div class="card p-5"><p class="font-700 mb-2" style="color:var(--fg)">🛡️ Garantie 30 jours</p><p class="text-xs">CodeWave garantit le bon fonctionnement du site pendant 30 jours après livraison. Couvre uniquement les bugs liés à la réalisation initiale.</p></div>
-        <div class="card p-5"><p class="font-700 mb-2" style="color:var(--fg)">🔧 Maintenance mensuelle</p><p class="text-xs mb-2">Au-delà, contrat disponible à <strong style="color:var(--primary-fg)">${priceLabel("maintenance", "fr")}</strong> incluant :</p><ul class="text-xs space-y-1">${["Mises à jour techniques", "Sauvegardes régulières", "Support technique prioritaire", "Corrections de bugs"].map((i) => `<li class="flex items-center gap-1"><span aria-hidden="true" style="color:#10b981">✓</span>${i}</li>`).join("")}</ul></div>
+        <div class="card p-5"><p class="font-700 mb-2" style="color:var(--fg)">${iconFromEmoji("🛡", 16)} Garantie 30 jours</p><p class="text-xs">CodeWave garantit le bon fonctionnement du site pendant 30 jours après livraison. Couvre uniquement les bugs liés à la réalisation initiale.</p></div>
+        <div class="card p-5"><p class="font-700 mb-2" style="color:var(--fg)">${iconFromEmoji("🔧", 16)} Maintenance mensuelle</p><p class="text-xs mb-2">Au-delà, contrat disponible à <strong style="color:var(--primary-fg)">${priceLabel("maintenance", "fr")}</strong> incluant :</p><ul class="text-xs space-y-1">${["Mises à jour techniques", "Sauvegardes régulières", "Support technique prioritaire", "Corrections de bugs"].map((i) => `<li class="flex items-center gap-1"><span aria-hidden="true" style="color:#10b981">✓</span>${i}</li>`).join("")}</ul></div>
       </div>`,
     ),
     legalSection(
@@ -1209,7 +1209,7 @@ function renderCGV() {
         ]
           .map(
             ([icon, title, desc]) =>
-              `<div class="flex items-start gap-3"><span class="text-xl">${icon}</span><div><p class="font-600 text-sm mb-0.5" style="color:var(--fg)">${title}</p><p class="text-xs">${desc}</p></div></div>`,
+              `<div class="flex items-start gap-3"><span class="text-xl">${iconFromEmoji(icon, 20)}</span><div><p class="font-600 text-sm mb-0.5" style="color:var(--fg)">${title}</p><p class="text-xs">${desc}</p></div></div>`,
           )
           .join("")}
       </div>`,
@@ -1510,7 +1510,7 @@ function renderSitemap() {
           <span style="color:var(--fg)">${isEn ? "Sitemap" : "Plan du Site"}</span>
         </nav>
         <div class="flex items-center gap-4">
-          <div class="w-14 h-14 flex items-center justify-center text-3xl" style="background:rgba(0,74,173,0.08)">🗺️</div>
+          <div class="w-14 h-14 flex items-center justify-center text-3xl" style="background:rgba(0,74,173,0.08);color:var(--primary-fg)">${lineIcon("globe", 28)}</div>
           <div>
             <h1 class="font-display font-700 text-3xl md:text-4xl" style="color:var(--fg)">${isEn ? "Sitemap" : "Plan du Site"}</h1>
             <p style="color:var(--muted)">${isEn ? "Find all our pages easily" : "Naviguez facilement sur notre site et trouvez ce que vous cherchez"}</p>
@@ -1526,7 +1526,7 @@ function renderSitemap() {
             (group) => `
           <div class="reveal">
             <div class="flex items-center gap-3 mb-5">
-              <span class="text-2xl">${group.icon}</span>
+              <span class="text-2xl">${iconFromEmoji(group.icon, 22)}</span>
               <h2 class="font-display font-700 text-lg" style="color:var(--fg)">${group.title}</h2>
               <div class="flex-1 h-px" style="background:var(--border)"></div>
             </div>
@@ -1576,7 +1576,7 @@ function renderSitemap() {
 
       <!-- Not found -->
       <div class="mt-10 card p-7 text-center reveal">
-        <p class="text-2xl mb-3">🔍</p>
+        <p class="mb-3 flex justify-center" style="color:var(--primary-fg)">${lineIcon("search", 28)}</p>
         <h3 class="font-display font-700 text-lg mb-2" style="color:var(--fg)">${isEn ? "Not finding what you need?" : "Vous ne trouvez pas ce que vous cherchez ?"}</h3>
         <p class="mb-5" style="color:var(--muted)">${isEn ? "Contact us directly, we'll be happy to help!" : "Contactez-nous directement, nous serons ravis de vous aider !"}</p>
         <div class="flex flex-wrap gap-3 justify-center">
@@ -1725,7 +1725,7 @@ function renderSocial() {
 
       <!-- Community CTA banner -->
       <div class="card p-8 md:p-12 text-center reveal" style="background:linear-gradient(135deg,#004AAD08,#8b5cf608);border:1px solid rgba(0,74,173,0.15)">
-        <div class="text-4xl mb-4">🇬🇦</div>
+        <div class="mb-4 flex justify-center" style="color:#60A5FA">${lineIcon("pin", 40)}</div>
         <h2 class="font-display font-700 text-2xl md:text-3xl mb-3" style="color:var(--fg)">${isEn ? "Proud digital ambassador\nof Gabon" : "Ambassadeurs digitaux\nfiers du Gabon"}</h2>
         <p class="max-w-lg mx-auto mb-6" style="color:var(--muted)">${isEn ? "Every share, every follow, every recommendation helps us grow and support more Gabonese businesses in their digital transformation." : "Chaque partage, chaque abonnement, chaque recommandation nous aide à grandir et à accompagner davantage d'entreprises gabonaises dans leur transformation digitale."}</p>
         <div class="flex flex-wrap gap-3 justify-center">

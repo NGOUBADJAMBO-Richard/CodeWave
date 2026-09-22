@@ -182,6 +182,59 @@ function wordSpans(text, startIndex = 0, extraClass = "") {
     .join(" ");
 }
 
+// ==================== ÉDITEUR DE CODE ANIMÉ (hero) ====================
+// Chaque ligne est un tableau de jetons [classe, texte] ; la frappe est rendue en CSS
+// (largeur en ch, steps), le cycle est relancé en JS toutes les CODE_CYCLE_MS.
+const CODE_CYCLE_MS = 14000;
+const CODE_CHAR_MS = 26;
+let codeCycleTimer = 0;
+
+function heroCodeLines(lang) {
+  const en = lang === "en";
+  return [
+    [["kw", "const "], ["var", "site"], ["pun", " = "], ["kw", "await "], ["fn", "codewave"], ["pun", "."], ["fn", "build"], ["pun", "({"]],
+    [["prop", "  client"], ["pun", ": "], ["str", en ? '"Your business"' : '"Votre entreprise"'], ["pun", ","]],
+    [["prop", "  mobileFirst"], ["pun", ": "], ["kw", "true"], ["pun", ","]],
+    [["prop", "  paiement"], ["pun", ": ["], ["str", '"Airtel Money"'], ["pun", ", "], ["str", '"Moov Money"'], ["pun", "],"]],
+    [["prop", "  seo"], ["pun", ": "], ["str", '"local"'], ["pun", ","]],
+    [["pun", "});"]],
+    [["kw", "await "], ["var", "site"], ["pun", "."], ["fn", "deploy"], ["pun", "();"], ["com", en ? " // ✓ live" : " // ✓ en ligne"]],
+  ];
+}
+
+function renderCodeEditor(lang) {
+  let delay = 400;
+  const lines = heroCodeLines(lang)
+    .map((tokens, i) => {
+      const length = tokens.reduce((n, [, text]) => n + text.length, 0);
+      const html = tokens.map(([cls, text]) => `<span class="tk-${cls}">${text.replace(/ /g, "&nbsp;")}</span>`).join("");
+      const line = `<div class="code-line"><span class="code-ln">${i + 1}</span><span class="code-type" style="--n:${length};--d:${delay}ms">${html}</span></div>`;
+      delay += length * CODE_CHAR_MS + 180;
+      return line;
+    })
+    .join("");
+  return `
+    <div class="code-editor" style="--c:${CODE_CHAR_MS}ms">
+      <div class="code-bar"><i></i><i></i><i></i><span>codewave.config.js</span></div>
+      <div class="code-body">${lines}<span class="code-cursor"></span></div>
+    </div>`;
+}
+
+// Relance l'animation de frappe à intervalle régulier (le rendu recrée l'éditeur : minuteur unique).
+function mountCodeTyping() {
+  clearInterval(codeCycleTimer);
+  if (!document.querySelector(".code-editor") || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  codeCycleTimer = setInterval(() => {
+    const editor = document.querySelector(".code-editor");
+    if (!editor) return clearInterval(codeCycleTimer);
+    if (document.hidden) return;
+    editor.classList.remove("is-typing");
+    void editor.offsetWidth; // force le redémarrage des animations CSS
+    editor.classList.add("is-typing");
+  }, CODE_CYCLE_MS);
+  document.querySelector(".code-editor").classList.add("is-typing");
+}
+
 // ==================== ARRIÈRE-PLAN ANIMÉ GLOBAL ====================
 // Calque fixe derrière tout le site : halos « aurore » qui dérivent + ondes plein écran
 // parcourues par des traits lumineux. Créé une seule fois, hors de #root (non recréé au rendu).
@@ -195,10 +248,16 @@ function ensureBackgroundFx() {
   const layer = document.createElement("div");
   layer.id = "bg-fx";
   layer.setAttribute("aria-hidden", "true");
+  // Symboles de code flottants, positions fixes (pas d'aléatoire : rendu stable d'une page à l'autre).
+  const glyphs = [
+    ["</>", 8, 18], ["{ }", 86, 12], ["=>", 72, 64], ["( )", 14, 78], ["[ ]", 46, 88],
+    ["&&", 92, 46], ["#", 30, 40], ["//", 60, 28], ["<div>", 22, 58], ["npm", 80, 84],
+  ];
   layer.innerHTML = `
     <div class="aurora aurora-1"></div>
     <div class="aurora aurora-2"></div>
     <div class="aurora aurora-3"></div>
+    ${glyphs.map(([g, x, y], i) => `<span class="code-glyph" style="left:${x}%;top:${y}%;--g:${i}">${g.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</span>`).join("")}
     <svg class="flow-waves" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
       ${waves.map((d) => `<path class="flow-base" d="${d}"/>`).join("")}
       ${waves.map((d, i) => `<path class="flow-pulse flow-pulse-${i + 1}" d="${d}"/>`).join("")}
@@ -223,7 +282,62 @@ const LINE_ICONS = {
   wallet: '<path d="M20 7H5a2 2 0 010-4h13v4"/><path d="M3 5v14a2 2 0 002 2h15V7"/><circle cx="16" cy="14" r="1.5"/>',
   clock: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
   tag: '<path d="M20.6 13.4l-7.2 7.2a2 2 0 01-2.8 0L2 12V2h10l8.6 8.6a2 2 0 010 2.8z"/><circle cx="7" cy="7" r="1.5"/>',
+  target: '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/>',
+  users: '<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0113 0"/><path d="M16 5a3 3 0 010 6M21.5 20a5.5 5.5 0 00-4.5-5.4"/>',
+  graduation: '<path d="M22 9L12 4 2 9l10 5 10-5z"/><path d="M6 11v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5M22 9v6"/>',
+  briefcase: '<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2M3 13h18"/>',
+  globe: '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18"/>',
+  award: '<circle cx="12" cy="9" r="6"/><path d="M8.5 14L7 22l5-3 5 3-1.5-8"/>',
+  image: '<rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/>',
+  bulb: '<path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 00-4 10.5c.8.8 1 1.5 1 2.5h6c0-1 .2-1.7 1-2.5A6 6 0 0012 3z"/>',
+  phone: '<rect x="6" y="2" width="12" height="20" rx="2"/><path d="M11 18h2"/>',
+  pin: '<path d="M12 21s-7-6-7-11a7 7 0 0114 0c0 5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/>',
+  zap: '<path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/>',
+  pen: '<path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4 12.5-12.5z"/>',
+  link: '<path d="M10 13a5 5 0 007.5.5l3-3a5 5 0 00-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 00-7.5-.5l-3 3a5 5 0 007 7l1.7-1.7"/>',
+  xCircle: '<circle cx="12" cy="12" r="9"/><path d="M15 9l-6 6M9 9l6 6"/>',
+  lock: '<rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/>',
+  shield: '<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z"/><path d="M9 12l2 2 4-4"/>',
+  moon: '<path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/>',
+  wave: '<path d="M2 10c2.5-3 5-3 7.5 0s5 3 7.5 0 5-3 5 0"/><path d="M2 16c2.5-3 5-3 7.5 0s5 3 7.5 0 5-3 5 0"/>',
+  bot: '<rect x="4" y="8" width="16" height="12" rx="2"/><path d="M12 8V4M9 13h.01M15 13h.01M9 17h6"/>',
+  file: '<path d="M14 3H6a2 2 0 00-2 2v14a2 2 0 002 2h12a2 2 0 002-2V9l-6-6z"/><path d="M14 3v6h6M8 13h8M8 17h5"/>',
+  calendar: '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>',
+  mail: '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>',
+  scale: '<path d="M12 3v18M7 21h10M5 7h14"/><path d="M5 7l-3 7a3.5 3.5 0 006 0L5 7zM19 7l-3 7a3.5 3.5 0 006 0l-3-7z"/>',
+  settings: '<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.9 4.9L7 7M17 17l2.1 2.1M2 12h3M19 12h3M4.9 19.1L7 17M17 7l2.1-2.1"/>',
+  user: '<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0116 0"/>',
+  database: '<ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/>',
+  eye: '<path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>',
+  sprout: '<path d="M12 21V11"/><path d="M12 11C12 7 9 4 4 4c0 4 3 7 8 7zM12 13c0-3 2.5-5.5 7-5.5 0 3.5-2.5 5.5-7 5.5z"/>',
+  alert: '<path d="M12 3l10 18H2L12 3z"/><path d="M12 10v4M12 18h.01"/>',
+  checkCircle: '<circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/>',
+  plus: '<path d="M12 5v14M5 12h14"/>',
+  refresh: '<path d="M21 12a9 9 0 01-15.5 6.3L3 16M3 12a9 9 0 0115.5-6.3L21 8M21 3v5h-5M3 21v-5h5"/>',
+  laptop: '<rect x="4" y="4" width="16" height="11" rx="2"/><path d="M2 19h20"/>',
+  hash: '<path d="M4 9h16M4 15h16M10 3L8 21M16 3l-2 18"/>',
 };
+
+// Les contenus historiques utilisent des emojis comme icônes ; ils sont affichés en icônes au trait
+// (rendu professionnel et identique sur tous les téléphones). Clés sans sélecteur de variante (U+FE0F).
+const EMOJI_ICONS = {
+  "🖥": "monitor", "💻": "laptop", "🛒": "cart", "🔍": "search", "🔧": "wrench", "🛠": "wrench", "🧹": "wrench",
+  "⚙": "settings", "📱": "phone", "📞": "phone", "📡": "phone", "📊": "chart", "📈": "chart", "🤝": "users",
+  "🎓": "graduation", "💼": "briefcase", "🚀": "rocket", "🌍": "globe", "🌐": "globe", "🗺": "globe",
+  "🏆": "award", "⭐": "award", "✨": "award", "💰": "wallet", "💵": "wallet", "🏦": "wallet", "✌": "wallet",
+  "🎨": "image", "🖼": "image", "📸": "image", "🔮": "bulb", "🎯": "target", "📍": "pin", "🏠": "pin", "🏢": "pin",
+  "⚡": "zap", "✍": "pen", "✏": "pen", "📝": "pen", "🔗": "link", "❌": "xCircle", "⛔": "xCircle", "🗑": "xCircle",
+  "🐌": "clock", "⏱": "clock", "⏰": "clock", "⏸": "clock", "🔒": "lock", "🛡": "shield", "🌙": "moon", "🌊": "wave",
+  "🤖": "bot", "📚": "file", "📰": "file", "📋": "file", "🎫": "tag", "📅": "calendar", "📣": "megaphone",
+  "📢": "megaphone", "💬": "chat", "💾": "database", "📦": "database", "💌": "mail", "✉": "mail", "⚖": "scale",
+  "👤": "user", "👁": "eye", "🌱": "sprout", "⚠": "alert", "✅": "checkCircle", "💯": "checkCircle",
+  "➕": "plus", "🔄": "refresh", "🔢": "hash",
+};
+
+function iconFromEmoji(emoji, size = 22) {
+  const name = EMOJI_ICONS[String(emoji || "").replace(/️/g, "")] || "code";
+  return `<span class="ui-icon">${lineIcon(name, size)}</span>`;
+}
 
 function lineIcon(name, size = 24) {
   const paths = LINE_ICONS[name];

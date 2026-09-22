@@ -73,6 +73,7 @@ function render() {
   observeReveals();
   animateCounters();
   mountWaveField();
+  mountCodeTyping();
   updateScrollProgress();
 }
 

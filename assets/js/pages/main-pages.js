@@ -244,7 +244,7 @@ function renderFooter() {
                 <span style="width:28px;height:28px;background:rgba(0,98,230,0.08);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
                   <svg width="13" height="13" fill="none" stroke="#60A5FA" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
                 </span>
-                Libreville, Gabon 🇬🇦
+                Libreville, Gabon
               </div>
             </div>
 
@@ -281,7 +281,7 @@ function renderFooter() {
             <p class="footer-col-title">${isEn ? "Legal" : "Légal"}</p>
             <nav style="display:flex;flex-direction:column;gap:2px;margin-bottom:32px;">
               ${legalLinks.map((l) => `<button onclick="navigate('${l.page}')" class="footer-link">${l.label}</button>`).join("")}
-              <button onclick="navigate('social')" class="footer-link">📡 ${isEn ? "Our Networks" : "Nos Réseaux"}</button>
+              <button onclick="navigate('social')" class="footer-link">${isEn ? "Our Networks" : "Nos Réseaux"}</button>
             </nav>
 
             <!-- Newsletter mini -->
@@ -377,24 +377,7 @@ function renderHome() {
 
           <!-- Visuel : maquette navigateur + téléphone (décoratif) -->
           <div class="hidden lg:block relative h-[460px] hero-tilt" aria-hidden="true">
-            <div class="mock-browser absolute left-0 top-6 w-[88%]">
-              <div class="mock-bar"><i></i><i></i><i></i><span class="mock-url">www.votre-entreprise.ga</span></div>
-              <div class="p-5 space-y-4">
-                <div class="mock-shimmer relative overflow-hidden p-5" style="background:linear-gradient(135deg,#004AAD,#0062E6)">
-                  ${waveSVG("white")}
-                  <div class="relative space-y-2">
-                    <div style="height:12px;width:55%;background:rgba(255,255,255,0.9)"></div>
-                    <div style="height:8px;width:75%;background:rgba(255,255,255,0.55)"></div>
-                    <div class="inline-block mt-2 px-3 py-1.5 text-[10px] font-display font-700 uppercase" style="background:white;color:#004AAD">${isEn ? "Order" : "Commander"}</div>
-                  </div>
-                </div>
-                <div class="grid grid-cols-3 gap-3">
-                  ${[0, 1, 2].map(() => `<div class="mock-shimmer p-3 space-y-2" style="border:1px solid var(--border)"><div style="height:34px;background:rgba(0,74,173,0.1)"></div><div class="mock-line" style="width:80%"></div><div class="mock-line" style="width:50%"></div></div>`).join("")}
-                </div>
-                <div class="mock-line" style="width:90%"></div>
-                <div class="mock-line" style="width:65%"></div>
-              </div>
-            </div>
+            <div class="absolute left-0 top-6 w-[92%]">${renderCodeEditor(state.lang)}</div>
             <div class="mock-phone absolute right-0 bottom-0 float-b">
               <div class="p-3 space-y-2">
                 <div class="mx-auto" style="width:40px;height:4px;background:var(--border);border-radius:2px"></div>
@@ -409,7 +392,7 @@ function renderHome() {
             </div>
             <div class="chip absolute -left-6 top-0 float-a">${lineIcon(chipIcons[0], 16)}${ht.chips[0]}</div>
             <div class="chip absolute left-6 bottom-16 float-c">${lineIcon(chipIcons[1], 16)}${ht.chips[1]}</div>
-            <div class="chip absolute right-2 top-40 float-a">${lineIcon(chipIcons[2], 16)}${ht.chips[2]}</div>
+            <div class="chip absolute right-0 -top-3 float-a">${lineIcon(chipIcons[2], 16)}${ht.chips[2]}</div>
           </div>
         </div>
         <!-- Engagements en version mobile (le visuel est masqué sous 1024 px) -->
@@ -477,6 +460,7 @@ function renderHome() {
               <span style="color:#60A5FA">${lineIcon(step.icon, 28)}</span>
             </div>
             <h3 class="font-display font-700 text-lg mb-2 text-white">${step.title}</h3>
+            <p class="step-cmd mb-3"><span aria-hidden="true">$ </span>${["devis --gratuit", "design --maquette", "npm run build", "git push --prod"][i]}</p>
             <p class="text-sm leading-relaxed" style="color:#cbd5e1">${step.desc}</p>
           </li>`,
             )
@@ -800,9 +784,9 @@ function renderBlog() {
         <div class="md:flex">
           <div class="md:w-2/5 h-56 md:h-auto relative overflow-hidden flex items-center justify-center" style="background:linear-gradient(135deg,#004AAD,#0062E6)">
             ${waveSVG()}
-            <span class="relative font-display font-700 text-6xl text-white opacity-20">✍️</span>
+            <span class="relative font-display font-700 text-6xl text-white opacity-20">${lineIcon("pen", 64)}</span>
             <div class="absolute top-4 left-4">
-              <span class="badge" style="background:white;color:#004AAD">${state.lang === "fr" ? "⭐ Article à la Une" : "⭐ Featured"}</span>
+              <span class="badge" style="background:white;color:#004AAD">${state.lang === "fr" ? "Article à la une" : "Featured"}</span>
             </div>
           </div>
           <div class="p-6 md:p-8 md:w-3/5 flex flex-col justify-center">
@@ -810,8 +794,8 @@ function renderBlog() {
             <h2 class="font-display font-700 text-xl md:text-2xl leading-tight mb-3 group-hover:text-blue-600 transition-colors" style="color:var(--fg)">${isEn ? featured.titleEn : featured.title}</h2>
             <p class="text-sm leading-relaxed mb-4" style="color:var(--muted)">${isEn ? featured.excerptEn : featured.excerpt}</p>
             <div class="flex items-center gap-4 text-xs" style="color:var(--muted)">
-              <span>📅 ${isEn ? featured.dateEn : featured.date}</span>
-              <span>⏱ ${featured.read} ${t.minRead}</span>
+              <span class="inline-flex items-center gap-1.5">${lineIcon("calendar", 14)}${isEn ? featured.dateEn : featured.date}</span>
+              <span class="inline-flex items-center gap-1.5">${lineIcon("clock", 14)}${featured.read} ${t.minRead}</span>
             </div>
             <span class="mt-4 inline-flex items-center gap-2 text-sm font-display font-700" style="color:var(--primary-fg)">${t.readMore} →</span>
           </div>
@@ -826,7 +810,7 @@ function renderBlog() {
           <div onclick="navigateToBlogDetail(${post.id})" role="link" tabindex="0" onkeydown="activateOnEnter(event)" class="card block overflow-hidden reveal group cursor-pointer" style="transition-delay:${i * 60}ms">
             <div class="h-36 flex items-center justify-center relative overflow-hidden" style="background:var(--card); border-bottom:1px solid var(--border)">
               <div class="absolute inset-0 opacity-5" style="background-image:repeating-linear-gradient(0deg,#004AAD 0,#004AAD 1px,transparent 0,transparent 20px),repeating-linear-gradient(90deg,#004AAD 0,#004AAD 1px,transparent 0,transparent 20px)"></div>
-              <span class="text-3xl relative z-10">${["🔍", "🛒", "🎨", "💰", "📝", "⚡"][i]}</span>
+              <span class="text-3xl relative z-10">${iconFromEmoji(["🔍", "🛒", "🎨", "💰", "📝", "⚡"][i], 32)}</span>
             </div>
             <div class="p-5">
               <div class="flex items-center gap-2 mb-3">
@@ -1001,7 +985,7 @@ function renderPartnership() {
 
         <!-- Main CTA Button -->
         <a href="https://docs.google.com/forms/d/1viH1bGb7YTWTVj-i2xGllViKp3JVFsvm9FJEGXAdSZU/edit#responses" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 btn-primary text-lg py-3 px-8 mb-3">
-          🚀 ${t.cta}
+          ${t.cta}
           <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
         </a>
         <p style="color:var(--muted); font-size:14px;">${t.ctaSub}</p>
@@ -1018,7 +1002,7 @@ function renderPartnership() {
             .map(
               (item) => `
             <div class="card p-6 reveal hover:shadow-lg transition-all">
-              <div class="text-4xl mb-4">${item.icon}</div>
+              <div class="text-4xl mb-4">${iconFromEmoji(item.icon, 30)}</div>
               <h3 class="font-display font-700 mb-2" style="color:var(--fg)">${item.title}</h3>
               <p class="text-sm" style="color:var(--muted)">${item.desc}</p>
             </div>
@@ -1080,7 +1064,7 @@ function renderPartnership() {
         <h3 class="font-display font-700 text-2xl mb-4">Rejoignez notre équipe d'experts</h3>
         <p class="mb-6 text-white/90">Ensemble, créons l'impact numérique du futur au Gabon.</p>
         <a href="https://docs.google.com/forms/d/1viH1bGb7YTWTVj-i2xGllViKp3JVFsvm9FJEGXAdSZU/edit#responses" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 font-display font-700 text-lg px-8 py-3" style="background:white;color:#004AAD; border-radius:4px; text-decoration:none; transition:transform 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='none'">
-          Candidater Maintenant 🚀
+          Candidater maintenant
           <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
         </a>
       </div>
