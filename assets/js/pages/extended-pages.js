@@ -59,13 +59,13 @@ function renderPortfolioDetail(projectId) {
         <div class="md:col-span-2 space-y-8">
           <!-- Description -->
           <div class="card p-7 reveal">
-            <h2 class="font-display font-700 text-xl mb-4" style="color:var(--fg)">${isEn ? "Project Overview" : "Présentation du Projet"}</h2>
+            <h2 class="font-display font-700 text-xl mb-4" style="color:var(--fg)">${isEn ? "Project Overview" : "Présentation du projet"}</h2>
             <p class="leading-relaxed" style="color:var(--muted)">${desc}</p>
           </div>
 
           <!-- Features -->
           <div class="card p-7 reveal">
-            <h2 class="font-display font-700 text-xl mb-5" style="color:var(--fg)">${isEn ? "Key Features" : "Fonctionnalités Clés"}</h2>
+            <h2 class="font-display font-700 text-xl mb-5" style="color:var(--fg)">${isEn ? "Key Features" : "Fonctionnalités clés"}</h2>
             <ul class="space-y-3">
               ${features
                 .map(
@@ -84,12 +84,12 @@ function renderPortfolioDetail(projectId) {
           <div class="grid md:grid-cols-2 gap-5 reveal">
             <div class="card p-6">
               <div class="w-10 h-10 flex items-center justify-center text-xl mb-4" style="background:rgba(239,68,68,0.1)">${iconFromEmoji("🎯", 16)} </div>
-              <h3 class="font-display font-700 text-base mb-3" style="color:var(--fg)">${isEn ? "The Challenge" : "Le Défi"}</h3>
+              <h3 class="font-display font-700 text-base mb-3" style="color:var(--fg)">${isEn ? "The Challenge" : "Le défi"}</h3>
               <p class="text-sm leading-relaxed" style="color:var(--muted)">${challenge}</p>
             </div>
             <div class="card p-6">
               <div class="w-10 h-10 flex items-center justify-center text-xl mb-4" style="background:rgba(16,185,129,0.1)">${iconFromEmoji("✅", 16)} </div>
-              <h3 class="font-display font-700 text-base mb-3" style="color:var(--fg)">${isEn ? "The Result" : "Le Résultat"}</h3>
+              <h3 class="font-display font-700 text-base mb-3" style="color:var(--fg)">${isEn ? "The Result" : "Le résultat"}</h3>
               <p class="text-sm leading-relaxed" style="color:var(--muted)">${result}</p>
             </div>
           </div>
@@ -125,7 +125,7 @@ function renderPortfolioDetail(projectId) {
               p.liveUrl
                 ? `
               <a href="${p.liveUrl}" target="_blank" class="btn-primary w-full justify-center mt-6 text-sm py-2">
-                ${isEn ? "View Live Project" : "Voir le Projet"} →
+                ${isEn ? "View Live Project" : "Voir le projet"} →
               </a>
             `
                 : `
@@ -362,12 +362,17 @@ function renderCareers() {
 
   return `
   <div class="page pb-16">
-    ${renderPageHero({ label: isEn ? "Careers" : "Recrutement", title: isEn ? "Join our\nTeam" : "Rejoignez\nnotre Équipe", sub: isEn ? "We're a growing digital startup based in Libreville. We're looking for motivated, autonomous talents ready to grow with us." : "Nous sommes une start-up digitale en croissance basée à Libreville. Nous cherchons des talents motivés et autonomes, prêts à grandir avec nous." })}
+    ${renderPageHero({ label: isEn ? "Careers" : "Recrutement", title: isEn ? "Join our\nTeam" : "Rejoignez\nnotre équipe", path: "careers", facts: [[String(Object.values(careersData).flat().length), isEn ? "open positions" : "postes ouverts"], [String(careersData.freelance.length), isEn ? "freelance missions" : "missions freelance"], [isEn ? "Remote" : "Télétravail", isEn ? "work from anywhere in Gabon" : "depuis tout le Gabon"]], sub: isEn ? "We're a growing digital startup based in Libreville. We're looking for motivated, autonomous talents ready to grow with us." : "Nous sommes une start-up digitale en croissance basée à Libreville. Nous cherchons des talents motivés et autonomes, prêts à grandir avec nous." })}
     <div class="max-w-6xl mx-auto px-4 md:px-8">
 
       <!-- Why join us -->
-      <div class="mb-14">
-        <h2 class="font-display font-700 text-2xl mb-8 reveal" style="color:var(--fg)">${isEn ? "Why join CodeWave?" : "Pourquoi rejoindre CodeWave ?"}</h2>
+      <div class="mb-24">
+        ${sectionHead({
+          index: "01",
+          label: isEn ? "Why us" : "Pourquoi nous",
+          title: isEn ? "Why join\nCodeWave?" : "Pourquoi rejoindre\nCodeWave&nbsp;?",
+          lead: isEn ? "Real client projects, remote work and shared revenue: you grow with the studio." : "De vrais projets clients, du télétravail et des revenus partagés : vous grandissez avec le studio.",
+        })}
         <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
           ${[
             {
@@ -386,21 +391,21 @@ function renderCareers() {
             },
             {
               icon: "🚀",
-              title: isEn ? "Real Projects" : "Projets Réels",
+              title: isEn ? "Real Projects" : "Projets réels",
               desc: isEn
                 ? "Work on real client projects from day 1."
                 : "Projets clients réels dès le 1er jour.",
             },
             {
               icon: "📈",
-              title: isEn ? "Real Learning" : "Apprentissage Réel",
+              title: isEn ? "Real Learning" : "Apprentissage réel",
               desc: isEn
                 ? "Skills guaranteed through practice."
                 : "Compétences garanties par la pratique.",
             },
             {
               icon: "🤝",
-              title: isEn ? "Fair Partnership" : "Partenariat Équitable",
+              title: isEn ? "Fair Partnership" : "Partenariat équitable",
               desc: isEn
                 ? "We grow together, your success is ours."
                 : "On grandit ensemble. Votre succès est le nôtre.",
@@ -425,6 +430,13 @@ function renderCareers() {
             .join("")}
         </div>
       </div>
+
+      ${sectionHead({
+        index: "02",
+        label: isEn ? "Open positions" : "Postes ouverts",
+        title: isEn ? "Find your\nplace" : "Trouvez\nvotre place",
+        lead: isEn ? "Freelance missions or full-time positions: choose the format that suits you." : "Missions freelance ou postes en CDI : choisissez le format qui vous correspond.",
+      })}
 
       <!-- Freelance / Partnership positions -->
       <div class="mb-12">
@@ -557,7 +569,7 @@ function renderJobDetail(jobId) {
         <!-- Requirements -->
         <div class="card p-7 reveal">
           <h2 class="font-display font-700 text-lg mb-5" style="color:var(--fg)">
-            <span class="mr-2">${iconFromEmoji("✅", 16)} </span>${isEn ? "Requirements" : "Profil Recherché"}
+            <span class="mr-2">${iconFromEmoji("✅", 16)} </span>${isEn ? "Requirements" : "Profil recherché"}
           </h2>
           <ul class="space-y-3">
             ${reqs
@@ -611,32 +623,40 @@ function legalLayout(
   sectionsHTML,
   relatedLinks,
 ) {
+  const toc = [...sectionsHTML.matchAll(/id="section-([^"]+)" data-toc-title="([^"]*)"/g)].map(([, num, label]) => [num, label]);
   return `
   <div class="page pb-16">
     <!-- Hero -->
-    <div class="page-hero relative overflow-hidden mb-12">
+    <section class="page-hero relative overflow-hidden mb-12">
       <canvas class="wave-field" aria-hidden="true"></canvas>
       <div class="hero-glow" aria-hidden="true"></div>
-      <div class="relative max-w-4xl mx-auto px-4 md:px-8 pt-32 pb-24">
+      <div class="relative max-w-6xl mx-auto px-4 md:px-8 pt-32 pb-24">
         <nav aria-label="Fil d'Ariane" class="flex items-center gap-2 text-sm mb-6" style="color:var(--muted)">
           <button onclick="navigate('home')" class="hover:text-blue-500 transition-colors">Accueil</button>
-          <span>/</span>
-          <span style="color:var(--fg)">${title}</span>
+          <span aria-hidden="true">/</span>
+          <span style="color:var(--fg)" aria-current="page">${title}</span>
         </nav>
-        <div class="flex items-center gap-4">
-          <div class="w-14 h-14 flex items-center justify-center text-3xl" style="background:rgba(0,74,173,0.08)">${iconFromEmoji(icon, 20)}</div>
-          <div>
-            <h1 class="font-display font-700 text-3xl md:text-4xl" style="color:var(--fg)">${title}</h1>
-            <p style="color:var(--muted)">${subtitle}</p>
-          </div>
+        <p class="section-label mb-4">${subtitle}</p>
+        <h1 class="font-display font-700 mb-6" style="font-size:clamp(2.4rem,5vw,3.8rem);line-height:1.08;letter-spacing:-0.02em;color:var(--fg)">${accentTitle(title)}</h1>
+        <div class="flex flex-wrap gap-2">
+          <span class="legal-meta">${lineIcon("calendar", 15)} Dernière mise à jour : ${updateDate}</span>
+          <span class="legal-meta">${lineIcon("file", 15)} ${toc.length} sections</span>
         </div>
-        <p class="mt-5 text-xs inline-flex items-center gap-2 px-3 py-1.5" style="background:rgba(0,74,173,0.06);color:var(--muted)">
-          ${iconFromEmoji("📅", 16)} Dernière mise à jour : ${updateDate}
-        </p>
       </div>
-    </div>
+    </section>
 
-    <div class="max-w-4xl mx-auto px-4 md:px-8">
+    <div class="max-w-6xl mx-auto px-4 md:px-8 lg:grid lg:grid-cols-12 lg:gap-12">
+      <!-- Sommaire (grand écran) -->
+      <aside class="hidden lg:block lg:col-span-3" aria-label="Sommaire">
+        <nav class="legal-toc">
+          <p class="legal-toc-title">Sommaire</p>
+          <ol>
+            ${toc.map(([num, label]) => `<li><a href="#section-${num}"><span>${num.padStart(2, "0")}</span>${label}</a></li>`).join("")}
+          </ol>
+        </nav>
+      </aside>
+
+      <div class="lg:col-span-9 min-w-0">
       <!-- Content -->
       <div class="space-y-0">
         ${sectionsHTML}
@@ -665,6 +685,7 @@ function legalLayout(
           )
           .join("")}
       </div>
+      </div>
     </div>
   </div>`;
 }
@@ -672,7 +693,7 @@ function legalLayout(
 // ---- Legal section block helper ----
 function legalSection(num, title, content, accent) {
   return `
-  <div class="reveal mb-0" style="border-bottom:1px solid var(--border)">
+  <div id="section-${num}" data-toc-title="${title}" class="legal-section reveal mb-0" style="border-bottom:1px solid var(--border)">
     <div class="py-8">
       <div class="flex items-start gap-4">
         <span class="flex-shrink-0 w-8 h-8 flex items-center justify-center text-xs font-display font-700" style="background:rgba(0,74,173,0.08);color:var(--primary-fg)">${num}</span>
@@ -690,10 +711,10 @@ function renderMentionsLegales() {
   const sections = [
     legalSection(
       "1",
-      "Éditeur du Site",
+      "Éditeur du site",
       `
       <div class="card p-5 space-y-2">
-        <div class="grid grid-cols-2 gap-x-6 gap-y-2">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3">
           ${[
             ["Dénomination", "M.G.N CodeWave"],
             ["Forme juridique", "Entreprise individuelle / Auto-entrepreneur"],
@@ -714,7 +735,7 @@ function renderMentionsLegales() {
           ]
             .map(
               ([k, v]) => `
-            <div><p class="text-xs uppercase tracking-wider mb-0.5" style="color:var(--muted)">${k}</p><p class="font-600" style="color:var(--fg)">${v}</p></div>
+            <div class="min-w-0"><p class="text-xs uppercase tracking-wider mb-0.5" style="color:var(--muted)">${k}</p><p class="font-600" style="color:var(--fg);overflow-wrap:anywhere">${v}</p></div>
           `,
             )
             .join("")}
@@ -733,7 +754,7 @@ function renderMentionsLegales() {
     ),
     legalSection(
       "3",
-      "Propriété Intellectuelle",
+      "Propriété intellectuelle",
       `
       <p>L'ensemble de ce site relève de la législation sur le droit d'auteur et la propriété intellectuelle. Tous les droits de reproduction sont réservés, y compris pour les documents téléchargeables et les représentations iconographiques et photographiques.</p>
       <p>La reproduction de tout ou partie de ce site sur un support électronique est formellement interdite sauf autorisation expresse du directeur de la publication.</p>
@@ -741,24 +762,24 @@ function renderMentionsLegales() {
     ),
     legalSection(
       "4",
-      "Limitation de Responsabilité",
+      "Limitation de responsabilité",
       `
       <p>Les informations contenues sur ce site sont aussi précises que possible et le site est périodiquement remis à jour, mais peut toutefois contenir des inexactitudes, des omissions ou des lacunes.</p>
       <p>CodeWave ne pourra être tenu responsable des dommages directs et indirects causés au matériel de l'utilisateur, lors de l'accès au site, et résultant soit de l'utilisation d'un matériel ne répondant pas aux spécifications techniques requises, soit de l'apparition d'un bug ou d'une incompatibilité.</p>`,
     ),
     legalSection(
       "5",
-      "Liens Hypertextes",
+      "Liens hypertextes",
       `
       <p>Le site peut contenir des liens hypertextes vers d'autres sites présents sur le réseau Internet. Les liens vers ces autres ressources vous font quitter le site CodeWave.</p>
       <p>Il est possible de créer un lien vers la page de présentation de ce site sans autorisation expresse de CodeWave. Aucune autorisation ou demande d'information préalable ne peut être exigée par l'éditeur à l'égard d'un site qui souhaite établir un lien.</p>`,
     ),
     legalSection(
       "6",
-      "Protection des Données Personnelles",
+      "Protection des données personnelles",
       `
       <p>Conformément à la réglementation en vigueur, vous disposez d'un droit d'accès, de rectification, de suppression et d'opposition aux données personnelles vous concernant.</p>
-      <p>Pour toute information complémentaire sur la protection des données personnelles, nous vous invitons à consulter notre <button onclick="navigate('privacy')" class="text-blue-500 underline">Politique de Confidentialité</button>.</p>
+      <p>Pour toute information complémentaire sur la protection des données personnelles, nous vous invitons à consulter notre <button onclick="navigate('privacy')" class="text-blue-500 underline">politique de confidentialité</button>.</p>
       <p>Pour exercer ces droits, contactez-nous par email à <a href="mailto:mgncodewave18@gmail.com" class="text-blue-500">mgncodewave18@gmail.com</a>.</p>`,
     ),
     legalSection(
@@ -766,11 +787,11 @@ function renderMentionsLegales() {
       "Cookies",
       `
       <p>Le site CodeWave peut être amené à utiliser des cookies pour améliorer l'expérience utilisateur. Vous pouvez configurer votre navigateur pour refuser ces cookies, mais certaines fonctionnalités du site peuvent être limitées.</p>
-      <p>Pour plus d'informations, consultez notre <button onclick="navigate('privacy')" class="text-blue-500 underline">Politique de Confidentialité</button>.</p>`,
+      <p>Pour plus d'informations, consultez notre <button onclick="navigate('privacy')" class="text-blue-500 underline">politique de confidentialité</button>.</p>`,
     ),
     legalSection(
       "8",
-      "Droit Applicable et Juridiction",
+      "Droit applicable et juridiction",
       `
       <p>Tout litige en relation avec l'utilisation du site CodeWave est soumis au droit gabonais.</p>
       <p>En cas de litige, les tribunaux de <strong style="color:var(--fg)">Libreville, Gabon</strong>, seront seuls compétents.</p>`,
@@ -779,14 +800,14 @@ function renderMentionsLegales() {
 
   return legalLayout(
     "⚖️",
-    "Mentions Légales",
+    "Mentions légales",
     "Informations légales et éditoriales du site",
     "18 Mars 2026",
     sections,
     [
-      ["Politique de Confidentialité", "privacy"],
+      ["Politique de confidentialité", "privacy"],
       ["CGV", "cgv"],
-      ["Plan du Site", "sitemap"],
+      ["Plan du site", "sitemap"],
     ],
   );
 }
@@ -796,7 +817,7 @@ function renderPrivacy() {
   const sections = [
     legalSection(
       "1",
-      "Responsable du Traitement des Données",
+      "Responsable du traitement des données",
       `
       <div class="card p-5 grid grid-cols-2 gap-x-6 gap-y-2">
         ${[
@@ -813,14 +834,14 @@ function renderPrivacy() {
         ]
           .map(
             ([k, v]) =>
-              `<div><p class="text-xs uppercase tracking-wider mb-0.5" style="color:var(--muted)">${k}</p><p class="font-600" style="color:var(--fg)">${v}</p></div>`,
+              `<div class="min-w-0"><p class="text-xs uppercase tracking-wider mb-0.5" style="color:var(--muted)">${k}</p><p class="font-600" style="color:var(--fg);overflow-wrap:anywhere">${v}</p></div>`,
           )
           .join("")}
       </div>`,
     ),
     legalSection(
       "2",
-      "Données que Nous Collectons",
+      "Données que nous collectons",
       `
       <div class="space-y-4">
         <div>
@@ -839,7 +860,7 @@ function renderPrivacy() {
     ),
     legalSection(
       "3",
-      "Pourquoi Nous Utilisons Vos Données",
+      "Pourquoi nous utilisons vos données",
       `
       <div class="grid md:grid-cols-2 gap-3">
         ${[
@@ -882,7 +903,7 @@ function renderPrivacy() {
     ),
     legalSection(
       "4",
-      "Partage de Vos Données",
+      "Partage de vos données",
       `
       <div class="card p-5 mb-3" style="border-left:3px solid #10b981">
         <p class="font-700 text-sm mb-1" aria-hidden="true" style="color:#10b981">✓ Nous ne vendons jamais vos données personnelles.</p>
@@ -894,7 +915,7 @@ function renderPrivacy() {
     ),
     legalSection(
       "5",
-      "Durée de Conservation",
+      "Durée de conservation",
       `
       <div class="card overflow-hidden">
         <table class="w-full text-sm">
@@ -918,7 +939,7 @@ function renderPrivacy() {
     ),
     legalSection(
       "6",
-      "Sécurité de Vos Données",
+      "Sécurité de vos données",
       `
       <div class="grid md:grid-cols-2 gap-3">
         ${[
@@ -953,7 +974,7 @@ function renderPrivacy() {
     ),
     legalSection(
       "7",
-      "Vos Droits sur Vos Données",
+      "Vos droits sur vos données",
       `
       <div class="grid md:grid-cols-3 gap-3">
         ${[
@@ -1023,26 +1044,26 @@ function renderPrivacy() {
     ),
     legalSection(
       "9",
-      "Protection des Mineurs",
+      "Protection des mineurs",
       `<p>Nos services ne sont pas destinés aux personnes de moins de 18 ans. Nous ne collectons pas sciemment de données concernant des mineurs. Si vous êtes parent ou tuteur et pensez que votre enfant nous a fourni des données, contactez-nous immédiatement pour suppression.</p>`,
     ),
     legalSection(
       "10",
-      "Modifications de Cette Politique",
+      "Modifications de cette politique",
       `<p>Nous pouvons modifier cette politique à tout moment pour refléter les évolutions de nos services, les changements légaux ou l'amélioration de nos pratiques. En cas de modification importante, nous vous en informerons par email ou via un avis sur le site.</p>`,
     ),
   ].join("");
 
   return legalLayout(
     "🔒",
-    "Politique de Confidentialité",
+    "Politique de confidentialité",
     "Comment nous protégeons et utilisons vos données personnelles",
     "18 Mars 2026",
     sections,
     [
-      ["Mentions Légales", "legal"],
+      ["Mentions légales", "legal"],
       ["CGV", "cgv"],
-      ["Plan du Site", "sitemap"],
+      ["Plan du site", "sitemap"],
     ],
   );
 }
@@ -1062,7 +1083,7 @@ function renderCGV() {
     ),
     legalSection(
       "2",
-      "Devis et Commande",
+      "Devis et commande",
       `
       <div class="space-y-4">
         <div><p class="font-600 mb-1" style="color:var(--fg)">2.1 Devis</p><p>Tout devis est gratuit, sans engagement et valable <strong style="color:var(--fg)">30 jours</strong> à compter de sa date d'émission. Passé ce délai, le Prestataire se réserve le droit de modifier les tarifs.</p></div>
@@ -1071,7 +1092,7 @@ function renderCGV() {
     ),
     legalSection(
       "3",
-      "Prix et Modalités de Paiement",
+      "Prix et modalités de paiement",
       `
       <div class="space-y-4">
         <div><p class="font-600 mb-2" style="color:var(--fg)">3.2 Modalités de paiement</p>
@@ -1102,7 +1123,7 @@ function renderCGV() {
     ),
     legalSection(
       "4",
-      "Obligations du Client",
+      "Obligations du client",
       `
       <ul class="space-y-2">
         ${["Fournir tous les éléments nécessaires (textes, images, logos) dans les délais convenus", "S'assurer que les contenus fournis ne violent aucun droit de propriété intellectuelle", "Répondre aux demandes de validation dans un délai de 7 jours ouvrés", "Effectuer les paiements selon l'échéancier convenu", "Informer le Prestataire de toute modification souhaitée dans les meilleurs délais"].map((i) => `<li class="flex items-start gap-3"><span class="flex-shrink-0 mt-0.5 w-5 h-5 flex items-center justify-center text-xs" style="background:rgba(0,74,173,0.08);color:var(--primary-fg)">→</span>${i}</li>`).join("")}
@@ -1111,7 +1132,7 @@ function renderCGV() {
     ),
     legalSection(
       "5",
-      "Obligations du Prestataire",
+      "Obligations du prestataire",
       `
       <ul class="space-y-2">
         ${["Réaliser les prestations conformément aux spécifications du devis accepté", "Respecter les délais de livraison convenus (sauf cas de force majeure)", "Livrer un site web fonctionnel, testé et optimisé", "Former le Client à l'utilisation de son site web", "Assurer un support technique selon les modalités convenues", "Maintenir la confidentialité des informations du Client"].map((i) => `<li class="flex items-start gap-3"><span aria-hidden="true" style="color:#10b981">✓</span>${i}</li>`).join("")}
@@ -1119,7 +1140,7 @@ function renderCGV() {
     ),
     legalSection(
       "6",
-      "Délais et Livraison",
+      "Délais et livraison",
       `
       <div class="card overflow-hidden mb-3">
         <div class="p-4" style="background:rgba(0,74,173,0.04)"><p class="font-600 text-sm" style="color:var(--fg)">Délais indicatifs par type de projet</p></div>
@@ -1144,7 +1165,7 @@ function renderCGV() {
     ),
     legalSection(
       "7",
-      "Modifications et Révisions",
+      "Modifications et révisions",
       `
       <div class="grid md:grid-cols-3 gap-3">
         ${[
@@ -1173,7 +1194,7 @@ function renderCGV() {
     ),
     legalSection(
       "8",
-      "Garantie et Maintenance",
+      "Garantie et maintenance",
       `
       <div class="grid md:grid-cols-2 gap-3">
         <div class="card p-5"><p class="font-700 mb-2" style="color:var(--fg)">${iconFromEmoji("🛡", 16)} Garantie 30 jours</p><p class="text-xs">CodeWave garantit le bon fonctionnement du site pendant 30 jours après livraison. Couvre uniquement les bugs liés à la réalisation initiale.</p></div>
@@ -1182,7 +1203,7 @@ function renderCGV() {
     ),
     legalSection(
       "9",
-      "Propriété Intellectuelle",
+      "Propriété intellectuelle",
       `
       <div class="space-y-3">
         ${[
@@ -1216,7 +1237,7 @@ function renderCGV() {
     ),
     legalSection(
       "10",
-      "Résiliation et Annulation",
+      "Résiliation et annulation",
       `
       <div class="grid md:grid-cols-2 gap-3">
         <div class="card p-5"><p class="font-700 text-sm mb-2" style="color:var(--fg)">Par le Client</p><p class="text-xs">Annulation avant le début des travaux : perte de l'acompte. Une fois les travaux commencés : minimum 50% du devis dû.</p></div>
@@ -1225,7 +1246,7 @@ function renderCGV() {
     ),
     legalSection(
       "11",
-      "Droit Applicable et Litiges",
+      "Droit applicable et litiges",
       `<p>Les présentes CGV sont régies par le <strong style="color:var(--fg)">droit gabonais</strong>. En cas de litige, les parties s'efforceront de trouver une solution amiable. À défaut, les <strong style="color:var(--fg)">tribunaux de Libreville, Gabon</strong>, seront seuls compétents.</p>`,
     ),
     legalSection(
@@ -1238,14 +1259,14 @@ function renderCGV() {
 
   return legalLayout(
     "📋",
-    "Conditions Générales de Vente",
+    "Conditions générales de vente",
     "Nos conditions applicables aux services de développement web",
     "21 Septembre 2026",
     sections,
     [
-      ["Mentions Légales", "legal"],
-      ["Politique de Confidentialité", "privacy"],
-      ["Plan du Site", "sitemap"],
+      ["Mentions légales", "legal"],
+      ["Politique de confidentialité", "privacy"],
+      ["Plan du site", "sitemap"],
     ],
   );
 }
@@ -1303,7 +1324,7 @@ function renderSitemap() {
           page: "careers",
         },
         {
-          label: isEn ? "About" : "À Propos",
+          label: isEn ? "About" : "À propos",
           desc: isEn
             ? "Our story, values and team"
             : "Notre histoire, valeurs et équipe",
@@ -1320,7 +1341,7 @@ function renderSitemap() {
     },
     {
       icon: "🖼️",
-      title: isEn ? "Portfolio Details" : "Détails Portfolio",
+      title: isEn ? "Portfolio Details" : "Fiches projets",
       color: "#8b5cf6",
       items: [
         {
@@ -1460,18 +1481,18 @@ function renderSitemap() {
     },
     {
       icon: "⚖️",
-      title: isEn ? "Legal" : "Informations Légales",
+      title: isEn ? "Legal" : "Informations légales",
       color: "#64748b",
       items: [
         {
-          label: isEn ? "Legal Notice" : "Mentions Légales",
+          label: isEn ? "Legal Notice" : "Mentions légales",
           desc: isEn
             ? "Editorial and legal information"
             : "Informations légales et éditoriales",
           page: "legal",
         },
         {
-          label: isEn ? "Privacy Policy" : "Politique de Confidentialité",
+          label: isEn ? "Privacy Policy" : "Politique de confidentialité",
           desc: isEn
             ? "Data protection"
             : "Protection des données personnelles",
@@ -1479,11 +1500,11 @@ function renderSitemap() {
         },
         {
           label: isEn ? "Terms & Conditions" : "CGV",
-          desc: isEn ? "Sales conditions" : "Conditions Générales de Vente",
+          desc: isEn ? "Sales conditions" : "Conditions générales de vente",
           page: "cgv",
         },
         {
-          label: isEn ? "Sitemap" : "Plan du Site",
+          label: isEn ? "Sitemap" : "Plan du site",
           desc: isEn
             ? "Complete site navigation"
             : "Navigation complète du site",
@@ -1507,12 +1528,12 @@ function renderSitemap() {
         <nav class="flex items-center gap-2 text-sm mb-6" style="color:var(--muted)">
           <button onclick="navigate('home')" class="hover:text-blue-500">Accueil</button>
           <span>/</span>
-          <span style="color:var(--fg)">${isEn ? "Sitemap" : "Plan du Site"}</span>
+          <span style="color:var(--fg)">${isEn ? "Sitemap" : "Plan du site"}</span>
         </nav>
         <div class="flex items-center gap-4">
           <div class="w-14 h-14 flex items-center justify-center text-3xl" style="background:rgba(0,74,173,0.08);color:var(--primary-fg)">${lineIcon("globe", 28)}</div>
           <div>
-            <h1 class="font-display font-700 text-3xl md:text-4xl" style="color:var(--fg)">${isEn ? "Sitemap" : "Plan du Site"}</h1>
+            <h1 class="font-display font-700 text-3xl md:text-4xl" style="color:var(--fg)">${isEn ? "Sitemap" : "Plan du site"}</h1>
             <p style="color:var(--muted)">${isEn ? "Find all our pages easily" : "Naviguez facilement sur notre site et trouvez ce que vous cherchez"}</p>
           </div>
         </div>
@@ -1685,7 +1706,7 @@ function renderSocial() {
         </svg>
       </div>`}
       <div class="relative max-w-5xl mx-auto px-4 md:px-8 py-16 text-center">
-        <p class="section-label mb-4" style="color:#60A5FA">${isEn ? "Community & Networks" : "Communauté & Réseaux"}</p>
+        <p class="section-label mb-4" style="color:#60A5FA">${isEn ? "Community & Networks" : "Communauté & réseaux"}</p>
         <h1 class="font-display font-700 leading-tight mb-4 text-white" style="font-size:clamp(2.5rem,5vw,4rem)">${isEn ? "Find us\nEverywhere" : "Retrouvez-nous\nPartout"}</h1>
         <p class="max-w-xl mx-auto" style="color:#94a3b8">${isEn ? "Follow our digital adventure on all platforms and stay connected with the MGN CodeWave community." : "Suivez notre aventure digitale sur toutes les plateformes et restez connecté avec la communauté MGN CodeWave."}</p>
       </div>

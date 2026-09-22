@@ -39,16 +39,34 @@ function accentTitle(title) {
 }
 
 // En-tête des pages intérieures : ondes, halo, titre mis en valeur, onde de transition vers le contenu.
-function renderPageHero({ label, title, sub, center = false, actions = "" }) {
+// `facts` (optionnel) : repères de la page [[valeur, libellé], …], affichés dans un panneau façon terminal
+// à droite. Les valeurs doivent venir des données du site (comptes, prix), jamais être saisies à la main.
+// `path` : chemin affiché dans la barre du terminal (ex. « services »).
+function renderPageHero({ label, title, sub, center = false, actions = "", facts = null, path = "" }) {
+  const hasPanel = Array.isArray(facts) && facts.length > 0;
+  const isEn = state.lang === "en";
+  const panel = hasPanel
+    ? `
+        <aside class="hero-panel lg:col-span-5" aria-label="${isEn ? "Key facts" : "En bref"}">
+          <div class="hero-panel-bar" aria-hidden="true"><i></i><i></i><i></i><span>codewave:~/${path}</span></div>
+          <dl class="hero-facts">
+            ${facts.map(([value, text]) => `<div class="hero-fact"><dt>${text}</dt><dd>${value}</dd></div>`).join("")}
+          </dl>
+          <svg class="hero-panel-wave" aria-hidden="true" viewBox="0 0 400 60" preserveAspectRatio="none"><path d="M0,34 C60,14 140,54 200,34 C260,14 340,54 400,34 L400,60 L0,60 Z"/></svg>
+        </aside>`
+    : "";
+  const align = center && !hasPanel;
   return `
     <section class="page-hero relative overflow-hidden pt-32 pb-24 mb-12">
       <canvas class="wave-field" aria-hidden="true"></canvas>
       <div class="hero-glow" aria-hidden="true"></div>
-      <div class="relative max-w-6xl mx-auto px-4 md:px-8 ${center ? "text-center" : ""}">
-        <p class="section-label mb-4">${label}</p>
-        <h1 class="font-display font-700 leading-tight mb-5" style="font-size:clamp(2.5rem,5vw,4rem); color:var(--fg)">${accentTitle(title)}</h1>
-        <p class="max-w-xl text-base md:text-lg ${center ? "mx-auto" : ""}" style="color:var(--muted)">${sub}</p>
-        ${actions ? `<div class="flex flex-wrap gap-3 mt-8 ${center ? "justify-center" : ""}">${actions}</div>` : ""}
+      <div class="relative max-w-6xl mx-auto px-4 md:px-8 ${hasPanel ? "grid lg:grid-cols-12 gap-12 items-center" : ""} ${align ? "text-center" : ""}">
+        <div class="${hasPanel ? "lg:col-span-7 min-w-0" : ""}">
+          <p class="section-label mb-4">${label}</p>
+          <h1 class="font-display font-700 mb-5" style="font-size:clamp(2.5rem,5vw,4rem);line-height:1.08;letter-spacing:-0.02em;color:var(--fg)">${accentTitle(title)}</h1>
+          <p class="max-w-xl text-base md:text-lg ${align ? "mx-auto" : ""}" style="color:var(--muted)">${sub}</p>
+          ${actions ? `<div class="flex flex-wrap gap-3 mt-8 ${align ? "justify-center" : ""}">${actions}</div>` : ""}
+        </div>${panel}
       </div>
     </section>`;
 }

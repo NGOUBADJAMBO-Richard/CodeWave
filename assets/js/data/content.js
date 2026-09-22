@@ -16,8 +16,8 @@ const pricingGrid = [
     id: "web",
     title: { fr: "Création & développement web", en: "Web design & development" },
     items: [
-      { id: "vitrine-essentiel", amount: 90000, label: { fr: "Site Vitrine — Essentiel (1 à 5 pages)", en: "Business Website — Essential (1 to 5 pages)" } },
-      { id: "vitrine-pro", amount: 175000, label: { fr: "Site Vitrine — Pro (jusqu'à 10 pages)", en: "Business Website — Pro (up to 10 pages)" } },
+      { id: "vitrine-essentiel", amount: 90000, label: { fr: "Site vitrine — Essentiel (1 à 5 pages)", en: "Business Website — Essential (1 to 5 pages)" } },
+      { id: "vitrine-pro", amount: 175000, label: { fr: "Site vitrine — Pro (jusqu'à 10 pages)", en: "Business Website — Pro (up to 10 pages)" } },
       { id: "blog-portfolio", amount: 120000, label: { fr: "Blog / Portfolio", en: "Blog / Portfolio" } },
       { id: "ecommerce-startup", amount: 250000, label: { fr: "E-commerce — Start-Up (jusqu'à 20 produits)", en: "E-commerce — Start-Up (up to 20 products)" } },
       { id: "ecommerce-business", amount: 450000, label: { fr: "E-commerce — Business (produits illimités)", en: "E-commerce — Business (unlimited products)" } },
@@ -84,7 +84,8 @@ function priceLabel(id, lang, options = {}) {
   const unit = options.unit ?? item.unit;
   const prefix = from ? (lang === "en" ? "From " : "Dès ") : "";
   const suffix = unit ? ` ${PRICE_UNITS[unit][lang]}` : "";
-  return `${prefix}${formatXAF(item.amount, lang)} XAF${suffix}`;
+  // Insécable avant « XAF » : le montant et la devise ne se séparent jamais en fin de ligne.
+  return `${prefix}${formatXAF(item.amount, lang)} XAF${suffix}`;
 }
 
 const translations = {
@@ -95,22 +96,22 @@ const translations = {
       formations: "Formations",
       portfolio: "Portfolio",
       blog: "Blog",
-      about: "À Propos",
+      about: "À propos",
       contact: "Contact",
-      quote: "Devis Gratuit",
+      quote: "Devis gratuit",
     },
     hero: {
-      label: "Studio Digital au Gabon",
-      headline: "Votre Présence\nDigitale,\nRedéfinie.",
+      label: "Studio digital au Gabon",
+      headline: "Votre présence\ndigitale,\nredéfinie.",
       sub: "Sites web performants, e-commerce sur mesure et stratégie digitale pour les entreprises gabonaises qui veulent dominer en ligne.",
-      cta1: "Demander un Devis",
-      cta2: "Voir nos Réalisations",
+      cta1: "Demander un devis",
+      cta2: "Voir nos réalisations",
       stat1_n: "50+",
-      stat1_l: "Projets Réalisés",
+      stat1_l: "Projets réalisés",
       stat2_n: "20+",
-      stat2_l: "Clients Satisfaits",
+      stat2_l: "Clients satisfaits",
       stat3_n: "100%",
-      stat3_l: "Satisfaction Client",
+      stat3_l: "Satisfaction client",
       promise: "Donnez vie à vos idées, nous les transformons en solutions tangibles.",
       // Engagements vérifiables affichés dans le hero (pas de chiffres invérifiables).
       chips: ["Devis gratuit sous 24 h", "Airtel & Moov Money", "Prix affichés"],
@@ -127,14 +128,14 @@ const translations = {
       },
     },
     services: {
-      label: "Nos Services",
-      title: "Solutions Digitales\nComplètes",
+      label: "Nos services",
+      title: "Solutions digitales\ncomplètes",
       sub: "De la conception à la mise en ligne, nous couvrons tous vos besoins digitaux avec expertise et passion.",
       items: [
         {
           icon: "🖥️",
           iconId: "monitor",
-          title: "Site Vitrine",
+          title: "Site vitrine",
           desc: "Site professionnel responsive qui présente votre marque et convertit vos visiteurs en clients.",
           price: priceLabel("vitrine-essentiel", "fr", { from: true }),
           tag: "Populaire",
@@ -150,7 +151,7 @@ const translations = {
         {
           icon: "🔍",
           iconId: "search",
-          title: "SEO & Référencement",
+          title: "SEO & référencement",
           desc: "Audit complet et optimisation de votre visibilité sur Google pour attirer plus de clients.",
           price: priceLabel("audit-seo", "fr", { unit: "audit" }),
           tag: "",
@@ -166,7 +167,7 @@ const translations = {
         {
           icon: "📱",
           iconId: "megaphone",
-          title: "Réseaux Sociaux",
+          title: "Réseaux sociaux",
           desc: "Gestion complète de vos réseaux sociaux : posts, community management et reporting mensuel.",
           price: priceLabel("social-starter", "fr", { from: true }),
           tag: "Nouveau",
@@ -174,7 +175,7 @@ const translations = {
         {
           icon: "📊",
           iconId: "chart",
-          title: "Audit & Stratégie",
+          title: "Audit & stratégie",
           desc: "Consultation personnalisée pour aligner vos objectifs business sur les bons outils numériques.",
           price: priceLabel("consultation", "fr"),
           tag: "",
@@ -184,7 +185,7 @@ const translations = {
     },
     social: {
       label: "Gestion Social Media",
-      title: "Boostez votre Visibilité\nsur les Réseaux Sociaux",
+      title: "Boostez votre visibilité\nsur les réseaux sociaux",
       sub: "Offres simples et adaptées aux PME locales gabonaises",
       packages: [
         {
@@ -222,8 +223,8 @@ const translations = {
       ],
     },
     portfolio: {
-      label: "Nos Réalisations",
-      title: "Projets qui ont\nTransformé des Entreprises",
+      label: "Nos réalisations",
+      title: "Projets qui ont\ntransformé des entreprises",
       sub: "Découvrez des projets concrets réalisés pour des entreprises gabonaises.",
       filters: [
         "Tous",
@@ -235,49 +236,49 @@ const translations = {
       cta: "Démarrer mon projet",
     },
     blog: {
-      label: "Blog & Actualités",
-      title: "Conseils, Tutoriels\net Tendances Web",
+      label: "Blog & actualités",
+      title: "Conseils, tutoriels\net tendances web",
       sub: "Restez à la pointe du digital avec nos articles pratiques sur le web, le SEO et l'entrepreneuriat.",
       readMore: "Lire l'article",
       minRead: "min de lecture",
     },
     about: {
-      label: "À Propos",
-      title: "L'Agence Digitale\nde Référence au Gabon",
+      label: "À propos",
+      title: "L'agence digitale\nde référence au Gabon",
       desc: "M.G.N CodeWave est un studio de solutions digitales basé au Gabon. Nous accompagnons les PME, startups et entrepreneurs dans leur transformation numérique avec des solutions web sur mesure, performantes et adaptées au marché local.",
-      visionary_label: "Le Visionnaire",
+      visionary_label: "Le visionnaire",
       visionary_title: "M.G.N A. Richard",
       visionary_desc:
         "Visionnaire du projet, M.G.N A. Richard porte une approche centrée sur l'impact, la qualité et l'innovation. Il imagine des solutions digitales utiles, durables et pensées pour aider les marques à grandir avec clarté et confiance.",
       values: [
-        "Innovation & Excellence",
-        "Proximité Client",
-        "Résultats Mesurables",
-        "Transparence Totale",
+        "Innovation & excellence",
+        "Proximité client",
+        "Résultats mesurables",
+        "Transparence totale",
       ],
-      skills_title: "Technologies Maîtrisées",
-      cta: "Travaillons Ensemble",
+      skills_title: "Technologies maîtrisées",
+      cta: "Travaillons ensemble",
     },
     partnership: {
       label: "Partenariat",
-      title: "Devenez Partenaire\nde CodeWave",
+      title: "Devenez partenaire\nde CodeWave",
       sub: "Rejoignez notre écosystème d'experts et développez votre activité digitale au Gabon. Ensemble, créons l'impact numérique du futur.",
       section1: {
         title: "Pourquoi nous rejoindre ?",
         items: [
           {
             icon: "🤝",
-            title: "Réseau Établi",
+            title: "Réseau établi",
             desc: "Accédez à notre réseau de clients, partenaires et experts digitaux au Gabon.",
           },
           {
             icon: "📈",
-            title: "Croissance Partagée",
+            title: "Croissance partagée",
             desc: "Participez à la croissance de l'agence et bénéficiez d'opportunités commerciales.",
           },
           {
             icon: "🎓",
-            title: "Formation & Support",
+            title: "Formation & support",
             desc: "Accès aux ressources, formations et support technique pour vous perfectionner.",
           },
           {
@@ -288,14 +289,14 @@ const translations = {
         ],
       },
       section2: {
-        title: "Profils Recherchés",
+        title: "Profils recherchés",
         intro: "Nous cherchons des partenaires dans les domaines suivants :",
         profiles: [
-          "Développeurs Web (Frontend/Backend)",
+          "Développeurs web (frontend/backend)",
           "Designers UI/UX",
           "Spécialistes SEO & Marketing Digital",
           "Consultants Digital & Business",
-          "Freelances et Agences Complémentaires",
+          "Freelances et agences complémentaires",
           "Fournisseurs & Prestataires Techniques",
         ],
       },
@@ -324,19 +325,19 @@ const translations = {
           },
         ],
       },
-      cta: "Remplir le Formulaire de Partenariat",
+      cta: "Remplir le formulaire de partenariat",
       ctaSub:
         "Cliquez ci-dessous pour accéder au formulaire de candidature sécurisé.",
     },
     contact: {
       label: "Contact",
-      title: "Démarrons Votre\nProjet Ensemble",
+      title: "Démarrons votre\nprojet ensemble",
       sub: "Remplissez ce formulaire ou contactez-nous directement — nous répondons sous 24h.",
       name: "Nom complet",
       email: "Adresse email",
       subject: "Sujet du projet",
       message: "Décrivez votre projet...",
-      send: "Envoyer le Message",
+      send: "Envoyer le message",
       whatsapp: "Écrire sur WhatsApp",
       phone: "+241 66 19 89 18",
       address: "Libreville, Gabon",
@@ -514,7 +515,7 @@ const translations = {
       visionary_desc:
         "As the visionary behind the project, M.G.N A. Richard champions impact, quality and innovation. He envisions useful, durable digital solutions that help brands grow with clarity and confidence.",
       values: [
-        "Innovation & Excellence",
+        "Innovation & excellence",
         "Client Proximity",
         "Measurable Results",
         "Full Transparency",

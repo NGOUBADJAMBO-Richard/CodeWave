@@ -148,10 +148,10 @@ function renderFooter() {
   const t = translations[state.lang].footer;
   const isEn = state.lang === "en";
   const year = new Date().getFullYear();
-  const col = (title, items) => `
-          <div>
+  const col = (title, items, extra = "") => `
+          <div class="footer-col ${extra}">
             <p class="footer-col-title">${title}</p>
-            <ul class="space-y-2.5">
+            <ul class="footer-list space-y-2.5">
               ${items.map(([page, label]) => `<li><button onclick="navigate('${page}')" class="footer-link">${label}</button></li>`).join("")}
             </ul>
           </div>`;
@@ -219,7 +219,7 @@ function renderFooter() {
             ["privacy", isEn ? "Privacy" : "Confidentialité"],
             ["cgv", isEn ? "Terms of sale" : "CGV"],
             ["sitemap", isEn ? "Sitemap" : "Plan du site"],
-          ])}
+          ], "footer-col-wide")}
         </div>
 
         <!-- Contact + newsletter façon ligne de commande -->
@@ -265,13 +265,96 @@ function renderFooter() {
 }
 
 // ==================== HOME PAGE ====================
+// En-tête de section éditorial : numéro + libellé et titre à gauche, accroche et action à droite.
+function sectionHead({ index, label, title, lead = "", action = "", dark = false, id = "" }) {
+  return `
+      <header class="section-head grid lg:grid-cols-12 gap-6 lg:gap-12 items-end mb-12 md:mb-14">
+        <div class="lg:col-span-7 min-w-0">
+          <p class="section-index reveal"><span class="section-num">${index}</span><span class="section-label">${label}</span></p>
+          <h2${id ? ` id="${id}"` : ""} class="font-display font-700 reveal" style="font-size:clamp(2.1rem,4.4vw,3.4rem);line-height:1.05;letter-spacing:-0.02em;color:${dark ? "#fff" : "var(--fg)"};white-space:pre-line">${title}</h2>
+        </div>
+        ${
+          lead || action
+            ? `<div class="lg:col-span-5 reveal">
+          ${lead ? `<p class="text-base leading-relaxed${action ? " mb-6" : ""}" style="color:${dark ? "#cbd5e1" : "var(--muted)"}">${lead}</p>` : ""}
+          ${action}
+        </div>`
+            : ""
+        }
+      </header>`;
+}
+
+// Bento des offres : phare en grand (2 colonnes), dernière offre élargie, tuile « sur mesure ».
+// Accueil : cartes liées vers Services et carrousel sur mobile. Page Services : articles, liste verticale.
+function renderServicesBento({ st, isEn, arrow, rail = false, headingTag = "h3", linked = false }) {
+  const tag = linked ? "a" : "article";
+  // Flèche seulement sur une carte cliquable : ailleurs elle promettrait une navigation inexistante.
+  const go = linked ? arrow : "";
+  const linkAttrs = linked ? ` href="./services.html" onclick="event.preventDefault(); navigate('services')"` : "";
+  return `
+      <!-- Bento : offre phare en grand (2 colonnes), dernière offre élargie, tuile « sur mesure » pour fermer la grille. -->
+      <div class="${rail ? "snap-rail " : ""}bento grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        ${st.items
+          .map((s, i) =>
+            i === 0
+              ? `
+          <${tag}${linkAttrs} class="card bento-feature group reveal md:col-span-2 grid md:grid-cols-2 gap-8 p-7 md:p-8">
+            <div class="flex flex-col min-w-0">
+              <div class="flex items-center gap-3 mb-8">
+                <span class="icon-tile">${lineIcon(s.iconId)}</span>
+                ${s.tag ? `<span class="badge bento-badge">${s.tag}</span>` : ""}
+              </div>
+              <${headingTag} class="font-display font-700 text-2xl md:text-3xl mb-3 text-white">${s.title}</${headingTag}>
+              <p class="text-sm md:text-base leading-relaxed mb-8" style="color:#cbd5e1">${s.desc}</p>
+              <div class="mt-auto flex items-center justify-between pt-5" style="border-top:1px solid rgba(255,255,255,0.1)">
+                <p class="font-display font-700" style="color:#93C5FD">${s.price}</p>
+                <span class="transition-transform group-hover:translate-x-1" style="color:#93C5FD">${go}</span>
+              </div>
+            </div>
+            <div class="bento-visual hidden md:block" aria-hidden="true">
+              <div class="bv-bar"><i></i><i></i><i></i><span class="bv-url">${isEn ? "your-business" : "votre-entreprise"}.ga</span></div>
+              <div class="bv-body">
+                <div class="bv-nav"><span></span><span></span><span></span><span></span></div>
+                <div class="bv-hero"><span class="bv-line" style="width:62%"></span><span class="bv-line" style="width:40%"></span><span class="bv-btn"></span></div>
+                <div class="bv-cols"><span></span><span></span><span></span></div>
+              </div>
+            </div>
+          </${tag}>`
+              : `
+          <${tag}${linkAttrs} class="card group p-6 reveal flex flex-col${i === st.items.length - 1 ? " lg:col-span-2 bento-wide" : ""}" style="transition-delay:${i * 60}ms">
+            <div class="flex items-start justify-between mb-5">
+              <span class="icon-tile">${lineIcon(s.iconId)}</span>
+              ${s.tag ? `<span class="badge badge-blue">${s.tag}</span>` : ""}
+            </div>
+            <${headingTag} class="font-display font-700 text-lg mb-2" style="color:var(--fg)">${s.title}</${headingTag}>
+            <p class="text-sm leading-relaxed mb-5" style="color:var(--muted)">${s.desc}</p>
+            <div class="mt-auto pt-4 flex items-center justify-between" style="border-top:1px solid var(--border)">
+              <p class="font-display font-700 text-sm" style="color:var(--primary-fg)">${s.price}</p>
+              <span class="transition-transform group-hover:translate-x-1" style="color:var(--primary-fg)">${go}</span>
+            </div>
+          </${tag}>`,
+          )
+          .join("")}
+        <a href="./contact.html" onclick="event.preventDefault(); navigate('contact')" class="bento-cta group reveal flex flex-col justify-between p-7">
+          <span class="bento-cta-num" aria-hidden="true">+</span>
+          <div class="relative">
+            <p class="font-display font-700 text-2xl text-white leading-tight mb-2">${isEn ? "Something specific in mind?" : "Un besoin sur mesure&nbsp;?"}</p>
+            <p class="text-sm mb-6" style="color:#DBEAFE">${isEn ? "Tell us about it: free quote within 24h, no commitment." : "Décrivez-le-nous&nbsp;: devis gratuit sous 24&nbsp;h, sans engagement."}</p>
+            <span class="inline-flex items-center gap-2 font-display font-700 text-sm uppercase tracking-wider text-white">${isEn ? "Let's talk" : "Parlons-en"} <span class="transition-transform group-hover:translate-x-1">${arrow}</span></span>
+          </div>
+        </a>
+      </div>
+`;
+}
+
 function renderHome() {
   const t = translations[state.lang];
   const ht = t.hero;
   const st = t.services;
   const pt = t.portfolio;
 
-  const featuredProjects = portfolioProjects.slice(0, 6);
+  // Cinq projets : le premier à la une (2 colonnes) remplit exactement la grille, sans case vide.
+  const featuredProjects = portfolioProjects.slice(0, 5);
   const isEn = state.lang === "en";
   const arrow = `<svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>`;
   // Dernière ligne du titre mise en valeur (dégradé + onde qui se dessine).
@@ -301,12 +384,12 @@ function renderHome() {
             </h1>
             <p class="text-base md:text-lg leading-relaxed mb-4 max-w-lg" style="color:var(--muted)">${ht.sub}</p>
             <p class="brand-promise mb-8">${ht.promise}</p>
-            <div class="flex flex-wrap gap-3">
+            <div class="hero-ctas flex flex-wrap gap-3">
               <button onclick="navigate('contact')" class="btn-primary">${ht.cta1} ${arrow}</button>
               <button onclick="navigate('portfolio')" class="btn-outline">${ht.cta2}</button>
             </div>
             <!-- Stats -->
-            <div class="flex flex-wrap gap-x-8 gap-y-4 mt-12">
+            <div class="hero-stats flex flex-wrap gap-x-8 gap-y-4 mt-12">
               ${stats
                 .map(
                   ([n, l], i) => `
@@ -355,34 +438,15 @@ function renderHome() {
     </section>
 
     <!-- SERVICES PREVIEW -->
-    <section class="py-20 max-w-6xl mx-auto px-4 md:px-8">
-      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
-        <div>
-          <p class="section-label mb-3 reveal">${st.label}</p>
-          <h2 class="font-display font-700 leading-tight reveal" style="font-size:clamp(2rem,4vw,3rem); color:var(--fg); white-space:pre-line">${st.title}</h2>
-        </div>
-        <button onclick="navigate('services')" class="btn-outline reveal">${st.cta} ${arrow}</button>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-        ${st.items
-          .map(
-            (s, i) => `
-          <a href="./services.html" onclick="event.preventDefault(); navigate('services')" class="card group p-6 reveal flex flex-col" style="transition-delay:${i * 60}ms">
-            <div class="flex items-start justify-between mb-5">
-              <span class="icon-tile">${lineIcon(s.iconId)}</span>
-              ${s.tag ? `<span class="badge badge-blue">${s.tag}</span>` : ""}
-            </div>
-            <h3 class="font-display font-700 text-lg mb-2" style="color:var(--fg)">${s.title}</h3>
-            <p class="text-sm leading-relaxed mb-5" style="color:var(--muted)">${s.desc}</p>
-            <div class="mt-auto pt-4 flex items-center justify-between" style="border-top:1px solid var(--border)">
-              <p class="font-display font-700 text-sm" style="color:var(--primary-fg)">${s.price}</p>
-              <span class="transition-transform group-hover:translate-x-1" style="color:var(--primary-fg)">${arrow}</span>
-            </div>
-          </a>
-        `,
-          )
-          .join("")}
-      </div>
+    <section class="py-24 max-w-6xl mx-auto px-4 md:px-8">
+      ${sectionHead({
+        index: "01",
+        label: st.label,
+        title: st.title,
+        lead: st.sub,
+        action: `<button onclick="navigate('services')" class="btn-outline">${st.cta} ${arrow}</button>`,
+      })}
+      ${renderServicesBento({ st, isEn, arrow, rail: true, headingTag: "h3", linked: true })}
     </section>
 
     <!-- MÉTHODE (section sombre) -->
@@ -390,9 +454,14 @@ function renderHome() {
       ${waveSVG("#60A5FA")}
       <svg class="flow-waves" aria-hidden="true" viewBox="0 0 1440 600" preserveAspectRatio="xMidYMid slice"><path class="flow-pulse flow-pulse-1" d="M-100,160 C200,40 420,280 720,150 C1020,20 1220,280 1540,140"/><path class="flow-pulse flow-pulse-3" d="M-100,460 C220,340 440,580 740,450 C1040,320 1240,580 1540,440"/></svg>
       <div class="relative max-w-6xl mx-auto px-4 md:px-8">
-        <p class="section-label mb-3 reveal">${ht.process.label}</p>
-        <h2 class="font-display font-700 leading-tight mb-12 text-white reveal" style="font-size:clamp(2rem,4vw,3rem)">${ht.process.title}</h2>
-        <ol class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        ${sectionHead({
+          index: "02",
+          label: ht.process.label,
+          title: ht.process.title,
+          lead: isEn ? "Four clear steps. You approve each one before we move on to the next." : "Quatre étapes claires. Vous validez chacune avant que l'on passe à la suivante.",
+          dark: true,
+        })}
+        <ol class="snap-rail snap-rail-sm grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           ${ht.process.steps
             .map(
               (step, i) => `
@@ -417,17 +486,17 @@ function renderHome() {
     <!-- PORTFOLIO PREVIEW -->
     <section class="py-20" style="background:color-mix(in srgb, var(--card) 60%, transparent); border-top:1px solid var(--border); border-bottom:1px solid var(--border)">
       <div class="max-w-6xl mx-auto px-4 md:px-8">
-        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
-          <div>
-            <p class="section-label mb-3 reveal">${pt.label}</p>
-            <h2 class="font-display font-700 leading-tight reveal" style="font-size:clamp(2rem,4vw,3rem); color:var(--fg); white-space:pre-line">${pt.title}</h2>
-          </div>
-          <button onclick="navigate('portfolio')" class="btn-outline reveal">${state.lang === "fr" ? "Voir tout →" : "View all →"}</button>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        ${sectionHead({
+          index: "03",
+          label: pt.label,
+          title: pt.title,
+          lead: pt.sub,
+          action: `<button onclick="navigate('portfolio')" class="btn-outline">${isEn ? "View all projects" : "Voir tous les projets"} ${arrow}</button>`,
+        })}
+        <div class="snap-rail grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           ${featuredProjects
             .map(
-              (p, i) => renderProjectCard(p, i, "h3"),
+              (p, i) => renderProjectCard(p, i, "h3", i === 0 ? "project-feature md:col-span-2" : ""),
             )
             .join("")}
         </div>
@@ -444,7 +513,7 @@ function renderHome() {
         <h2 class="font-display font-700 text-white mb-4 reveal" style="font-size:clamp(1.8rem,4vw,2.8rem)">${state.lang === "fr" ? "Prêt à transformer votre présence digitale ?" : "Ready to transform your digital presence?"}</h2>
         <p class="text-blue-100 mb-8 reveal">${state.lang === "fr" ? "Discutons de votre projet — réponse sous 24h garantie." : "Let's discuss your project — response within 24h guaranteed."}</p>
         <div class="flex flex-wrap gap-3 justify-center reveal">
-          <button onclick="navigate('contact')" class="btn-primary" style="background:white;color:#004AAD;border-color:white">${state.lang === "fr" ? "Demander un Devis Gratuit" : "Request a Free Quote"}</button>
+          <button onclick="navigate('contact')" class="btn-primary" style="background:white;color:#004AAD;border-color:white">${state.lang === "fr" ? "Demander un devis gratuit" : "Request a Free Quote"}</button>
           <a href="https://wa.me/24166198918" target="_blank" class="btn-outline" style="border-color:rgba(255,255,255,0.5);color:white">WhatsApp →</a>
         </div>
       </div>
@@ -466,41 +535,43 @@ function contactSocialPackage(packageName, packagePrice, packagePeriod) {
 }
 
 function renderServices() {
+  const isEn = state.lang === "en";
+  const arrow = `<svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>`;
   const t = translations[state.lang];
   const st = t.services;
   const soc = t.social;
 
   return `
   <div class="page pb-16">
-    ${renderPageHero({ label: st.label, title: st.title, sub: st.sub })}
+    ${renderPageHero({
+      label: st.label,
+      title: st.title,
+      sub: st.sub,
+      path: "services",
+      facts: [
+        [String(st.items.length), isEn ? "core services" : "offres principales"],
+        [String(pricingGrid.reduce((n, g) => n + g.items.length, 0)), isEn ? "services with a public price" : "prestations au prix affiché"],
+        [isEn ? "24h" : "24 h", isEn ? "to receive your free quote" : "pour recevoir votre devis gratuit"],
+        ["Airtel · Moov", isEn ? "Mobile Money accepted" : "Mobile Money accepté"],
+      ],
+    })}
     <div class="max-w-6xl mx-auto px-4 md:px-8">
 
-      <!-- Main Services Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-        ${st.items
-          .map(
-            (s, i) => `
-          <div class="card p-7 reveal" style="transition-delay:${i * 60}ms">
-            <div class="flex items-start justify-between mb-5">
-              <span class="icon-tile">${lineIcon(s.iconId)}</span>
-              ${s.tag ? `<span class="badge badge-blue">${s.tag}</span>` : ""}
-            </div>
-            <h2 class="font-display font-700 text-xl mb-3" style="color:var(--fg)">${s.title}</h2>
-            <p class="text-sm leading-relaxed mb-5" style="color:var(--muted)">${s.desc}</p>
-            <div class="pt-4" style="border-top:1px solid var(--border)">
-              <p class="font-display font-700" style="color:var(--primary-fg)">${s.price}</p>
-            </div>
-          </div>
-        `,
-          )
-          .join("")}
-      </div>
+      <!-- Offres : bento partagé avec l'accueil -->
+      <section class="mb-24" aria-labelledby="offers-title">
+        ${sectionHead({
+          index: "01",
+          label: isEn ? "Our services" : "Nos offres",
+          title: isEn ? "Clear services,\none single team" : "Des offres claires,\nune seule équipe",
+          lead: isEn ? "Each price is public and every quote is free. Pick a service or describe your needs." : "Chaque prix est affiché, chaque devis est gratuit. Choisissez une offre ou décrivez votre besoin.",
+          id: "offers-title",
+        })}
+        ${renderServicesBento({ st, isEn, arrow, headingTag: "h2" })}
+      </section>
 
       <!-- Social Media Packages -->
-      <div class="mb-16">
-        <p class="section-label mb-3">${soc.label}</p>
-        <h2 class="font-display font-700 leading-tight mb-3 reveal" style="font-size:clamp(1.8rem,3.5vw,2.8rem); color:var(--fg); white-space:pre-line">${soc.title}</h2>
-        <p class="mb-10 reveal" style="color:var(--muted)">${soc.sub}</p>
+      <div class="mb-24">
+        ${sectionHead({ index: "02", label: soc.label, title: soc.title, lead: soc.sub })}
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           ${soc.packages
             .map(
@@ -530,7 +601,7 @@ function renderServices() {
       ${renderServicesTrainings()}
 
       <div class="text-center">
-        <button onclick="navigate('contact')" class="btn-primary">${state.lang === "fr" ? "Demander un Devis Personnalisé" : "Request a Custom Quote"} <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+        <button onclick="navigate('contact')" class="btn-primary">${state.lang === "fr" ? "Demander un devis personnalisé" : "Request a Custom Quote"} <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
       </div>
     </div>
   </div>`;
@@ -539,10 +610,14 @@ function renderServices() {
 function renderPricingGrid() {
   const lang = state.lang;
   return `
-      <section class="mb-12" aria-labelledby="pricing-grid-title">
-        <p class="section-label mb-3">${lang === "fr" ? "Tarifs" : "Pricing"}</p>
-        <h2 id="pricing-grid-title" class="font-display font-700 leading-tight mb-3" style="font-size:clamp(1.8rem,3.5vw,2.8rem); color:var(--fg)">${lang === "fr" ? "Grille tarifaire complète" : "Full price list"}</h2>
-        <p class="mb-8" style="color:var(--muted)">${lang === "fr" ? "Prix affichés en francs CFA (XAF). Devis gratuit sous 24 h, paiement Mobile Money accepté." : "Prices in CFA francs (XAF). Free quote within 24h, Mobile Money accepted."}</p>
+      <section class="mb-24" aria-labelledby="pricing-grid-title">
+        ${sectionHead({
+          index: "03",
+          label: lang === "fr" ? "Tarifs" : "Pricing",
+          title: lang === "fr" ? "Grille tarifaire complète" : "Full price list",
+          lead: lang === "fr" ? "Prix affichés en francs CFA (XAF). Devis gratuit sous 24&nbsp;h, paiement Mobile Money accepté." : "Prices in CFA francs (XAF). Free quote within 24h, Mobile Money accepted.",
+          id: "pricing-grid-title",
+        })}
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
           ${pricingGrid
             .map(
@@ -558,7 +633,7 @@ function renderPricingGrid() {
                     (item) => `
                 <tr style="border-top:1px solid var(--border)">
                   <td class="py-3 pr-4" style="color:var(--fg)">${item.label[lang]}</td>
-                  <td class="py-3 text-right font-display font-700" style="color:var(--primary-fg);white-space:nowrap">${priceLabel(item.id, lang)}</td>
+                  <td class="py-3 text-right font-display font-700" style="color:var(--primary-fg);min-width:7.5rem">${priceLabel(item.id, lang)}</td>
                 </tr>`,
                   )
                   .join("")}
@@ -587,10 +662,11 @@ function renderServicesTrainings() {
 
 // Carte projet partagée (accueil et page Portfolio). Vrai lien : clavier, nouvel onglet, partage ;
 // le clic ouvre la fiche sur place quand ses données sont chargées.
-function renderProjectCard(p, i, headingTag) {
+// `extraClass` : variantes de mise en page (ex. projet à la une sur l'accueil).
+function renderProjectCard(p, i, headingTag, extraClass = "") {
   const tint = `color:${p.color};color:color-mix(in srgb, ${p.color} 50%, var(--fg))`;
   return `
-          <a href="./portfolio.html?projet=${p.id}" onclick="event.preventDefault(); navigateToPortfolioDetail(${p.id})" class="card block overflow-hidden reveal group" style="transition-delay:${i * 50}ms">
+          <a href="./portfolio.html?projet=${p.id}" onclick="event.preventDefault(); navigateToPortfolioDetail(${p.id})" class="card block overflow-hidden reveal group ${extraClass}" style="transition-delay:${i * 50}ms">
             <div class="h-48 relative overflow-hidden flex items-center justify-center" style="background:${p.color}14">
               <div class="absolute inset-0" style="background:linear-gradient(135deg,${p.color}22,${p.color}08)"></div>
               <svg aria-hidden="true" class="absolute inset-0 w-full h-full opacity-10" viewBox="0 0 300 200" preserveAspectRatio="xMidYMid slice">
@@ -631,6 +707,7 @@ function activateOnEnter(event) {
 
 // ==================== PORTFOLIO PAGE ====================
 function renderPortfolio() {
+  const isEn = state.lang === "en";
   const t = translations[state.lang].portfolio;
   const filterKeys = [
     "all",
@@ -648,7 +725,17 @@ function renderPortfolio() {
 
   return `
   <div class="page pb-16">
-    ${renderPageHero({ label: t.label, title: t.title, sub: t.sub, center: true })}
+    ${renderPageHero({
+      label: t.label,
+      title: t.title,
+      sub: t.sub,
+      path: "portfolio",
+      facts: [
+        [String(portfolioProjects.length), isEn ? "projects presented" : "projets présentés"],
+        [String(new Set(portfolioProjects.map((p) => p.category)).size), isEn ? "types of projects" : "types de projets"],
+        [isEn ? "Web · Mobile" : "Web · Mobile", isEn ? "sites, stores and apps" : "sites, boutiques et applications"],
+      ],
+    })}
     <div class="max-w-6xl mx-auto px-4 md:px-8">
 
       <!-- Stats bar -->
@@ -700,6 +787,29 @@ function setPortfolioFilter(f) {
 }
 
 // ==================== BLOG PAGE ====================
+// Couverture d'article générée : dégradé propre à la thématique, ondes de la charte, numéro de l'article.
+// Purement décorative (aria-hidden) : le titre et la thématique sont donnés en texte à côté.
+const ARTICLE_COVER_THEMES = {
+  Conseils: ["#003A8C", "#0062E6"],
+  Tutoriels: ["#0B5E57", "#0F9E8E"],
+  Actualités: ["#8A2E0C", "#D9570F"],
+  Entrepreneuriat: ["#4C1D95", "#7C3AED"],
+};
+
+function articleCover(post, large = false) {
+  const [from, to] = ARTICLE_COVER_THEMES[post.category] || ARTICLE_COVER_THEMES.Conseils;
+  const topic = state.lang === "en" ? post.categoryEn : post.category;
+  return `<div class="article-cover${large ? " article-cover-lg" : ""}" style="--c1:${from};--c2:${to}" aria-hidden="true">
+              <svg class="article-cover-waves" viewBox="0 0 400 200" preserveAspectRatio="none">
+                <path d="M-20,120 C60,70 140,170 220,115 C300,60 360,150 420,110"/>
+                <path d="M-20,145 C60,95 140,195 220,140 C300,85 360,175 420,135"/>
+                <path d="M-20,170 C60,120 140,220 220,165 C300,110 360,200 420,160"/>
+              </svg>
+              <span class="article-cover-topic">// ${topic.toLowerCase()}</span>
+              <span class="article-cover-num">${String(post.id).padStart(2, "0")}</span>
+            </div>`;
+}
+
 function renderBlog() {
   const t = translations[state.lang].blog;
   const isEn = state.lang === "en";
@@ -718,15 +828,24 @@ function renderBlog() {
 
   return `
   <div class="page pb-16">
-    ${renderPageHero({ label: t.label, title: t.title, sub: t.sub })}
+    ${renderPageHero({
+      label: t.label,
+      title: t.title,
+      sub: t.sub,
+      path: "blog",
+      facts: [
+        [String(blogPosts.length), isEn ? "practical articles" : "articles pratiques"],
+        [String(new Set(blogPosts.map((p) => p.category)).size), isEn ? "topics" : "thématiques"],
+        [`${blogPosts.reduce((n, p) => n + Number(p.read || 0), 0)} min`, isEn ? "of reading in total" : "de lecture au total"],
+      ],
+    })}
     <div class="max-w-6xl mx-auto px-4 md:px-8">
 
       <!-- Featured Article -->
       <div onclick="navigateToBlogDetail(${featured.id})" role="link" tabindex="0" onkeydown="activateOnEnter(event)" class="card block mb-10 overflow-hidden reveal group cursor-pointer">
         <div class="md:flex">
-          <div class="md:w-2/5 h-56 md:h-auto relative overflow-hidden flex items-center justify-center" style="background:linear-gradient(135deg,#004AAD,#0062E6)">
-            ${waveSVG()}
-            <span class="relative font-display font-700 text-6xl text-white opacity-20">${lineIcon("pen", 64)}</span>
+          <div class="md:w-2/5 min-h-[14rem] relative overflow-hidden">
+            ${articleCover(featured, true)}
             <div class="absolute top-4 left-4">
               <span class="badge" style="background:white;color:#004AAD">${state.lang === "fr" ? "Article à la une" : "Featured"}</span>
             </div>
@@ -750,16 +869,13 @@ function renderBlog() {
           .map(
             (post, i) => `
           <div onclick="navigateToBlogDetail(${post.id})" role="link" tabindex="0" onkeydown="activateOnEnter(event)" class="card block overflow-hidden reveal group cursor-pointer" style="transition-delay:${i * 60}ms">
-            <div class="h-36 flex items-center justify-center relative overflow-hidden" style="background:var(--card); border-bottom:1px solid var(--border)">
-              <div class="absolute inset-0 opacity-5" style="background-image:repeating-linear-gradient(0deg,#004AAD 0,#004AAD 1px,transparent 0,transparent 20px),repeating-linear-gradient(90deg,#004AAD 0,#004AAD 1px,transparent 0,transparent 20px)"></div>
-              <span class="text-3xl relative z-10">${iconFromEmoji(["🔍", "🛒", "🎨", "💰", "📝", "⚡"][i], 32)}</span>
-            </div>
+            <div class="h-40 relative overflow-hidden">${articleCover(post)}</div>
             <div class="p-5">
               <div class="flex items-center gap-2 mb-3">
                 <span class="badge ${catColors[isEn ? post.categoryEn : post.category] || "badge-blue"}">${isEn ? post.categoryEn : post.category}</span>
                 <span class="text-xs" style="color:var(--muted)">${post.read} ${t.minRead}</span>
               </div>
-              <h3 class="font-display font-700 text-sm leading-snug mb-2 group-hover:text-blue-600 transition-colors" style="color:var(--fg)">${isEn ? post.titleEn : post.title}</h3>
+              <h3 class="font-display font-700 text-base leading-snug mb-2 group-hover:text-blue-600 transition-colors" style="color:var(--fg)">${isEn ? post.titleEn : post.title}</h3>
               <p class="text-xs leading-relaxed mb-3" style="color:var(--muted)">${isEn ? post.excerptEn : post.excerpt}</p>
               <p class="text-xs" style="color:var(--muted)">${isEn ? post.dateEn : post.date}</p>
             </div>
@@ -771,11 +887,11 @@ function renderBlog() {
 
       <!-- Blog CTA -->
       <div class="mt-14 p-8 text-center card">
-        <h3 class="font-display font-700 text-xl mb-2" style="color:var(--fg)">${state.lang === "fr" ? "Besoin d'un Site Web Professionnel ?" : "Need a Professional Website?"}</h3>
+        <h3 class="font-display font-700 text-xl mb-2" style="color:var(--fg)">${state.lang === "fr" ? "Besoin d'un site web professionnel&nbsp;?" : "Need a Professional Website?"}</h3>
         <p class="mb-5" style="color:var(--muted)">${state.lang === "fr" ? "Nos articles vous ont convaincu ? Passez à l'action dès maintenant !" : "Our articles convinced you? Take action now!"}</p>
         <div class="flex flex-wrap gap-3 justify-center">
-          <button onclick="navigate('contact')" class="btn-primary">${state.lang === "fr" ? "Demander un Devis Gratuit" : "Request a Free Quote"}</button>
-          <button onclick="navigate('portfolio')" class="btn-outline">${state.lang === "fr" ? "Voir nos Réalisations" : "View Our Work"}</button>
+          <button onclick="navigate('contact')" class="btn-primary">${state.lang === "fr" ? "Demander un devis gratuit" : "Request a Free Quote"}</button>
+          <button onclick="navigate('portfolio')" class="btn-outline">${state.lang === "fr" ? "Voir nos réalisations" : "View Our Work"}</button>
         </div>
       </div>
     </div>
@@ -859,8 +975,13 @@ function renderAbout() {
     <div class="max-w-6xl mx-auto px-4 md:px-8">
 
       <!-- Skills -->
-      <div class="mb-16">
-        <h2 class="font-display font-700 text-2xl mb-8 reveal" style="color:var(--fg)">${t.skills_title}</h2>
+      <div class="mb-24">
+        ${sectionHead({
+          index: "01",
+          label: state.lang === "fr" ? "Expertise" : "Expertise",
+          title: t.skills_title,
+          lead: state.lang === "fr" ? "Les outils que nous utilisons chaque jour pour livrer des sites rapides et durables." : "The tools we use every day to ship fast, long-lasting websites.",
+        })}
         <div class="flex flex-wrap gap-3">
           ${skills
             .map(
@@ -873,8 +994,12 @@ function renderAbout() {
       </div>
 
       <!-- Timeline -->
+      ${sectionHead({
+        index: "02",
+        label: state.lang === "fr" ? "Parcours" : "Journey",
+        title: state.lang === "fr" ? "Notre histoire" : "Our story",
+      })}
       <div class="card p-6 md:p-10">
-        <h2 class="font-display font-700 text-xl mb-8" style="color:var(--fg)">${state.lang === "fr" ? "Notre Histoire" : "Our Story"}</h2>
         <div class="space-y-6">
           ${[
             [
@@ -937,8 +1062,8 @@ function renderPartnership() {
     <div class="max-w-6xl mx-auto px-4 md:px-8">
 
       <!-- Why Join Section -->
-      <div class="mb-20">
-        <h2 class="font-display font-700 text-2xl md:text-3xl mb-12 text-center" style="color:var(--fg)">${t.section1.title}</h2>
+      <div class="mb-24">
+        ${sectionHead({ index: "01", label: state.lang === "fr" ? "Avantages" : "Benefits", title: t.section1.title })}
         <div class="grid md:grid-cols-4 gap-6">
           ${t.section1.items
             .map(
@@ -956,8 +1081,7 @@ function renderPartnership() {
 
       <!-- Profiles Section -->
       <div class="mb-20" style="background:linear-gradient(135deg, var(--card) 0%, rgba(0,74,173,0.04) 100%); border:1px solid var(--border); padding:3rem; border-radius:8px;">
-        <h2 class="font-display font-700 text-2xl md:text-3xl mb-4" style="color:var(--fg)">${t.section2.title}</h2>
-        <p class="mb-8 text-lg" style="color:var(--muted)">${t.section2.intro}</p>
+        ${sectionHead({ index: "02", label: state.lang === "fr" ? "Profils" : "Profiles", title: t.section2.title, lead: t.section2.intro })}
 
         <div class="grid md:grid-cols-2 gap-4">
           ${t.section2.profiles
@@ -974,8 +1098,8 @@ function renderPartnership() {
       </div>
 
       <!-- Process Section -->
-      <div class="mb-20">
-        <h2 class="font-display font-700 text-2xl md:text-3xl mb-12 text-center" style="color:var(--fg)">${t.section3.title}</h2>
+      <div class="mb-24">
+        ${sectionHead({ index: "03", label: state.lang === "fr" ? "Étapes" : "Steps", title: t.section3.title })}
 
         <div class="grid md:grid-cols-4 gap-6 relative">
           <!-- Connector line (hidden on mobile) -->
@@ -1068,7 +1192,7 @@ function renderContact() {
           action="https://formspree.io/f/mpweqqzz"
           method="POST"
           onsubmit="handleFormSubmit(event)" class="space-y-4">
-            <div class="grid grid-cols-2 gap-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label for="contact-name" class="block text-xs font-display font-700 mb-1.5 uppercase tracking-wider" style="color:var(--muted)">${t.name}</label>
                 <input id="contact-name" name="name" type="text" required autocomplete="name" placeholder="${t.name}" class="w-full px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-blue-500 transition" style="background:var(--bg);border:1px solid var(--border);color:var(--fg)">
