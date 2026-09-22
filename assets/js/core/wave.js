@@ -24,15 +24,25 @@ function accentTitle(title) {
   const multiline = title.includes("\n");
   const parts = multiline ? title.split("\n") : title.split(" ");
   const accent = parts.pop();
-  const lead = parts.length ? parts.join(multiline ? "<br>" : " ") + (multiline ? "<br>" : " ") : "";
-  return `${lead}<span class="text-gradient">${accent}</span>`;
+  // Chaque mot est animé ; le dégradé est porté par chaque mot (un parent en background-clip:text
+  // ne peindrait pas correctement des enfants transformés).
+  let index = 0;
+  const leadHtml = parts
+    .map((line) => {
+      const html = wordSpans(line, index);
+      index += line.split(" ").filter(Boolean).length;
+      return html;
+    })
+    .join(multiline ? "<br>" : " ");
+  const separator = parts.length ? (multiline ? "<br>" : " ") : "";
+  return `${leadHtml}${separator}${wordSpans(accent, index, "text-gradient")}`;
 }
 
 // En-tête des pages intérieures : ondes, halo, titre mis en valeur, onde de transition vers le contenu.
 function renderPageHero({ label, title, sub, center = false, actions = "" }) {
   return `
     <section class="page-hero relative overflow-hidden pt-32 pb-24 mb-12">
-      ${waveSVG()}
+      <canvas class="wave-field" aria-hidden="true"></canvas>
       <div class="hero-glow" aria-hidden="true"></div>
       <div class="relative max-w-6xl mx-auto px-4 md:px-8 ${center ? "text-center" : ""}">
         <p class="section-label mb-4">${label}</p>
@@ -41,6 +51,135 @@ function renderPageHero({ label, title, sub, center = false, actions = "" }) {
         ${actions ? `<div class="flex flex-wrap gap-3 mt-8 ${center ? "justify-center" : ""}">${actions}</div>` : ""}
       </div>
     </section>`;
+}
+
+// ==================== CHAMP D'ONDES INTERACTIF (canvas) ====================
+// Lignes ondulantes dessinées en direct ; le pointeur soulève la surface localement.
+// Économe : densité réduite sur mobile, DPR plafonné, pause hors écran / onglet masqué,
+// désactivé si l'utilisateur réduit les animations (le fond statique reste visible).
+let activeWaveField = null;
+
+function mountWaveField() {
+  if (activeWaveField) {
+    activeWaveField.stop();
+    activeWaveField = null;
+  }
+  const canvas = document.querySelector("canvas.wave-field");
+  if (!canvas || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const ctx = canvas.getContext("2d");
+  if (!ctx) return;
+  activeWaveField = createWaveField(canvas, ctx);
+}
+
+function createWaveField(canvas, ctx) {
+  const LINE_COUNT = window.innerWidth < 768 ? 12 : 24;
+  const STEP_PX = window.innerWidth < 768 ? 20 : 14;
+  const POINTER_RADIUS = 160;
+  const POINTER_LIFT = 38;
+  const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+  const pointer = { x: 0, y: 0, strength: 0, target: 0 };
+  let width = 0;
+  let height = 0;
+  let time = 0;
+  let last = performance.now();
+  let frame = 0;
+  let onScreen = true;
+
+  function resize() {
+    const rect = canvas.getBoundingClientRect();
+    width = rect.width;
+    height = rect.height;
+    canvas.width = Math.round(width * dpr);
+    canvas.height = Math.round(height * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+
+  function draw() {
+    const dark = document.documentElement.classList.contains("dark");
+    const rgb = dark ? "96,165,250" : "0,74,173";
+    ctx.clearRect(0, 0, width, height);
+    pointer.strength += (pointer.target - pointer.strength) * 0.08;
+    const radius2 = 2 * POINTER_RADIUS * POINTER_RADIUS;
+    for (let i = 0; i < LINE_COUNT; i++) {
+      const base = height * (0.08 + (0.84 * i) / (LINE_COUNT - 1));
+      const amplitude = 14 + 10 * Math.sin(i * 0.7);
+      // Lignes centrales plus marquées, bords plus discrets.
+      const alpha = 0.05 + 0.16 * Math.sin((Math.PI * i) / (LINE_COUNT - 1));
+      ctx.beginPath();
+      for (let x = -STEP_PX; x <= width + STEP_PX; x += STEP_PX) {
+        let y =
+          base +
+          Math.sin(x * 0.0042 + time * 1.3 + i * 0.35) * amplitude +
+          Math.sin(x * 0.0016 - time * 0.8 + i * 0.9) * amplitude * 0.7;
+        if (pointer.strength > 0.01) {
+          const dx = x - pointer.x;
+          const dy = y - pointer.y;
+          y -= pointer.strength * POINTER_LIFT * Math.exp(-(dx * dx + dy * dy) / radius2);
+        }
+        if (x === -STEP_PX) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
+      }
+      ctx.strokeStyle = `rgba(${rgb},${alpha.toFixed(3)})`;
+      ctx.lineWidth = 1.1;
+      ctx.stroke();
+    }
+  }
+
+  function tick(now) {
+    frame = 0;
+    time += Math.min(now - last, 50) * 0.00035;
+    last = now;
+    draw();
+    schedule();
+  }
+
+  function schedule() {
+    if (!frame && onScreen && !document.hidden) frame = requestAnimationFrame(tick);
+  }
+
+  function onPointerMove(event) {
+    const rect = canvas.getBoundingClientRect();
+    pointer.x = event.clientX - rect.left;
+    pointer.y = event.clientY - rect.top;
+    pointer.target = pointer.x >= 0 && pointer.x <= rect.width && pointer.y >= 0 && pointer.y <= rect.height ? 1 : 0;
+  }
+
+  function onVisibility() {
+    last = performance.now();
+    schedule();
+  }
+
+  const resizeObserver = new ResizeObserver(resize);
+  resizeObserver.observe(canvas);
+  const visibilityObserver = new IntersectionObserver(([entry]) => {
+    onScreen = entry.isIntersecting;
+    last = performance.now();
+    schedule();
+  });
+  visibilityObserver.observe(canvas);
+  window.addEventListener("pointermove", onPointerMove, { passive: true });
+  document.addEventListener("visibilitychange", onVisibility);
+  resize();
+  schedule();
+
+  return {
+    stop() {
+      if (frame) cancelAnimationFrame(frame);
+      resizeObserver.disconnect();
+      visibilityObserver.disconnect();
+      window.removeEventListener("pointermove", onPointerMove);
+      document.removeEventListener("visibilitychange", onVisibility);
+    },
+  };
+}
+
+// Titre découpé en mots qui montent l'un après l'autre (délai --i). `extraClass` : ex. text-gradient.
+function wordSpans(text, startIndex = 0, extraClass = "") {
+  return text
+    .split(" ")
+    .filter(Boolean)
+    .map((word, i) => `<span class="word ${extraClass}" style="--i:${startIndex + i}">${word}</span>`)
+    .join(" ");
 }
 
 // ==================== ARRIÈRE-PLAN ANIMÉ GLOBAL ====================

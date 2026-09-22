@@ -173,6 +173,7 @@ function updateScrollProgress() {
   const scrollable = doc.scrollHeight - doc.clientHeight;
   el.style.width = scrollable > 0 ? (doc.scrollTop / scrollable) * 100 + "%" : "0%";
   document.querySelector("nav")?.classList.toggle("nav-scrolled", doc.scrollTop > 24);
+  doc.style.setProperty("--scroll", String(Math.round(doc.scrollTop)));
 }
 window.addEventListener(
   "scroll",

@@ -615,7 +615,7 @@ function legalLayout(
   <div class="page pb-16">
     <!-- Hero -->
     <div class="page-hero relative overflow-hidden mb-12">
-      ${waveSVG()}
+      <canvas class="wave-field" aria-hidden="true"></canvas>
       <div class="hero-glow" aria-hidden="true"></div>
       <div class="relative max-w-4xl mx-auto px-4 md:px-8 pt-32 pb-24">
         <nav aria-label="Fil d'Ariane" class="flex items-center gap-2 text-sm mb-6" style="color:var(--muted)">

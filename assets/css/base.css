@@ -1,6 +1,8 @@
 /* Charte : Space Grotesk pour le corps et l'interface, Syne pour les titres. */
 * { font-family: 'Space Grotesk', 'DM Sans', system-ui, sans-serif; }
     h1, h2, h3, h4, .font-display { font-family: 'Syne', sans-serif; }
+    /* La règle * ci-dessus viserait aussi les <span> internes (mots animés, dégradé) : ils héritent du titre. */
+    h1 *, h2 *, h3 *, h4 *, .font-display * { font-family: inherit; }
     
     :root {
       --bg: #f4f3f3;
@@ -275,7 +277,6 @@
     /* ==================== DYNAMISME — PASSE 2 ==================== */
     /* En-tête des pages intérieures */
     .page-hero { background: var(--hero-bg); background: color-mix(in srgb, var(--hero-bg) 55%, transparent); }
-    .page-hero h1 { animation: heroRise 0.7s ease-out both; }
     .page-hero .section-label { animation: heroRise 0.6s ease-out both; }
     .page-hero p:not(.section-label) { animation: heroRise 0.8s 0.1s ease-out both; }
     @keyframes heroRise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
@@ -360,6 +361,23 @@
     .section-deep .flow-waves { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
     .section-deep .flow-pulse { stroke: #60A5FA; opacity: 0.6; }
 
+
+    /* ==================== PASSE 3 : CHAMP D'ONDES, MOTS, REFLETS ==================== */
+    canvas.wave-field { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+
+    /* Titres : chaque mot monte à son tour */
+    .word { display: inline-block; animation: wordRise 0.75s cubic-bezier(0.2, 0.8, 0.2, 1) both; animation-delay: calc(var(--i, 0) * 80ms + 80ms); }
+    @keyframes wordRise { from { opacity: 0; transform: translateY(0.55em) rotate(3deg); } to { opacity: 1; transform: none; } }
+
+    /* Reflet lumineux qui balaie les boutons principaux au survol */
+    .btn-primary { position: relative; overflow: hidden; }
+    .btn-primary::after { content: ""; position: absolute; top: 0; bottom: 0; left: -60%; width: 40%; pointer-events: none;
+      background: linear-gradient(100deg, transparent, rgba(255,255,255,0.45), transparent); transform: skewX(-20deg); transition: left 0.6s ease; }
+    .btn-primary:hover::after { left: 130%; }
+
+    /* Parallaxe douce de l'arrière-plan au défilement (--scroll mis à jour par updateScrollProgress) */
+    #bg-fx .flow-waves { transform: translateY(calc(var(--scroll, 0) * -0.12px)); }
+
     @media (prefers-reduced-motion: reduce) {
       .reveal, .page { opacity: 1; transform: none; transition: none; animation: none; }
       .wave-drift, .float-a, .float-b, .float-c, .marquee-track, .mock-shimmer::after { animation: none; }
@@ -367,7 +385,9 @@
       .page-hero h1, .page-hero .section-label, .page-hero p, nav [aria-current="page"]::after { animation: none; }
       .project-mock, .group:hover .project-mock, .hero-tilt { transform: none; transition: none; }
       .reveal-left, .reveal-right, .reveal-zoom { transform: none; }
-      .aurora, .flow-pulse, .cta-animated { animation: none; }
+      .aurora, .flow-pulse, .cta-animated, .word { animation: none; }
+      .btn-primary::after { display: none; }
+      #bg-fx .flow-waves { transform: none; }
       .flow-pulse { display: none; }
       .marquee-track { flex-wrap: wrap; width: auto; }
       .btn-primary:hover, .step-card:hover, .card:hover, .card:hover .icon-tile { transform: none; }

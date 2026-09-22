@@ -72,6 +72,7 @@ function render() {
   syncStructuredData();
   observeReveals();
   animateCounters();
+  mountWaveField();
   updateScrollProgress();
 }
 

@@ -347,15 +347,15 @@ function renderHome() {
   <div class="page">
     <!-- HERO -->
     <section class="relative min-h-screen flex items-center pt-28 pb-16 overflow-hidden">
-      ${waveSVG()}
+      <canvas class="wave-field" aria-hidden="true"></canvas>
       <div class="hero-glow" aria-hidden="true"></div>
       <div class="relative max-w-6xl mx-auto px-4 md:px-8 w-full">
         <div class="grid lg:grid-cols-2 gap-12 items-center">
           <div class="min-w-0">
             <p class="section-label mb-5">${ht.label}</p>
             <h1 class="font-display font-700 leading-none mb-6" style="font-size:clamp(2.75rem,5.2vw,4.75rem); color:var(--fg)">
-              ${headlineLines.join("<br>")}<br>
-              <span class="hero-accent"><span class="text-gradient">${accentLine}</span><svg class="hero-underline" viewBox="0 0 300 24" preserveAspectRatio="none" aria-hidden="true"><path d="M3,16 C50,4 100,22 150,12 C200,2 250,20 297,8" fill="none" stroke="#0062E6" stroke-width="5" stroke-linecap="round"/></svg></span>
+              ${headlineLines.map((line, i) => wordSpans(line, i * 2)).join("<br>")}<br>
+              <span class="hero-accent">${wordSpans(accentLine, headlineLines.length * 2, "text-gradient")}<svg class="hero-underline" viewBox="0 0 300 24" preserveAspectRatio="none" aria-hidden="true"><path d="M3,16 C50,4 100,22 150,12 C200,2 250,20 297,8" fill="none" stroke="#0062E6" stroke-width="5" stroke-linecap="round"/></svg></span>
             </h1>
             <p class="text-base md:text-lg leading-relaxed mb-4 max-w-lg" style="color:var(--muted)">${ht.sub}</p>
             <p class="brand-promise mb-8">${ht.promise}</p>
@@ -877,7 +877,7 @@ function renderAbout() {
   return `
   <div class="page pb-16">
     <section class="page-hero relative overflow-hidden pt-32 pb-24 mb-12">
-      ${waveSVG()}
+      <canvas class="wave-field" aria-hidden="true"></canvas>
       <div class="hero-glow" aria-hidden="true"></div>
     <div class="relative max-w-6xl mx-auto px-4 md:px-8">
       <div class="grid md:grid-cols-2 gap-16 items-center">
@@ -991,7 +991,7 @@ function renderPartnership() {
   return `
   <div class="page pb-16">
     <section class="page-hero relative overflow-hidden pt-32 pb-24 mb-12">
-      ${waveSVG()}
+      <canvas class="wave-field" aria-hidden="true"></canvas>
       <div class="hero-glow" aria-hidden="true"></div>
     <div class="relative max-w-6xl mx-auto px-4 md:px-8">
       <div class="text-center">
@@ -1094,7 +1094,7 @@ function renderContact() {
   return `
   <div class="page">
     <section class="page-hero relative overflow-hidden pt-32 pb-28">
-      ${waveSVG()}
+      <canvas class="wave-field" aria-hidden="true"></canvas>
       <div class="hero-glow" aria-hidden="true"></div>
     <div class="relative max-w-6xl mx-auto px-4 md:px-8">
       <div class="grid md:grid-cols-2 gap-16">
