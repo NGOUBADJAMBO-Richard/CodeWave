@@ -1,29 +1,14 @@
 {
   "name": "codewave-website",
-  "version": "1.0.0",
   "private": true,
-  "description": "Site vitrine statique M.G.N CodeWave (GitHub Pages / Vercel).",
+  "description": "Site vitrine statique M.G.N CodeWave (GitHub Pages).",
   "scripts": {
-    "minify": "node scripts/minify-assets.mjs",
-    "dev:app": "vite --config app/vite.config.js",
-    "build:app": "vite build --config app/vite.config.js",
-    "preview:app": "vite preview --config app/vite.config.js",
     "build:css": "tailwindcss -i ./assets/css/tailwind.input.css -o ./assets/css/tailwind.min.css --minify",
     "watch:css": "tailwindcss -i ./assets/css/tailwind.input.css -o ./assets/css/tailwind.min.css --watch",
     "check:content": "node scripts/check-content.js",
     "build:sitemap": "node scripts/build-sitemap.js"
   },
-  "dependencies": {
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-router-dom": "^6.30.1"
-  },
   "devDependencies": {
-    "@vitejs/plugin-react": "^4.4.1",
-    "autoprefixer": "^10.4.20",
-    "esbuild": "^0.25.3",
-    "postcss": "^8.5.3",
-    "tailwindcss": "3.4.19",
-    "vite": "^5.4.14"
+    "tailwindcss": "3.4.19"
   }
 }

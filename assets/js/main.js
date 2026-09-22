@@ -2658,7 +2658,7 @@ function translateTarifs(lang) {
       const text = card.querySelector("p");
       if (title) title.textContent = dataItem.title;
       if (text) {
-        text.innerHTML = dataItem.text.replace("\n", "<br />");
+        text.innerHTML = dataItem.text.replace(/\n/g, "<br />");
       }
     });
 
