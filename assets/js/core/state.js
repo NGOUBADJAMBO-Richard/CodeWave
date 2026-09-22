@@ -155,6 +155,7 @@ function navigate(page) {
 
   state.page = page;
   state.mobileMenuOpen = false;
+  document.body.style.overflow = "";
   setDetailParam(null);
   window.scrollTo({ top: 0, behavior: "smooth" });
   render();
@@ -172,7 +173,7 @@ function updateScrollProgress() {
   const doc = document.documentElement;
   const scrollable = doc.scrollHeight - doc.clientHeight;
   el.style.width = scrollable > 0 ? (doc.scrollTop / scrollable) * 100 + "%" : "0%";
-  document.querySelector("nav")?.classList.toggle("nav-scrolled", doc.scrollTop > 24);
+  document.querySelector(".site-nav")?.classList.toggle("nav-scrolled", doc.scrollTop > 24);
   doc.style.setProperty("--scroll", String(Math.round(doc.scrollTop)));
 }
 window.addEventListener(
@@ -243,6 +244,22 @@ document.addEventListener(
   },
   { passive: true },
 );
+
+// ==================== MENUS (fermeture clavier / clic extérieur) ====================
+document.addEventListener("keydown", (event) => {
+  if (event.key !== "Escape") return;
+  const openMore = document.querySelector("details.nav-more[open]");
+  if (openMore) {
+    openMore.removeAttribute("open");
+    openMore.querySelector("summary")?.focus();
+  } else if (state.mobileMenuOpen) {
+    toggleMobileMenu();
+  }
+});
+document.addEventListener("click", (event) => {
+  const openMore = document.querySelector("details.nav-more[open]");
+  if (openMore && !openMore.contains(event.target)) openMore.removeAttribute("open");
+});
 
 // ==================== COMPTEURS ANIMÉS ====================
 // <span data-count>50+</span> : compte de 0 à 50 à l'apparition, suffixe conservé.
