@@ -35,8 +35,12 @@
     }
 
     /* Wavy SVG background */
-    .wave-bg { position: absolute; inset: 0; overflow: hidden; pointer-events: none; opacity: 0.06; }
-    .dark .wave-bg { opacity: 0.12; }
+    /* Charte : 5 à 15 % en fond de section. */
+    .wave-bg { position: absolute; inset: 0; overflow: hidden; pointer-events: none; opacity: 0.1; }
+    .dark .wave-bg { opacity: 0.15; }
+    .wave-drift { animation: waveDrift 16s ease-in-out infinite alternate; }
+    .wave-drift-reverse { animation-duration: 22s; animation-direction: alternate-reverse; }
+    @keyframes waveDrift { from { transform: translateX(-60px); } to { transform: translateX(60px); } }
 
     /* Nav */
     nav { backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
@@ -65,8 +69,11 @@
       display: inline-flex; align-items: center; gap: 8px;
       border: 2px solid #004AAD;
     }
-    .btn-primary:hover { background: transparent; color:var(--primary-fg); }
-    .dark .btn-primary:hover { color:#60A5FA; border-color:#60A5FA; }
+    /* Charte : CTA en dégradé #004AAD → #0062E6, ombre bleue au survol. */
+    .btn-primary { background-image: linear-gradient(135deg, #004AAD, #0062E6); transition: transform 0.2s, box-shadow 0.2s, filter 0.2s; }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(0,74,173,0.35); filter: brightness(1.08); }
+    .btn-primary svg, .btn-outline svg { transition: transform 0.2s; }
+    .btn-primary:hover svg, .btn-outline:hover svg { transform: translateX(3px); }
 
     .btn-outline {
       border: 2px solid var(--border);
@@ -81,6 +88,7 @@
       background: transparent;
     }
     .btn-outline:hover { border-color:var(--primary-fg); color:var(--primary-fg); }
+    .btn-outline { display: inline-flex; align-items: center; justify-content: center; gap: 8px; }
 
     /* Filter pills */
     .filter-pill {
@@ -109,6 +117,10 @@
       letter-spacing: 0.2em;
       text-transform: uppercase;
       color:var(--primary-fg);
+    }
+    .section-label::before {
+      content: ""; display: inline-block; width: 22px; height: 2px;
+      background: currentColor; vertical-align: middle; margin-right: 10px;
     }
 
     /* Floating WhatsApp */
@@ -190,7 +202,76 @@
       .footer-link { display: flex; align-items: center; }
     }
 
+
+    /* ==================== DYNAMISME (accueil et composants) ==================== */
+    /* Texte en dégradé de marque ; version claire en mode sombre (grands titres : contraste ≥ 3:1). */
+    .text-gradient {
+      background: linear-gradient(90deg, #004AAD, #0062E6);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .dark .text-gradient { background-image: linear-gradient(90deg, #60A5FA, #93C5FD); }
+
+    /* Soulignement en onde qui se dessine sous le mot fort du titre */
+    .hero-accent { position: relative; display: inline-block; }
+    .hero-underline { position: absolute; left: 0; bottom: -0.14em; width: 100%; height: 0.3em; overflow: visible; }
+    .hero-underline path { stroke-dasharray: 400; stroke-dashoffset: 400; animation: drawLine 1.4s 0.5s ease-out forwards; }
+    @keyframes drawLine { to { stroke-dashoffset: 0; } }
+
+    /* Promesse de marque (Caveat, avec parcimonie) */
+    .brand-promise { font-family: "Caveat", cursive; font-weight: 600; font-size: 1.6rem; line-height: 1.2; color: var(--primary-fg); transform: rotate(-1.5deg); display: inline-block; }
+
+    /* Halo bleu derrière le hero */
+    .hero-glow { position: absolute; width: 640px; height: 640px; right: -160px; top: 5%; border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,98,230,0.18) 0%, transparent 65%); pointer-events: none; }
+
+    /* Maquette navigateur + téléphone (visuel du hero) */
+    .mock-browser { background: var(--card); border: 1px solid var(--border); box-shadow: 0 30px 60px rgba(15,23,42,0.14); }
+    .mock-bar { display: flex; align-items: center; gap: 6px; padding: 10px 12px; border-bottom: 1px solid var(--border); }
+    .mock-bar i { width: 9px; height: 9px; border-radius: 50%; background: var(--border); }
+    .mock-url { margin-left: 10px; flex: 1; font-size: 11px; padding: 3px 10px; background: var(--bg); color: var(--muted); }
+    .mock-line { height: 8px; background: var(--border); }
+    .mock-shimmer { position: relative; overflow: hidden; }
+    .mock-shimmer::after { content: ""; position: absolute; inset: 0; transform: translateX(-100%);
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.55), transparent); animation: shimmer 2.8s infinite; }
+    .dark .mock-shimmer::after { background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent); }
+    @keyframes shimmer { to { transform: translateX(100%); } }
+    .mock-phone { width: 150px; background: var(--card); border: 6px solid #0f172a; border-radius: 22px; box-shadow: 0 24px 48px rgba(15,23,42,0.25); }
+
+    /* Pastilles flottantes */
+    .float-a { animation: floatY 3.2s ease-in-out infinite; }
+    .float-b { animation: floatY 3.8s ease-in-out infinite reverse; }
+    .float-c { animation: floatY 4.4s ease-in-out infinite; }
+    @keyframes floatY { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
+    .chip { display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; font-size: 12px; font-weight: 700;
+      font-family: "Syne", sans-serif; background: var(--card); color: var(--fg); border: 1px solid var(--border);
+      border-left: 3px solid var(--primary); box-shadow: 0 10px 24px rgba(15,23,42,0.1); white-space: nowrap; }
+    .chip svg { color: var(--primary-fg); }
+
+    /* Bandeau défilant (technologies, paiements) */
+    .marquee { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+    .marquee-track { display: flex; width: max-content; animation: marquee 32s linear infinite; }
+    .marquee:hover .marquee-track, .marquee:focus-within .marquee-track { animation-play-state: paused; }
+    .marquee-track li { flex-shrink: 0; padding: 0 28px; font-family: "Syne", sans-serif; font-weight: 700; font-size: 15px; letter-spacing: 0.04em; white-space: nowrap; }
+    @keyframes marquee { to { transform: translateX(-50%); } }
+
+    /* Tuile d'icône : se remplit de bleu au survol de la carte */
+    .icon-tile { width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+      background: rgba(0,74,173,0.08); color: var(--primary-fg); transition: background 0.25s, color 0.25s, transform 0.25s; }
+    .dark .icon-tile { background: rgba(96,165,250,0.12); }
+    .card:hover .icon-tile { background: #004AAD; color: white; transform: rotate(-4deg); }
+
+    /* Section sombre (rythme visuel entre les fonds clairs) */
+    .section-deep { background: #0B1220; color: #e2e8f0; position: relative; overflow: hidden; }
+    .section-deep .section-label { color: #60A5FA; }
+    .step-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-top: 3px solid #0062E6; transition: transform 0.25s, background 0.25s; }
+    .step-card:hover { transform: translateY(-2px); background: rgba(255,255,255,0.07); }
+    .step-num { font-family: "Syne", sans-serif; font-weight: 700; font-size: 3rem; line-height: 1; color: transparent; -webkit-text-stroke: 1px rgba(96,165,250,0.7); }
+
     @media (prefers-reduced-motion: reduce) {
       .reveal, .page { opacity: 1; transform: none; transition: none; animation: none; }
+      .wave-drift, .float-a, .float-b, .float-c, .marquee-track, .mock-shimmer::after { animation: none; }
+      .hero-underline path { animation: none; stroke-dashoffset: 0; }
+      .marquee-track { flex-wrap: wrap; width: auto; }
+      .btn-primary:hover, .step-card:hover, .card:hover, .card:hover .icon-tile { transform: none; }
       #scroll-progress { transition: none; }
     }

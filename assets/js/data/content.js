@@ -111,6 +111,20 @@ const translations = {
       stat2_l: "Clients Satisfaits",
       stat3_n: "100%",
       stat3_l: "Satisfaction Client",
+      promise: "Donnez vie à vos idées, nous les transformons en solutions tangibles.",
+      // Engagements vérifiables affichés dans le hero (pas de chiffres invérifiables).
+      chips: ["Devis gratuit sous 24 h", "Airtel & Moov Money", "Prix affichés"],
+      techLabel: "Technologies et moyens de paiement",
+      process: {
+        label: "Méthode",
+        title: "Comment on travaille",
+        steps: [
+          { icon: "chat", title: "Échange & devis", desc: "Vous décrivez votre besoin, sur WhatsApp ou par formulaire. Devis gratuit sous 24 h." },
+          { icon: "layout", title: "Maquette", desc: "Vous validez la structure et le design avant la moindre ligne de code." },
+          { icon: "code", title: "Développement", desc: "Un site rapide, pensé d'abord pour le mobile et les connexions lentes." },
+          { icon: "rocket", title: "Mise en ligne & suivi", desc: "Prise en main offerte, puis maintenance si vous le souhaitez." },
+        ],
+      },
     },
     services: {
       label: "Nos Services",
@@ -119,6 +133,7 @@ const translations = {
       items: [
         {
           icon: "🖥️",
+          iconId: "monitor",
           title: "Site Vitrine",
           desc: "Site professionnel responsive qui présente votre marque et convertit vos visiteurs en clients.",
           price: priceLabel("vitrine-essentiel", "fr", { from: true }),
@@ -126,6 +141,7 @@ const translations = {
         },
         {
           icon: "🛒",
+          iconId: "cart",
           title: "E-Commerce",
           desc: "Boutique en ligne complète avec paiement sécurisé, gestion des stocks et tableau de bord.",
           price: priceLabel("ecommerce-startup", "fr", { from: true }),
@@ -133,6 +149,7 @@ const translations = {
         },
         {
           icon: "🔍",
+          iconId: "search",
           title: "SEO & Référencement",
           desc: "Audit complet et optimisation de votre visibilité sur Google pour attirer plus de clients.",
           price: priceLabel("audit-seo", "fr", { unit: "audit" }),
@@ -140,6 +157,7 @@ const translations = {
         },
         {
           icon: "🔧",
+          iconId: "wrench",
           title: "Maintenance",
           desc: "Mises à jour, sauvegardes, sécurité et support technique pour garder votre site au top.",
           price: priceLabel("maintenance", "fr"),
@@ -147,6 +165,7 @@ const translations = {
         },
         {
           icon: "📱",
+          iconId: "megaphone",
           title: "Réseaux Sociaux",
           desc: "Gestion complète de vos réseaux sociaux : posts, community management et reporting mensuel.",
           price: priceLabel("social-starter", "fr", { from: true }),
@@ -154,6 +173,7 @@ const translations = {
         },
         {
           icon: "📊",
+          iconId: "chart",
           title: "Audit & Stratégie",
           desc: "Consultation personnalisée pour aligner vos objectifs business sur les bons outils numériques.",
           price: priceLabel("consultation", "fr"),
@@ -356,6 +376,19 @@ const translations = {
       stat2_l: "Happy Clients",
       stat3_n: "100%",
       stat3_l: "Client Satisfaction",
+      promise: "Bring your ideas to life — we turn them into tangible solutions.",
+      chips: ["Free quote within 24h", "Airtel & Moov Money", "Prices shown upfront"],
+      techLabel: "Technologies and payment methods",
+      process: {
+        label: "Method",
+        title: "How we work",
+        steps: [
+          { icon: "chat", title: "Talk & quote", desc: "Tell us what you need, on WhatsApp or through the form. Free quote within 24h." },
+          { icon: "layout", title: "Mock-up", desc: "You approve the structure and design before a single line of code." },
+          { icon: "code", title: "Development", desc: "A fast site, built mobile-first for slow connections." },
+          { icon: "rocket", title: "Launch & follow-up", desc: "Hand-over included, then maintenance if you want it." },
+        ],
+      },
     },
     services: {
       label: "Our Services",
@@ -364,6 +397,7 @@ const translations = {
       items: [
         {
           icon: "🖥️",
+          iconId: "monitor",
           title: "Business Website",
           desc: "Professional responsive site that showcases your brand and converts visitors into customers.",
           price: priceLabel("vitrine-essentiel", "en", { from: true }),
@@ -371,6 +405,7 @@ const translations = {
         },
         {
           icon: "🛒",
+          iconId: "cart",
           title: "E-Commerce",
           desc: "Full online store with secure payment, inventory management and dashboard.",
           price: priceLabel("ecommerce-startup", "en", { from: true }),
@@ -378,6 +413,7 @@ const translations = {
         },
         {
           icon: "🔍",
+          iconId: "search",
           title: "SEO & Ranking",
           desc: "Full audit and optimization of your Google visibility to attract more customers.",
           price: priceLabel("audit-seo", "en", { unit: "audit" }),
@@ -385,6 +421,7 @@ const translations = {
         },
         {
           icon: "🔧",
+          iconId: "wrench",
           title: "Maintenance",
           desc: "Updates, backups, security and tech support to keep your site at its best.",
           price: priceLabel("maintenance", "en"),
@@ -392,6 +429,7 @@ const translations = {
         },
         {
           icon: "📱",
+          iconId: "megaphone",
           title: "Social Media",
           desc: "Complete social media management: posts, community management and monthly reports.",
           price: priceLabel("social-starter", "en", { from: true }),
@@ -399,6 +437,7 @@ const translations = {
         },
         {
           icon: "📊",
+          iconId: "chart",
           title: "Audit & Strategy",
           desc: "Personalized consultation to align your business goals with the right digital tools.",
           price: priceLabel("consultation", "en"),

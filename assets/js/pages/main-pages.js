@@ -165,7 +165,7 @@ function renderFooter() {
   ];
 
   return `
-  <footer style="background:#0a0f1e; color:#94a3b8; margin-top:6rem; position:relative; overflow:hidden;">
+  <footer style="background:#0a0f1e; color:#94a3b8; margin-top:${state.page === 'home' ? '0' : '6rem'}; position:relative; overflow:hidden;">
 
     <!-- Animated wave top border -->
     <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#004AAD,#0062E6,#8b5cf6,#004AAD);background-size:200% 100%;animation:footerGrad 4s linear infinite;"></div>
@@ -181,7 +181,8 @@ function renderFooter() {
     <!-- Background grid texture -->
     <div style="position:absolute;inset:0;opacity:0.025;background-image:repeating-linear-gradient(0deg,#0062E6 0,#0062E6 1px,transparent 0,transparent 60px),repeating-linear-gradient(90deg,#0062E6 0,#0062E6 1px,transparent 0,transparent 60px);pointer-events:none;"></div>
 
-    <!-- CTA Banner -->
+    <!-- CTA Banner (absent de l'accueil, qui a déjà son propre bandeau d'appel) -->
+    ${state.page === "home" ? "" : `
     <div style="position:relative;border-bottom:1px solid rgba(255,255,255,0.05);padding:48px 0;">
       <div class="max-w-6xl mx-auto px-4 md:px-8">
         <div class="flex flex-col md:flex-row items-center justify-between gap-6">
@@ -202,7 +203,7 @@ function renderFooter() {
           </div>
         </div>
       </div>
-    </div>
+    </div>`}
 
     <!-- Main footer grid -->
     <div style="position:relative;padding:56px 0 40px;">
@@ -329,61 +330,104 @@ function renderHome() {
   const pt = t.portfolio;
 
   const featuredProjects = portfolioProjects.slice(0, 6);
+  const isEn = state.lang === "en";
+  const arrow = `<svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>`;
+  // Dernière ligne du titre mise en valeur (dégradé + onde qui se dessine).
+  const headlineLines = ht.headline.split("\n");
+  const accentLine = headlineLines.pop();
+  const chipIcons = ["clock", "wallet", "tag"];
+  const techs = ["React", "Flutter", "Node.js", "MongoDB", "WordPress", "Tailwind CSS", "SEO local", "Airtel Money", "Moov Money", "GitHub"];
+  const stats = [
+    [ht.stat1_n, ht.stat1_l],
+    [ht.stat2_n, ht.stat2_l],
+    [ht.stat3_n, ht.stat3_l],
+  ];
 
   return `
   <div class="page">
     <!-- HERO -->
-    <section class="relative min-h-screen flex items-center pt-24 pb-16 overflow-hidden" style="background:var(--bg)">
+    <section class="relative min-h-screen flex items-center pt-28 pb-16 overflow-hidden" style="background:var(--bg)">
       ${waveSVG()}
-      <div class="max-w-6xl mx-auto px-4 md:px-8 w-full">
-        <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="relative max-w-6xl mx-auto px-4 md:px-8 w-full">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
           <div class="min-w-0">
-            <p class="section-label mb-5 reveal visible">${ht.label}</p>
-            <h1 class="font-display font-700 leading-none mb-6 reveal visible" style="font-size:clamp(2.75rem,5.2vw,4.75rem); color:var(--fg); white-space:pre-line">${ht.headline}</h1>
-            <p class="text-base md:text-lg leading-relaxed mb-8 max-w-lg reveal" style="color:var(--muted)">${ht.sub}</p>
-            <div class="flex flex-wrap gap-3 reveal">
-              <button onclick="navigate('contact')" class="btn-primary">${ht.cta1} <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+            <p class="section-label mb-5">${ht.label}</p>
+            <h1 class="font-display font-700 leading-none mb-6" style="font-size:clamp(2.75rem,5.2vw,4.75rem); color:var(--fg)">
+              ${headlineLines.join("<br>")}<br>
+              <span class="hero-accent"><span class="text-gradient">${accentLine}</span><svg class="hero-underline" viewBox="0 0 300 24" preserveAspectRatio="none" aria-hidden="true"><path d="M3,16 C50,4 100,22 150,12 C200,2 250,20 297,8" fill="none" stroke="#0062E6" stroke-width="5" stroke-linecap="round"/></svg></span>
+            </h1>
+            <p class="text-base md:text-lg leading-relaxed mb-4 max-w-lg" style="color:var(--muted)">${ht.sub}</p>
+            <p class="brand-promise mb-8">${ht.promise}</p>
+            <div class="flex flex-wrap gap-3">
+              <button onclick="navigate('contact')" class="btn-primary">${ht.cta1} ${arrow}</button>
               <button onclick="navigate('portfolio')" class="btn-outline">${ht.cta2}</button>
             </div>
             <!-- Stats -->
-            <div class="flex flex-wrap gap-x-8 gap-y-4 mt-12 reveal">
-              <div><p class="font-display font-700 text-3xl" style="color:var(--primary-fg)">${ht.stat1_n}</p><p class="text-xs uppercase tracking-wider" style="color:var(--muted)">${ht.stat1_l}</p></div>
-              <div style="width:1px;background:var(--border)"></div>
-              <div><p class="font-display font-700 text-3xl" style="color:var(--primary-fg)">${ht.stat2_n}</p><p class="text-xs uppercase tracking-wider" style="color:var(--muted)">${ht.stat2_l}</p></div>
-              <div style="width:1px;background:var(--border)"></div>
-              <div><p class="font-display font-700 text-3xl" style="color:var(--primary-fg)">${ht.stat3_n}</p><p class="text-xs uppercase tracking-wider" style="color:var(--muted)">${ht.stat3_l}</p></div>
+            <div class="flex flex-wrap gap-x-8 gap-y-4 mt-12">
+              ${stats
+                .map(
+                  ([n, l], i) => `
+              ${i ? '<div aria-hidden="true" style="width:1px;background:var(--border)"></div>' : ""}
+              <div><p class="font-display font-700 text-3xl" style="color:var(--primary-fg)" data-count>${n}</p><p class="text-xs uppercase tracking-wider" style="color:var(--muted)">${l}</p></div>`,
+                )
+                .join("")}
             </div>
           </div>
-          <!-- Hero Visual -->
-          <div class="hidden md:flex items-center justify-center relative reveal">
-            <div class="relative w-80 h-80">
-              <div class="absolute inset-0 rounded-full" style="background:radial-gradient(circle, rgba(0,74,173,0.12) 0%, transparent 70%)"></div>
-              <div class="absolute inset-8 flex items-center justify-center">
-                <div class="font-display font-700 text-center" style="font-size:5rem; line-height:1">
-                  <span style="color:rgba(var(--fg),0.15); -webkit-text-stroke:2px rgba(0,74,173,0.3)">M</span><span style="color:var(--primary-fg); font-size:6rem">G</span><span style="color:rgba(var(--fg),0.15); -webkit-text-stroke:2px rgba(0,74,173,0.3)">N</span>
+
+          <!-- Visuel : maquette navigateur + téléphone (décoratif) -->
+          <div class="hidden lg:block relative h-[460px]" aria-hidden="true">
+            <div class="mock-browser absolute left-0 top-6 w-[88%]">
+              <div class="mock-bar"><i></i><i></i><i></i><span class="mock-url">www.votre-entreprise.ga</span></div>
+              <div class="p-5 space-y-4">
+                <div class="mock-shimmer relative overflow-hidden p-5" style="background:linear-gradient(135deg,#004AAD,#0062E6)">
+                  ${waveSVG("white")}
+                  <div class="relative space-y-2">
+                    <div style="height:12px;width:55%;background:rgba(255,255,255,0.9)"></div>
+                    <div style="height:8px;width:75%;background:rgba(255,255,255,0.55)"></div>
+                    <div class="inline-block mt-2 px-3 py-1.5 text-[10px] font-display font-700 uppercase" style="background:white;color:#004AAD">${isEn ? "Order" : "Commander"}</div>
+                  </div>
                 </div>
-              </div>
-              <!-- Floating cards -->
-              <div class="absolute -top-4 -right-4 card px-3 py-2 text-xs font-display font-700" style="animation:float1 3s ease-in-out infinite">
-                <span aria-hidden="true" style="color:#10b981">✓</span> React / Flutter
-              </div>
-              <div class="absolute -bottom-4 -left-4 card px-3 py-2 text-xs font-display font-700" style="animation:float2 3.5s ease-in-out infinite">
-                📍 Libreville, Gabon
-              </div>
-              <div class="absolute top-1/3 -left-8 card px-3 py-2 text-xs font-display font-700" style="animation:float3 4s ease-in-out infinite">
-                ⚡ 50+ Projets
+                <div class="grid grid-cols-3 gap-3">
+                  ${[0, 1, 2].map(() => `<div class="mock-shimmer p-3 space-y-2" style="border:1px solid var(--border)"><div style="height:34px;background:rgba(0,74,173,0.1)"></div><div class="mock-line" style="width:80%"></div><div class="mock-line" style="width:50%"></div></div>`).join("")}
+                </div>
+                <div class="mock-line" style="width:90%"></div>
+                <div class="mock-line" style="width:65%"></div>
               </div>
             </div>
+            <div class="mock-phone absolute right-0 bottom-0 float-b">
+              <div class="p-3 space-y-2">
+                <div class="mx-auto" style="width:40px;height:4px;background:var(--border);border-radius:2px"></div>
+                <div class="p-3 text-center" style="background:rgba(16,185,129,0.12)">
+                  <div class="mx-auto mb-1 flex items-center justify-center" style="width:28px;height:28px;border-radius:50%;background:#10b981;color:white">${lineIcon("check", 16)}</div>
+                  <div class="text-[10px] font-display font-700" style="color:var(--fg)">Mobile Money</div>
+                </div>
+                <div class="mock-line" style="width:85%"></div>
+                <div class="mock-line" style="width:60%"></div>
+                <div style="height:22px;background:linear-gradient(135deg,#004AAD,#0062E6)"></div>
+              </div>
+            </div>
+            <div class="chip absolute -left-6 top-0 float-a">${lineIcon(chipIcons[0], 16)}${ht.chips[0]}</div>
+            <div class="chip absolute left-6 bottom-16 float-c">${lineIcon(chipIcons[1], 16)}${ht.chips[1]}</div>
+            <div class="chip absolute right-2 top-40 float-a">${lineIcon(chipIcons[2], 16)}${ht.chips[2]}</div>
           </div>
         </div>
+        <!-- Engagements en version mobile (le visuel est masqué sous 1024 px) -->
+        <ul class="lg:hidden flex flex-wrap gap-2 mt-10">
+          ${ht.chips.map((c, i) => `<li class="chip">${lineIcon(chipIcons[i], 16)}${c}</li>`).join("")}
+        </ul>
       </div>
     </section>
 
-    <style>
-      @keyframes float1 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
-      @keyframes float2 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
-      @keyframes float3 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
-    </style>
+    <!-- BANDEAU DÉFILANT -->
+    <section class="section-deep py-5" aria-label="${ht.techLabel}">
+      <div class="marquee">
+        <ul class="marquee-track">
+          ${techs.map((t) => `<li>${t}<span aria-hidden="true" style="color:#0062E6;margin-left:28px">◆</span></li>`).join("")}
+          ${techs.map((t) => `<li aria-hidden="true">${t}<span style="color:#0062E6;margin-left:28px">◆</span></li>`).join("")}
+        </ul>
+      </div>
+    </section>
 
     <!-- SERVICES PREVIEW -->
     <section class="py-20 max-w-6xl mx-auto px-4 md:px-8">
@@ -392,29 +436,56 @@ function renderHome() {
           <p class="section-label mb-3 reveal">${st.label}</p>
           <h2 class="font-display font-700 leading-tight reveal" style="font-size:clamp(2rem,4vw,3rem); color:var(--fg); white-space:pre-line">${st.title}</h2>
         </div>
-        <button onclick="navigate('services')" class="btn-outline reveal">${st.cta} →</button>
+        <button onclick="navigate('services')" class="btn-outline reveal">${st.cta} ${arrow}</button>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
         ${st.items
           .map(
             (s, i) => `
-          <div class="card p-6 reveal" style="transition-delay:${i * 60}ms; background:var(--card)">
-            <div class="flex items-start justify-between mb-4">
-              <span class="text-3xl">${s.icon}</span>
+          <a href="./services.html" onclick="event.preventDefault(); navigate('services')" class="card group p-6 reveal flex flex-col" style="transition-delay:${i * 60}ms">
+            <div class="flex items-start justify-between mb-5">
+              <span class="icon-tile">${lineIcon(s.iconId)}</span>
               ${s.tag ? `<span class="badge badge-blue">${s.tag}</span>` : ""}
             </div>
             <h3 class="font-display font-700 text-lg mb-2" style="color:var(--fg)">${s.title}</h3>
-            <p class="text-sm leading-relaxed mb-4" style="color:var(--muted)">${s.desc}</p>
-            <p class="font-display font-700 text-sm" style="color:var(--primary-fg)">${s.price}</p>
-          </div>
+            <p class="text-sm leading-relaxed mb-5" style="color:var(--muted)">${s.desc}</p>
+            <div class="mt-auto pt-4 flex items-center justify-between" style="border-top:1px solid var(--border)">
+              <p class="font-display font-700 text-sm" style="color:var(--primary-fg)">${s.price}</p>
+              <span class="transition-transform group-hover:translate-x-1" style="color:var(--primary-fg)">${arrow}</span>
+            </div>
+          </a>
         `,
           )
           .join("")}
       </div>
     </section>
 
+    <!-- MÉTHODE (section sombre) -->
+    <section class="section-deep py-20">
+      ${waveSVG("#60A5FA")}
+      <div class="relative max-w-6xl mx-auto px-4 md:px-8">
+        <p class="section-label mb-3 reveal">${ht.process.label}</p>
+        <h2 class="font-display font-700 leading-tight mb-12 text-white reveal" style="font-size:clamp(2rem,4vw,3rem)">${ht.process.title}</h2>
+        <ol class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          ${ht.process.steps
+            .map(
+              (step, i) => `
+          <li class="step-card p-6 reveal" style="transition-delay:${i * 90}ms">
+            <div class="flex items-center justify-between mb-6">
+              <span class="step-num" aria-hidden="true">0${i + 1}</span>
+              <span style="color:#60A5FA">${lineIcon(step.icon, 28)}</span>
+            </div>
+            <h3 class="font-display font-700 text-lg mb-2 text-white">${step.title}</h3>
+            <p class="text-sm leading-relaxed" style="color:#cbd5e1">${step.desc}</p>
+          </li>`,
+            )
+            .join("")}
+        </ol>
+      </div>
+    </section>
+
     <!-- ACADEMY (renvoi vers la page Formations) -->
-    <div class="max-w-6xl mx-auto px-4 md:px-8">${renderServicesTrainings()}</div>
+    <div class="max-w-6xl mx-auto px-4 md:px-8 pt-16">${renderServicesTrainings()}</div>
 
     <!-- PORTFOLIO PREVIEW -->
     <section class="py-20" style="background:var(--card); border-top:1px solid var(--border); border-bottom:1px solid var(--border)">
@@ -441,7 +512,7 @@ function renderHome() {
 
     <!-- CTA BANNER -->
     <section class="py-20 text-center relative overflow-hidden" style="background:linear-gradient(135deg,#004AAD,#0062E6)">
-      ${waveSVG()}
+      ${waveSVG("white")}
       <div class="relative max-w-2xl mx-auto px-4">
         <h2 class="font-display font-700 text-white mb-4 reveal" style="font-size:clamp(1.8rem,4vw,2.8rem)">${state.lang === "fr" ? "Prêt à transformer votre présence digitale ?" : "Ready to transform your digital presence?"}</h2>
         <p class="text-blue-100 mb-8 reveal">${state.lang === "fr" ? "Discutons de votre projet — réponse sous 24h garantie." : "Let's discuss your project — response within 24h guaranteed."}</p>
@@ -488,7 +559,7 @@ function renderServices() {
             (s, i) => `
           <div class="card p-7 reveal" style="transition-delay:${i * 60}ms">
             <div class="flex items-start justify-between mb-5">
-              <div class="w-12 h-12 flex items-center justify-center text-2xl" style="background:rgba(0,74,173,0.08)">${s.icon}</div>
+              <span class="icon-tile">${lineIcon(s.iconId)}</span>
               ${s.tag ? `<span class="badge badge-blue">${s.tag}</span>` : ""}
             </div>
             <h2 class="font-display font-700 text-xl mb-3" style="color:var(--fg)">${s.title}</h2>

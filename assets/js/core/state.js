@@ -204,3 +204,42 @@ function observeReveals() {
   );
   targets.forEach((el) => revealObserver.observe(el));
 }
+
+// ==================== COMPTEURS ANIMÉS ====================
+// <span data-count>50+</span> : compte de 0 à 50 à l'apparition, suffixe conservé.
+// La valeur finale est déjà dans le HTML (lisible sans JS, SEO, animations réduites).
+const COUNTER_DURATION_MS = 1200;
+let counterObserver = null;
+
+function runCounter(el) {
+  const match = /^(\d+)(.*)$/.exec(el.textContent.trim());
+  if (!match) return;
+  const target = Number(match[1]);
+  const suffix = match[2];
+  const start = performance.now();
+  const tick = (now) => {
+    const progress = Math.min((now - start) / COUNTER_DURATION_MS, 1);
+    const eased = 1 - (1 - progress) ** 3;
+    el.textContent = `${Math.round(target * eased)}${suffix}`;
+    if (progress < 1) requestAnimationFrame(tick);
+  };
+  requestAnimationFrame(tick);
+}
+
+function animateCounters() {
+  const counters = document.querySelectorAll("[data-count]");
+  if (!counters.length) return;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)) return;
+  if (counterObserver) counterObserver.disconnect();
+  counterObserver = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        observer.unobserve(entry.target);
+        runCounter(entry.target);
+      });
+    },
+    { threshold: 0.6 },
+  );
+  counters.forEach((el) => counterObserver.observe(el));
+}

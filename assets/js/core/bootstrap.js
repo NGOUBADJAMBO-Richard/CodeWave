@@ -71,6 +71,7 @@ function render() {
   syncDocumentTitle();
   syncStructuredData();
   observeReveals();
+  animateCounters();
   updateScrollProgress();
 }
 
