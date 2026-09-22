@@ -42,10 +42,10 @@ function renderPortfolioDetail(projectId) {
       <div class="absolute inset-0 flex items-center">
         <div class="max-w-6xl mx-auto px-4 md:px-8 w-full">
           <div class="flex items-center gap-6">
-            <div class="w-20 h-20 flex items-center justify-center text-4xl font-display font-800 flex-shrink-0" style="background:${p.color}25; color:${p.color}">${p.title.substring(0, 2)}</div>
+            <div aria-hidden="true" class="w-20 h-20 flex items-center justify-center text-4xl font-display font-700 flex-shrink-0" style="background:${p.color}25; color:${p.color}">${p.title.substring(0, 2)}</div>
             <div>
-              <span class="badge mb-2" style="background:${p.color}20;color:${p.color}">${p.category}</span>
-              <h1 class="font-display font-800 text-3xl md:text-4xl" style="color:var(--fg)">${p.title}</h1>
+              <span class="badge mb-2" style="background:${p.color}20;color:${p.color};color:color-mix(in srgb, ${p.color} 50%, var(--fg))">${p.category}</span>
+              <h1 class="font-display font-700 text-3xl md:text-4xl" style="color:var(--fg)">${p.title}</h1>
               <p class="text-lg mt-1" style="color:var(--muted)">${p.subtitle}</p>
             </div>
           </div>
@@ -71,7 +71,7 @@ function renderPortfolioDetail(projectId) {
                 .map(
                   (f) => `
                 <li class="flex items-start gap-3 text-sm" style="color:var(--muted)">
-                  <span class="mt-0.5 flex-shrink-0 w-5 h-5 flex items-center justify-center text-xs font-bold" style="background:${p.color}18;color:${p.color}">✓</span>
+                  <span class="mt-0.5 flex-shrink-0 w-5 h-5 flex items-center justify-center text-xs font-bold" style="background:${p.color}18;color:${p.color};color:color-mix(in srgb, ${p.color} 50%, var(--fg))">✓</span>
                   ${f}
                 </li>
               `,
@@ -83,12 +83,12 @@ function renderPortfolioDetail(projectId) {
           <!-- Challenge & Result -->
           <div class="grid md:grid-cols-2 gap-5 reveal">
             <div class="card p-6">
-              <div class="w-10 h-10 flex items-center justify-center text-xl mb-4" style="background:rgba(239,68,68,0.1)">🎯</div>
+              <div class="w-10 h-10 flex items-center justify-center text-xl mb-4" style="background:rgba(239,68,68,0.1)">${iconFromEmoji("🎯", 16)} </div>
               <h3 class="font-display font-700 text-base mb-3" style="color:var(--fg)">${isEn ? "The Challenge" : "Le Défi"}</h3>
               <p class="text-sm leading-relaxed" style="color:var(--muted)">${challenge}</p>
             </div>
             <div class="card p-6">
-              <div class="w-10 h-10 flex items-center justify-center text-xl mb-4" style="background:rgba(16,185,129,0.1)">✅</div>
+              <div class="w-10 h-10 flex items-center justify-center text-xl mb-4" style="background:rgba(16,185,129,0.1)">${iconFromEmoji("✅", 16)} </div>
               <h3 class="font-display font-700 text-base mb-3" style="color:var(--fg)">${isEn ? "The Result" : "Le Résultat"}</h3>
               <p class="text-sm leading-relaxed" style="color:var(--muted)">${result}</p>
             </div>
@@ -129,8 +129,8 @@ function renderPortfolioDetail(projectId) {
               </a>
             `
                 : `
-              <div class="mt-6 p-3 text-xs text-center" style="background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.2);color:#ef4444">
-                ⚠️ ${isEn ? "Live link temporarily unavailable" : "Lien indisponible temporairement"}
+              <div class="mt-6 p-3 text-xs text-center" style="background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.2);color:#ef4444;color:color-mix(in srgb, #ef4444 60%, var(--fg))">
+                ${iconFromEmoji("⚠", 16)} ${isEn ? "Live link temporarily unavailable" : "Lien indisponible temporairement"}
               </div>
             `
             }
@@ -140,7 +140,7 @@ function renderPortfolioDetail(projectId) {
           <div class="card p-6 reveal">
             <h3 class="font-display font-700 text-sm uppercase tracking-wider mb-4" style="color:var(--muted)">Stack & Outils</h3>
             <div class="flex flex-wrap gap-2">
-              ${p.stack.map((s) => `<span class="text-xs px-3 py-1.5 font-display font-600" style="background:${p.color}12;color:${p.color};border:1px solid ${p.color}30">${s}</span>`).join("")}
+              ${p.stack.map((s) => `<span class="text-xs px-3 py-1.5 font-display font-600" style="background:${p.color}12;color:${p.color};color:color-mix(in srgb, ${p.color} 50%, var(--fg));border:1px solid ${p.color}30">${s}</span>`).join("")}
             </div>
           </div>
 
@@ -148,7 +148,7 @@ function renderPortfolioDetail(projectId) {
           <div class="card p-6 reveal" style="background:linear-gradient(135deg,${p.color},${p.color}cc)">
             <p class="font-display font-700 text-white text-base mb-2">${isEn ? "Similar project?" : "Projet similaire ?"}</p>
             <p class="text-sm mb-4" style="color:rgba(255,255,255,0.8)">${isEn ? "Let's discuss your idea." : "Discutons de votre idée."}</p>
-            <button onclick="navigate('contact')" class="btn-primary w-full justify-center text-sm py-2" style="background:white;color:${p.color};border-color:white">
+            <button onclick="navigate('contact')" class="btn-primary w-full justify-center text-sm py-2" style="background:white;color:${p.color};color:color-mix(in srgb, ${p.color} 50%, var(--fg));border-color:white">
               ${isEn ? "Get a Quote" : "Demander un Devis"}
             </button>
           </div>
@@ -189,10 +189,7 @@ function renderPortfolioDetail(projectId) {
 }
 
 function navigateToPortfolioDetail(id) {
-  state.page = "portfolio-detail";
-  state.currentProjectId = id;
-  window.scrollTo({ top: 0, behavior: "smooth" });
-  render();
+  openDetail("portfolio", id);
 }
 
 // ==================== BLOG DETAIL PAGE ====================
@@ -206,8 +203,8 @@ function renderBlogDetail(postId) {
   const intro = isEn ? post.introEn : post.intro;
   const conclusion = isEn ? post.conclusionEn : post.conclusion;
   const catColors = {
-    Conseils: "#1a56db",
-    Tips: "#1a56db",
+    Conseils: "#004AAD",
+    Tips: "#004AAD",
     Tutoriels: "#0d9488",
     Tutorials: "#0d9488",
     Actualités: "#ea580c",
@@ -216,7 +213,7 @@ function renderBlogDetail(postId) {
     Entrepreneurship: "#7c3aed",
   };
   const cat = isEn ? post.categoryEn : post.category;
-  const catColor = catColors[cat] || "#1a56db";
+  const catColor = catColors[cat] || "#004AAD";
 
   // Related posts (3 others)
   const relatedIds = Object.keys(blogDetails)
@@ -241,15 +238,15 @@ function renderBlogDetail(postId) {
       <!-- Article Header -->
       <div class="mb-10">
         <div class="flex items-center gap-3 mb-5">
-          <span class="badge" style="background:${catColor}18;color:${catColor}">${cat}</span>
+          <span class="badge" style="background:${catColor}18;color:${catColor};color:color-mix(in srgb, ${catColor} 50%, var(--fg))">${cat}</span>
           <span class="text-sm" style="color:var(--muted)">${isEn ? post.dateEn : post.date}</span>
           <span class="text-sm" style="color:var(--muted)">· ${post.read} ${isEn ? "min read" : "min de lecture"}</span>
         </div>
-        <h1 class="font-display font-800 leading-tight mb-5" style="font-size:clamp(1.8rem,4vw,2.8rem);color:var(--fg)">${title}</h1>
+        <h1 class="font-display font-700 leading-tight mb-5" style="font-size:clamp(1.8rem,4vw,2.8rem);color:var(--fg)">${title}</h1>
         <p class="text-lg leading-relaxed" style="color:var(--muted)">${intro}</p>
         <!-- Author -->
         <div class="flex items-center gap-3 mt-6 pt-6" style="border-top:1px solid var(--border)">
-          <div class="w-10 h-10 flex items-center justify-center font-display font-800 text-sm" style="background:${catColor}18;color:${catColor}">MG</div>
+          <div class="w-10 h-10 flex items-center justify-center font-display font-700 text-sm" style="background:${catColor}18;color:${catColor};color:color-mix(in srgb, ${catColor} 50%, var(--fg))">MG</div>
           <div>
             <p class="font-display font-700 text-sm" style="color:var(--fg)">${post.author}</p>
             <p class="text-xs" style="color:var(--muted)">Libreville, Gabon</p>
@@ -266,7 +263,7 @@ function renderBlogDetail(postId) {
             <path d="M0,140 C200,80 400,200 600,140 C800,80 1000,200 1200,140" fill="none" stroke="white" stroke-width="1"/>
           </svg>
         </div>
-        <span class="relative text-5xl font-display font-800 text-white opacity-30">${post.sections.length}</span>
+        <span class="relative text-5xl font-display font-700 text-white opacity-30">${post.sections.length}</span>
         <span class="relative ml-3 text-white font-display font-700 text-lg">${isEn ? `Key Points` : `Points Clés`}</span>
       </div>
 
@@ -277,10 +274,10 @@ function renderBlogDetail(postId) {
             (s, i) => `
           <div class="reveal" style="transition-delay:${i * 40}ms">
             <div class="flex items-start gap-4">
-              <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center text-2xl" style="background:${catColor}10;border:1px solid ${catColor}20">${s.icon}</div>
+              <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center text-2xl" style="background:${catColor}10;border:1px solid ${catColor}20">${iconFromEmoji(s.icon, 24)}</div>
               <div class="flex-1">
                 <h2 class="font-display font-700 text-xl mb-3" style="color:var(--fg)">
-                  <span class="mr-2 text-sm" style="color:${catColor}">${String(i + 1).padStart(2, "0")}.</span>
+                  <span class="mr-2 text-sm" style="color:${catColor};color:color-mix(in srgb, ${catColor} 50%, var(--fg))">${String(i + 1).padStart(2, "0")}.</span>
                   ${isEn ? s.titleEn : s.title}
                 </h2>
                 <p class="leading-relaxed" style="color:var(--muted)">${isEn ? s.bodyEn : s.body}</p>
@@ -296,7 +293,7 @@ function renderBlogDetail(postId) {
       <!-- Conclusion -->
       <div class="card p-7 mb-10 reveal" style="border-left:4px solid ${catColor}">
         <div class="flex items-start gap-3">
-          <span class="text-2xl">✨</span>
+          <span style="color:var(--primary-fg)">${lineIcon("award", 24)}</span>
           <div>
             <p class="font-display font-700 text-base mb-2" style="color:var(--fg)">${isEn ? "Conclusion" : "Conclusion"}</p>
             <p class="leading-relaxed" style="color:var(--muted)">${conclusion}</p>
@@ -305,10 +302,10 @@ function renderBlogDetail(postId) {
       </div>
 
       <!-- CTA inline -->
-      <div class="p-7 mb-12 text-center reveal" style="background:linear-gradient(135deg,#1a56db,#1e40af)">
-        <p class="font-display font-800 text-white text-xl mb-2">${isEn ? "Ready to take action?" : "Prêt à passer à l'action ?"}</p>
+      <div class="p-7 mb-12 text-center reveal" style="background:linear-gradient(135deg,#004AAD,#0062E6)">
+        <p class="font-display font-700 text-white text-xl mb-2">${isEn ? "Ready to take action?" : "Prêt à passer à l'action ?"}</p>
         <p class="text-blue-100 mb-5">${isEn ? "Get a free quote and let's build your digital presence." : "Obtenez un devis gratuit et construisons votre présence digitale."}</p>
-        <button onclick="navigate('contact')" class="btn-primary" style="background:white;color:#1a56db;border-color:white">
+        <button onclick="navigate('contact')" class="btn-primary" style="background:white;color:#004AAD;border-color:white">
           ${isEn ? "Request Free Quote" : "Demander un Devis Gratuit"}
         </button>
       </div>
@@ -316,7 +313,7 @@ function renderBlogDetail(postId) {
       <!-- Share -->
       <div class="flex items-center gap-4 mb-12 p-5 card reveal">
         <p class="font-display font-700 text-sm flex-shrink-0" style="color:var(--fg)">${isEn ? "Share:" : "Partager :"}</p>
-        <a href="https://wa.me/?text=${encodeURIComponent(title + " - MGN CodeWave")}" target="_blank" class="flex items-center gap-2 text-sm px-4 py-2 hover:opacity-80 transition-opacity" style="background:#25D366;color:white">
+        <a href="https://wa.me/?text=${encodeURIComponent(title + " - MGN CodeWave")}" target="_blank" class="flex items-center gap-2 text-sm px-4 py-2 hover:opacity-80 transition-opacity" style="background:#25D366;color:#0f172a">
           <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
           WhatsApp
         </a>
@@ -336,10 +333,10 @@ function renderBlogDetail(postId) {
               return `
               <button onclick="navigateToBlogDetail(${rid})" class="card text-left overflow-hidden hover:border-blue-400 transition-colors">
                 <div class="h-24 flex items-center justify-center" style="background:${related.color}12">
-                  <span class="font-display font-800 text-3xl" style="color:${related.color};opacity:0.3">${rid}</span>
+                  <span class="font-display font-700 text-3xl" style="color:${related.color};color:color-mix(in srgb, ${related.color} 50%, var(--fg));opacity:0.3">${rid}</span>
                 </div>
                 <div class="p-4">
-                  <span class="badge mb-2" style="background:${related.color}18;color:${related.color}">${rcat}</span>
+                  <span class="badge mb-2" style="background:${related.color}18;color:${related.color};color:color-mix(in srgb, ${related.color} 50%, var(--fg))">${rcat}</span>
                   <p class="font-display font-700 text-sm leading-snug" style="color:var(--fg)">${isEn ? related.titleEn : related.title}</p>
                 </div>
               </button>
@@ -353,10 +350,7 @@ function renderBlogDetail(postId) {
 }
 
 function navigateToBlogDetail(id) {
-  state.page = "blog-detail";
-  state.currentBlogId = id;
-  window.scrollTo({ top: 0, behavior: "smooth" });
-  render();
+  openDetail("blog", id);
 }
 
 // ==================== CAREERS PAGE ====================
@@ -367,14 +361,9 @@ function renderCareers() {
   if (activeJob) return renderJobDetail(activeJob);
 
   return `
-  <div class="page pt-28 pb-16">
+  <div class="page pb-16">
+    ${renderPageHero({ label: isEn ? "Careers" : "Recrutement", title: isEn ? "Join our\nTeam" : "Rejoignez\nnotre Équipe", sub: isEn ? "We're a growing digital startup based in Libreville. We're looking for motivated, autonomous talents ready to grow with us." : "Nous sommes une start-up digitale en croissance basée à Libreville. Nous cherchons des talents motivés et autonomes, prêts à grandir avec nous." })}
     <div class="max-w-6xl mx-auto px-4 md:px-8">
-      <!-- Header -->
-      <div class="mb-14 max-w-2xl">
-        <p class="section-label mb-3">${isEn ? "Careers" : "Recrutement"}</p>
-        <h1 class="font-display font-800 leading-tight mb-4" style="font-size:clamp(2.5rem,5vw,4rem);color:var(--fg)">${isEn ? "Join our\nTeam" : "Rejoignez\nnotre Équipe"}</h1>
-        <p style="color:var(--muted)">${isEn ? "We're a growing digital startup based in Libreville. We're looking for motivated, autonomous talents ready to grow with us." : "Nous sommes une start-up digitale en croissance basée à Libreville. Nous cherchons des talents motivés et autonomes, prêts à grandir avec nous."}</p>
-      </div>
 
       <!-- Why join us -->
       <div class="mb-14">
@@ -427,7 +416,7 @@ function renderCareers() {
             .map(
               (item, i) => `
             <div class="card p-5 reveal" style="transition-delay:${i * 60}ms">
-              <div class="text-3xl mb-3">${item.icon}</div>
+              <div class="text-3xl mb-3">${iconFromEmoji(item.icon, 28)}</div>
               <h3 class="font-display font-700 text-base mb-1" style="color:var(--fg)">${item.title}</h3>
               <p class="text-sm" style="color:var(--muted)">${item.desc}</p>
             </div>
@@ -441,7 +430,7 @@ function renderCareers() {
       <div class="mb-12">
         <div class="flex items-center gap-3 mb-6">
           <h2 class="font-display font-700 text-xl" style="color:var(--fg)">${isEn ? "Freelance & Partnership" : "Freelance & Partenariat"}</h2>
-          <span class="badge" style="background:rgba(16,185,129,0.12);color:#10b981">${careersData.freelance.length} ${isEn ? "positions" : "postes"}</span>
+          <span class="badge" style="background:rgba(16,185,129,0.12);color:#10b981;color:color-mix(in srgb, #10b981 50%, var(--fg))">${careersData.freelance.length} ${isEn ? "positions" : "postes"}</span>
         </div>
         <div class="grid md:grid-cols-3 gap-5">
           ${careersData.freelance.map((job, i) => renderJobCard(job, i, isEn)).join("")}
@@ -461,11 +450,11 @@ function renderCareers() {
 
       <!-- Spontaneous application -->
       <div class="p-8 text-center reveal" style="background:linear-gradient(135deg,#1e293b,#0f172a);border:1px solid #334155">
-        <div class="text-4xl mb-4">💌</div>
-        <h3 class="font-display font-800 text-white text-2xl mb-3">${isEn ? "Don't see the right position?" : "Vous ne trouvez pas le poste idéal ?"}</h3>
+        <div class="mb-4 flex justify-center" style="color:var(--primary-fg)">${lineIcon("mail", 40)}</div>
+        <h3 class="font-display font-700 text-white text-2xl mb-3">${isEn ? "Don't see the right position?" : "Vous ne trouvez pas le poste idéal ?"}</h3>
         <p class="mb-6" style="color:#94a3b8">${isEn ? "Send us a spontaneous application! We're always looking for motivated talent." : "Envoyez-nous une candidature spontanée ! Nous sommes toujours à la recherche de talents motivés."}</p>
-        <a href="mailto:mgncodewave18@gmail.com?subject=Candidature Spontanée CodeWave" class="btn-primary" style="background:#1a56db;border-color:#1a56db">
-          ${isEn ? "Send My Application" : "Envoyer Ma Candidature"} ✉️
+        <a href="mailto:mgncodewave18@gmail.com?subject=Candidature Spontanée CodeWave" class="btn-primary" style="background:#004AAD;border-color:var(--primary-fg)">
+          ${isEn ? "Send My Application" : "Envoyer Ma Candidature"} ${iconFromEmoji("✉", 16)} 
         </a>
       </div>
     </div>
@@ -475,21 +464,21 @@ function renderCareers() {
 function renderJobCard(job, delay, isEn) {
   const isCDI = job.type === "CDI";
   return `
-    <div class="card overflow-hidden reveal cursor-pointer hover:border-blue-400 transition-colors" style="transition-delay:${delay * 60}ms" onclick="openJobDetail('${job.id}')">
+    <div role="link" tabindex="0" onkeydown="activateOnEnter(event)" class="card overflow-hidden reveal cursor-pointer hover:border-blue-400 transition-colors" style="transition-delay:${delay * 60}ms" onclick="openJobDetail('${job.id}')">
       <div class="h-2" style="background:${job.color}"></div>
       <div class="p-5">
         <div class="flex items-start justify-between mb-3">
-          <div class="text-3xl">${job.icon}</div>
-          <span class="badge" style="background:${isCDI ? "rgba(26,86,219,0.1)" : "rgba(16,185,129,0.1)"};color:${isCDI ? "#1a56db" : "#10b981"}">${job.type}</span>
+          <div class="text-3xl">${iconFromEmoji(job.icon, 28)}</div>
+          <span class="badge" style="background:${isCDI ? "rgba(0,74,173,0.1)" : "rgba(16,185,129,0.1)"};color:${isCDI ? "var(--primary-fg)" : "color-mix(in srgb, #10b981 50%, var(--fg))"}">${job.type}</span>
         </div>
         <h3 class="font-display font-700 text-base mb-0.5" style="color:var(--fg)">${isEn ? job.titleEn || job.title : job.title}</h3>
         <p class="text-xs mb-3" style="color:var(--muted)">${job.subtitle}</p>
         <div class="flex flex-wrap gap-2 mb-4">
-          <span class="text-xs flex items-center gap-1" style="color:var(--muted)">📍 ${isEn ? job.locationEn : job.location}</span>
-          <span class="text-xs flex items-center gap-1" style="color:var(--muted)">⏰ ${job.schedule}</span>
+          <span class="text-xs flex items-center gap-1" style="color:var(--muted)">${iconFromEmoji("📍", 16)} ${isEn ? job.locationEn : job.location}</span>
+          <span class="text-xs flex items-center gap-1" style="color:var(--muted)">${iconFromEmoji("⏰", 16)} ${job.schedule}</span>
         </div>
         <div class="pt-3 flex items-center justify-between" style="border-top:1px solid var(--border)">
-          <span class="font-display font-700 text-sm" style="color:${job.color}">${isEn ? job.payEn : job.pay}</span>
+          <span class="font-display font-700 text-sm" style="color:${job.color};color:color-mix(in srgb, ${job.color} 50%, var(--fg))">${isEn ? job.payEn : job.pay}</span>
           <span class="text-xs font-display font-600 hover:text-blue-500 transition-colors" style="color:var(--muted)">${isEn ? "Details →" : "Détails →"}</span>
         </div>
       </div>
@@ -525,21 +514,21 @@ function renderJobDetail(jobId) {
         <div class="p-7 md:p-10">
           <div class="flex flex-col md:flex-row md:items-start justify-between gap-5">
             <div class="flex items-start gap-4">
-              <div class="text-4xl">${job.icon}</div>
+              <div class="text-4xl">${iconFromEmoji(job.icon, 28)}</div>
               <div>
                 <div class="flex items-center gap-2 mb-1">
-                  <span class="badge" style="background:${job.color}18;color:${job.color}">${job.type}</span>
+                  <span class="badge" style="background:${job.color}18;color:${job.color};color:color-mix(in srgb, ${job.color} 50%, var(--fg))">${job.type}</span>
                   <span class="badge" style="background:rgba(100,116,139,0.1);color:var(--muted)">${job.level}</span>
                 </div>
-                <h1 class="font-display font-800 text-2xl md:text-3xl" style="color:var(--fg)">${isEn ? job.titleEn || job.title : job.title}</h1>
+                <h1 class="font-display font-700 text-2xl md:text-3xl" style="color:var(--fg)">${isEn ? job.titleEn || job.title : job.title}</h1>
                 <p class="text-base" style="color:var(--muted)">${job.subtitle}</p>
               </div>
             </div>
             <div class="text-right flex-shrink-0">
-              <p class="font-display font-800 text-2xl" style="color:${job.color}">${isEn ? job.payEn : job.pay}</p>
+              <p class="font-display font-700 text-2xl" style="color:${job.color};color:color-mix(in srgb, ${job.color} 50%, var(--fg))">${isEn ? job.payEn : job.pay}</p>
               <div class="flex gap-3 mt-2 justify-end text-xs" style="color:var(--muted)">
-                <span>📍 ${isEn ? job.locationEn : job.location}</span>
-                <span>⏰ ${job.schedule}</span>
+                <span>${iconFromEmoji("📍", 16)} ${isEn ? job.locationEn : job.location}</span>
+                <span>${iconFromEmoji("⏰", 16)} ${job.schedule}</span>
               </div>
             </div>
           </div>
@@ -551,14 +540,14 @@ function renderJobDetail(jobId) {
         <!-- Missions -->
         <div class="card p-7 reveal">
           <h2 class="font-display font-700 text-lg mb-5" style="color:var(--fg)">
-            <span class="mr-2">🎯</span>${isEn ? "Missions" : "Vos Missions"}
+            <span class="mr-2">${iconFromEmoji("🎯", 16)} </span>${isEn ? "Missions" : "Vos Missions"}
           </h2>
           <ul class="space-y-3">
             ${missions
               .map(
                 (m) => `
               <li class="flex items-start gap-3 text-sm" style="color:var(--muted)">
-                <span class="flex-shrink-0 mt-0.5" style="color:${job.color}">→</span>${m}
+                <span class="flex-shrink-0 mt-0.5" style="color:${job.color};color:color-mix(in srgb, ${job.color} 50%, var(--fg))">→</span>${m}
               </li>
             `,
               )
@@ -568,14 +557,14 @@ function renderJobDetail(jobId) {
         <!-- Requirements -->
         <div class="card p-7 reveal">
           <h2 class="font-display font-700 text-lg mb-5" style="color:var(--fg)">
-            <span class="mr-2">✅</span>${isEn ? "Requirements" : "Profil Recherché"}
+            <span class="mr-2">${iconFromEmoji("✅", 16)} </span>${isEn ? "Requirements" : "Profil Recherché"}
           </h2>
           <ul class="space-y-3">
             ${reqs
               .map(
                 (r) => `
               <li class="flex items-start gap-3 text-sm" style="color:var(--muted)">
-                <span class="flex-shrink-0 mt-0.5" style="color:#10b981">✓</span>${r}
+                <span class="flex-shrink-0 mt-0.5" aria-hidden="true" style="color:#10b981">✓</span>${r}
               </li>
             `,
               )
@@ -586,11 +575,11 @@ function renderJobDetail(jobId) {
 
       <!-- Apply CTA -->
       <div class="card p-8 text-center reveal" style="background:linear-gradient(135deg,${job.color}18,${job.color}08);border-color:${job.color}30">
-        <h3 class="font-display font-800 text-xl mb-3" style="color:var(--fg)">${isEn ? "Interested in this position?" : "Ce poste vous intéresse ?"}</h3>
+        <h3 class="font-display font-700 text-xl mb-3" style="color:var(--fg)">${isEn ? "Interested in this position?" : "Ce poste vous intéresse ?"}</h3>
         <p class="mb-6" style="color:var(--muted)">${isEn ? "Send your application to our email with your CV and portfolio (if applicable)." : "Envoyez votre candidature par email avec votre CV et portfolio (si applicable)."}</p>
         <div class="flex flex-wrap gap-3 justify-center">
           <a href="mailto:mgncodewave18@gmail.com?subject=Candidature — ${job.title}" class="btn-primary">
-            ${isEn ? "Apply Now" : "Postuler Maintenant"} ✉️
+            ${isEn ? "Apply Now" : "Postuler Maintenant"} ${iconFromEmoji("✉", 16)} 
           </a>
           <a href="https://wa.me/24166198918?text=Bonjour, je souhaite postuler au poste ${job.title}" target="_blank" class="btn-outline">
             WhatsApp →
@@ -623,31 +612,26 @@ function legalLayout(
   relatedLinks,
 ) {
   return `
-  <div class="page pt-28 pb-16">
+  <div class="page pb-16">
     <!-- Hero -->
-    <div class="relative overflow-hidden mb-12" style="background:var(--card); border-bottom:1px solid var(--border)">
-      <div class="wave-bg" style="opacity:0.04">
-        <svg width="100%" height="100%" viewBox="0 0 1440 200" preserveAspectRatio="xMidYMid slice">
-          <path d="M-100,60 C300,10 600,150 900,60 C1200,10 1400,150 1540,60" fill="none" stroke="#1a56db" stroke-width="1.5"/>
-          <path d="M-100,90 C300,40 600,180 900,90 C1200,40 1400,180 1540,90" fill="none" stroke="#1a56db" stroke-width="1"/>
-          <path d="M-100,120 C300,70 600,200 900,120 C1200,70 1400,200 1540,120" fill="none" stroke="#1a56db" stroke-width="0.7"/>
-        </svg>
-      </div>
-      <div class="max-w-4xl mx-auto px-4 md:px-8 py-14">
-        <nav class="flex items-center gap-2 text-sm mb-6" style="color:var(--muted)">
+    <div class="page-hero relative overflow-hidden mb-12">
+      <canvas class="wave-field" aria-hidden="true"></canvas>
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="relative max-w-4xl mx-auto px-4 md:px-8 pt-32 pb-24">
+        <nav aria-label="Fil d'Ariane" class="flex items-center gap-2 text-sm mb-6" style="color:var(--muted)">
           <button onclick="navigate('home')" class="hover:text-blue-500 transition-colors">Accueil</button>
           <span>/</span>
           <span style="color:var(--fg)">${title}</span>
         </nav>
         <div class="flex items-center gap-4">
-          <div class="w-14 h-14 flex items-center justify-center text-3xl" style="background:rgba(26,86,219,0.08)">${icon}</div>
+          <div class="w-14 h-14 flex items-center justify-center text-3xl" style="background:rgba(0,74,173,0.08)">${iconFromEmoji(icon, 20)}</div>
           <div>
-            <h1 class="font-display font-800 text-3xl md:text-4xl" style="color:var(--fg)">${title}</h1>
+            <h1 class="font-display font-700 text-3xl md:text-4xl" style="color:var(--fg)">${title}</h1>
             <p style="color:var(--muted)">${subtitle}</p>
           </div>
         </div>
-        <p class="mt-5 text-xs inline-flex items-center gap-2 px-3 py-1.5" style="background:rgba(26,86,219,0.06);color:var(--muted)">
-          📅 Dernière mise à jour : ${updateDate}
+        <p class="mt-5 text-xs inline-flex items-center gap-2 px-3 py-1.5" style="background:rgba(0,74,173,0.06);color:var(--muted)">
+          ${iconFromEmoji("📅", 16)} Dernière mise à jour : ${updateDate}
         </p>
       </div>
     </div>
@@ -660,13 +644,13 @@ function legalLayout(
 
       <!-- Contact box -->
       <div class="mt-12 card p-6 flex flex-col md:flex-row items-center gap-5 reveal">
-        <div class="text-3xl">💬</div>
+        <div style="color:var(--primary-fg)">${lineIcon("chat", 32)}</div>
         <div class="flex-1">
           <p class="font-display font-700 text-base mb-1" style="color:var(--fg)">Des questions ?</p>
           <p class="text-sm" style="color:var(--muted)">Contactez-nous pour toute demande relative à ce document.</p>
         </div>
         <div class="flex flex-wrap gap-3">
-          <a href="mailto:mgncodewave18@gmail.com" class="btn-primary text-sm py-2 px-4">✉️ Email</a>
+          <a href="mailto:mgncodewave18@gmail.com" class="btn-primary text-sm py-2 px-4">${iconFromEmoji("✉", 16)} Email</a>
           <a href="https://wa.me/24166198918" target="_blank" class="btn-outline text-sm py-2 px-4">WhatsApp</a>
         </div>
       </div>
@@ -691,7 +675,7 @@ function legalSection(num, title, content, accent) {
   <div class="reveal mb-0" style="border-bottom:1px solid var(--border)">
     <div class="py-8">
       <div class="flex items-start gap-4">
-        <span class="flex-shrink-0 w-8 h-8 flex items-center justify-center text-xs font-display font-800" style="background:rgba(26,86,219,0.08);color:#1a56db">${num}</span>
+        <span class="flex-shrink-0 w-8 h-8 flex items-center justify-center text-xs font-display font-700" style="background:rgba(0,74,173,0.08);color:var(--primary-fg)">${num}</span>
         <div class="flex-1">
           <h2 class="font-display font-700 text-lg mb-3" style="color:var(--fg)">${title}</h2>
           <div class="text-sm leading-relaxed space-y-3" style="color:var(--muted)">${content}</div>
@@ -842,13 +826,13 @@ function renderPrivacy() {
         <div>
           <p class="font-600 mb-2" style="color:var(--fg)">2.1 Données que vous nous fournissez directement</p>
           <ul class="space-y-1 ml-4">
-            ${["Informations d'identité : nom, prénom, raison sociale", "Coordonnées : email, téléphone, adresse postale", "Informations professionnelles : entreprise, secteur, fonction", "Informations de projet : description, budget, délais", "Données de paiement : informations de facturation (sécurisées)"].map((i) => `<li class="flex items-start gap-2"><span style="color:#1a56db">•</span>${i}</li>`).join("")}
+            ${["Informations d'identité : nom, prénom, raison sociale", "Coordonnées : email, téléphone, adresse postale", "Informations professionnelles : entreprise, secteur, fonction", "Informations de projet : description, budget, délais", "Données de paiement : informations de facturation (sécurisées)"].map((i) => `<li class="flex items-start gap-2"><span style="color:var(--primary-fg)">•</span>${i}</li>`).join("")}
           </ul>
         </div>
         <div>
           <p class="font-600 mb-2" style="color:var(--fg)">2.2 Données collectées automatiquement</p>
           <ul class="space-y-1 ml-4">
-            ${["Données de navigation : pages visitées, durée, actions", "Données techniques : adresse IP, navigateur, OS", "Données de géolocalisation : pays, ville (non précise)", "Cookies : voir section dédiée ci-dessous"].map((i) => `<li class="flex items-start gap-2"><span style="color:#1a56db">•</span>${i}</li>`).join("")}
+            ${["Données de navigation : pages visitées, durée, actions", "Données techniques : adresse IP, navigateur, OS", "Données de géolocalisation : pays, ville (non précise)", "Cookies : voir section dédiée ci-dessous"].map((i) => `<li class="flex items-start gap-2"><span style="color:var(--primary-fg)">•</span>${i}</li>`).join("")}
           </ul>
         </div>
       </div>`,
@@ -888,7 +872,7 @@ function renderPrivacy() {
           .map(
             ([icon, title, desc]) => `
           <div class="card p-4">
-            <div class="flex items-center gap-2 mb-1"><span>${icon}</span><span class="font-600 text-sm" style="color:var(--fg)">${title}</span></div>
+            <div class="flex items-center gap-2 mb-1"><span>${iconFromEmoji(icon, 20)}</span><span class="font-600 text-sm" style="color:var(--fg)">${title}</span></div>
             <p class="text-xs">${desc}</p>
           </div>
         `,
@@ -901,11 +885,11 @@ function renderPrivacy() {
       "Partage de Vos Données",
       `
       <div class="card p-5 mb-3" style="border-left:3px solid #10b981">
-        <p class="font-700 text-sm mb-1" style="color:#10b981">✓ Nous ne vendons jamais vos données personnelles.</p>
+        <p class="font-700 text-sm mb-1" aria-hidden="true" style="color:#10b981">✓ Nous ne vendons jamais vos données personnelles.</p>
         <p>Nous pouvons les partager uniquement avec :</p>
       </div>
       <ul class="space-y-2 ml-4">
-        ${["Prestataires de services : hébergeur Vercel, outils d'analyse Google Analytics — uniquement pour les services nécessaires", "Partenaires de paiement : pour traiter vos paiements Mobile Money de manière sécurisée", "Autorités légales : si la loi l'exige ou pour protéger nos droits"].map((i) => `<li class="flex items-start gap-2"><span style="color:#1a56db">•</span>${i}</li>`).join("")}
+        ${["Prestataires de services : hébergeur Vercel, outils d'analyse Google Analytics — uniquement pour les services nécessaires", "Partenaires de paiement : pour traiter vos paiements Mobile Money de manière sécurisée", "Autorités légales : si la loi l'exige ou pour protéger nos droits"].map((i) => `<li class="flex items-start gap-2"><span style="color:var(--primary-fg)">•</span>${i}</li>`).join("")}
       </ul>`,
     ),
     legalSection(
@@ -914,7 +898,7 @@ function renderPrivacy() {
       `
       <div class="card overflow-hidden">
         <table class="w-full text-sm">
-          <thead><tr style="background:rgba(26,86,219,0.05)"><th class="text-left p-3 font-display font-700" style="color:var(--fg)">Type de données</th><th class="text-left p-3 font-display font-700" style="color:var(--fg)">Durée</th></tr></thead>
+          <thead><tr style="background:rgba(0,74,173,0.05)"><th class="text-left p-3 font-display font-700" style="color:var(--fg)">Type de données</th><th class="text-left p-3 font-display font-700" style="color:var(--fg)">Durée</th></tr></thead>
           <tbody>
             ${[
               ["Données clients actifs", "Durée relation + 5 ans"],
@@ -924,7 +908,7 @@ function renderPrivacy() {
             ]
               .map(
                 ([t, d], i) => `
-              <tr style="border-top:1px solid var(--border)${i % 2 === 0 ? ";background:rgba(26,86,219,0.02)" : ""}"><td class="p-3" style="color:var(--fg)">${t}</td><td class="p-3 font-600" style="color:#1a56db">${d}</td></tr>
+              <tr style="border-top:1px solid var(--border)${i % 2 === 0 ? ";background:rgba(0,74,173,0.02)" : ""}"><td class="p-3" style="color:var(--fg)">${t}</td><td class="p-3 font-600" style="color:var(--primary-fg)">${d}</td></tr>
             `,
               )
               .join("")}
@@ -961,7 +945,7 @@ function renderPrivacy() {
         ]
           .map(
             ([icon, title, desc]) => `
-          <div class="card p-4"><div class="flex items-center gap-2 mb-1"><span>${icon}</span><span class="font-600 text-sm" style="color:var(--fg)">${title}</span></div><p class="text-xs">${desc}</p></div>
+          <div class="card p-4"><div class="flex items-center gap-2 mb-1"><span>${iconFromEmoji(icon, 20)}</span><span class="font-600 text-sm" style="color:var(--fg)">${title}</span></div><p class="text-xs">${desc}</p></div>
         `,
           )
           .join("")}
@@ -994,7 +978,7 @@ function renderPrivacy() {
         ]
           .map(
             ([icon, title, desc]) => `
-          <div class="card p-4"><div class="flex items-center gap-2 mb-1"><span>${icon}</span><span class="font-600 text-xs" style="color:var(--fg)">${title}</span></div><p style="font-size:11px;color:var(--muted)">${desc}</p></div>
+          <div class="card p-4"><div class="flex items-center gap-2 mb-1"><span>${iconFromEmoji(icon, 20)}</span><span class="font-600 text-xs" style="color:var(--fg)">${title}</span></div><p style="font-size:11px;color:var(--muted)">${desc}</p></div>
         `,
           )
           .join("")}
@@ -1015,7 +999,7 @@ function renderPrivacy() {
           ],
           [
             "📊",
-            "#1a56db",
+            "#004AAD",
             "Cookies analytiques (facultatifs)",
             "Google Analytics pour comprendre votre usage. Durée : 13 mois. Nécessite votre consentement.",
           ],
@@ -1029,8 +1013,8 @@ function renderPrivacy() {
           .map(
             ([icon, color, title, desc]) => `
           <div class="card p-4 flex gap-3">
-            <span class="text-xl">${icon}</span>
-            <div><p class="font-600 text-sm mb-1" style="color:${color}">${title}</p><p class="text-xs">${desc}</p></div>
+            <span class="text-xl">${iconFromEmoji(icon, 20)}</span>
+            <div><p class="font-600 text-sm mb-1" style="color:${color};color:color-mix(in srgb, ${color} 50%, var(--fg))">${title}</p><p class="text-xs">${desc}</p></div>
           </div>
         `,
           )
@@ -1072,7 +1056,7 @@ function renderCGV() {
       `
       <p>Les présentes CGV ont pour objet de définir les droits et obligations des parties dans le cadre de la vente de services de développement web par CodeWave, notamment :</p>
       <ul class="mt-2 space-y-1 ml-4">
-        ${["Création de sites web vitrines", "Développement de boutiques e-commerce", "Création de blogs et portfolios", "Services de maintenance et d'hébergement", "Services additionnels (SEO, design, réseaux sociaux, etc.)"].map((i) => `<li class="flex items-start gap-2"><span style="color:#1a56db">•</span>${i}</li>`).join("")}
+        ${["Création de sites web vitrines", "Développement de boutiques e-commerce", "Création de blogs et portfolios", "Services de maintenance et d'hébergement", "Services additionnels (SEO, design, réseaux sociaux, etc.)"].map((i) => `<li class="flex items-start gap-2"><span style="color:var(--primary-fg)">•</span>${i}</li>`).join("")}
       </ul>
       <p class="mt-3">Toute commande implique l'acceptation sans réserve des présentes CGV.</p>`,
     ),
@@ -1082,7 +1066,7 @@ function renderCGV() {
       `
       <div class="space-y-4">
         <div><p class="font-600 mb-1" style="color:var(--fg)">2.1 Devis</p><p>Tout devis est gratuit, sans engagement et valable <strong style="color:var(--fg)">30 jours</strong> à compter de sa date d'émission. Passé ce délai, le Prestataire se réserve le droit de modifier les tarifs.</p></div>
-        <div><p class="font-600 mb-1" style="color:var(--fg)">2.2 Commande ferme après</p><ul class="space-y-1 ml-4">${["Signature du devis par le Client", "Réception de l'acompte initial (généralement 50%)", "Fourniture des éléments nécessaires (textes, images, etc.)"].map((i) => `<li class="flex items-start gap-2"><span style="color:#10b981">✓</span>${i}</li>`).join("")}</ul></div>
+        <div><p class="font-600 mb-1" style="color:var(--fg)">2.2 Commande ferme après</p><ul class="space-y-1 ml-4">${["Signature du devis par le Client", "Réception de l'acompte initial (généralement 50%)", "Fourniture des éléments nécessaires (textes, images, etc.)"].map((i) => `<li class="flex items-start gap-2"><span aria-hidden="true" style="color:#10b981">✓</span>${i}</li>`).join("")}</ul></div>
       </div>`,
     ),
     legalSection(
@@ -1098,22 +1082,22 @@ function renderCGV() {
               [
                 "🔢",
                 "Paiement en 3 fois",
-                "Projets > 150 000 FCFA (33/33/34%)",
+                "Projets ≥ 120 000 XAF (33/33/34%)",
               ],
             ]
               .map(
                 ([icon, title, desc]) =>
-                  `<div class="card p-4 text-center"><div class="text-2xl mb-1">${icon}</div><p class="font-700 text-sm mb-1" style="color:var(--fg)">${title}</p><p class="text-xs">${desc}</p></div>`,
+                  `<div class="card p-4 text-center"><div class="text-2xl mb-1">${iconFromEmoji(icon, 20)}</div><p class="font-700 text-sm mb-1" style="color:var(--fg)">${title}</p><p class="text-xs">${desc}</p></div>`,
               )
               .join("")}
           </div>
         </div>
         <div><p class="font-600 mb-2" style="color:var(--fg)">3.3 Moyens acceptés</p>
           <div class="flex flex-wrap gap-2">
-            ${["🏦 Virement bancaire", "📱 Airtel Money", "📱 Moov Money", "💵 Espèces (Libreville)"].map((m) => `<span class="px-3 py-1.5 text-sm" style="background:rgba(26,86,219,0.06);border:1px solid rgba(26,86,219,0.15);color:var(--fg)">${m}</span>`).join("")}
+            ${["Virement bancaire", "Airtel Money", "Moov Money", "Espèces (Libreville)"].map((m) => `<span class="px-3 py-1.5 text-sm" style="background:rgba(0,74,173,0.06);border:1px solid rgba(0,74,173,0.15);color:var(--fg)">${m}</span>`).join("")}
           </div>
         </div>
-        <div class="card p-4" style="border-left:3px solid #ef4444"><p class="font-600 text-sm mb-1" style="color:#ef4444">⚠️ Retard de paiement</p><p class="text-xs">Tout retard entraîne la suspension des travaux. Pénalités de 10% du montant dû après relance sans réponse.</p></div>
+        <div class="card p-4" style="border-left:3px solid #ef4444"><p class="font-600 text-sm mb-1" style="color:#ef4444;color:color-mix(in srgb, #ef4444 60%, var(--fg))">${iconFromEmoji("⚠", 16)} Retard de paiement</p><p class="text-xs">Tout retard entraîne la suspension des travaux. Pénalités de 10% du montant dû après relance sans réponse.</p></div>
       </div>`,
     ),
     legalSection(
@@ -1121,16 +1105,16 @@ function renderCGV() {
       "Obligations du Client",
       `
       <ul class="space-y-2">
-        ${["Fournir tous les éléments nécessaires (textes, images, logos) dans les délais convenus", "S'assurer que les contenus fournis ne violent aucun droit de propriété intellectuelle", "Répondre aux demandes de validation dans un délai de 7 jours ouvrés", "Effectuer les paiements selon l'échéancier convenu", "Informer le Prestataire de toute modification souhaitée dans les meilleurs délais"].map((i) => `<li class="flex items-start gap-3"><span class="flex-shrink-0 mt-0.5 w-5 h-5 flex items-center justify-center text-xs" style="background:rgba(26,86,219,0.08);color:#1a56db">→</span>${i}</li>`).join("")}
+        ${["Fournir tous les éléments nécessaires (textes, images, logos) dans les délais convenus", "S'assurer que les contenus fournis ne violent aucun droit de propriété intellectuelle", "Répondre aux demandes de validation dans un délai de 7 jours ouvrés", "Effectuer les paiements selon l'échéancier convenu", "Informer le Prestataire de toute modification souhaitée dans les meilleurs délais"].map((i) => `<li class="flex items-start gap-3"><span class="flex-shrink-0 mt-0.5 w-5 h-5 flex items-center justify-center text-xs" style="background:rgba(0,74,173,0.08);color:var(--primary-fg)">→</span>${i}</li>`).join("")}
       </ul>
-      <p class="mt-3 text-xs px-4 py-2" style="background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.2);color:#d97706">⚠️ Tout retard dans la fourniture des éléments par le Client entraîne un report proportionnel du délai de livraison.</p>`,
+      <p class="mt-3 text-xs px-4 py-2" style="background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.2);color:#d97706;color:color-mix(in srgb, #d97706 60%, var(--fg))">${iconFromEmoji("⚠", 16)} Tout retard dans la fourniture des éléments par le Client entraîne un report proportionnel du délai de livraison.</p>`,
     ),
     legalSection(
       "5",
       "Obligations du Prestataire",
       `
       <ul class="space-y-2">
-        ${["Réaliser les prestations conformément aux spécifications du devis accepté", "Respecter les délais de livraison convenus (sauf cas de force majeure)", "Livrer un site web fonctionnel, testé et optimisé", "Former le Client à l'utilisation de son site web", "Assurer un support technique selon les modalités convenues", "Maintenir la confidentialité des informations du Client"].map((i) => `<li class="flex items-start gap-3"><span style="color:#10b981">✓</span>${i}</li>`).join("")}
+        ${["Réaliser les prestations conformément aux spécifications du devis accepté", "Respecter les délais de livraison convenus (sauf cas de force majeure)", "Livrer un site web fonctionnel, testé et optimisé", "Former le Client à l'utilisation de son site web", "Assurer un support technique selon les modalités convenues", "Maintenir la confidentialité des informations du Client"].map((i) => `<li class="flex items-start gap-3"><span aria-hidden="true" style="color:#10b981">✓</span>${i}</li>`).join("")}
       </ul>`,
     ),
     legalSection(
@@ -1138,7 +1122,7 @@ function renderCGV() {
       "Délais et Livraison",
       `
       <div class="card overflow-hidden mb-3">
-        <div class="p-4" style="background:rgba(26,86,219,0.04)"><p class="font-600 text-sm" style="color:var(--fg)">Délais indicatifs par type de projet</p></div>
+        <div class="p-4" style="background:rgba(0,74,173,0.04)"><p class="font-600 text-sm" style="color:var(--fg)">Délais indicatifs par type de projet</p></div>
         <table class="w-full text-sm">
           <tbody>
             ${[
@@ -1150,7 +1134,7 @@ function renderCGV() {
             ]
               .map(
                 ([t, d], i) =>
-                  `<tr style="border-top:1px solid var(--border)${i % 2 === 0 ? ";background:rgba(26,86,219,0.01)" : ""}"><td class="p-3" style="color:var(--fg)">${t}</td><td class="p-3 font-700 text-right" style="color:#1a56db">${d}</td></tr>`,
+                  `<tr style="border-top:1px solid var(--border)${i % 2 === 0 ? ";background:rgba(0,74,173,0.01)" : ""}"><td class="p-3" style="color:var(--fg)">${t}</td><td class="p-3 font-700 text-right" style="color:var(--primary-fg)">${d}</td></tr>`,
               )
               .join("")}
           </tbody>
@@ -1182,7 +1166,7 @@ function renderCGV() {
         ]
           .map(
             ([icon, title, desc]) =>
-              `<div class="card p-4"><div class="text-xl mb-2">${icon}</div><p class="font-600 text-sm mb-1" style="color:var(--fg)">${title}</p><p class="text-xs">${desc}</p></div>`,
+              `<div class="card p-4"><div class="text-xl mb-2">${iconFromEmoji(icon, 20)}</div><p class="font-600 text-sm mb-1" style="color:var(--fg)">${title}</p><p class="text-xs">${desc}</p></div>`,
           )
           .join("")}
       </div>`,
@@ -1192,8 +1176,8 @@ function renderCGV() {
       "Garantie et Maintenance",
       `
       <div class="grid md:grid-cols-2 gap-3">
-        <div class="card p-5"><p class="font-700 mb-2" style="color:var(--fg)">🛡️ Garantie 30 jours</p><p class="text-xs">CodeWave garantit le bon fonctionnement du site pendant 30 jours après livraison. Couvre uniquement les bugs liés à la réalisation initiale.</p></div>
-        <div class="card p-5"><p class="font-700 mb-2" style="color:var(--fg)">🔧 Maintenance mensuelle</p><p class="text-xs mb-2">Au-delà, contrat disponible à <strong style="color:#1a56db">15 000 FCFA/mois</strong> incluant :</p><ul class="text-xs space-y-1">${["Mises à jour techniques", "Sauvegardes régulières", "Support technique prioritaire", "Corrections de bugs"].map((i) => `<li class="flex items-center gap-1"><span style="color:#10b981">✓</span>${i}</li>`).join("")}</ul></div>
+        <div class="card p-5"><p class="font-700 mb-2" style="color:var(--fg)">${iconFromEmoji("🛡", 16)} Garantie 30 jours</p><p class="text-xs">CodeWave garantit le bon fonctionnement du site pendant 30 jours après livraison. Couvre uniquement les bugs liés à la réalisation initiale.</p></div>
+        <div class="card p-5"><p class="font-700 mb-2" style="color:var(--fg)">${iconFromEmoji("🔧", 16)} Maintenance mensuelle</p><p class="text-xs mb-2">Au-delà, contrat disponible à <strong style="color:var(--primary-fg)">${priceLabel("maintenance", "fr")}</strong> incluant :</p><ul class="text-xs space-y-1">${["Mises à jour techniques", "Sauvegardes régulières", "Support technique prioritaire", "Corrections de bugs"].map((i) => `<li class="flex items-center gap-1"><span aria-hidden="true" style="color:#10b981">✓</span>${i}</li>`).join("")}</ul></div>
       </div>`,
     ),
     legalSection(
@@ -1225,7 +1209,7 @@ function renderCGV() {
         ]
           .map(
             ([icon, title, desc]) =>
-              `<div class="flex items-start gap-3"><span class="text-xl">${icon}</span><div><p class="font-600 text-sm mb-0.5" style="color:var(--fg)">${title}</p><p class="text-xs">${desc}</p></div></div>`,
+              `<div class="flex items-start gap-3"><span class="text-xl">${iconFromEmoji(icon, 20)}</span><div><p class="font-600 text-sm mb-0.5" style="color:var(--fg)">${title}</p><p class="text-xs">${desc}</p></div></div>`,
           )
           .join("")}
       </div>`,
@@ -1236,7 +1220,7 @@ function renderCGV() {
       `
       <div class="grid md:grid-cols-2 gap-3">
         <div class="card p-5"><p class="font-700 text-sm mb-2" style="color:var(--fg)">Par le Client</p><p class="text-xs">Annulation avant le début des travaux : perte de l'acompte. Une fois les travaux commencés : minimum 50% du devis dû.</p></div>
-        <div class="card p-5"><p class="font-700 text-sm mb-2" style="color:var(--fg)">Par le Prestataire</p><p class="text-xs mb-2">CodeWave peut résilier en cas de :</p><ul class="text-xs space-y-1">${["Non-paiement après relance", "Non-fourniture des éléments après 30 jours", "Comportement abusif ou irrespectueux", "Demandes contraires à la loi ou à l'éthique"].map((i) => `<li class="flex items-center gap-1"><span style="color:#ef4444">•</span>${i}</li>`).join("")}</ul></div>
+        <div class="card p-5"><p class="font-700 text-sm mb-2" style="color:var(--fg)">Par le Prestataire</p><p class="text-xs mb-2">CodeWave peut résilier en cas de :</p><ul class="text-xs space-y-1">${["Non-paiement après relance", "Non-fourniture des éléments après 30 jours", "Comportement abusif ou irrespectueux", "Demandes contraires à la loi ou à l'éthique"].map((i) => `<li class="flex items-center gap-1"><span style="color:#ef4444;color:color-mix(in srgb, #ef4444 60%, var(--fg))">•</span>${i}</li>`).join("")}</ul></div>
       </div>`,
     ),
     legalSection(
@@ -1244,13 +1228,19 @@ function renderCGV() {
       "Droit Applicable et Litiges",
       `<p>Les présentes CGV sont régies par le <strong style="color:var(--fg)">droit gabonais</strong>. En cas de litige, les parties s'efforceront de trouver une solution amiable. À défaut, les <strong style="color:var(--fg)">tribunaux de Libreville, Gabon</strong>, seront seuls compétents.</p>`,
     ),
+    legalSection(
+      "12",
+      "Formations CodeWave Academy",
+      `<p>Les formations proposées sous l'enseigne <strong style="color:var(--fg)">CodeWave Academy</strong> (bootcamp, modules, ateliers, formations en entreprise et abonnements) sont présentées avec leurs tarifs en XAF sur la page <button onclick="navigate('formations')" class="underline" style="color:var(--primary-fg)">Formations</button>.</p>
+      <p>L'inscription, le paiement, les conditions d'annulation et de remboursement ainsi que la résiliation des abonnements font l'objet de conditions spécifiques, communiquées au moment de l'inscription sur la plateforme de formation. Les présentes CGV s'appliquent aux prestations de développement web et aux services associés.</p>`,
+    ),
   ].join("");
 
   return legalLayout(
     "📋",
     "Conditions Générales de Vente",
     "Nos conditions applicables aux services de développement web",
-    "18 Mars 2026",
+    "21 Septembre 2026",
     sections,
     [
       ["Mentions Légales", "legal"],
@@ -1268,7 +1258,7 @@ function renderSitemap() {
     {
       icon: "🏠",
       title: isEn ? "Main Pages" : "Pages Principales",
-      color: "#1a56db",
+      color: "#004AAD",
       items: [
         {
           label: isEn ? "Home" : "Accueil",
@@ -1283,6 +1273,13 @@ function renderSitemap() {
             ? "All our web development services"
             : "Tous nos services de développement web",
           page: "services",
+        },
+        {
+          label: isEn ? "Training" : "Formations",
+          desc: isEn
+            ? "CodeWave Academy: bootcamp, modules and workshops with prices"
+            : "CodeWave Academy : bootcamp, modules et ateliers avec leurs prix",
+          page: "formations",
         },
         {
           label: "Portfolio",
@@ -1502,8 +1499,8 @@ function renderSitemap() {
     <div class="relative overflow-hidden mb-12" style="background:var(--card); border-bottom:1px solid var(--border)">
       <div class="wave-bg" style="opacity:0.04">
         <svg width="100%" height="100%" viewBox="0 0 1440 200" preserveAspectRatio="xMidYMid slice">
-          <path d="M-100,60 C300,10 600,150 900,60 C1200,10 1400,150 1540,60" fill="none" stroke="#1a56db" stroke-width="1.5"/>
-          <path d="M-100,100 C300,50 600,190 900,100 C1200,50 1400,190 1540,100" fill="none" stroke="#1a56db" stroke-width="1"/>
+          <path d="M-100,60 C300,10 600,150 900,60 C1200,10 1400,150 1540,60" fill="none" stroke="#004AAD" stroke-width="1.5"/>
+          <path d="M-100,100 C300,50 600,190 900,100 C1200,50 1400,190 1540,100" fill="none" stroke="#004AAD" stroke-width="1"/>
         </svg>
       </div>
       <div class="max-w-5xl mx-auto px-4 md:px-8 py-14">
@@ -1513,9 +1510,9 @@ function renderSitemap() {
           <span style="color:var(--fg)">${isEn ? "Sitemap" : "Plan du Site"}</span>
         </nav>
         <div class="flex items-center gap-4">
-          <div class="w-14 h-14 flex items-center justify-center text-3xl" style="background:rgba(26,86,219,0.08)">🗺️</div>
+          <div class="w-14 h-14 flex items-center justify-center text-3xl" style="background:rgba(0,74,173,0.08);color:var(--primary-fg)">${lineIcon("globe", 28)}</div>
           <div>
-            <h1 class="font-display font-800 text-3xl md:text-4xl" style="color:var(--fg)">${isEn ? "Sitemap" : "Plan du Site"}</h1>
+            <h1 class="font-display font-700 text-3xl md:text-4xl" style="color:var(--fg)">${isEn ? "Sitemap" : "Plan du Site"}</h1>
             <p style="color:var(--muted)">${isEn ? "Find all our pages easily" : "Naviguez facilement sur notre site et trouvez ce que vous cherchez"}</p>
           </div>
         </div>
@@ -1529,7 +1526,7 @@ function renderSitemap() {
             (group) => `
           <div class="reveal">
             <div class="flex items-center gap-3 mb-5">
-              <span class="text-2xl">${group.icon}</span>
+              <span class="text-2xl">${iconFromEmoji(group.icon, 22)}</span>
               <h2 class="font-display font-700 text-lg" style="color:var(--fg)">${group.title}</h2>
               <div class="flex-1 h-px" style="background:var(--border)"></div>
             </div>
@@ -1561,7 +1558,7 @@ function renderSitemap() {
       <!-- Stats summary -->
       <div class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 reveal">
         ${[
-          ["9", isEn ? "Main pages" : "Pages principales", "#1a56db"],
+          ["10", isEn ? "Main pages" : "Pages principales", "#004AAD"],
           ["12", isEn ? "Portfolio details" : "Détails portfolio", "#8b5cf6"],
           ["7", isEn ? "Blog articles" : "Articles blog", "#0d9488"],
           ["4", isEn ? "Legal pages" : "Pages légales", "#64748b"],
@@ -1569,7 +1566,7 @@ function renderSitemap() {
           .map(
             ([n, l, c]) => `
           <div class="card p-4 text-center">
-            <p class="font-display font-800 text-3xl mb-1" style="color:${c}">${n}</p>
+            <p class="font-display font-700 text-3xl mb-1" style="color:${c};color:color-mix(in srgb, ${c} 50%, var(--fg))">${n}</p>
             <p class="text-xs uppercase tracking-wider" style="color:var(--muted)">${l}</p>
           </div>
         `,
@@ -1579,7 +1576,7 @@ function renderSitemap() {
 
       <!-- Not found -->
       <div class="mt-10 card p-7 text-center reveal">
-        <p class="text-2xl mb-3">🔍</p>
+        <p class="mb-3 flex justify-center" style="color:var(--primary-fg)">${lineIcon("search", 28)}</p>
         <h3 class="font-display font-700 text-lg mb-2" style="color:var(--fg)">${isEn ? "Not finding what you need?" : "Vous ne trouvez pas ce que vous cherchez ?"}</h3>
         <p class="mb-5" style="color:var(--muted)">${isEn ? "Contact us directly, we'll be happy to help!" : "Contactez-nous directement, nous serons ravis de vous aider !"}</p>
         <div class="flex flex-wrap gap-3 justify-center">
@@ -1682,14 +1679,14 @@ function renderSocial() {
     <div class="relative overflow-hidden mb-14" style="background:linear-gradient(135deg,#0f172a,#1e293b)">
       ${`<div class="wave-bg" style="opacity:0.15">
         <svg width="100%" height="100%" viewBox="0 0 1440 300" preserveAspectRatio="xMidYMid slice">
-          <path d="M-100,100 C300,20 600,200 900,100 C1200,20 1400,200 1540,100" fill="none" stroke="#1a56db" stroke-width="2"/>
-          <path d="M-100,140 C300,60 600,240 900,140 C1200,60 1400,240 1540,140" fill="none" stroke="#3b82f6" stroke-width="1.5"/>
-          <path d="M-100,180 C300,100 600,280 900,180 C1200,100 1400,280 1540,180" fill="none" stroke="#1a56db" stroke-width="1"/>
+          <path d="M-100,100 C300,20 600,200 900,100 C1200,20 1400,200 1540,100" fill="none" stroke="#004AAD" stroke-width="2"/>
+          <path d="M-100,140 C300,60 600,240 900,140 C1200,60 1400,240 1540,140" fill="none" stroke="#0062E6" stroke-width="1.5"/>
+          <path d="M-100,180 C300,100 600,280 900,180 C1200,100 1400,280 1540,180" fill="none" stroke="#004AAD" stroke-width="1"/>
         </svg>
       </div>`}
       <div class="relative max-w-5xl mx-auto px-4 md:px-8 py-16 text-center">
-        <p class="section-label mb-4" style="color:#3b82f6">${isEn ? "Community & Networks" : "Communauté & Réseaux"}</p>
-        <h1 class="font-display font-800 leading-tight mb-4 text-white" style="font-size:clamp(2.5rem,5vw,4rem)">${isEn ? "Find us\nEverywhere" : "Retrouvez-nous\nPartout"}</h1>
+        <p class="section-label mb-4" style="color:#60A5FA">${isEn ? "Community & Networks" : "Communauté & Réseaux"}</p>
+        <h1 class="font-display font-700 leading-tight mb-4 text-white" style="font-size:clamp(2.5rem,5vw,4rem)">${isEn ? "Find us\nEverywhere" : "Retrouvez-nous\nPartout"}</h1>
         <p class="max-w-xl mx-auto" style="color:#94a3b8">${isEn ? "Follow our digital adventure on all platforms and stay connected with the MGN CodeWave community." : "Suivez notre aventure digitale sur toutes les plateformes et restez connecté avec la communauté MGN CodeWave."}</p>
       </div>
     </div>
@@ -1703,16 +1700,16 @@ function renderSocial() {
           <a href="${n.url}" target="_blank" rel="noopener noreferrer"
              class="card block p-6 group reveal" style="transition-delay:${i * 70}ms; transition: all 0.25s">
             <div class="flex items-start justify-between mb-5">
-              <div class="w-14 h-14 flex items-center justify-center" style="background:${n.bg};color:${n.color}">
+              <div class="w-14 h-14 flex items-center justify-center" style="background:${n.bg};color:${n.color};color:color-mix(in srgb, ${n.color} 50%, var(--fg))">
                 ${n.icon}
               </div>
-              <span class="badge" style="background:${n.bg};color:${n.color};font-size:10px">${n.badge}</span>
+              <span class="badge" style="background:${n.bg};color:${n.color};color:color-mix(in srgb, ${n.color} 50%, var(--fg));font-size:10px">${n.badge}</span>
             </div>
-            <h3 class="font-display font-800 text-xl mb-0.5" style="color:var(--fg)">${n.name}</h3>
-            <p class="text-sm mb-3 font-600" style="color:${n.color}">${n.handle}</p>
+            <h2 class="font-display font-700 text-xl mb-0.5" style="color:var(--fg)">${n.name}</h2>
+            <p class="text-sm mb-3 font-600" style="color:${n.color};color:color-mix(in srgb, ${n.color} 50%, var(--fg))">${n.handle}</p>
             <p class="text-sm leading-relaxed mb-5" style="color:var(--muted)">${n.desc}</p>
             <div class="flex items-center justify-between pt-4" style="border-top:1px solid var(--border)">
-              <span class="text-sm font-display font-700 group-hover:gap-3 transition-all flex items-center gap-2" style="color:${n.color}">
+              <span class="text-sm font-display font-700 group-hover:gap-3 transition-all flex items-center gap-2" style="color:${n.color};color:color-mix(in srgb, ${n.color} 50%, var(--fg))">
                 ${n.cta}
                 <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" class="group-hover:translate-x-1 transition-transform"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </span>
@@ -1727,9 +1724,9 @@ function renderSocial() {
       </div>
 
       <!-- Community CTA banner -->
-      <div class="card p-8 md:p-12 text-center reveal" style="background:linear-gradient(135deg,#1a56db08,#8b5cf608);border:1px solid rgba(26,86,219,0.15)">
-        <div class="text-4xl mb-4">🇬🇦</div>
-        <h2 class="font-display font-800 text-2xl md:text-3xl mb-3" style="color:var(--fg)">${isEn ? "Proud digital ambassador\nof Gabon" : "Ambassadeurs digitaux\nfiers du Gabon"}</h2>
+      <div class="card p-8 md:p-12 text-center reveal" style="background:linear-gradient(135deg,#004AAD08,#8b5cf608);border:1px solid rgba(0,74,173,0.15)">
+        <div class="mb-4 flex justify-center" style="color:#60A5FA">${lineIcon("pin", 40)}</div>
+        <h2 class="font-display font-700 text-2xl md:text-3xl mb-3" style="color:var(--fg)">${isEn ? "Proud digital ambassador\nof Gabon" : "Ambassadeurs digitaux\nfiers du Gabon"}</h2>
         <p class="max-w-lg mx-auto mb-6" style="color:var(--muted)">${isEn ? "Every share, every follow, every recommendation helps us grow and support more Gabonese businesses in their digital transformation." : "Chaque partage, chaque abonnement, chaque recommandation nous aide à grandir et à accompagner davantage d'entreprises gabonaises dans leur transformation digitale."}</p>
         <div class="flex flex-wrap gap-3 justify-center">
           <a href="https://wa.me/24166198918" target="_blank" class="btn-primary">${isEn ? "Contact us on WhatsApp" : "Nous contacter sur WhatsApp"}</a>

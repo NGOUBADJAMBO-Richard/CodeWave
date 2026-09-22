@@ -5,7 +5,7 @@
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0%" stop-color="#0f172a" />
-      <stop offset="100%" stop-color="#1a56db" />
+      <stop offset="100%" stop-color="#004AAD" />
     </linearGradient>
     <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
       <stop offset="0%" stop-color="#38bdf8" />
@@ -32,8 +32,8 @@
     Solutions digitales pour PME et entrepreneurs
   </text>
 
-  <rect x="90" y="406" width="420" height="62" rx="14" fill="#ffffff" opacity="0.12" />
+  <rect x="90" y="406" width="470" height="62" rx="14" fill="#ffffff" opacity="0.12" />
   <text x="118" y="447" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="600" fill="#ffffff">
-    www.mgncodewave.com
+    WhatsApp +241 66 19 89 18
   </text>
 </svg>

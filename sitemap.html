@@ -3,9 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      try {
+        if (localStorage.getItem("mgn-theme") === "dark") document.documentElement.classList.add("dark");
+      } catch (e) {
+        /* Stockage indisponible (navigation privée stricte) : on garde le thème clair par défaut. */
+      }
+    </script>
     <meta
       name="description"
-      content="Plan du site M.G.N CodeWave pour accéder rapidement aux pages services, portfolio, blog, contact et informations légales."
+      content="Plan du site M.G.N CodeWave : accédez en un clic aux services, tarifs, formations, réalisations, articles de blog, carrières, contact et pages légales."
     />
     <meta
       name="keywords"
@@ -16,32 +23,38 @@
     <meta property="og:locale" content="fr_GA" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="M.G.N CodeWave" />
-    <meta property="og:title" content="Plan du Site | M.G.N CodeWave" />
-    <meta property="og:description" content="Plan du site M.G.N CodeWave pour accéder rapidement aux pages services, portfolio, blog, contact et informations légales." />
+    <meta property="og:title" content="Plan du site M.G.N CodeWave : toutes les pages et services" />
+    <meta property="og:description" content="Plan du site M.G.N CodeWave : accédez en un clic aux services, tarifs, formations, réalisations, articles de blog, carrières, contact et pages légales." />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Plan du Site | M.G.N CodeWave" />
-    <meta name="twitter:description" content="Plan du site M.G.N CodeWave pour accéder rapidement aux pages services, portfolio, blog, contact et informations légales." />
-    <meta property="og:image" content="./assets/images/codewave-share-1200x630.svg" />
+    <meta name="twitter:title" content="Plan du site M.G.N CodeWave : toutes les pages et services" />
+    <meta name="twitter:description" content="Plan du site M.G.N CodeWave : accédez en un clic aux services, tarifs, formations, réalisations, articles de blog, carrières, contact et pages légales." />
+    <meta property="og:image" content="https://ngoubadjambo-richard.github.io/CodeWave/assets/images/codewave-share-1200x630.jpg" />
+    <meta property="og:url" content="https://ngoubadjambo-richard.github.io/CodeWave/sitemap.html" />
     <meta property="og:image:alt" content="M.G.N CodeWave - Agence web au Gabon" />
-    <meta property="og:image:type" content="image/svg+xml" />
+    <meta property="og:image:type" content="image/jpeg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta name="twitter:image" content="./assets/images/codewave-share-1200x630.svg" />
+    <meta name="twitter:image" content="https://ngoubadjambo-richard.github.io/CodeWave/assets/images/codewave-share-1200x630.jpg" />
     <meta name="twitter:image:alt" content="M.G.N CodeWave - Agence web au Gabon" />
-    <title>Plan du Site | M.G.N CodeWave</title>
-    <link rel="icon" href="./assets/images/logo-black.png" type="image/png" />
-    <link rel="shortcut icon" href="./assets/images/logo-black.png" type="image/png" />
-    <link rel="apple-touch-icon" href="./assets/images/logo-black.png" />
+    <title>Plan du site M.G.N CodeWave : toutes les pages et services</title>
+    <link rel="icon" href="./assets/images/logo-180.png" type="image/png" />
+    <link rel="shortcut icon" href="./assets/images/logo-180.png" type="image/png" />
+    <link rel="apple-touch-icon" href="./assets/images/logo-180.png" />
     <link rel="manifest" href="./site.webmanifest" />
-    <meta name="theme-color" content="#1a56db" />
+    <meta name="theme-color" content="#004AAD" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Syne:wght@400;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="./assets/js/config/tailwind-config.js"></script>
     <link rel="stylesheet" href="./assets/css/base.css" />
+    <link rel="stylesheet" href="./assets/css/tailwind.min.css" />
+    <link rel="canonical" href="https://ngoubadjambo-richard.github.io/CodeWave/sitemap.html" />
+    <link rel="alternate" hreflang="fr" href="https://ngoubadjambo-richard.github.io/CodeWave/sitemap.html" />
+    <link rel="alternate" hreflang="en" href="https://ngoubadjambo-richard.github.io/CodeWave/sitemap.html?lang=en" />
+    <link rel="alternate" hreflang="x-default" href="https://ngoubadjambo-richard.github.io/CodeWave/sitemap.html" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":["Organization","LocalBusiness"],"@id":"https://ngoubadjambo-richard.github.io/CodeWave/#organization","name":"M.G.N CodeWave","alternateName":"M.G.N CodeWave — Solutions Digitales","url":"https://ngoubadjambo-richard.github.io/CodeWave/","logo":"https://ngoubadjambo-richard.github.io/CodeWave/assets/icons/icon-512.png","image":"https://ngoubadjambo-richard.github.io/CodeWave/assets/images/codewave-share-1200x630.jpg","description":"Agence web à Libreville : sites vitrines, e-commerce, SEO, maintenance et formations au développement web (CodeWave Academy).","slogan":"Donnez vie à vos idées, nous les transformons en solutions tangibles.","telephone":"+241 66 19 89 18","email":"mgncodewave18@gmail.com","founder":{"@type":"Person","name":"Richard NGOUBADJAMBO"},"address":{"@type":"PostalAddress","addressLocality":"Libreville","addressCountry":"GA"},"areaServed":{"@type":"Country","name":"Gabon"},"currenciesAccepted":"XAF","paymentAccepted":"Airtel Money, Moov Money, virement, espèces","sameAs":["https://www.linkedin.com/company/mgn-codewave","https://www.instagram.com/mgn_codewave","https://github.com/NGOUBADJAMBO-Richard"]}</script>
   </head>
   <body class="min-h-screen">
     <div id="scroll-progress"></div>
@@ -62,12 +75,12 @@
       </svg>
     </a>
 
-    <script src="./assets/js/data/content.js"></script>
-    <script src="./assets/js/pages/extended-pages.js"></script>
-    <script src="./assets/js/core/state.js"></script>
-    <script src="./assets/js/core/wave.js"></script>
-    <script src="./assets/js/pages/main-pages.js"></script>
-    <script src="./assets/js/core/bootstrap.js"></script>
+    <script defer src="./assets/js/data/content.js"></script>
+    <script defer src="./assets/js/pages/extended-pages.js"></script>
+    <script defer src="./assets/js/core/state.js"></script>
+    <script defer src="./assets/js/core/wave.js"></script>
+    <script defer src="./assets/js/pages/main-pages.js"></script>
+    <script defer src="./assets/js/core/bootstrap.js"></script>
   </body>
 </html>
 
