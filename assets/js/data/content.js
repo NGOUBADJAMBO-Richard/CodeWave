@@ -327,7 +327,7 @@ const translations = {
       },
       cta: "Remplir le formulaire de partenariat",
       ctaSub:
-        "Cliquez ci-dessous pour accéder au formulaire de candidature sécurisé.",
+        "Le formulaire s’ouvre dans un nouvel onglet (Google Forms).",
     },
     contact: {
       label: "Contact",
@@ -590,7 +590,7 @@ const translations = {
         ],
       },
       cta: "Fill in the Partnership Form",
-      ctaSub: "Click below to access the secure application form.",
+      ctaSub: "The form opens in a new tab (Google Forms).",
     },
     contact: {
       label: "Contact",

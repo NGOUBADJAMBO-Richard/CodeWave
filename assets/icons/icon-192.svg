@@ -1,11 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" role="img" aria-label="MGN CodeWave icon 192">
-  <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#004AAD"/>
-      <stop offset="100%" stop-color="#0062E6"/>
-    </linearGradient>
-  </defs>
-  <rect width="192" height="192" rx="40" fill="#0f172a"/>
-  <rect x="16" y="16" width="160" height="160" rx="30" fill="url(#g)"/>
-  <text x="96" y="120" text-anchor="middle" fill="#ffffff" font-size="72" font-family="Syne, Arial, sans-serif" font-weight="800">MG</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="M.G.N CodeWave">
+  <!-- Monogramme M.G.N CodeWave : M et N clairs, G bleu (charte), onde de CodeWave en signature. -->
+  <rect width="64" height="64" rx="14" fill="#0B1220"/>
+  <g fill="none" stroke-width="4.6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M7.5 43V21l6 11 6-11v22" stroke="#E2E8F0"/>
+    <path d="M38 26A8.5 8.5 0 1 0 40.5 32H33.5" stroke="#3B82F6"/>
+    <path d="M44.5 43V21l12 22V21" stroke="#E2E8F0"/>
+  </g>
+  <path d="M8 51.5c6-3.5 10.5 3.5 16 0s10.5-3.5 16 0 10.5 3.5 16 0" fill="none" stroke="#3B82F6" stroke-width="2.2" stroke-linecap="round"/>
 </svg>

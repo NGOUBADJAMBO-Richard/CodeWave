@@ -17,41 +17,39 @@ function renderPortfolioDetail(projectId) {
   const nextId = idx < ids.length - 1 ? ids[idx + 1] : null;
 
   return `
-  <div class="page pt-28 pb-16">
-    <!-- Breadcrumb -->
-    <div class="max-w-6xl mx-auto px-4 md:px-8 mb-8">
-      <nav class="flex items-center gap-2 text-sm" style="color:var(--muted)">
-        <button onclick="navigate('home')" class="hover:text-blue-500 transition-colors">${isEn ? "Home" : "Accueil"}</button>
-        <span>/</span>
-        <button onclick="navigate('portfolio')" class="hover:text-blue-500 transition-colors">Portfolio</button>
-        <span>/</span>
-        <span style="color:var(--fg)">${p.title}</span>
-      </nav>
-    </div>
-
-    <!-- Hero -->
-    <div class="relative overflow-hidden mb-12" style="height:320px; background:${p.color}12">
-      <div class="wave-bg" style="opacity:0.15">
-        <svg width="100%" height="100%" viewBox="0 0 1440 320" preserveAspectRatio="xMidYMid slice">
-          <path d="M-100,100 C200,0 500,200 800,100 C1100,0 1300,200 1540,100" fill="none" stroke="${p.color}" stroke-width="2"/>
-          <path d="M-100,140 C200,40 500,240 800,140 C1100,40 1300,240 1540,140" fill="none" stroke="${p.color}" stroke-width="1.5"/>
-          <path d="M-100,180 C200,80 500,280 800,180 C1100,80 1300,280 1540,180" fill="none" stroke="${p.color}" stroke-width="1"/>
-          <path d="M-100,220 C200,120 500,320 800,220 C1100,120 1300,320 1540,220" fill="none" stroke="${p.color}" stroke-width="0.8"/>
-        </svg>
-      </div>
-      <div class="absolute inset-0 flex items-center">
-        <div class="max-w-6xl mx-auto px-4 md:px-8 w-full">
-          <div class="flex items-center gap-6">
-            <div aria-hidden="true" class="w-20 h-20 flex items-center justify-center text-4xl font-display font-700 flex-shrink-0" style="background:${p.color}25; color:${p.color}">${p.title.substring(0, 2)}</div>
-            <div>
-              <span class="badge mb-2" style="background:${p.color}20;color:${p.color};color:color-mix(in srgb, ${p.color} 50%, var(--fg))">${p.category}</span>
-              <h1 class="font-display font-700 text-3xl md:text-4xl" style="color:var(--fg)">${p.title}</h1>
-              <p class="text-lg mt-1" style="color:var(--muted)">${p.subtitle}</p>
+  <div class="page pb-16">
+    <!-- Héros : titre à gauche, maquette du projet à droite (décorative) -->
+    <section class="page-hero relative overflow-hidden pt-32 pb-24 mb-12" style="--project:${p.color}">
+      <canvas class="wave-field" aria-hidden="true"></canvas>
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="relative max-w-6xl mx-auto px-4 md:px-8 grid lg:grid-cols-12 gap-12 items-center">
+        <div class="lg:col-span-6 min-w-0">
+          <nav aria-label="${isEn ? "Breadcrumb" : "Fil d'Ariane"}" class="flex flex-wrap items-center gap-2 text-sm mb-6" style="color:var(--muted)">
+            <button onclick="navigate('home')" class="hover:text-blue-500 transition-colors">${isEn ? "Home" : "Accueil"}</button>
+            <span aria-hidden="true">/</span>
+            <button onclick="navigate('portfolio')" class="hover:text-blue-500 transition-colors">Portfolio</button>
+            <span aria-hidden="true">/</span>
+            <span style="color:var(--fg)" aria-current="page">${p.title}</span>
+          </nav>
+          <span class="badge mb-4" style="background:${p.color}20;color:${p.color};color:color-mix(in srgb, ${p.color} 50%, var(--fg))">${p.category}</span>
+          <h1 class="font-display font-700 mb-4" style="font-size:clamp(2.4rem,5vw,3.8rem);line-height:1.08;letter-spacing:-0.02em;color:var(--fg)">${p.title}</h1>
+          <p class="text-lg md:text-xl" style="color:var(--muted)">${p.subtitle}</p>
+        </div>
+        <div class="lg:col-span-6 hidden md:block" aria-hidden="true">
+          <div class="project-hero-visual">
+            <div class="phv-browser">
+              <div class="phv-bar"><i></i><i></i><i></i><span>${p.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}.ga</span></div>
+              <div class="phv-body">
+                <div class="phv-nav"><b></b><span></span><span></span><span></span></div>
+                <div class="phv-hero"><strong>${p.title}</strong><span class="phv-line"></span><span class="phv-line short"></span><span class="phv-cta"></span></div>
+                <div class="phv-cols"><span></span><span></span><span></span></div>
+              </div>
             </div>
+            <div class="phv-phone"><span class="phv-notch"></span><div class="phv-screen"><b></b><span></span><span></span><span class="phv-cta"></span></div></div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
 
     <div class="max-w-6xl mx-auto px-4 md:px-8">
       <div class="grid md:grid-cols-3 gap-8">
@@ -1278,7 +1276,7 @@ function renderSitemap() {
   const pages = [
     {
       icon: "🏠",
-      title: isEn ? "Main Pages" : "Pages Principales",
+      title: isEn ? "Main Pages" : "Pages principales",
       color: "#004AAD",
       items: [
         {
@@ -1305,22 +1303,22 @@ function renderSitemap() {
         {
           label: "Portfolio",
           desc: isEn
-            ? "12 completed projects with details"
-            : "12 projets réalisés avec détails",
+            ? `${portfolioProjects.length} completed projects with details`
+            : `${portfolioProjects.length} projets réalisés avec détails`,
           page: "portfolio",
         },
         {
           label: "Blog",
           desc: isEn
-            ? "7 articles on web, SEO and entrepreneurship"
-            : "7 articles sur le web, SEO et entrepreneuriat",
+            ? `${blogPosts.length} articles on web, SEO and entrepreneurship`
+            : `${blogPosts.length} articles sur le web, SEO et entrepreneuriat`,
           page: "blog",
         },
         {
           label: isEn ? "Careers" : "Carrières",
           desc: isEn
             ? "8 open positions, freelance and CDI"
-            : "8 postes ouverts, freelance et CDI",
+            : "Postes ouverts, freelance et CDI",
           page: "careers",
         },
         {
@@ -1515,30 +1513,18 @@ function renderSitemap() {
   ];
 
   return `
-  <div class="page pt-28 pb-16">
-    <!-- Header -->
-    <div class="relative overflow-hidden mb-12" style="background:var(--card); border-bottom:1px solid var(--border)">
-      <div class="wave-bg" style="opacity:0.04">
-        <svg width="100%" height="100%" viewBox="0 0 1440 200" preserveAspectRatio="xMidYMid slice">
-          <path d="M-100,60 C300,10 600,150 900,60 C1200,10 1400,150 1540,60" fill="none" stroke="#004AAD" stroke-width="1.5"/>
-          <path d="M-100,100 C300,50 600,190 900,100 C1200,50 1400,190 1540,100" fill="none" stroke="#004AAD" stroke-width="1"/>
-        </svg>
-      </div>
-      <div class="max-w-5xl mx-auto px-4 md:px-8 py-14">
-        <nav class="flex items-center gap-2 text-sm mb-6" style="color:var(--muted)">
-          <button onclick="navigate('home')" class="hover:text-blue-500">Accueil</button>
-          <span>/</span>
-          <span style="color:var(--fg)">${isEn ? "Sitemap" : "Plan du site"}</span>
-        </nav>
-        <div class="flex items-center gap-4">
-          <div class="w-14 h-14 flex items-center justify-center text-3xl" style="background:rgba(0,74,173,0.08);color:var(--primary-fg)">${lineIcon("globe", 28)}</div>
-          <div>
-            <h1 class="font-display font-700 text-3xl md:text-4xl" style="color:var(--fg)">${isEn ? "Sitemap" : "Plan du site"}</h1>
-            <p style="color:var(--muted)">${isEn ? "Find all our pages easily" : "Naviguez facilement sur notre site et trouvez ce que vous cherchez"}</p>
-          </div>
-        </div>
-      </div>
-    </div>
+  <div class="page pb-16">
+    ${renderPageHero({
+      label: isEn ? "Navigation" : "Navigation",
+      title: isEn ? "Site\nmap" : "Plan\ndu site",
+      sub: isEn ? "Every page of the site in one place, to find what you are looking for quickly." : "Toutes les pages du site réunies ici, pour trouver rapidement ce que vous cherchez.",
+      path: "plan-du-site",
+      facts: [
+        [String(Object.keys(pageFileMap).length), isEn ? "main pages" : "pages principales"],
+        [String(portfolioProjects.length), isEn ? "project pages" : "fiches projets"],
+        [String(blogPosts.length), isEn ? "articles" : "articles"],
+      ],
+    })}
 
     <div class="max-w-5xl mx-auto px-4 md:px-8">
       <div class="grid md:grid-cols-2 gap-8">
@@ -1695,24 +1681,22 @@ function renderSocial() {
   ];
 
   return `
-  <div class="page pt-28 pb-16">
-    <!-- Header -->
-    <div class="relative overflow-hidden mb-14" style="background:linear-gradient(135deg,#0f172a,#1e293b)">
-      ${`<div class="wave-bg" style="opacity:0.15">
-        <svg width="100%" height="100%" viewBox="0 0 1440 300" preserveAspectRatio="xMidYMid slice">
-          <path d="M-100,100 C300,20 600,200 900,100 C1200,20 1400,200 1540,100" fill="none" stroke="#004AAD" stroke-width="2"/>
-          <path d="M-100,140 C300,60 600,240 900,140 C1200,60 1400,240 1540,140" fill="none" stroke="#0062E6" stroke-width="1.5"/>
-          <path d="M-100,180 C300,100 600,280 900,180 C1200,100 1400,280 1540,180" fill="none" stroke="#004AAD" stroke-width="1"/>
-        </svg>
-      </div>`}
-      <div class="relative max-w-5xl mx-auto px-4 md:px-8 py-16 text-center">
-        <p class="section-label mb-4" style="color:#60A5FA">${isEn ? "Community & Networks" : "Communauté & réseaux"}</p>
-        <h1 class="font-display font-700 leading-tight mb-4 text-white" style="font-size:clamp(2.5rem,5vw,4rem)">${isEn ? "Find us\nEverywhere" : "Retrouvez-nous\nPartout"}</h1>
-        <p class="max-w-xl mx-auto" style="color:#94a3b8">${isEn ? "Follow our digital adventure on all platforms and stay connected with the MGN CodeWave community." : "Suivez notre aventure digitale sur toutes les plateformes et restez connecté avec la communauté MGN CodeWave."}</p>
-      </div>
-    </div>
+  <div class="page pb-16">
+    ${renderPageHero({
+      label: isEn ? "Community & networks" : "Communauté & réseaux",
+      title: isEn ? "Find us\neverywhere" : "Retrouvez-nous\npartout",
+      sub: isEn
+        ? "Follow our digital adventure on every platform and stay connected with the M.G.N CodeWave community."
+        : "Suivez notre aventure digitale sur toutes les plateformes et restez connecté avec la communauté M.G.N CodeWave.",
+      path: "reseaux",
+      facts: [
+        [String(networks.length), isEn ? "channels to follow us" : "canaux pour nous suivre"],
+        ["WhatsApp", isEn ? "our most responsive channel" : "notre canal le plus réactif"],
+        ["Libreville", isEn ? "a studio based in Gabon" : "un studio basé au Gabon"],
+      ],
+    })}
 
-    <div class="max-w-5xl mx-auto px-4 md:px-8">
+    <div class="max-w-6xl mx-auto px-4 md:px-8">
       <!-- Networks grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-14">
         ${networks

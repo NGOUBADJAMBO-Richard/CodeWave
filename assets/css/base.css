@@ -612,6 +612,38 @@
     .article-cover-lg .article-cover-topic { font-size: 13px; left: 24px; bottom: 22px; }
     @media (prefers-reduced-motion: reduce) { .group:hover .article-cover-waves, .group:hover .article-cover-num { transform: none; } }
 
+    /* Fiche projet : maquette navigateur + mobile aux couleurs du projet (--project). */
+    .project-hero-visual { position: relative; padding: 10px 56px 40px 0; animation: heroRise 0.8s 0.15s ease-out both; }
+    .phv-browser { background: var(--card); border: 1px solid var(--border); border-top: 3px solid var(--project); box-shadow: 0 30px 60px rgba(15,23,42,0.22);
+      transform: perspective(1200px) rotateY(-7deg) rotateX(3deg); transition: transform 0.6s cubic-bezier(.2,.7,.2,1); }
+    .project-hero-visual:hover .phv-browser { transform: none; }
+    .phv-bar { display: flex; align-items: center; gap: 6px; padding: 10px 12px; border-bottom: 1px solid var(--border); }
+    .phv-bar i { width: 8px; height: 8px; border-radius: 50%; background: var(--border); }
+    .phv-bar span { flex: 1; margin-left: 8px; padding: 3px 10px; font-family: var(--font-code); font-size: 11px; color: var(--muted); background: color-mix(in srgb, var(--border) 45%, transparent); }
+    .phv-body { display: grid; gap: 14px; padding: 16px; }
+    .phv-nav { display: flex; align-items: center; gap: 10px; }
+    .phv-nav b { width: 54px; height: 10px; background: var(--project); margin-right: auto; }
+    .phv-nav span { width: 34px; height: 6px; background: var(--border); }
+    .phv-hero { display: grid; gap: 9px; padding: 22px 20px; background: linear-gradient(135deg, var(--project), color-mix(in srgb, var(--project) 55%, #0B1220)); }
+    .phv-hero strong { font-family: "Syne", sans-serif; font-size: 20px; color: #fff; }
+    .phv-line { height: 7px; width: 70%; background: rgba(255,255,255,0.6); } .phv-line.short { width: 45%; background: rgba(255,255,255,0.35); }
+    .phv-cta { display: block; width: 84px; height: 20px; margin-top: 4px; background: #fff; }
+    .phv-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .phv-cols span { height: 62px; border: 1px solid var(--border); border-top: 2px solid var(--project); background: color-mix(in srgb, var(--project) 6%, var(--card)); }
+    .phv-phone { position: absolute; right: 0; bottom: 0; width: 132px; padding: 10px 8px 12px; background: #0B1220; border-radius: 20px; box-shadow: 0 24px 48px rgba(15,23,42,0.35);
+      animation: floatB 6s ease-in-out infinite; }
+    .phv-notch { display: block; width: 36px; height: 4px; margin: 0 auto 8px; border-radius: 2px; background: rgba(255,255,255,0.25); }
+    .phv-screen { display: grid; gap: 7px; padding: 10px; border-radius: 12px; background: var(--card); }
+    .phv-screen b { height: 44px; background: linear-gradient(135deg, var(--project), color-mix(in srgb, var(--project) 55%, #0B1220)); }
+    .phv-screen span { height: 6px; background: var(--border); } .phv-screen span:nth-child(3) { width: 60%; }
+    .phv-screen .phv-cta { width: 100%; height: 16px; background: var(--project); }
+    @keyframes floatB { 50% { transform: translateY(-10px); } }
+    @media (prefers-reduced-motion: reduce) { .project-hero-visual, .phv-phone { animation: none; } .phv-browser { transform: none; transition: none; } }
+
+    /* Logo : tuile sombre détachée des fonds sombres par un liseré (rayon = 14/64 du SVG). */
+    img[src$="mgn-codewave-mark.svg"] { border-radius: 22%; }
+    .dark img[src$="mgn-codewave-mark.svg"], .site-footer img[src$="mgn-codewave-mark.svg"] { box-shadow: 0 0 0 1px rgba(148,163,184,0.35); }
+
     /* Bento des services : tuile phare sombre (bordure bleue de la charte conservée) et tuile « sur mesure ». */
     .card.bento-feature { background: #0B1220; border-color: rgba(255,255,255,0.08); border-top-color: #0062E6; color: #e2e8f0; overflow: hidden; isolation: isolate; }
     .card.bento-feature::before { content: ""; position: absolute; inset: auto -20% -60% 30%; height: 120%; z-index: -1; pointer-events: none;

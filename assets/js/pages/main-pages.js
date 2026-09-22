@@ -35,7 +35,7 @@ function renderNav() {
   <nav class="site-nav fixed top-3 left-0 right-0 z-50 mx-3 md:mx-auto md:max-w-6xl" aria-label="${fr ? "Navigation principale" : "Main navigation"}">
     <div class="px-3 md:px-5 py-2.5 flex items-center justify-between gap-3">
       <button onclick="navigate('home')" class="nav-brand shrink-0" aria-label="${fr ? "Retour à l'accueil" : "Back to home page"}">
-        <img src="./assets/images/logo-180.png" alt="" width="40" height="40" class="h-10 w-10 object-contain" />
+        <img src="./assets/images/logo/mgn-codewave-mark.svg" alt="" width="40" height="40" class="h-10 w-10" />
         <span class="nav-wordmark"><strong>CodeWave</strong><span class="nav-tag">// studio digital</span></span>
       </button>
 
@@ -183,7 +183,7 @@ function renderFooter() {
         <!-- Marque + statut façon terminal -->
         <div class="lg:col-span-4 space-y-6">
           <div class="flex items-center gap-3">
-            <img src="./assets/images/logo-180.png" alt="Logo M.G.N CodeWave" width="48" height="48" loading="lazy" class="h-12 w-12 object-contain" />
+            <img src="./assets/images/logo/mgn-codewave-mark.svg" alt="Logo M.G.N CodeWave" width="48" height="48" loading="lazy" class="h-12 w-12" />
             <div>
               <p class="font-display font-700 text-white">M.G.N CodeWave</p>
               <p class="footer-mono">// ${isEn ? "digital studio" : "studio digital"}</p>
@@ -1037,28 +1037,25 @@ function renderAbout() {
 // ==================== PARTNERSHIP ====================
 function renderPartnership() {
   const t = translations[state.lang].partnership;
+  const isEn = state.lang === "en";
   const isDark = state.theme === "dark";
 
   return `
   <div class="page pb-16">
-    <section class="page-hero relative overflow-hidden pt-32 pb-24 mb-12">
-      <canvas class="wave-field" aria-hidden="true"></canvas>
-      <div class="hero-glow" aria-hidden="true"></div>
-    <div class="relative max-w-6xl mx-auto px-4 md:px-8">
-      <div class="text-center">
-        <p class="section-label mb-3">${t.label}</p>
-        <h1 class="font-display font-700 leading-tight mb-6" style="font-size:clamp(2rem,5vw,4rem); color:var(--fg);">${accentTitle(t.title)}</h1>
-        <p class="text-lg max-w-3xl mx-auto mb-10" style="color:var(--muted)">${t.sub}</p>
-
-        <!-- Main CTA Button -->
-        <a href="https://docs.google.com/forms/d/1viH1bGb7YTWTVj-i2xGllViKp3JVFsvm9FJEGXAdSZU/edit#responses" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 btn-primary text-lg py-3 px-8 mb-3">
-          ${t.cta}
-          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
-        </a>
-        <p style="color:var(--muted); font-size:14px;">${t.ctaSub}</p>
-      </div>
-    </div>
-    </section>
+    ${renderPageHero({
+      label: t.label,
+      title: t.title,
+      sub: t.sub,
+      path: "partenariat",
+      facts: [
+        [String(t.section1.items.length), isEn ? "partnership benefits" : "avantages partenaires"],
+        [String(t.section2.profiles.length), isEn ? "profiles we are looking for" : "profils recherchés"],
+        [String(t.section3.steps.length), isEn ? "steps to get started" : "étapes pour démarrer"],
+      ],
+      // Adresse publique du formulaire (l'ancienne pointait vers la vue d'édition du propriétaire).
+      actions: `<a href="https://docs.google.com/forms/d/1viH1bGb7YTWTVj-i2xGllViKp3JVFsvm9FJEGXAdSZU/viewform" target="_blank" rel="noopener noreferrer" class="btn-primary">${t.cta} ${lineIcon("link", 16)}</a>
+          <p class="w-full text-sm" style="color:var(--muted)">${t.ctaSub}</p>`,
+    })}
     <div class="max-w-6xl mx-auto px-4 md:px-8">
 
       <!-- Why Join Section -->
@@ -1129,7 +1126,7 @@ function renderPartnership() {
       <div class="text-center card p-10" style="background:linear-gradient(135deg, #004AAD 0%, #0062E6 100%); color:white; border:none;">
         <h3 class="font-display font-700 text-2xl mb-4">Rejoignez notre équipe d'experts</h3>
         <p class="mb-6 text-white/90">Ensemble, créons l'impact numérique du futur au Gabon.</p>
-        <a href="https://docs.google.com/forms/d/1viH1bGb7YTWTVj-i2xGllViKp3JVFsvm9FJEGXAdSZU/edit#responses" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 font-display font-700 text-lg px-8 py-3" style="background:white;color:#004AAD; border-radius:4px; text-decoration:none; transition:transform 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='none'">
+        <a href="https://docs.google.com/forms/d/1viH1bGb7YTWTVj-i2xGllViKp3JVFsvm9FJEGXAdSZU/viewform" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 font-display font-700 text-lg px-8 py-3" style="background:white;color:#004AAD; border-radius:4px; text-decoration:none; transition:transform 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='none'">
           Candidater maintenant
           <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
         </a>
