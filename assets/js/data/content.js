@@ -114,7 +114,7 @@ const translations = {
       stat3_l: "Satisfaction client",
       promise: "Donnez vie à vos idées, nous les transformons en solutions tangibles.",
       // Engagements vérifiables affichés dans le hero (pas de chiffres invérifiables).
-      chips: ["Devis gratuit sous 24 h", "Airtel & Moov Money", "Prix affichés"],
+      chips: ["Devis gratuit sous 24 h", "Airtel & Moov Money", "Garantie 30 jours"],
       techLabel: "Technologies et moyens de paiement",
       process: {
         label: "Méthode",
@@ -135,6 +135,7 @@ const translations = {
         {
           icon: "🖥️",
           iconId: "monitor",
+          offerId: "vitrine",
           title: "Site vitrine",
           desc: "Site professionnel responsive qui présente votre marque et convertit vos visiteurs en clients.",
           price: priceLabel("vitrine-essentiel", "fr", { from: true }),
@@ -143,6 +144,7 @@ const translations = {
         {
           icon: "🛒",
           iconId: "cart",
+          offerId: "ecommerce",
           title: "E-Commerce",
           desc: "Boutique en ligne complète avec paiement sécurisé, gestion des stocks et tableau de bord.",
           price: priceLabel("ecommerce-startup", "fr", { from: true }),
@@ -151,6 +153,7 @@ const translations = {
         {
           icon: "🔍",
           iconId: "search",
+          offerId: "seo",
           title: "SEO & référencement",
           desc: "Audit complet et optimisation de votre visibilité sur Google pour attirer plus de clients.",
           price: priceLabel("audit-seo", "fr", { unit: "audit" }),
@@ -159,6 +162,7 @@ const translations = {
         {
           icon: "🔧",
           iconId: "wrench",
+          offerId: "maintenance",
           title: "Maintenance",
           desc: "Mises à jour, sauvegardes, sécurité et support technique pour garder votre site au top.",
           price: priceLabel("maintenance", "fr"),
@@ -167,6 +171,7 @@ const translations = {
         {
           icon: "📱",
           iconId: "megaphone",
+          offerId: "social",
           title: "Réseaux sociaux",
           desc: "Gestion complète de vos réseaux sociaux : posts, community management et reporting mensuel.",
           price: priceLabel("social-starter", "fr", { from: true }),
@@ -175,6 +180,7 @@ const translations = {
         {
           icon: "📊",
           iconId: "chart",
+          offerId: "audit",
           title: "Audit & stratégie",
           desc: "Consultation personnalisée pour aligner vos objectifs business sur les bons outils numériques.",
           price: priceLabel("consultation", "fr"),
@@ -378,7 +384,7 @@ const translations = {
       stat3_n: "100%",
       stat3_l: "Client Satisfaction",
       promise: "Bring your ideas to life — we turn them into tangible solutions.",
-      chips: ["Free quote within 24h", "Airtel & Moov Money", "Prices shown upfront"],
+      chips: ["Free quote within 24h", "Airtel & Moov Money", "30-day warranty"],
       techLabel: "Technologies and payment methods",
       process: {
         label: "Method",
@@ -399,6 +405,7 @@ const translations = {
         {
           icon: "🖥️",
           iconId: "monitor",
+          offerId: "vitrine",
           title: "Business Website",
           desc: "Professional responsive site that showcases your brand and converts visitors into customers.",
           price: priceLabel("vitrine-essentiel", "en", { from: true }),
@@ -407,6 +414,7 @@ const translations = {
         {
           icon: "🛒",
           iconId: "cart",
+          offerId: "ecommerce",
           title: "E-Commerce",
           desc: "Full online store with secure payment, inventory management and dashboard.",
           price: priceLabel("ecommerce-startup", "en", { from: true }),
@@ -415,6 +423,7 @@ const translations = {
         {
           icon: "🔍",
           iconId: "search",
+          offerId: "seo",
           title: "SEO & Ranking",
           desc: "Full audit and optimization of your Google visibility to attract more customers.",
           price: priceLabel("audit-seo", "en", { unit: "audit" }),
@@ -423,6 +432,7 @@ const translations = {
         {
           icon: "🔧",
           iconId: "wrench",
+          offerId: "maintenance",
           title: "Maintenance",
           desc: "Updates, backups, security and tech support to keep your site at its best.",
           price: priceLabel("maintenance", "en"),
@@ -431,6 +441,7 @@ const translations = {
         {
           icon: "📱",
           iconId: "megaphone",
+          offerId: "social",
           title: "Social Media",
           desc: "Complete social media management: posts, community management and monthly reports.",
           price: priceLabel("social-starter", "en", { from: true }),
@@ -439,6 +450,7 @@ const translations = {
         {
           icon: "📊",
           iconId: "chart",
+          offerId: "audit",
           title: "Audit & Strategy",
           desc: "Personalized consultation to align your business goals with the right digital tools.",
           price: priceLabel("consultation", "en"),

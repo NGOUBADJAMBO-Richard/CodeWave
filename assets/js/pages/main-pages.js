@@ -236,6 +236,7 @@ function renderFooter() {
             <p class="footer-col-title">Newsletter</p>
             <form action="https://formspree.io/f/mpweqqzz" method="POST" onsubmit="handleNewsletterSubmit(event)" class="footer-cli">
               <input type="hidden" name="_subject" value="Inscription newsletter">
+              <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
               <label for="newsletter-email" class="sr-only">${isEn ? "Your email" : "Votre email"}</label>
               <span class="ft-prompt" aria-hidden="true">&gt;</span>
               <input id="newsletter-email" name="email" type="email" required autocomplete="email" placeholder="${isEn ? "your@email.com" : "votre@email.com"}">
@@ -258,6 +259,13 @@ function renderFooter() {
       <div class="footer-bottom">
         <p>© ${year} M.G.N CodeWave. ${t.rights}</p>
         <p class="footer-mono">${t.made}</p>
+        ${
+          // Le choix doit rester révocable aussi facilement qu'il a été donné.
+          // Sans traceur configuré, aucun choix n'a été demandé : le lien n'a pas lieu d'être.
+          typeof analyticsConfigured === "function" && analyticsConfigured()
+            ? `<button type="button" onclick="openConsent()" class="footer-consent">${isEn ? "Manage cookies" : "Gérer mes cookies"}</button>`
+            : ""
+        }
         <button onclick="window.scrollTo({ top: 0, behavior: 'smooth' })" class="back-to-top">${isEn ? "Back to top" : "Haut de page"} <svg aria-hidden="true" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
       </div>
     </div>
@@ -286,11 +294,14 @@ function sectionHead({ index, label, title, lead = "", action = "", dark = false
 
 // Bento des offres : phare en grand (2 colonnes), dernière offre élargie, tuile « sur mesure ».
 // Accueil : cartes liées vers Services et carrousel sur mobile. Page Services : articles, liste verticale.
-function renderServicesBento({ st, isEn, arrow, rail = false, headingTag = "h3", linked = false }) {
-  const tag = linked ? "a" : "article";
-  // Flèche seulement sur une carte cliquable : ailleurs elle promettrait une navigation inexistante.
-  const go = linked ? arrow : "";
-  const linkAttrs = linked ? ` href="./services.html" onclick="event.preventDefault(); navigate('services')"` : "";
+function renderServicesBento({ st, isEn, arrow, rail = false, headingTag = "h3" }) {
+  // Chaque carte est un article : seul le bouton « Voir le détail » est cliquable, et il ouvre la fiche
+  // (bénéfices, livrables, délai, puis tarif). Le prix ne figure plus sur la carte.
+  const detail = (offerId, dark = false) => `
+              <button type="button" onclick="openOffer('${offerId}')" class="offer-open${dark ? " offer-open-dark" : ""}">
+                ${isEn ? "See the details" : "Voir le détail"} ${arrow}
+              </button>`;
+  const quote = `<span class="offer-hint">${isEn ? "Free quote within 24h" : "Devis gratuit sous 24 h"}</span>`;
   return `
       <!-- Bento : offre phare en grand (2 colonnes), dernière offre élargie, tuile « sur mesure » pour fermer la grille. -->
       <div class="${rail ? "snap-rail " : ""}bento grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -298,7 +309,7 @@ function renderServicesBento({ st, isEn, arrow, rail = false, headingTag = "h3",
           .map((s, i) =>
             i === 0
               ? `
-          <${tag}${linkAttrs} class="card bento-feature group reveal md:col-span-2 grid md:grid-cols-2 gap-8 p-7 md:p-8">
+          <article class="card bento-feature group reveal md:col-span-2 grid md:grid-cols-2 gap-8 p-7 md:p-8">
             <div class="flex flex-col min-w-0">
               <div class="flex items-center gap-3 mb-8">
                 <span class="icon-tile">${lineIcon(s.iconId)}</span>
@@ -306,9 +317,9 @@ function renderServicesBento({ st, isEn, arrow, rail = false, headingTag = "h3",
               </div>
               <${headingTag} class="font-display font-700 text-2xl md:text-3xl mb-3 text-white">${s.title}</${headingTag}>
               <p class="text-sm md:text-base leading-relaxed mb-8" style="color:#cbd5e1">${s.desc}</p>
-              <div class="mt-auto flex items-center justify-between pt-5" style="border-top:1px solid rgba(255,255,255,0.1)">
-                <p class="font-display font-700" style="color:#93C5FD">${s.price}</p>
-                <span class="transition-transform group-hover:translate-x-1" style="color:#93C5FD">${go}</span>
+              <div class="mt-auto pt-5" style="border-top:1px solid rgba(255,255,255,0.1)">
+                ${detail(s.offerId, true)}
+                <p class="mt-3 text-xs" style="color:#93C5FD">${isEn ? "Free quote within 24h" : "Devis gratuit sous 24 h"}</p>
               </div>
             </div>
             <div class="bento-visual hidden md:block" aria-hidden="true">
@@ -319,20 +330,20 @@ function renderServicesBento({ st, isEn, arrow, rail = false, headingTag = "h3",
                 <div class="bv-cols"><span></span><span></span><span></span></div>
               </div>
             </div>
-          </${tag}>`
+          </article>`
               : `
-          <${tag}${linkAttrs} class="card group p-6 reveal flex flex-col${i === st.items.length - 1 ? " lg:col-span-2 bento-wide" : ""}" style="transition-delay:${i * 60}ms">
+          <article class="card group p-6 reveal flex flex-col${i === st.items.length - 1 ? " lg:col-span-2 bento-wide" : ""}" style="transition-delay:${i * 60}ms">
             <div class="flex items-start justify-between mb-5">
               <span class="icon-tile">${lineIcon(s.iconId)}</span>
               ${s.tag ? `<span class="badge badge-blue">${s.tag}</span>` : ""}
             </div>
             <${headingTag} class="font-display font-700 text-lg mb-2" style="color:var(--fg)">${s.title}</${headingTag}>
             <p class="text-sm leading-relaxed mb-5" style="color:var(--muted)">${s.desc}</p>
-            <div class="mt-auto pt-4 flex items-center justify-between" style="border-top:1px solid var(--border)">
-              <p class="font-display font-700 text-sm" style="color:var(--primary-fg)">${s.price}</p>
-              <span class="transition-transform group-hover:translate-x-1" style="color:var(--primary-fg)">${go}</span>
+            <div class="mt-auto pt-4" style="border-top:1px solid var(--border)">
+              ${detail(s.offerId)}
+              ${quote}
             </div>
-          </${tag}>`,
+          </article>`,
           )
           .join("")}
         <a href="./contact.html" onclick="event.preventDefault(); navigate('contact')" class="bento-cta group reveal flex flex-col justify-between p-7">
@@ -446,7 +457,7 @@ function renderHome() {
         lead: st.sub,
         action: `<button onclick="navigate('services')" class="btn-outline">${st.cta} ${arrow}</button>`,
       })}
-      ${renderServicesBento({ st, isEn, arrow, rail: true, headingTag: "h3", linked: true })}
+      ${renderServicesBento({ st, isEn, arrow, rail: true, headingTag: "h3" })}
     </section>
 
     <!-- MÉTHODE (section sombre) -->
@@ -514,7 +525,7 @@ function renderHome() {
         <p class="text-blue-100 mb-8 reveal">${state.lang === "fr" ? "Discutons de votre projet — réponse sous 24h garantie." : "Let's discuss your project — response within 24h guaranteed."}</p>
         <div class="flex flex-wrap gap-3 justify-center reveal">
           <button onclick="navigate('contact')" class="btn-primary" style="background:white;color:#004AAD;border-color:white">${state.lang === "fr" ? "Demander un devis gratuit" : "Request a Free Quote"}</button>
-          <a href="https://wa.me/24166198918" target="_blank" class="btn-outline" style="border-color:rgba(255,255,255,0.5);color:white">WhatsApp →</a>
+          <a href="https://wa.me/24166198918" target="_blank" rel="noopener noreferrer" class="btn-outline" style="border-color:rgba(255,255,255,0.5);color:white">WhatsApp →</a>
         </div>
       </div>
     </section>
@@ -550,7 +561,7 @@ function renderServices() {
       path: "services",
       facts: [
         [String(st.items.length), isEn ? "core services" : "offres principales"],
-        [String(pricingGrid.reduce((n, g) => n + g.items.length, 0)), isEn ? "services with a public price" : "prestations au prix affiché"],
+        [String(serviceOffers.reduce((n, o) => n + o.deliverables.fr.length, 0)), isEn ? "deliverables detailed service by service" : "livrables détaillés offre par offre"],
         [isEn ? "24h" : "24 h", isEn ? "to receive your free quote" : "pour recevoir votre devis gratuit"],
         ["Airtel · Moov", isEn ? "Mobile Money accepted" : "Mobile Money accepté"],
       ],
@@ -563,7 +574,7 @@ function renderServices() {
           index: "01",
           label: isEn ? "Our services" : "Nos offres",
           title: isEn ? "Clear services,\none single team" : "Des offres claires,\nune seule équipe",
-          lead: isEn ? "Each price is public and every quote is free. Pick a service or describe your needs." : "Chaque prix est affiché, chaque devis est gratuit. Choisissez une offre ou décrivez votre besoin.",
+          lead: isEn ? "Open a service to see what you get, in how long, and under what warranty. Every quote is free." : "Ouvrez une offre pour voir ce que vous recevez, en combien de temps et sous quelle garantie. Chaque devis est gratuit.",
           id: "offers-title",
         })}
         ${renderServicesBento({ st, isEn, arrow, headingTag: "h2" })}
@@ -583,8 +594,8 @@ function renderServices() {
                 ${pkg.items.map((item) => `<li class="flex items-center gap-2 text-sm" style="color:var(--muted)"><span aria-hidden="true" style="color:#10b981">✓</span>${item}</li>`).join("")}
               </ul>
               <div style="border-top:1px solid var(--border)" class="pt-4">
-                <span class="font-display font-700 text-3xl" style="color:${pkg.highlight ? "var(--primary-fg)" : "var(--fg)"}">${pkg.price}</span>
-                <span class="text-sm" style="color:var(--muted)"> XAF ${pkg.period}</span>
+                <p class="text-sm" style="color:var(--muted)">${state.lang === "fr" ? "Engagement mensuel, sans durée minimale" : "Monthly, no minimum commitment"}</p>
+                <p class="offer-hint" style="margin-top:6px">${pkg.price} XAF ${pkg.period}</p>
               </div>
               <button onclick="contactSocialPackage('${pkg.name}', '${pkg.price}', '${pkg.period}')" class="btn-primary w-full mt-4 justify-center text-sm py-2" ${pkg.highlight ? "" : 'style="background:transparent;color:var(--primary-fg);border-color:var(--primary-fg)"'}>
                 ${state.lang === "fr" ? "Choisir ce plan" : "Choose this plan"}
@@ -596,7 +607,7 @@ function renderServices() {
         </div>
       </div>
 
-      ${renderPricingGrid()}
+      ${renderQuoteMethod()}
 
       ${renderServicesTrainings()}
 
@@ -607,42 +618,48 @@ function renderServices() {
   </div>`;
 }
 
-function renderPricingGrid() {
-  const lang = state.lang;
+// Rassurer sans tableau de prix : les règles de chiffrage, tirées des CGV (devis, paiement, garantie).
+function renderQuoteMethod() {
+  const isEn = state.lang === "en";
+  const steps = isEn
+    ? [
+        ["chat", "You describe your need", "On WhatsApp or through the form. No commitment, no account to create."],
+        ["file", "We write a detailed quote", "Scope, deliverables and timeline in writing, within 24 hours."],
+        ["wallet", "You choose how to pay", "One, two or three instalments, by Mobile Money or transfer."],
+        ["shield", "You stay covered", "30-day warranty after delivery, then optional maintenance."],
+      ]
+    : [
+        ["chat", "Vous décrivez votre besoin", "Sur WhatsApp ou via le formulaire. Sans engagement, sans compte à créer."],
+        ["file", "Nous rédigeons un devis détaillé", "Périmètre, livrables et délai par écrit, sous 24 heures."],
+        ["wallet", "Vous choisissez votre paiement", "En une, deux ou trois fois, par Mobile Money ou virement."],
+        ["shield", "Vous restez couvert", "Garantie 30 jours après la livraison, puis maintenance si vous le souhaitez."],
+      ];
   return `
-      <section class="mb-24" aria-labelledby="pricing-grid-title">
+      <section class="mb-24" aria-labelledby="quote-method-title">
         ${sectionHead({
           index: "03",
-          label: lang === "fr" ? "Tarifs" : "Pricing",
-          title: lang === "fr" ? "Grille tarifaire complète" : "Full price list",
-          lead: lang === "fr" ? "Prix affichés en francs CFA (XAF). Devis gratuit sous 24&nbsp;h, paiement Mobile Money accepté." : "Prices in CFA francs (XAF). Free quote within 24h, Mobile Money accepted.",
-          id: "pricing-grid-title",
+          label: isEn ? "Method" : "Méthode",
+          title: isEn ? "How we price\na project" : "Comment on chiffre\nun projet",
+          lead: isEn
+            ? "Every project is quoted after we understand it. The price of each service is detailed inside its card, above."
+            : "Chaque projet est chiffré une fois compris. Le tarif de chaque offre est détaillé dans sa fiche, ci-dessus.",
+          id: "quote-method-title",
         })}
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          ${pricingGrid
+        <ol class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          ${steps
             .map(
-              (group) => `
-          <div class="card p-6 md:p-7 reveal">
-            <h3 class="font-display font-700 text-lg mb-4" style="color:var(--fg)">${group.title[lang]}</h3>
-            <table class="w-full text-sm">
-              <caption class="sr-only">${group.title[lang]}</caption>
-              <thead class="sr-only"><tr><th scope="col">${lang === "fr" ? "Prestation" : "Service"}</th><th scope="col">${lang === "fr" ? "Prix" : "Price"}</th></tr></thead>
-              <tbody>
-                ${group.items
-                  .map(
-                    (item) => `
-                <tr style="border-top:1px solid var(--border)">
-                  <td class="py-3 pr-4" style="color:var(--fg)">${item.label[lang]}</td>
-                  <td class="py-3 text-right font-display font-700" style="color:var(--primary-fg);min-width:7.5rem">${priceLabel(item.id, lang)}</td>
-                </tr>`,
-                  )
-                  .join("")}
-              </tbody>
-            </table>
-          </div>`,
+              ([icon, title, text], i) => `
+          <li class="card p-6 reveal" style="transition-delay:${i * 70}ms">
+            <div class="flex items-center justify-between mb-5">
+              <span class="icon-tile">${lineIcon(icon, 22)}</span>
+              <span class="font-display font-700 text-2xl" style="color:color-mix(in srgb, var(--primary-fg) 30%, transparent)">0${i + 1}</span>
+            </div>
+            <h3 class="font-display font-700 text-base mb-2" style="color:var(--fg)">${title}</h3>
+            <p class="text-sm leading-relaxed" style="color:var(--muted)">${text}</p>
+          </li>`,
             )
             .join("")}
-        </div>
+        </ol>
       </section>`;
 }
 
@@ -654,7 +671,7 @@ function renderServicesTrainings() {
         <div>
           <p class="section-label mb-2">CodeWave Academy</p>
           <h3 class="font-display font-700 text-xl mb-2" style="color:var(--fg)">${isEn ? "Want to learn instead?" : "Envie d'apprendre à le faire vous-même ?"}</h3>
-          <p class="text-sm" style="color:var(--muted)">${isEn ? "FullStack MERN bootcamp, React and Node.js modules, WordPress, SEO and AI workshops — with prices shown." : "Bootcamp FullStack MERN, modules React et Node.js, ateliers WordPress, SEO et IA — prix affichés."}</p>
+          <p class="text-sm" style="color:var(--muted)">${isEn ? "FullStack MERN bootcamp, React and Node.js modules, WordPress, SEO and AI workshops — small groups, hands-on." : "Bootcamp FullStack MERN, modules React et Node.js, ateliers WordPress, SEO et IA — petits groupes, 70 % de pratique."}</p>
         </div>
         <button onclick="navigate('formations')" class="btn-primary whitespace-nowrap">${isEn ? "See our courses" : "Voir les formations"} →</button>
       </div>`;
@@ -1138,6 +1155,7 @@ function renderPartnership() {
 
 function renderContact() {
   const t = translations[state.lang].contact;
+  const isEn = state.lang === "en";
   return `
   <div class="page">
     <section class="page-hero relative overflow-hidden pt-32 pb-28">
@@ -1152,7 +1170,7 @@ function renderContact() {
           <p class="mb-10" style="color:var(--muted)">${t.sub}</p>
 
           <div class="space-y-5 mb-10">
-            <a href="https://wa.me/24166198918" target="_blank" class="flex items-center gap-4 card p-4 hover:border-green-400 transition-colors" style="color:var(--fg)">
+            <a href="https://wa.me/24166198918" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 card p-4 hover:border-green-400 transition-colors" style="color:var(--fg)">
               <div class="w-10 h-10 flex items-center justify-center" style="background:rgba(37,211,102,0.1); color:#25D366">
                 <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
               </div>
@@ -1182,34 +1200,88 @@ function renderContact() {
           </div>
         </div>
 
-        <!-- Right: Form -->
-        <div class="card p-6 md:p-8 reveal">
-          <h2 class="font-display font-700 text-lg mb-6" style="color:var(--fg)">${state.lang === "fr" ? "Envoyez un message" : "Send a message"}</h2>
+        <!-- Fiche devis : ce que le brief doit contenir pour être chiffrable dès la première réponse -->
+        <div class="card p-6 md:p-8 reveal quote-card">
+          <div class="quote-head">
+            <div>
+              <p class="section-label mb-2">${isEn ? "Quote brief" : "Fiche devis"}</p>
+              <h2 class="font-display font-700 text-xl" style="color:var(--fg)">${isEn ? "Tell us about your project" : "Parlez-nous de votre projet"}</h2>
+            </div>
+            <span class="quote-badge">${lineIcon("clock", 15)} ${isEn ? "Reply within 24h" : "Réponse sous 24 h"}</span>
+          </div>
+          <p class="text-sm mb-6" style="color:var(--muted)">${isEn ? "The more precise this brief, the more accurate your quote. Fields marked with * are required." : "Plus ce brief est précis, plus votre devis sera juste. Les champs marqués d'une * sont obligatoires."}</p>
           <form
           action="https://formspree.io/f/mpweqqzz"
           method="POST"
           onsubmit="handleFormSubmit(event)" class="space-y-4">
+            <input type="hidden" name="_subject" value="${isEn ? "New quote brief (website)" : "Nouvelle fiche devis (site web)"}">
+            <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
-                <label for="contact-name" class="block text-xs font-display font-700 mb-1.5 uppercase tracking-wider" style="color:var(--muted)">${t.name}</label>
-                <input id="contact-name" name="name" type="text" required autocomplete="name" placeholder="${t.name}" class="w-full px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-blue-500 transition" style="background:var(--bg);border:1px solid var(--border);color:var(--fg)">
-              </div>
-              <div>
-                <label for="contact-email" class="block text-xs font-display font-700 mb-1.5 uppercase tracking-wider" style="color:var(--muted)">${t.email}</label>
-                <input id="contact-email" name="email" type="email" required autocomplete="email" placeholder="${t.email}" class="w-full px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-blue-500 transition" style="background:var(--bg);border:1px solid var(--border);color:var(--fg)">
-              </div>
+            <div>
+              <label for="contact-name" class="quote-label">${t.name} *</label>
+              <input id="contact-name" name="name" type="text" required autocomplete="name" placeholder="${t.name}" class="quote-input">
             </div>
             <div>
-              <label for="contact-subject" class="block text-xs font-display font-700 mb-1.5 uppercase tracking-wider" style="color:var(--muted)">${t.subject}</label>
-              <input id="contact-subject" name="subject" type="text" placeholder="${t.subject}" class="w-full px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-blue-500 transition" style="background:var(--bg);border:1px solid var(--border);color:var(--fg)">
+              <label for="contact-email" class="quote-label">${t.email} *</label>
+              <input id="contact-email" name="email" type="email" required autocomplete="email" placeholder="${t.email}" class="quote-input">
+            </div>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label for="contact-company" class="quote-label">${isEn ? "Company" : "Entreprise"}</label>
+              <input id="contact-company" name="company" type="text" autocomplete="organization" placeholder="${isEn ? "Optional" : "Facultatif"}" class="quote-input">
             </div>
             <div>
-              <label for="contact-message" class="block text-xs font-display font-700 mb-1.5 uppercase tracking-wider" style="color:var(--muted)">${t.message}</label>
-              <textarea id="contact-message" name="message" rows="5" required placeholder="${t.message}" class="w-full px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-blue-500 transition resize-none" style="background:var(--bg);border:1px solid var(--border);color:var(--fg)"></textarea>
+              <label for="contact-phone" class="quote-label">${isEn ? "Phone / WhatsApp" : "Téléphone / WhatsApp"}</label>
+              <input id="contact-phone" name="phone" type="tel" autocomplete="tel" placeholder="+241…" class="quote-input">
             </div>
-            <button type="submit" class="btn-primary w-full justify-center">${t.send} <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg></button>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label for="contact-project" class="quote-label">${isEn ? "Type of project" : "Type de projet"} *</label>
+              <select id="contact-project" name="project" required class="quote-input">
+                <option value="">${isEn ? "Choose…" : "Choisir…"}</option>
+                ${translations[state.lang].services.items.map((s) => `<option>${s.title}</option>`).join("")}
+                <option>${isEn ? "Mobile app" : "Application mobile"}</option>
+                <option>${isEn ? "Training (CodeWave Academy)" : "Formation (CodeWave Academy)"}</option>
+                <option>${isEn ? "Something else" : "Autre besoin"}</option>
+              </select>
+            </div>
+            <div>
+              <label for="contact-deadline" class="quote-label">${isEn ? "Timeline" : "Échéance"}</label>
+              <select id="contact-deadline" name="deadline" class="quote-input">
+                <option value="">${isEn ? "No fixed date" : "Pas de date fixée"}</option>
+                <option>${isEn ? "Within 2 weeks" : "Sous 2 semaines"}</option>
+                <option>${isEn ? "Within a month" : "Sous un mois"}</option>
+                <option>${isEn ? "Within three months" : "Sous trois mois"}</option>
+                <option>${isEn ? "Later, I am preparing" : "Plus tard, je prépare le projet"}</option>
+              </select>
+            </div>
+            </div>
+            <div>
+              <label for="contact-budget" class="quote-label">${isEn ? "Indicative budget" : "Budget indicatif"}</label>
+              <select id="contact-budget" name="budget" class="quote-input">
+                <option value="">${isEn ? "I do not know yet" : "Je ne sais pas encore"}</option>
+                <option>${isEn ? "Under 100,000 XAF" : "Moins de 100 000 XAF"}</option>
+                <option>100 000 – 300 000 XAF</option>
+                <option>300 000 – 800 000 XAF</option>
+                <option>${isEn ? "Over 800,000 XAF" : "Plus de 800 000 XAF"}</option>
+              </select>
+              <p class="quote-note">${isEn ? "An order of magnitude is enough: it tells us which package fits. Nothing is locked in." : "Un ordre de grandeur suffit : il nous dit quelle formule viser. Rien n'est figé."}</p>
+            </div>
+            <div>
+              <label for="contact-message" class="quote-label">${isEn ? "Your project" : "Votre projet"} *</label>
+              <textarea id="contact-message" name="message" rows="5" required placeholder="${isEn ? "What you sell, who your clients are, what the site must achieve, examples you like…" : "Ce que vous vendez, à qui, ce que le site doit accomplir, des exemples que vous aimez…"}" class="quote-input resize-none"></textarea>
+            </div>
+            <button type="submit" class="btn-primary w-full justify-center">${isEn ? "Send my brief" : "Envoyer ma fiche devis"} <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg></button>
+            <p class="quote-note">${isEn ? "Your details are used to answer you, and never shared." : "Vos informations servent uniquement à vous répondre, et ne sont jamais transmises à des tiers."}</p>
           </form>
           <div id="form-status" role="status" aria-live="polite" class="mt-4"></div>
+          <ul class="quote-reassure">
+            <li>${lineIcon("checkCircle", 16)}${isEn ? "Free quote, no commitment" : "Devis gratuit, sans engagement"}</li>
+            <li>${lineIcon("shield", 16)}${isEn ? "30-day warranty after delivery" : "Garantie 30 jours après livraison"}</li>
+            <li>${lineIcon("wallet", 16)}${isEn ? "Mobile Money, up to 3 instalments" : "Mobile Money, jusqu'à 3 fois"}</li>
+          </ul>
         </div>
       </div>
     </div>

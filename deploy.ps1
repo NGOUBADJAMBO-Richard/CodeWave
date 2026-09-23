@@ -1,47 +1,59 @@
-# Script de déploiement automatique avec cache busting
-# Usage: .\deploy.ps1
+# Vérifications avant publication.
+#
+# Ce script NE publie PAS et NE pousse RIEN : il vérifie. La publication reste une décision
+# explicite (git push, ou le bouton de ton hébergeur). L'ancienne version committait et
+# poussait toute seule après un `npm run minify` qui n'existait pas — donc elle échouait
+# avant même de commencer.
+#
+# Usage : .\deploy.ps1
 
-Write-Host "🚀 Déploiement automatique avec cache busting..." -ForegroundColor Cyan
+$ErrorActionPreference = "Stop"
 
-# 0. Minifier les assets si Node.js est disponible
-if (Test-Path ".\package.json") {
-    Write-Host "⚙️ Minification des assets..." -ForegroundColor Cyan
-    npm run minify
-    if ($LASTEXITCODE -ne 0) {
-        Write-Host "❌ Échec de la minification. Déploiement annulé." -ForegroundColor Red
-        exit 1
-    }
-    Write-Host "✅ Assets minifiés" -ForegroundColor Green
+function Step($label) { Write-Host "`n→ $label" -ForegroundColor Cyan }
+function Ok($label) { Write-Host "  OK  $label" -ForegroundColor Green }
+function Fail($label) { Write-Host "  KO  $label" -ForegroundColor Red }
+
+Step "Feuille de styles Tailwind"
+npm run build:css
+if ($LASTEXITCODE -ne 0) { Fail "build:css a échoué"; exit 1 }
+Ok "assets/css/tailwind.min.css régénéré"
+
+Step "Cohérence du contenu et des tarifs"
+npm run check:content
+if ($LASTEXITCODE -ne 0) { Fail "check:content a échoué"; exit 1 }
+Ok "contenu cohérent"
+
+Step "Plan du site"
+npm run build:sitemap
+if ($LASTEXITCODE -ne 0) { Fail "build:sitemap a échoué"; exit 1 }
+Ok "sitemap.xml régénéré"
+
+Step "Syntaxe JavaScript"
+$jsFiles = Get-ChildItem -Path "assets/js", "scripts" -Filter "*.js" -Recurse -File
+$broken = 0
+foreach ($file in $jsFiles) {
+    node --check $file.FullName 2>$null
+    if ($LASTEXITCODE -ne 0) { Fail $file.Name; $broken++ }
 }
+if ($broken -gt 0) { exit 1 }
+Ok "$($jsFiles.Count) fichier(s) valides"
 
-# 1. Extraire la version actuelle du fichier index.html
-$indexContent = Get-Content -Path ".\index.html" -Raw
-$versionMatch = $indexContent -match 'v=(\d+\.\d+\.\d+)'
-if ($versionMatch) {
-    $currentVersion = [version]$matches[1]
-    $newVersion = [version]::new($currentVersion.Major, $currentVersion.Minor, $currentVersion.Build + 1)
-    Write-Host "✅ Version actuelle: $currentVersion → Nouvelle: $newVersion" -ForegroundColor Green
+Step "Fichiers indispensables"
+$required = @("404.html", "robots.txt", "sitemap.xml", "site.webmanifest", "vercel.json")
+foreach ($f in $required) {
+    if (-not (Test-Path $f)) { Fail "$f manquant"; exit 1 }
+}
+Ok "tous présents"
+
+Step "État du dépôt"
+$changes = git status --short
+if ($changes) {
+    Write-Host "  Modifications non committées :" -ForegroundColor Yellow
+    $changes | ForEach-Object { Write-Host "    $_" -ForegroundColor Yellow }
 } else {
-    $newVersion = "1.0.2"
-    Write-Host "⚠️  Aucune version trouvée, utilisant: $newVersion" -ForegroundColor Yellow
+    Ok "arbre de travail propre"
 }
 
-# 2. Remplacer les versions dans tous les fichiers HTML
-$htmlFiles = Get-ChildItem -Path "." -Filter "*.html" -Recurse
-foreach ($file in $htmlFiles) {
-    $content = Get-Content -Path $file.FullName -Raw
-    $updatedContent = $content -replace 'v=\d+\.\d+\.\d+', "v=$newVersion"
-    Set-Content -Path $file.FullName -Value $updatedContent -NoNewline
-    Write-Host "📝 Mis à jour: $($file.Name)" -ForegroundColor Cyan
-}
-
-# 3. Git commit et push
-git add -A
-git commit -m "Bump version to $newVersion - cache busting"
-git push
-Write-Host "✅ Git push complété" -ForegroundColor Green
-
-# 4. Vider le cache Vercel et redéployer
-Write-Host "🔄 Redéploiement sur Vercel..." -ForegroundColor Cyan
-vercel --prod --force
-Write-Host "✅ Déploiement terminé!" -ForegroundColor Green
+Write-Host "`nVérifications terminées. Pour publier :" -ForegroundColor Cyan
+Write-Host "  git add -A ; git commit -m ""votre message"" ; git push" -ForegroundColor White
+Write-Host "GitHub Pages et Vercel se déclenchent seuls sur le push.`n" -ForegroundColor Gray

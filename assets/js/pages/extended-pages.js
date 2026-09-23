@@ -122,7 +122,7 @@ function renderPortfolioDetail(projectId) {
             ${
               p.liveUrl
                 ? `
-              <a href="${p.liveUrl}" target="_blank" class="btn-primary w-full justify-center mt-6 text-sm py-2">
+              <a href="${p.liveUrl}" target="_blank" rel="noopener noreferrer" class="btn-primary w-full justify-center mt-6 text-sm py-2">
                 ${isEn ? "View Live Project" : "Voir le projet"} →
               </a>
             `
@@ -198,6 +198,8 @@ function renderBlogDetail(postId) {
     return `<div class="page pt-28 text-center"><p>Article introuvable</p></div>`;
 
   const title = isEn ? post.titleEn : post.title;
+  // Même adresse que celle déclarée dans les données structurées (bootstrap.js) et la canonical.
+  const articleUrl = `${SITE_ROOT}blog.html?article=${postId}`;
   const intro = isEn ? post.introEn : post.intro;
   const conclusion = isEn ? post.conclusionEn : post.conclusion;
   const catColors = {
@@ -308,14 +310,14 @@ function renderBlogDetail(postId) {
         </button>
       </div>
 
-      <!-- Share -->
-      <div class="flex items-center gap-4 mb-12 p-5 card reveal">
+      <!-- Partage : l'URL réelle de l'article, pour que le partage ramène du trafic ici. -->
+      <div class="flex flex-wrap items-center gap-3 mb-12 p-5 card reveal">
         <p class="font-display font-700 text-sm flex-shrink-0" style="color:var(--fg)">${isEn ? "Share:" : "Partager :"}</p>
-        <a href="https://wa.me/?text=${encodeURIComponent(title + " - MGN CodeWave")}" target="_blank" class="flex items-center gap-2 text-sm px-4 py-2 hover:opacity-80 transition-opacity" style="background:#25D366;color:#0f172a">
+        <a href="https://wa.me/?text=${encodeURIComponent(title + " — M.G.N CodeWave")}%20${encodeURIComponent(articleUrl)}" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-sm px-4 py-2 hover:opacity-80 transition-opacity" style="background:#25D366;color:#0f172a">
           <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
           WhatsApp
         </a>
-        <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://mgncodewave.com" target="_blank" class="flex items-center gap-2 text-sm px-4 py-2 hover:opacity-80 transition-opacity" style="background:#0077b5;color:white">
+        <a href="https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(articleUrl)}" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-sm px-4 py-2 hover:opacity-80 transition-opacity" style="background:#0077b5;color:white">
           LinkedIn
         </a>
       </div>
@@ -591,7 +593,7 @@ function renderJobDetail(jobId) {
           <a href="mailto:mgncodewave18@gmail.com?subject=Candidature — ${job.title}" class="btn-primary">
             ${isEn ? "Apply Now" : "Postuler Maintenant"} ${iconFromEmoji("✉", 16)} 
           </a>
-          <a href="https://wa.me/24166198918?text=Bonjour, je souhaite postuler au poste ${job.title}" target="_blank" class="btn-outline">
+          <a href="https://wa.me/24166198918?text=Bonjour, je souhaite postuler au poste ${job.title}" target="_blank" rel="noopener noreferrer" class="btn-outline">
             WhatsApp →
           </a>
         </div>
@@ -669,7 +671,7 @@ function legalLayout(
         </div>
         <div class="flex flex-wrap gap-3">
           <a href="mailto:mgncodewave18@gmail.com" class="btn-primary text-sm py-2 px-4">${iconFromEmoji("✉", 16)} Email</a>
-          <a href="https://wa.me/24166198918" target="_blank" class="btn-outline text-sm py-2 px-4">WhatsApp</a>
+          <a href="https://wa.me/24166198918" target="_blank" rel="noopener noreferrer" class="btn-outline text-sm py-2 px-4">WhatsApp</a>
         </div>
       </div>
 
@@ -727,7 +729,7 @@ function renderMentionsLegales() {
             ],
             [
               "Site web",
-              '<a href="https://ngoubadjambo-richard.github.io/CodeWave/" target="_blank" class="text-blue-500">https://ngoubadjambo-richard.github.io/CodeWave/</a>',
+              '<a href="https://ngoubadjambo-richard.github.io/CodeWave/" target="_blank" rel="noopener noreferrer" class="text-blue-500">https://ngoubadjambo-richard.github.io/CodeWave/</a>',
             ],
             ["Directeur de publication", "M.G.N"],
           ]
@@ -747,7 +749,7 @@ function renderMentionsLegales() {
       <div class="card p-5">
         <p><strong style="color:var(--fg)">Hébergeur :</strong> Github, Inc.</p>
         <p><strong style="color:var(--fg)">Adresse :</strong> 88, rue Colin P. Kelly Jr., #4133, San Francisco, Californie.</p>
-        <p><strong style="color:var(--fg)">Site :</strong> <a href="https://github.com" target="_blank" class="text-blue-500">github.com</a></p>
+        <p><strong style="color:var(--fg)">Site :</strong> <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="text-blue-500">github.com</a></p>
       </div>`,
     ),
     legalSection(
@@ -851,7 +853,7 @@ function renderPrivacy() {
         <div>
           <p class="font-600 mb-2" style="color:var(--fg)">2.2 Données collectées automatiquement</p>
           <ul class="space-y-1 ml-4">
-            ${["Données de navigation : pages visitées, durée, actions", "Données techniques : adresse IP, navigateur, OS", "Données de géolocalisation : pays, ville (non précise)", "Cookies : voir section dédiée ci-dessous"].map((i) => `<li class="flex items-start gap-2"><span style="color:var(--primary-fg)">•</span>${i}</li>`).join("")}
+            ${["Journaux d'hébergement : notre hébergeur enregistre techniquement les accès (adresse IP, date, page demandée, navigateur) pour assurer le service et sa sécurité. Nous n'y avons pas accès et n'en tirons aucun profil", "Préférences d'affichage : votre langue et votre thème clair ou sombre sont mémorisés dans le stockage local de votre navigateur. Ils ne quittent jamais votre appareil et ne nous sont jamais transmis", "Mesure d'audience : voir la section « Cookies » ci-dessous"].map((i) => `<li class="flex items-start gap-2"><span style="color:var(--primary-fg)">•</span>${i}</li>`).join("")}
           </ul>
         </div>
       </div>`,
@@ -907,8 +909,9 @@ function renderPrivacy() {
         <p class="font-700 text-sm mb-1" aria-hidden="true" style="color:#10b981">✓ Nous ne vendons jamais vos données personnelles.</p>
         <p>Nous pouvons les partager uniquement avec :</p>
       </div>
+      <p class="mb-3"><strong style="color:var(--fg)">Transferts hors Union européenne :</strong> Formspree et GitHub sont établis aux États-Unis. En nous écrivant via ce site, vos données y transitent. Si vous préférez l'éviter, écrivez-nous directement sur WhatsApp au +241 66 19 89 18 ou par e-mail.</p>
       <ul class="space-y-2 ml-4">
-        ${["Prestataires de services : hébergeur Vercel, outils d'analyse Google Analytics — uniquement pour les services nécessaires", "Partenaires de paiement : pour traiter vos paiements Mobile Money de manière sécurisée", "Autorités légales : si la loi l'exige ou pour protéger nos droits"].map((i) => `<li class="flex items-start gap-2"><span style="color:var(--primary-fg)">•</span>${i}</li>`).join("")}
+        ${["<strong>Formspree, Inc.</strong> (États-Unis) — reçoit et nous transmet le contenu des formulaires de devis et d'inscription à la newsletter : nom, e-mail, téléphone, entreprise, budget indicatif et description de votre projet", "<strong>GitHub, Inc.</strong> (États-Unis) — héberge les pages de ce site et journalise techniquement les accès", "<strong>Google Ireland Ltd.</strong> — fournit les polices de caractères affichées sur ce site, ainsi que les formulaires de candidature et de partenariat (Google Forms)", "<strong>Partenaires de paiement</strong> (Airtel Money, Moov Money, banques) — uniquement pour exécuter un paiement que vous initiez", "<strong>Autorités légales</strong> — si la loi l'exige ou pour protéger nos droits"].map((i) => `<li class="flex items-start gap-2"><span style="color:var(--primary-fg)">•</span>${i}</li>`).join("")}
       </ul>`,
     ),
     legalSection(
@@ -923,7 +926,8 @@ function renderPrivacy() {
               ["Données clients actifs", "Durée relation + 5 ans"],
               ["Devis non convertis", "3 ans maximum"],
               ["Newsletter", "Jusqu'à désabonnement"],
-              ["Données de navigation", "13 mois (cookies)"],
+              ["Mesure d'audience, si vous l'acceptez", "13 mois maximum"],
+              ["Préférences d'affichage (votre navigateur)", "Jusqu'à effacement par vos soins"],
             ]
               .map(
                 ([t, d], i) => `
@@ -1006,39 +1010,33 @@ function renderPrivacy() {
     ),
     legalSection(
       "8",
-      "Cookies",
-      `
+      "Cookies et mesure d'audience",
+      // Cette section lit `analyticsConfigured()` (assets/js/core/consent.js) : elle décrit
+      // toujours l'état réel du site, qu'un traceur soit activé ou non.
+      typeof analyticsConfigured === "function" && analyticsConfigured()
+        ? `
+      <div class="card p-5 mb-3" style="border-left:3px solid var(--primary-fg)">
+        <p class="font-700 text-sm mb-1" style="color:var(--fg)">Aucun traceur n'est chargé avant votre accord.</p>
+        <p>À votre première visite, un bandeau vous demande si vous acceptez la mesure d'audience. Tant que vous n'avez pas accepté, aucun cookie de mesure n'est déposé. Un refus n'enlève aucune fonctionnalité.</p>
+      </div>
       <div class="space-y-3">
-        ${[
-          [
-            "✓",
-            "#10b981",
-            "Cookies essentiels (obligatoires)",
-            "Nécessaires au fonctionnement (navigation, sécurité, session). Durée : session ou 1 an.",
-          ],
-          [
-            "📊",
-            "#004AAD",
-            "Cookies analytiques (facultatifs)",
-            "Google Analytics pour comprendre votre usage. Durée : 13 mois. Nécessite votre consentement.",
-          ],
-          [
-            "📢",
-            "#f59e0b",
-            "Cookies marketing (facultatifs)",
-            "Pour personnaliser les publicités. Durée : variable. Nécessite votre consentement.",
-          ],
-        ]
-          .map(
-            ([icon, color, title, desc]) => `
-          <div class="card p-4 flex gap-3">
-            <span class="text-xl">${iconFromEmoji(icon, 20)}</span>
-            <div><p class="font-600 text-sm mb-1" style="color:${color};color:color-mix(in srgb, ${color} 50%, var(--fg))">${title}</p><p class="text-xs">${desc}</p></div>
-          </div>
-        `,
-          )
-          .join("")}
-      </div>`,
+        <div class="card p-4">
+          <p class="font-600 text-sm mb-1" style="color:var(--fg)">Mesure d'audience (facultative, soumise à votre accord)</p>
+          <p class="text-xs">Elle nous indique quelles pages sont consultées et où les visiteurs abandonnent, afin d'améliorer le site. Durée de conservation : 13 mois maximum.</p>
+        </div>
+        <div class="card p-4">
+          <p class="font-600 text-sm mb-1" style="color:var(--fg)">Publicité</p>
+          <p class="text-xs">Nous n'utilisons aucun cookie publicitaire et ne revendons aucune donnée.</p>
+        </div>
+      </div>
+      <p class="mt-4">Vous pouvez revenir sur votre choix à tout moment : <button type="button" onclick="openConsent()" class="text-blue-500 underline">gérer mes cookies</button>.</p>`
+        : `
+      <div class="card p-5 mb-3" style="border-left:3px solid #10b981">
+        <p class="font-700 text-sm mb-1" style="color:var(--fg)">Ce site ne dépose aucun cookie.</p>
+        <p>Nous n'utilisons ni outil de mesure d'audience, ni traceur publicitaire, ni bouton de réseau social traçant. C'est pourquoi aucun bandeau de consentement ne vous est présenté : il n'y a rien à consentir.</p>
+      </div>
+      <p>Deux informations sont mémorisées dans le <strong style="color:var(--fg)">stockage local</strong> de votre navigateur : la langue choisie et le thème clair ou sombre. Elles restent sur votre appareil, ne nous sont jamais transmises, et vous pouvez les effacer depuis les réglages de votre navigateur.</p>
+      <p class="mt-3">Si nous mettons en place une mesure d'audience à l'avenir, un bandeau vous demandera votre accord au préalable et cette section sera mise à jour.</p>`,
     ),
     legalSection(
       "9",
@@ -1056,7 +1054,7 @@ function renderPrivacy() {
     "🔒",
     "Politique de confidentialité",
     "Comment nous protégeons et utilisons vos données personnelles",
-    "18 Mars 2026",
+    "23 Septembre 2026",
     sections,
     [
       ["Mentions légales", "legal"],
@@ -1588,7 +1586,7 @@ function renderSitemap() {
         <p class="mb-5" style="color:var(--muted)">${isEn ? "Contact us directly, we'll be happy to help!" : "Contactez-nous directement, nous serons ravis de vous aider !"}</p>
         <div class="flex flex-wrap gap-3 justify-center">
           <button onclick="navigate('contact')" class="btn-primary">${isEn ? "Contact Us" : "Nous Contacter"}</button>
-          <a href="https://wa.me/24166198918" target="_blank" class="btn-outline">WhatsApp</a>
+          <a href="https://wa.me/24166198918" target="_blank" rel="noopener noreferrer" class="btn-outline">WhatsApp</a>
         </div>
       </div>
     </div>
@@ -1734,7 +1732,7 @@ function renderSocial() {
         <h2 class="font-display font-700 text-2xl md:text-3xl mb-3" style="color:var(--fg)">${isEn ? "Proud digital ambassador\nof Gabon" : "Ambassadeurs digitaux\nfiers du Gabon"}</h2>
         <p class="max-w-lg mx-auto mb-6" style="color:var(--muted)">${isEn ? "Every share, every follow, every recommendation helps us grow and support more Gabonese businesses in their digital transformation." : "Chaque partage, chaque abonnement, chaque recommandation nous aide à grandir et à accompagner davantage d'entreprises gabonaises dans leur transformation digitale."}</p>
         <div class="flex flex-wrap gap-3 justify-center">
-          <a href="https://wa.me/24166198918" target="_blank" class="btn-primary">${isEn ? "Contact us on WhatsApp" : "Nous contacter sur WhatsApp"}</a>
+          <a href="https://wa.me/24166198918" target="_blank" rel="noopener noreferrer" class="btn-primary">${isEn ? "Contact us on WhatsApp" : "Nous contacter sur WhatsApp"}</a>
           <button onclick="navigate('contact')" class="btn-outline">${isEn ? "Request a quote" : "Demander un devis"}</button>
         </div>
       </div>

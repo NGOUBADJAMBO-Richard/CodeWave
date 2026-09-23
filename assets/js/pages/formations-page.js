@@ -38,7 +38,7 @@ function renderFormationCard(item, lang) {
             <p class="text-xs uppercase tracking-wider mb-2" style="color:var(--muted)">${formationMeta(item, lang)}</p>
             <h4 class="font-display font-700 text-lg mb-2" style="color:var(--fg)">${title}</h4>
             ${item.summary ? `<p class="text-sm mb-4" style="color:var(--muted)">${item.summary[lang]}</p>` : ""}
-            <p class="font-display font-700 text-2xl mt-auto mb-4" style="color:var(--primary-fg)">${price}</p>
+            <p class="offer-hint mt-auto mb-4">${price}</p>
             ${formationInfoLink(title, price, lang, "w-full")}
           </article>`;
 }
@@ -121,7 +121,7 @@ function renderSubscriptions(lang) {
         <article class="card p-6 flex flex-col reveal ${plan.highlight ? "pricing-highlight" : ""}" data-badge="${lang === "en" ? "POPULAR" : "POPULAIRE"}">
           <h3 class="font-display font-700 text-lg mb-2" style="color:var(--fg)">${plan.title[lang]}</h3>
           <p class="text-sm mb-4" style="color:var(--muted)">${plan.summary[lang]}</p>
-          <p class="font-display font-700 text-2xl mt-auto" style="color:var(--primary-fg)">${monthly}</p>
+          <p class="offer-hint mt-auto">${monthly}</p>
           <p class="text-xs mb-4" style="color:var(--muted)">${plan.yearly ? `${lang === "en" ? "or" : "ou"} ${xafLabel(plan.yearly, lang, "year")}` : "&nbsp;"}</p>
           ${formationInfoLink(plan.title[lang], monthly, lang, "w-full")}
         </article>`;
