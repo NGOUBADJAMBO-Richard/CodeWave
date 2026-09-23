@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self' https://formspree.io; script-src 'self' 'unsafe-inline' https://www.clarity.ms https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com data:; connect-src 'self' https://formspree.io https://*.clarity.ms https://www.googletagmanager.com https://www.google-analytics.com https://region1.google-analytics.com; frame-src 'self' https://www.youtube-nocookie.com" />
     <script>
       try {
         if (localStorage.getItem("mgn-theme") === "dark") document.documentElement.classList.add("dark");
@@ -13,10 +14,6 @@
     <meta
       name="description"
       content="Contactez M.G.N CodeWave pour un devis gratuit sous 24 h : site web, e-commerce, SEO ou formation. Par formulaire, WhatsApp au +241 66 19 89 18 ou email."
-    />
-    <meta
-      name="keywords"
-      content="contact agence web gabon, devis site web gabon, whatsapp codewave"
     />
     <meta name="robots" content="index, follow" />
     <meta name="author" content="M.G.N CodeWave" />
@@ -43,6 +40,7 @@
     <meta name="twitter:image" content="https://ngoubadjambo-richard.github.io/CodeWave/assets/images/codewave-share-1200x630.jpg" />
     <meta name="twitter:image:alt" content="M.G.N CodeWave - Agence web au Gabon" />
     <title>Contact et devis gratuit sous 24 h | M.G.N CodeWave, Gabon</title>
+    <link rel="icon" href="./assets/icons/favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="./assets/images/logo-180.png" type="image/png" />
     <link rel="shortcut icon" href="./assets/images/logo-180.png" type="image/png" />
     <link rel="apple-touch-icon" href="./assets/images/logo-180.png" />
@@ -63,6 +61,14 @@
     <script type="application/ld+json">{"@context":"https://schema.org","@type":["Organization","LocalBusiness"],"@id":"https://ngoubadjambo-richard.github.io/CodeWave/#organization","name":"M.G.N CodeWave","alternateName":"M.G.N CodeWave — Solutions Digitales","url":"https://ngoubadjambo-richard.github.io/CodeWave/","logo":"https://ngoubadjambo-richard.github.io/CodeWave/assets/icons/icon-512.png","image":"https://ngoubadjambo-richard.github.io/CodeWave/assets/images/codewave-share-1200x630.jpg","description":"Agence web à Libreville : sites vitrines, e-commerce, SEO, maintenance et formations au développement web (CodeWave Academy).","slogan":"Donnez vie à vos idées, nous les transformons en solutions tangibles.","telephone":"+241 66 19 89 18","email":"mgncodewave18@gmail.com","founder":{"@type":"Person","name":"Richard NGOUBADJAMBO"},"address":{"@type":"PostalAddress","addressLocality":"Libreville","addressCountry":"GA"},"areaServed":{"@type":"Country","name":"Gabon"},"currenciesAccepted":"XAF","paymentAccepted":"Airtel Money, Moov Money, virement, espèces","sameAs":["https://www.linkedin.com/company/mgn-codewave","https://www.instagram.com/mgn_codewave","https://github.com/NGOUBADJAMBO-Richard"]}</script>
   </head>
   <body class="min-h-screen">
+    <noscript>
+      <div style="max-width:42rem;margin:0 auto;padding:3rem 1.25rem;font-family:system-ui,sans-serif;line-height:1.65;color:#0f172a">
+        <h1 style="font-size:1.5rem;margin:0 0 .75rem">M.G.N CodeWave — agence web à Libreville</h1>
+        <p style="margin:0 0 1rem">Ce site a besoin de JavaScript pour s'afficher. Activez-le dans votre navigateur, ou contactez-nous directement :</p>
+        <p style="margin:0 0 1rem"><a href="https://wa.me/24166198918" style="color:#004AAD">WhatsApp +241 66 19 89 18</a> — <a href="mailto:mgncodewave18@gmail.com" style="color:#004AAD">mgncodewave18@gmail.com</a></p>
+        <p style="margin:0;font-size:.9rem;color:#475569">This site needs JavaScript. Enable it, or reach us on WhatsApp or by email.</p>
+      </div>
+    </noscript>
     <div id="scroll-progress"></div>
     <div id="root"></div>
 
@@ -83,9 +89,12 @@
 
     <script defer src="./assets/js/data/content.js"></script>
     <script defer src="./assets/js/pages/extended-pages.js"></script>
+    <script defer src="./assets/js/data/content-offers.js"></script>
     <script defer src="./assets/js/core/state.js"></script>
     <script defer src="./assets/js/core/wave.js"></script>
     <script defer src="./assets/js/pages/main-pages.js"></script>
+    <script defer src="./assets/js/core/offer-modal.js"></script>
+    <script defer src="./assets/js/core/consent.js"></script>
     <script defer src="./assets/js/core/bootstrap.js"></script>
   </body>
 </html>

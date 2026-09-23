@@ -1,1 +1,4 @@
 node_modules/
+
+# Fichiers de verrouillage Word (créés quand un .docx est ouvert)
+~$*

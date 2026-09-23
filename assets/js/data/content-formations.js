@@ -15,7 +15,7 @@ const formationGroups = [
 ];
 
 const mernModules = [
-  { id: "m1", code: "M1", hours: 30, amount: 40000, title: { fr: "Fondamentaux du Web (HTML, CSS, Git)", en: "Web Fundamentals (HTML, CSS, Git)" } },
+  { id: "m1", code: "M1", hours: 30, amount: 40000, title: { fr: "Fondamentaux du web (HTML, CSS, Git)", en: "Web Fundamentals (HTML, CSS, Git)" } },
   { id: "m2", code: "M2", hours: 36, amount: 50000, title: { fr: "JavaScript moderne (ES6+)", en: "Modern JavaScript (ES6+)" } },
   { id: "m3", code: "M3", hours: 48, amount: 70000, title: { fr: "React.js", en: "React.js" } },
   { id: "m4", code: "M4", hours: 48, amount: 70000, title: { fr: "Node.js & Express", en: "Node.js & Express" } },

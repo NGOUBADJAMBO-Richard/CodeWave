@@ -38,7 +38,7 @@ function renderFormationCard(item, lang) {
             <p class="text-xs uppercase tracking-wider mb-2" style="color:var(--muted)">${formationMeta(item, lang)}</p>
             <h4 class="font-display font-700 text-lg mb-2" style="color:var(--fg)">${title}</h4>
             ${item.summary ? `<p class="text-sm mb-4" style="color:var(--muted)">${item.summary[lang]}</p>` : ""}
-            <p class="font-display font-700 text-2xl mt-auto mb-4" style="color:var(--primary-fg)">${price}</p>
+            <p class="offer-hint mt-auto mb-4">${price}</p>
             ${formationInfoLink(title, price, lang, "w-full")}
           </article>`;
 }
@@ -107,8 +107,12 @@ function renderCatalogGroups(lang) {
 function renderSubscriptions(lang) {
   return `
     <section class="mb-16" aria-labelledby="subscriptions-title">
-      <p class="section-label mb-3">${lang === "en" ? "Subscriptions" : "Abonnements"}</p>
-      <h2 id="subscriptions-title" class="font-display font-700 leading-tight mb-8" style="font-size:clamp(1.8rem,3.5vw,2.6rem); color:var(--fg)">${lang === "en" ? "Learn at your own pace" : "Apprenez à votre rythme"}</h2>
+      ${sectionHead({
+        index: "02",
+        label: lang === "en" ? "Subscriptions" : "Abonnements",
+        title: lang === "en" ? "Learn at your own pace" : "Apprenez à votre rythme",
+        id: "subscriptions-title",
+      })}
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         ${subscriptionPlans
           .map((plan) => {
@@ -117,7 +121,7 @@ function renderSubscriptions(lang) {
         <article class="card p-6 flex flex-col reveal ${plan.highlight ? "pricing-highlight" : ""}" data-badge="${lang === "en" ? "POPULAR" : "POPULAIRE"}">
           <h3 class="font-display font-700 text-lg mb-2" style="color:var(--fg)">${plan.title[lang]}</h3>
           <p class="text-sm mb-4" style="color:var(--muted)">${plan.summary[lang]}</p>
-          <p class="font-display font-700 text-2xl mt-auto" style="color:var(--primary-fg)">${monthly}</p>
+          <p class="offer-hint mt-auto">${monthly}</p>
           <p class="text-xs mb-4" style="color:var(--muted)">${plan.yearly ? `${lang === "en" ? "or" : "ou"} ${xafLabel(plan.yearly, lang, "year")}` : "&nbsp;"}</p>
           ${formationInfoLink(plan.title[lang], monthly, lang, "w-full")}
         </article>`;
@@ -133,7 +137,12 @@ function renderSubscriptions(lang) {
 function renderAcademyFaq(lang) {
   return `
     <section class="mb-16" aria-labelledby="faq-title">
-      <h2 id="faq-title" class="font-display font-700 leading-tight mb-6" style="font-size:clamp(1.6rem,3vw,2.2rem); color:var(--fg)">${lang === "en" ? "Frequently asked questions" : "Questions fréquentes"}</h2>
+      ${sectionHead({
+        index: "03",
+        label: "FAQ",
+        title: lang === "en" ? "Frequently asked questions" : "Questions fréquentes",
+        id: "faq-title",
+      })}
       <div class="space-y-3">
         ${academyFaq
           .map(
@@ -155,15 +164,23 @@ function renderFormations() {
   const generalInfoUrl = `https://wa.me/${ACADEMY_WHATSAPP_NUMBER}?text=${encodeURIComponent(generalMessage)}`;
   return `
   <div class="page pb-16">
-    ${renderPageHero({ label: academyUI.label[lang], title: academyUI.title[lang], sub: academyUI.sub[lang], actions: `<a href="#catalogue" class="btn-primary">${lang === "en" ? "See the courses" : "Voir les formations"}</a>
+    ${renderPageHero({ label: academyUI.label[lang], title: academyUI.title[lang], sub: academyUI.sub[lang], path: "academy", facts: [
+      [String(formationsCatalog.length), lang === "en" ? "courses and workshops" : "formations et ateliers"],
+      [String(bootcampMern.maxLearners), lang === "en" ? "learners max per bootcamp" : "apprenants max par bootcamp"],
+      [`${bootcampMern.practiceShare} %`, lang === "en" ? "hands-on practice" : "de pratique"],
+    ], actions: `<a href="#catalogue" class="btn-primary">${lang === "en" ? "See the courses" : "Voir les formations"}</a>
           ${ACADEMY_PLATFORM_URL ? `<a href="${ACADEMY_PLATFORM_URL}" target="_blank" rel="noopener noreferrer" class="btn-outline">${lang === "en" ? "Go to the platform" : "Accéder à la plateforme"}</a>` : `<a href="${generalInfoUrl}" target="_blank" rel="noopener noreferrer" class="btn-outline">${lang === "en" ? "Ask on WhatsApp" : "Poser une question sur WhatsApp"}</a>`}` })}
 
     <div class="max-w-6xl mx-auto px-4 md:px-8">
       ${renderBootcampBlock(lang)}
 
       <div id="catalogue" style="scroll-margin-top:6rem">
-        <p class="section-label mb-3">${lang === "en" ? "Catalogue" : "Catalogue"}</p>
-        <h2 class="font-display font-700 leading-tight mb-10" style="font-size:clamp(1.8rem,3.5vw,2.6rem); color:var(--fg)">${lang === "en" ? "All our courses and prices" : "Toutes nos formations et leurs prix"}</h2>
+        ${sectionHead({
+          index: "01",
+          label: "Catalogue",
+          title: lang === "en" ? "All our courses\nand prices" : "Toutes nos formations\net leurs prix",
+          lead: lang === "en" ? "Modules, learning paths, workshops and in-company training, each with its public price." : "Modules, parcours, ateliers et formations en entreprise, chacun avec son prix affiché.",
+        })}
         ${renderCatalogGroups(lang)}
       </div>
 

@@ -201,3 +201,5 @@ function syncStructuredData() {
 // Initial render
 ensureBackgroundFx();
 render();
+// Après le premier rendu : sans traceur configuré, cet appel ne fait rien et rien n'est déposé.
+initConsent();

@@ -17,41 +17,39 @@ function renderPortfolioDetail(projectId) {
   const nextId = idx < ids.length - 1 ? ids[idx + 1] : null;
 
   return `
-  <div class="page pt-28 pb-16">
-    <!-- Breadcrumb -->
-    <div class="max-w-6xl mx-auto px-4 md:px-8 mb-8">
-      <nav class="flex items-center gap-2 text-sm" style="color:var(--muted)">
-        <button onclick="navigate('home')" class="hover:text-blue-500 transition-colors">${isEn ? "Home" : "Accueil"}</button>
-        <span>/</span>
-        <button onclick="navigate('portfolio')" class="hover:text-blue-500 transition-colors">Portfolio</button>
-        <span>/</span>
-        <span style="color:var(--fg)">${p.title}</span>
-      </nav>
-    </div>
-
-    <!-- Hero -->
-    <div class="relative overflow-hidden mb-12" style="height:320px; background:${p.color}12">
-      <div class="wave-bg" style="opacity:0.15">
-        <svg width="100%" height="100%" viewBox="0 0 1440 320" preserveAspectRatio="xMidYMid slice">
-          <path d="M-100,100 C200,0 500,200 800,100 C1100,0 1300,200 1540,100" fill="none" stroke="${p.color}" stroke-width="2"/>
-          <path d="M-100,140 C200,40 500,240 800,140 C1100,40 1300,240 1540,140" fill="none" stroke="${p.color}" stroke-width="1.5"/>
-          <path d="M-100,180 C200,80 500,280 800,180 C1100,80 1300,280 1540,180" fill="none" stroke="${p.color}" stroke-width="1"/>
-          <path d="M-100,220 C200,120 500,320 800,220 C1100,120 1300,320 1540,220" fill="none" stroke="${p.color}" stroke-width="0.8"/>
-        </svg>
-      </div>
-      <div class="absolute inset-0 flex items-center">
-        <div class="max-w-6xl mx-auto px-4 md:px-8 w-full">
-          <div class="flex items-center gap-6">
-            <div aria-hidden="true" class="w-20 h-20 flex items-center justify-center text-4xl font-display font-700 flex-shrink-0" style="background:${p.color}25; color:${p.color}">${p.title.substring(0, 2)}</div>
-            <div>
-              <span class="badge mb-2" style="background:${p.color}20;color:${p.color};color:color-mix(in srgb, ${p.color} 50%, var(--fg))">${p.category}</span>
-              <h1 class="font-display font-700 text-3xl md:text-4xl" style="color:var(--fg)">${p.title}</h1>
-              <p class="text-lg mt-1" style="color:var(--muted)">${p.subtitle}</p>
+  <div class="page pb-16">
+    <!-- Héros : titre à gauche, maquette du projet à droite (décorative) -->
+    <section class="page-hero relative overflow-hidden pt-32 pb-24 mb-12" style="--project:${p.color}">
+      <canvas class="wave-field" aria-hidden="true"></canvas>
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="relative max-w-6xl mx-auto px-4 md:px-8 grid lg:grid-cols-12 gap-12 items-center">
+        <div class="lg:col-span-6 min-w-0">
+          <nav aria-label="${isEn ? "Breadcrumb" : "Fil d'Ariane"}" class="flex flex-wrap items-center gap-2 text-sm mb-6" style="color:var(--muted)">
+            <button onclick="navigate('home')" class="hover:text-blue-500 transition-colors">${isEn ? "Home" : "Accueil"}</button>
+            <span aria-hidden="true">/</span>
+            <button onclick="navigate('portfolio')" class="hover:text-blue-500 transition-colors">Portfolio</button>
+            <span aria-hidden="true">/</span>
+            <span style="color:var(--fg)" aria-current="page">${p.title}</span>
+          </nav>
+          <span class="badge mb-4" style="background:${p.color}20;color:${p.color};color:color-mix(in srgb, ${p.color} 50%, var(--fg))">${p.category}</span>
+          <h1 class="font-display font-700 mb-4" style="font-size:clamp(2.4rem,5vw,3.8rem);line-height:1.08;letter-spacing:-0.02em;color:var(--fg)">${p.title}</h1>
+          <p class="text-lg md:text-xl" style="color:var(--muted)">${p.subtitle}</p>
+        </div>
+        <div class="lg:col-span-6 hidden md:block" aria-hidden="true">
+          <div class="project-hero-visual">
+            <div class="phv-browser">
+              <div class="phv-bar"><i></i><i></i><i></i><span>${p.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}.ga</span></div>
+              <div class="phv-body">
+                <div class="phv-nav"><b></b><span></span><span></span><span></span></div>
+                <div class="phv-hero"><strong>${p.title}</strong><span class="phv-line"></span><span class="phv-line short"></span><span class="phv-cta"></span></div>
+                <div class="phv-cols"><span></span><span></span><span></span></div>
+              </div>
             </div>
+            <div class="phv-phone"><span class="phv-notch"></span><div class="phv-screen"><b></b><span></span><span></span><span class="phv-cta"></span></div></div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
 
     <div class="max-w-6xl mx-auto px-4 md:px-8">
       <div class="grid md:grid-cols-3 gap-8">
@@ -59,13 +57,13 @@ function renderPortfolioDetail(projectId) {
         <div class="md:col-span-2 space-y-8">
           <!-- Description -->
           <div class="card p-7 reveal">
-            <h2 class="font-display font-700 text-xl mb-4" style="color:var(--fg)">${isEn ? "Project Overview" : "Présentation du Projet"}</h2>
+            <h2 class="font-display font-700 text-xl mb-4" style="color:var(--fg)">${isEn ? "Project Overview" : "Présentation du projet"}</h2>
             <p class="leading-relaxed" style="color:var(--muted)">${desc}</p>
           </div>
 
           <!-- Features -->
           <div class="card p-7 reveal">
-            <h2 class="font-display font-700 text-xl mb-5" style="color:var(--fg)">${isEn ? "Key Features" : "Fonctionnalités Clés"}</h2>
+            <h2 class="font-display font-700 text-xl mb-5" style="color:var(--fg)">${isEn ? "Key Features" : "Fonctionnalités clés"}</h2>
             <ul class="space-y-3">
               ${features
                 .map(
@@ -84,12 +82,12 @@ function renderPortfolioDetail(projectId) {
           <div class="grid md:grid-cols-2 gap-5 reveal">
             <div class="card p-6">
               <div class="w-10 h-10 flex items-center justify-center text-xl mb-4" style="background:rgba(239,68,68,0.1)">${iconFromEmoji("🎯", 16)} </div>
-              <h3 class="font-display font-700 text-base mb-3" style="color:var(--fg)">${isEn ? "The Challenge" : "Le Défi"}</h3>
+              <h3 class="font-display font-700 text-base mb-3" style="color:var(--fg)">${isEn ? "The Challenge" : "Le défi"}</h3>
               <p class="text-sm leading-relaxed" style="color:var(--muted)">${challenge}</p>
             </div>
             <div class="card p-6">
               <div class="w-10 h-10 flex items-center justify-center text-xl mb-4" style="background:rgba(16,185,129,0.1)">${iconFromEmoji("✅", 16)} </div>
-              <h3 class="font-display font-700 text-base mb-3" style="color:var(--fg)">${isEn ? "The Result" : "Le Résultat"}</h3>
+              <h3 class="font-display font-700 text-base mb-3" style="color:var(--fg)">${isEn ? "The Result" : "Le résultat"}</h3>
               <p class="text-sm leading-relaxed" style="color:var(--muted)">${result}</p>
             </div>
           </div>
@@ -124,8 +122,8 @@ function renderPortfolioDetail(projectId) {
             ${
               p.liveUrl
                 ? `
-              <a href="${p.liveUrl}" target="_blank" class="btn-primary w-full justify-center mt-6 text-sm py-2">
-                ${isEn ? "View Live Project" : "Voir le Projet"} →
+              <a href="${p.liveUrl}" target="_blank" rel="noopener noreferrer" class="btn-primary w-full justify-center mt-6 text-sm py-2">
+                ${isEn ? "View Live Project" : "Voir le projet"} →
               </a>
             `
                 : `
@@ -200,6 +198,8 @@ function renderBlogDetail(postId) {
     return `<div class="page pt-28 text-center"><p>Article introuvable</p></div>`;
 
   const title = isEn ? post.titleEn : post.title;
+  // Même adresse que celle déclarée dans les données structurées (bootstrap.js) et la canonical.
+  const articleUrl = `${SITE_ROOT}blog.html?article=${postId}`;
   const intro = isEn ? post.introEn : post.intro;
   const conclusion = isEn ? post.conclusionEn : post.conclusion;
   const catColors = {
@@ -310,14 +310,14 @@ function renderBlogDetail(postId) {
         </button>
       </div>
 
-      <!-- Share -->
-      <div class="flex items-center gap-4 mb-12 p-5 card reveal">
+      <!-- Partage : l'URL réelle de l'article, pour que le partage ramène du trafic ici. -->
+      <div class="flex flex-wrap items-center gap-3 mb-12 p-5 card reveal">
         <p class="font-display font-700 text-sm flex-shrink-0" style="color:var(--fg)">${isEn ? "Share:" : "Partager :"}</p>
-        <a href="https://wa.me/?text=${encodeURIComponent(title + " - MGN CodeWave")}" target="_blank" class="flex items-center gap-2 text-sm px-4 py-2 hover:opacity-80 transition-opacity" style="background:#25D366;color:#0f172a">
+        <a href="https://wa.me/?text=${encodeURIComponent(title + " — M.G.N CodeWave")}%20${encodeURIComponent(articleUrl)}" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-sm px-4 py-2 hover:opacity-80 transition-opacity" style="background:#25D366;color:#0f172a">
           <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
           WhatsApp
         </a>
-        <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://mgncodewave.com" target="_blank" class="flex items-center gap-2 text-sm px-4 py-2 hover:opacity-80 transition-opacity" style="background:#0077b5;color:white">
+        <a href="https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(articleUrl)}" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-sm px-4 py-2 hover:opacity-80 transition-opacity" style="background:#0077b5;color:white">
           LinkedIn
         </a>
       </div>
@@ -362,12 +362,17 @@ function renderCareers() {
 
   return `
   <div class="page pb-16">
-    ${renderPageHero({ label: isEn ? "Careers" : "Recrutement", title: isEn ? "Join our\nTeam" : "Rejoignez\nnotre Équipe", sub: isEn ? "We're a growing digital startup based in Libreville. We're looking for motivated, autonomous talents ready to grow with us." : "Nous sommes une start-up digitale en croissance basée à Libreville. Nous cherchons des talents motivés et autonomes, prêts à grandir avec nous." })}
+    ${renderPageHero({ label: isEn ? "Careers" : "Recrutement", title: isEn ? "Join our\nTeam" : "Rejoignez\nnotre équipe", path: "careers", facts: [[String(Object.values(careersData).flat().length), isEn ? "open positions" : "postes ouverts"], [String(careersData.freelance.length), isEn ? "freelance missions" : "missions freelance"], [isEn ? "Remote" : "Télétravail", isEn ? "work from anywhere in Gabon" : "depuis tout le Gabon"]], sub: isEn ? "We're a growing digital startup based in Libreville. We're looking for motivated, autonomous talents ready to grow with us." : "Nous sommes une start-up digitale en croissance basée à Libreville. Nous cherchons des talents motivés et autonomes, prêts à grandir avec nous." })}
     <div class="max-w-6xl mx-auto px-4 md:px-8">
 
       <!-- Why join us -->
-      <div class="mb-14">
-        <h2 class="font-display font-700 text-2xl mb-8 reveal" style="color:var(--fg)">${isEn ? "Why join CodeWave?" : "Pourquoi rejoindre CodeWave ?"}</h2>
+      <div class="mb-24">
+        ${sectionHead({
+          index: "01",
+          label: isEn ? "Why us" : "Pourquoi nous",
+          title: isEn ? "Why join\nCodeWave?" : "Pourquoi rejoindre\nCodeWave&nbsp;?",
+          lead: isEn ? "Real client projects, remote work and shared revenue: you grow with the studio." : "De vrais projets clients, du télétravail et des revenus partagés : vous grandissez avec le studio.",
+        })}
         <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
           ${[
             {
@@ -386,21 +391,21 @@ function renderCareers() {
             },
             {
               icon: "🚀",
-              title: isEn ? "Real Projects" : "Projets Réels",
+              title: isEn ? "Real Projects" : "Projets réels",
               desc: isEn
                 ? "Work on real client projects from day 1."
                 : "Projets clients réels dès le 1er jour.",
             },
             {
               icon: "📈",
-              title: isEn ? "Real Learning" : "Apprentissage Réel",
+              title: isEn ? "Real Learning" : "Apprentissage réel",
               desc: isEn
                 ? "Skills guaranteed through practice."
                 : "Compétences garanties par la pratique.",
             },
             {
               icon: "🤝",
-              title: isEn ? "Fair Partnership" : "Partenariat Équitable",
+              title: isEn ? "Fair Partnership" : "Partenariat équitable",
               desc: isEn
                 ? "We grow together, your success is ours."
                 : "On grandit ensemble. Votre succès est le nôtre.",
@@ -425,6 +430,13 @@ function renderCareers() {
             .join("")}
         </div>
       </div>
+
+      ${sectionHead({
+        index: "02",
+        label: isEn ? "Open positions" : "Postes ouverts",
+        title: isEn ? "Find your\nplace" : "Trouvez\nvotre place",
+        lead: isEn ? "Freelance missions or full-time positions: choose the format that suits you." : "Missions freelance ou postes en CDI : choisissez le format qui vous correspond.",
+      })}
 
       <!-- Freelance / Partnership positions -->
       <div class="mb-12">
@@ -557,7 +569,7 @@ function renderJobDetail(jobId) {
         <!-- Requirements -->
         <div class="card p-7 reveal">
           <h2 class="font-display font-700 text-lg mb-5" style="color:var(--fg)">
-            <span class="mr-2">${iconFromEmoji("✅", 16)} </span>${isEn ? "Requirements" : "Profil Recherché"}
+            <span class="mr-2">${iconFromEmoji("✅", 16)} </span>${isEn ? "Requirements" : "Profil recherché"}
           </h2>
           <ul class="space-y-3">
             ${reqs
@@ -581,7 +593,7 @@ function renderJobDetail(jobId) {
           <a href="mailto:mgncodewave18@gmail.com?subject=Candidature — ${job.title}" class="btn-primary">
             ${isEn ? "Apply Now" : "Postuler Maintenant"} ${iconFromEmoji("✉", 16)} 
           </a>
-          <a href="https://wa.me/24166198918?text=Bonjour, je souhaite postuler au poste ${job.title}" target="_blank" class="btn-outline">
+          <a href="https://wa.me/24166198918?text=Bonjour, je souhaite postuler au poste ${job.title}" target="_blank" rel="noopener noreferrer" class="btn-outline">
             WhatsApp →
           </a>
         </div>
@@ -611,32 +623,40 @@ function legalLayout(
   sectionsHTML,
   relatedLinks,
 ) {
+  const toc = [...sectionsHTML.matchAll(/id="section-([^"]+)" data-toc-title="([^"]*)"/g)].map(([, num, label]) => [num, label]);
   return `
   <div class="page pb-16">
     <!-- Hero -->
-    <div class="page-hero relative overflow-hidden mb-12">
+    <section class="page-hero relative overflow-hidden mb-12">
       <canvas class="wave-field" aria-hidden="true"></canvas>
       <div class="hero-glow" aria-hidden="true"></div>
-      <div class="relative max-w-4xl mx-auto px-4 md:px-8 pt-32 pb-24">
+      <div class="relative max-w-6xl mx-auto px-4 md:px-8 pt-32 pb-24">
         <nav aria-label="Fil d'Ariane" class="flex items-center gap-2 text-sm mb-6" style="color:var(--muted)">
           <button onclick="navigate('home')" class="hover:text-blue-500 transition-colors">Accueil</button>
-          <span>/</span>
-          <span style="color:var(--fg)">${title}</span>
+          <span aria-hidden="true">/</span>
+          <span style="color:var(--fg)" aria-current="page">${title}</span>
         </nav>
-        <div class="flex items-center gap-4">
-          <div class="w-14 h-14 flex items-center justify-center text-3xl" style="background:rgba(0,74,173,0.08)">${iconFromEmoji(icon, 20)}</div>
-          <div>
-            <h1 class="font-display font-700 text-3xl md:text-4xl" style="color:var(--fg)">${title}</h1>
-            <p style="color:var(--muted)">${subtitle}</p>
-          </div>
+        <p class="section-label mb-4">${subtitle}</p>
+        <h1 class="font-display font-700 mb-6" style="font-size:clamp(2.4rem,5vw,3.8rem);line-height:1.08;letter-spacing:-0.02em;color:var(--fg)">${accentTitle(title)}</h1>
+        <div class="flex flex-wrap gap-2">
+          <span class="legal-meta">${lineIcon("calendar", 15)} Dernière mise à jour : ${updateDate}</span>
+          <span class="legal-meta">${lineIcon("file", 15)} ${toc.length} sections</span>
         </div>
-        <p class="mt-5 text-xs inline-flex items-center gap-2 px-3 py-1.5" style="background:rgba(0,74,173,0.06);color:var(--muted)">
-          ${iconFromEmoji("📅", 16)} Dernière mise à jour : ${updateDate}
-        </p>
       </div>
-    </div>
+    </section>
 
-    <div class="max-w-4xl mx-auto px-4 md:px-8">
+    <div class="max-w-6xl mx-auto px-4 md:px-8 lg:grid lg:grid-cols-12 lg:gap-12">
+      <!-- Sommaire (grand écran) -->
+      <aside class="hidden lg:block lg:col-span-3" aria-label="Sommaire">
+        <nav class="legal-toc">
+          <p class="legal-toc-title">Sommaire</p>
+          <ol>
+            ${toc.map(([num, label]) => `<li><a href="#section-${num}"><span>${num.padStart(2, "0")}</span>${label}</a></li>`).join("")}
+          </ol>
+        </nav>
+      </aside>
+
+      <div class="lg:col-span-9 min-w-0">
       <!-- Content -->
       <div class="space-y-0">
         ${sectionsHTML}
@@ -651,7 +671,7 @@ function legalLayout(
         </div>
         <div class="flex flex-wrap gap-3">
           <a href="mailto:mgncodewave18@gmail.com" class="btn-primary text-sm py-2 px-4">${iconFromEmoji("✉", 16)} Email</a>
-          <a href="https://wa.me/24166198918" target="_blank" class="btn-outline text-sm py-2 px-4">WhatsApp</a>
+          <a href="https://wa.me/24166198918" target="_blank" rel="noopener noreferrer" class="btn-outline text-sm py-2 px-4">WhatsApp</a>
         </div>
       </div>
 
@@ -665,6 +685,7 @@ function legalLayout(
           )
           .join("")}
       </div>
+      </div>
     </div>
   </div>`;
 }
@@ -672,7 +693,7 @@ function legalLayout(
 // ---- Legal section block helper ----
 function legalSection(num, title, content, accent) {
   return `
-  <div class="reveal mb-0" style="border-bottom:1px solid var(--border)">
+  <div id="section-${num}" data-toc-title="${title}" class="legal-section reveal mb-0" style="border-bottom:1px solid var(--border)">
     <div class="py-8">
       <div class="flex items-start gap-4">
         <span class="flex-shrink-0 w-8 h-8 flex items-center justify-center text-xs font-display font-700" style="background:rgba(0,74,173,0.08);color:var(--primary-fg)">${num}</span>
@@ -690,10 +711,10 @@ function renderMentionsLegales() {
   const sections = [
     legalSection(
       "1",
-      "Éditeur du Site",
+      "Éditeur du site",
       `
       <div class="card p-5 space-y-2">
-        <div class="grid grid-cols-2 gap-x-6 gap-y-2">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3">
           ${[
             ["Dénomination", "M.G.N CodeWave"],
             ["Forme juridique", "Entreprise individuelle / Auto-entrepreneur"],
@@ -708,13 +729,13 @@ function renderMentionsLegales() {
             ],
             [
               "Site web",
-              '<a href="https://ngoubadjambo-richard.github.io/CodeWave/" target="_blank" class="text-blue-500">https://ngoubadjambo-richard.github.io/CodeWave/</a>',
+              '<a href="https://ngoubadjambo-richard.github.io/CodeWave/" target="_blank" rel="noopener noreferrer" class="text-blue-500">https://ngoubadjambo-richard.github.io/CodeWave/</a>',
             ],
             ["Directeur de publication", "M.G.N"],
           ]
             .map(
               ([k, v]) => `
-            <div><p class="text-xs uppercase tracking-wider mb-0.5" style="color:var(--muted)">${k}</p><p class="font-600" style="color:var(--fg)">${v}</p></div>
+            <div class="min-w-0"><p class="text-xs uppercase tracking-wider mb-0.5" style="color:var(--muted)">${k}</p><p class="font-600" style="color:var(--fg);overflow-wrap:anywhere">${v}</p></div>
           `,
             )
             .join("")}
@@ -728,12 +749,12 @@ function renderMentionsLegales() {
       <div class="card p-5">
         <p><strong style="color:var(--fg)">Hébergeur :</strong> Github, Inc.</p>
         <p><strong style="color:var(--fg)">Adresse :</strong> 88, rue Colin P. Kelly Jr., #4133, San Francisco, Californie.</p>
-        <p><strong style="color:var(--fg)">Site :</strong> <a href="https://github.com" target="_blank" class="text-blue-500">github.com</a></p>
+        <p><strong style="color:var(--fg)">Site :</strong> <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="text-blue-500">github.com</a></p>
       </div>`,
     ),
     legalSection(
       "3",
-      "Propriété Intellectuelle",
+      "Propriété intellectuelle",
       `
       <p>L'ensemble de ce site relève de la législation sur le droit d'auteur et la propriété intellectuelle. Tous les droits de reproduction sont réservés, y compris pour les documents téléchargeables et les représentations iconographiques et photographiques.</p>
       <p>La reproduction de tout ou partie de ce site sur un support électronique est formellement interdite sauf autorisation expresse du directeur de la publication.</p>
@@ -741,24 +762,24 @@ function renderMentionsLegales() {
     ),
     legalSection(
       "4",
-      "Limitation de Responsabilité",
+      "Limitation de responsabilité",
       `
       <p>Les informations contenues sur ce site sont aussi précises que possible et le site est périodiquement remis à jour, mais peut toutefois contenir des inexactitudes, des omissions ou des lacunes.</p>
       <p>CodeWave ne pourra être tenu responsable des dommages directs et indirects causés au matériel de l'utilisateur, lors de l'accès au site, et résultant soit de l'utilisation d'un matériel ne répondant pas aux spécifications techniques requises, soit de l'apparition d'un bug ou d'une incompatibilité.</p>`,
     ),
     legalSection(
       "5",
-      "Liens Hypertextes",
+      "Liens hypertextes",
       `
       <p>Le site peut contenir des liens hypertextes vers d'autres sites présents sur le réseau Internet. Les liens vers ces autres ressources vous font quitter le site CodeWave.</p>
       <p>Il est possible de créer un lien vers la page de présentation de ce site sans autorisation expresse de CodeWave. Aucune autorisation ou demande d'information préalable ne peut être exigée par l'éditeur à l'égard d'un site qui souhaite établir un lien.</p>`,
     ),
     legalSection(
       "6",
-      "Protection des Données Personnelles",
+      "Protection des données personnelles",
       `
       <p>Conformément à la réglementation en vigueur, vous disposez d'un droit d'accès, de rectification, de suppression et d'opposition aux données personnelles vous concernant.</p>
-      <p>Pour toute information complémentaire sur la protection des données personnelles, nous vous invitons à consulter notre <button onclick="navigate('privacy')" class="text-blue-500 underline">Politique de Confidentialité</button>.</p>
+      <p>Pour toute information complémentaire sur la protection des données personnelles, nous vous invitons à consulter notre <button onclick="navigate('privacy')" class="text-blue-500 underline">politique de confidentialité</button>.</p>
       <p>Pour exercer ces droits, contactez-nous par email à <a href="mailto:mgncodewave18@gmail.com" class="text-blue-500">mgncodewave18@gmail.com</a>.</p>`,
     ),
     legalSection(
@@ -766,11 +787,11 @@ function renderMentionsLegales() {
       "Cookies",
       `
       <p>Le site CodeWave peut être amené à utiliser des cookies pour améliorer l'expérience utilisateur. Vous pouvez configurer votre navigateur pour refuser ces cookies, mais certaines fonctionnalités du site peuvent être limitées.</p>
-      <p>Pour plus d'informations, consultez notre <button onclick="navigate('privacy')" class="text-blue-500 underline">Politique de Confidentialité</button>.</p>`,
+      <p>Pour plus d'informations, consultez notre <button onclick="navigate('privacy')" class="text-blue-500 underline">politique de confidentialité</button>.</p>`,
     ),
     legalSection(
       "8",
-      "Droit Applicable et Juridiction",
+      "Droit applicable et juridiction",
       `
       <p>Tout litige en relation avec l'utilisation du site CodeWave est soumis au droit gabonais.</p>
       <p>En cas de litige, les tribunaux de <strong style="color:var(--fg)">Libreville, Gabon</strong>, seront seuls compétents.</p>`,
@@ -779,14 +800,14 @@ function renderMentionsLegales() {
 
   return legalLayout(
     "⚖️",
-    "Mentions Légales",
+    "Mentions légales",
     "Informations légales et éditoriales du site",
     "18 Mars 2026",
     sections,
     [
-      ["Politique de Confidentialité", "privacy"],
+      ["Politique de confidentialité", "privacy"],
       ["CGV", "cgv"],
-      ["Plan du Site", "sitemap"],
+      ["Plan du site", "sitemap"],
     ],
   );
 }
@@ -796,7 +817,7 @@ function renderPrivacy() {
   const sections = [
     legalSection(
       "1",
-      "Responsable du Traitement des Données",
+      "Responsable du traitement des données",
       `
       <div class="card p-5 grid grid-cols-2 gap-x-6 gap-y-2">
         ${[
@@ -813,14 +834,14 @@ function renderPrivacy() {
         ]
           .map(
             ([k, v]) =>
-              `<div><p class="text-xs uppercase tracking-wider mb-0.5" style="color:var(--muted)">${k}</p><p class="font-600" style="color:var(--fg)">${v}</p></div>`,
+              `<div class="min-w-0"><p class="text-xs uppercase tracking-wider mb-0.5" style="color:var(--muted)">${k}</p><p class="font-600" style="color:var(--fg);overflow-wrap:anywhere">${v}</p></div>`,
           )
           .join("")}
       </div>`,
     ),
     legalSection(
       "2",
-      "Données que Nous Collectons",
+      "Données que nous collectons",
       `
       <div class="space-y-4">
         <div>
@@ -832,14 +853,14 @@ function renderPrivacy() {
         <div>
           <p class="font-600 mb-2" style="color:var(--fg)">2.2 Données collectées automatiquement</p>
           <ul class="space-y-1 ml-4">
-            ${["Données de navigation : pages visitées, durée, actions", "Données techniques : adresse IP, navigateur, OS", "Données de géolocalisation : pays, ville (non précise)", "Cookies : voir section dédiée ci-dessous"].map((i) => `<li class="flex items-start gap-2"><span style="color:var(--primary-fg)">•</span>${i}</li>`).join("")}
+            ${["Journaux d'hébergement : notre hébergeur enregistre techniquement les accès (adresse IP, date, page demandée, navigateur) pour assurer le service et sa sécurité. Nous n'y avons pas accès et n'en tirons aucun profil", "Préférences d'affichage : votre langue et votre thème clair ou sombre sont mémorisés dans le stockage local de votre navigateur. Ils ne quittent jamais votre appareil et ne nous sont jamais transmis", "Mesure d'audience : voir la section « Cookies » ci-dessous"].map((i) => `<li class="flex items-start gap-2"><span style="color:var(--primary-fg)">•</span>${i}</li>`).join("")}
           </ul>
         </div>
       </div>`,
     ),
     legalSection(
       "3",
-      "Pourquoi Nous Utilisons Vos Données",
+      "Pourquoi nous utilisons vos données",
       `
       <div class="grid md:grid-cols-2 gap-3">
         ${[
@@ -882,19 +903,20 @@ function renderPrivacy() {
     ),
     legalSection(
       "4",
-      "Partage de Vos Données",
+      "Partage de vos données",
       `
       <div class="card p-5 mb-3" style="border-left:3px solid #10b981">
         <p class="font-700 text-sm mb-1" aria-hidden="true" style="color:#10b981">✓ Nous ne vendons jamais vos données personnelles.</p>
         <p>Nous pouvons les partager uniquement avec :</p>
       </div>
+      <p class="mb-3"><strong style="color:var(--fg)">Transferts hors Union européenne :</strong> Formspree et GitHub sont établis aux États-Unis. En nous écrivant via ce site, vos données y transitent. Si vous préférez l'éviter, écrivez-nous directement sur WhatsApp au +241 66 19 89 18 ou par e-mail.</p>
       <ul class="space-y-2 ml-4">
-        ${["Prestataires de services : hébergeur Vercel, outils d'analyse Google Analytics — uniquement pour les services nécessaires", "Partenaires de paiement : pour traiter vos paiements Mobile Money de manière sécurisée", "Autorités légales : si la loi l'exige ou pour protéger nos droits"].map((i) => `<li class="flex items-start gap-2"><span style="color:var(--primary-fg)">•</span>${i}</li>`).join("")}
+        ${["<strong>Formspree, Inc.</strong> (États-Unis) — reçoit et nous transmet le contenu des formulaires de devis et d'inscription à la newsletter : nom, e-mail, téléphone, entreprise, budget indicatif et description de votre projet", "<strong>GitHub, Inc.</strong> (États-Unis) — héberge les pages de ce site et journalise techniquement les accès", "<strong>Google Ireland Ltd.</strong> — fournit les polices de caractères affichées sur ce site, ainsi que les formulaires de candidature et de partenariat (Google Forms)", "<strong>Partenaires de paiement</strong> (Airtel Money, Moov Money, banques) — uniquement pour exécuter un paiement que vous initiez", "<strong>Autorités légales</strong> — si la loi l'exige ou pour protéger nos droits"].map((i) => `<li class="flex items-start gap-2"><span style="color:var(--primary-fg)">•</span>${i}</li>`).join("")}
       </ul>`,
     ),
     legalSection(
       "5",
-      "Durée de Conservation",
+      "Durée de conservation",
       `
       <div class="card overflow-hidden">
         <table class="w-full text-sm">
@@ -904,7 +926,8 @@ function renderPrivacy() {
               ["Données clients actifs", "Durée relation + 5 ans"],
               ["Devis non convertis", "3 ans maximum"],
               ["Newsletter", "Jusqu'à désabonnement"],
-              ["Données de navigation", "13 mois (cookies)"],
+              ["Mesure d'audience, si vous l'acceptez", "13 mois maximum"],
+              ["Préférences d'affichage (votre navigateur)", "Jusqu'à effacement par vos soins"],
             ]
               .map(
                 ([t, d], i) => `
@@ -918,7 +941,7 @@ function renderPrivacy() {
     ),
     legalSection(
       "6",
-      "Sécurité de Vos Données",
+      "Sécurité de vos données",
       `
       <div class="grid md:grid-cols-2 gap-3">
         ${[
@@ -953,7 +976,7 @@ function renderPrivacy() {
     ),
     legalSection(
       "7",
-      "Vos Droits sur Vos Données",
+      "Vos droits sur vos données",
       `
       <div class="grid md:grid-cols-3 gap-3">
         ${[
@@ -987,62 +1010,56 @@ function renderPrivacy() {
     ),
     legalSection(
       "8",
-      "Cookies",
-      `
+      "Cookies et mesure d'audience",
+      // Cette section lit `analyticsConfigured()` (assets/js/core/consent.js) : elle décrit
+      // toujours l'état réel du site, qu'un traceur soit activé ou non.
+      typeof analyticsConfigured === "function" && analyticsConfigured()
+        ? `
+      <div class="card p-5 mb-3" style="border-left:3px solid var(--primary-fg)">
+        <p class="font-700 text-sm mb-1" style="color:var(--fg)">Aucun traceur n'est chargé avant votre accord.</p>
+        <p>À votre première visite, un bandeau vous demande si vous acceptez la mesure d'audience. Tant que vous n'avez pas accepté, aucun cookie de mesure n'est déposé. Un refus n'enlève aucune fonctionnalité.</p>
+      </div>
       <div class="space-y-3">
-        ${[
-          [
-            "✓",
-            "#10b981",
-            "Cookies essentiels (obligatoires)",
-            "Nécessaires au fonctionnement (navigation, sécurité, session). Durée : session ou 1 an.",
-          ],
-          [
-            "📊",
-            "#004AAD",
-            "Cookies analytiques (facultatifs)",
-            "Google Analytics pour comprendre votre usage. Durée : 13 mois. Nécessite votre consentement.",
-          ],
-          [
-            "📢",
-            "#f59e0b",
-            "Cookies marketing (facultatifs)",
-            "Pour personnaliser les publicités. Durée : variable. Nécessite votre consentement.",
-          ],
-        ]
-          .map(
-            ([icon, color, title, desc]) => `
-          <div class="card p-4 flex gap-3">
-            <span class="text-xl">${iconFromEmoji(icon, 20)}</span>
-            <div><p class="font-600 text-sm mb-1" style="color:${color};color:color-mix(in srgb, ${color} 50%, var(--fg))">${title}</p><p class="text-xs">${desc}</p></div>
-          </div>
-        `,
-          )
-          .join("")}
-      </div>`,
+        <div class="card p-4">
+          <p class="font-600 text-sm mb-1" style="color:var(--fg)">Mesure d'audience (facultative, soumise à votre accord)</p>
+          <p class="text-xs">Elle nous indique quelles pages sont consultées et où les visiteurs abandonnent, afin d'améliorer le site. Durée de conservation : 13 mois maximum.</p>
+        </div>
+        <div class="card p-4">
+          <p class="font-600 text-sm mb-1" style="color:var(--fg)">Publicité</p>
+          <p class="text-xs">Nous n'utilisons aucun cookie publicitaire et ne revendons aucune donnée.</p>
+        </div>
+      </div>
+      <p class="mt-4">Vous pouvez revenir sur votre choix à tout moment : <button type="button" onclick="openConsent()" class="text-blue-500 underline">gérer mes cookies</button>.</p>`
+        : `
+      <div class="card p-5 mb-3" style="border-left:3px solid #10b981">
+        <p class="font-700 text-sm mb-1" style="color:var(--fg)">Ce site ne dépose aucun cookie.</p>
+        <p>Nous n'utilisons ni outil de mesure d'audience, ni traceur publicitaire, ni bouton de réseau social traçant. C'est pourquoi aucun bandeau de consentement ne vous est présenté : il n'y a rien à consentir.</p>
+      </div>
+      <p>Deux informations sont mémorisées dans le <strong style="color:var(--fg)">stockage local</strong> de votre navigateur : la langue choisie et le thème clair ou sombre. Elles restent sur votre appareil, ne nous sont jamais transmises, et vous pouvez les effacer depuis les réglages de votre navigateur.</p>
+      <p class="mt-3">Si nous mettons en place une mesure d'audience à l'avenir, un bandeau vous demandera votre accord au préalable et cette section sera mise à jour.</p>`,
     ),
     legalSection(
       "9",
-      "Protection des Mineurs",
+      "Protection des mineurs",
       `<p>Nos services ne sont pas destinés aux personnes de moins de 18 ans. Nous ne collectons pas sciemment de données concernant des mineurs. Si vous êtes parent ou tuteur et pensez que votre enfant nous a fourni des données, contactez-nous immédiatement pour suppression.</p>`,
     ),
     legalSection(
       "10",
-      "Modifications de Cette Politique",
+      "Modifications de cette politique",
       `<p>Nous pouvons modifier cette politique à tout moment pour refléter les évolutions de nos services, les changements légaux ou l'amélioration de nos pratiques. En cas de modification importante, nous vous en informerons par email ou via un avis sur le site.</p>`,
     ),
   ].join("");
 
   return legalLayout(
     "🔒",
-    "Politique de Confidentialité",
+    "Politique de confidentialité",
     "Comment nous protégeons et utilisons vos données personnelles",
-    "18 Mars 2026",
+    "23 Septembre 2026",
     sections,
     [
-      ["Mentions Légales", "legal"],
+      ["Mentions légales", "legal"],
       ["CGV", "cgv"],
-      ["Plan du Site", "sitemap"],
+      ["Plan du site", "sitemap"],
     ],
   );
 }
@@ -1062,7 +1079,7 @@ function renderCGV() {
     ),
     legalSection(
       "2",
-      "Devis et Commande",
+      "Devis et commande",
       `
       <div class="space-y-4">
         <div><p class="font-600 mb-1" style="color:var(--fg)">2.1 Devis</p><p>Tout devis est gratuit, sans engagement et valable <strong style="color:var(--fg)">30 jours</strong> à compter de sa date d'émission. Passé ce délai, le Prestataire se réserve le droit de modifier les tarifs.</p></div>
@@ -1071,7 +1088,7 @@ function renderCGV() {
     ),
     legalSection(
       "3",
-      "Prix et Modalités de Paiement",
+      "Prix et modalités de paiement",
       `
       <div class="space-y-4">
         <div><p class="font-600 mb-2" style="color:var(--fg)">3.2 Modalités de paiement</p>
@@ -1102,7 +1119,7 @@ function renderCGV() {
     ),
     legalSection(
       "4",
-      "Obligations du Client",
+      "Obligations du client",
       `
       <ul class="space-y-2">
         ${["Fournir tous les éléments nécessaires (textes, images, logos) dans les délais convenus", "S'assurer que les contenus fournis ne violent aucun droit de propriété intellectuelle", "Répondre aux demandes de validation dans un délai de 7 jours ouvrés", "Effectuer les paiements selon l'échéancier convenu", "Informer le Prestataire de toute modification souhaitée dans les meilleurs délais"].map((i) => `<li class="flex items-start gap-3"><span class="flex-shrink-0 mt-0.5 w-5 h-5 flex items-center justify-center text-xs" style="background:rgba(0,74,173,0.08);color:var(--primary-fg)">→</span>${i}</li>`).join("")}
@@ -1111,7 +1128,7 @@ function renderCGV() {
     ),
     legalSection(
       "5",
-      "Obligations du Prestataire",
+      "Obligations du prestataire",
       `
       <ul class="space-y-2">
         ${["Réaliser les prestations conformément aux spécifications du devis accepté", "Respecter les délais de livraison convenus (sauf cas de force majeure)", "Livrer un site web fonctionnel, testé et optimisé", "Former le Client à l'utilisation de son site web", "Assurer un support technique selon les modalités convenues", "Maintenir la confidentialité des informations du Client"].map((i) => `<li class="flex items-start gap-3"><span aria-hidden="true" style="color:#10b981">✓</span>${i}</li>`).join("")}
@@ -1119,7 +1136,7 @@ function renderCGV() {
     ),
     legalSection(
       "6",
-      "Délais et Livraison",
+      "Délais et livraison",
       `
       <div class="card overflow-hidden mb-3">
         <div class="p-4" style="background:rgba(0,74,173,0.04)"><p class="font-600 text-sm" style="color:var(--fg)">Délais indicatifs par type de projet</p></div>
@@ -1144,7 +1161,7 @@ function renderCGV() {
     ),
     legalSection(
       "7",
-      "Modifications et Révisions",
+      "Modifications et révisions",
       `
       <div class="grid md:grid-cols-3 gap-3">
         ${[
@@ -1173,7 +1190,7 @@ function renderCGV() {
     ),
     legalSection(
       "8",
-      "Garantie et Maintenance",
+      "Garantie et maintenance",
       `
       <div class="grid md:grid-cols-2 gap-3">
         <div class="card p-5"><p class="font-700 mb-2" style="color:var(--fg)">${iconFromEmoji("🛡", 16)} Garantie 30 jours</p><p class="text-xs">CodeWave garantit le bon fonctionnement du site pendant 30 jours après livraison. Couvre uniquement les bugs liés à la réalisation initiale.</p></div>
@@ -1182,7 +1199,7 @@ function renderCGV() {
     ),
     legalSection(
       "9",
-      "Propriété Intellectuelle",
+      "Propriété intellectuelle",
       `
       <div class="space-y-3">
         ${[
@@ -1216,7 +1233,7 @@ function renderCGV() {
     ),
     legalSection(
       "10",
-      "Résiliation et Annulation",
+      "Résiliation et annulation",
       `
       <div class="grid md:grid-cols-2 gap-3">
         <div class="card p-5"><p class="font-700 text-sm mb-2" style="color:var(--fg)">Par le Client</p><p class="text-xs">Annulation avant le début des travaux : perte de l'acompte. Une fois les travaux commencés : minimum 50% du devis dû.</p></div>
@@ -1225,7 +1242,7 @@ function renderCGV() {
     ),
     legalSection(
       "11",
-      "Droit Applicable et Litiges",
+      "Droit applicable et litiges",
       `<p>Les présentes CGV sont régies par le <strong style="color:var(--fg)">droit gabonais</strong>. En cas de litige, les parties s'efforceront de trouver une solution amiable. À défaut, les <strong style="color:var(--fg)">tribunaux de Libreville, Gabon</strong>, seront seuls compétents.</p>`,
     ),
     legalSection(
@@ -1238,14 +1255,14 @@ function renderCGV() {
 
   return legalLayout(
     "📋",
-    "Conditions Générales de Vente",
+    "Conditions générales de vente",
     "Nos conditions applicables aux services de développement web",
     "21 Septembre 2026",
     sections,
     [
-      ["Mentions Légales", "legal"],
-      ["Politique de Confidentialité", "privacy"],
-      ["Plan du Site", "sitemap"],
+      ["Mentions légales", "legal"],
+      ["Politique de confidentialité", "privacy"],
+      ["Plan du site", "sitemap"],
     ],
   );
 }
@@ -1257,7 +1274,7 @@ function renderSitemap() {
   const pages = [
     {
       icon: "🏠",
-      title: isEn ? "Main Pages" : "Pages Principales",
+      title: isEn ? "Main Pages" : "Pages principales",
       color: "#004AAD",
       items: [
         {
@@ -1284,26 +1301,26 @@ function renderSitemap() {
         {
           label: "Portfolio",
           desc: isEn
-            ? "12 completed projects with details"
-            : "12 projets réalisés avec détails",
+            ? `${portfolioProjects.length} completed projects with details`
+            : `${portfolioProjects.length} projets réalisés avec détails`,
           page: "portfolio",
         },
         {
           label: "Blog",
           desc: isEn
-            ? "7 articles on web, SEO and entrepreneurship"
-            : "7 articles sur le web, SEO et entrepreneuriat",
+            ? `${blogPosts.length} articles on web, SEO and entrepreneurship`
+            : `${blogPosts.length} articles sur le web, SEO et entrepreneuriat`,
           page: "blog",
         },
         {
           label: isEn ? "Careers" : "Carrières",
           desc: isEn
             ? "8 open positions, freelance and CDI"
-            : "8 postes ouverts, freelance et CDI",
+            : "Postes ouverts, freelance et CDI",
           page: "careers",
         },
         {
-          label: isEn ? "About" : "À Propos",
+          label: isEn ? "About" : "À propos",
           desc: isEn
             ? "Our story, values and team"
             : "Notre histoire, valeurs et équipe",
@@ -1320,7 +1337,7 @@ function renderSitemap() {
     },
     {
       icon: "🖼️",
-      title: isEn ? "Portfolio Details" : "Détails Portfolio",
+      title: isEn ? "Portfolio Details" : "Fiches projets",
       color: "#8b5cf6",
       items: [
         {
@@ -1460,18 +1477,18 @@ function renderSitemap() {
     },
     {
       icon: "⚖️",
-      title: isEn ? "Legal" : "Informations Légales",
+      title: isEn ? "Legal" : "Informations légales",
       color: "#64748b",
       items: [
         {
-          label: isEn ? "Legal Notice" : "Mentions Légales",
+          label: isEn ? "Legal Notice" : "Mentions légales",
           desc: isEn
             ? "Editorial and legal information"
             : "Informations légales et éditoriales",
           page: "legal",
         },
         {
-          label: isEn ? "Privacy Policy" : "Politique de Confidentialité",
+          label: isEn ? "Privacy Policy" : "Politique de confidentialité",
           desc: isEn
             ? "Data protection"
             : "Protection des données personnelles",
@@ -1479,11 +1496,11 @@ function renderSitemap() {
         },
         {
           label: isEn ? "Terms & Conditions" : "CGV",
-          desc: isEn ? "Sales conditions" : "Conditions Générales de Vente",
+          desc: isEn ? "Sales conditions" : "Conditions générales de vente",
           page: "cgv",
         },
         {
-          label: isEn ? "Sitemap" : "Plan du Site",
+          label: isEn ? "Sitemap" : "Plan du site",
           desc: isEn
             ? "Complete site navigation"
             : "Navigation complète du site",
@@ -1494,30 +1511,18 @@ function renderSitemap() {
   ];
 
   return `
-  <div class="page pt-28 pb-16">
-    <!-- Header -->
-    <div class="relative overflow-hidden mb-12" style="background:var(--card); border-bottom:1px solid var(--border)">
-      <div class="wave-bg" style="opacity:0.04">
-        <svg width="100%" height="100%" viewBox="0 0 1440 200" preserveAspectRatio="xMidYMid slice">
-          <path d="M-100,60 C300,10 600,150 900,60 C1200,10 1400,150 1540,60" fill="none" stroke="#004AAD" stroke-width="1.5"/>
-          <path d="M-100,100 C300,50 600,190 900,100 C1200,50 1400,190 1540,100" fill="none" stroke="#004AAD" stroke-width="1"/>
-        </svg>
-      </div>
-      <div class="max-w-5xl mx-auto px-4 md:px-8 py-14">
-        <nav class="flex items-center gap-2 text-sm mb-6" style="color:var(--muted)">
-          <button onclick="navigate('home')" class="hover:text-blue-500">Accueil</button>
-          <span>/</span>
-          <span style="color:var(--fg)">${isEn ? "Sitemap" : "Plan du Site"}</span>
-        </nav>
-        <div class="flex items-center gap-4">
-          <div class="w-14 h-14 flex items-center justify-center text-3xl" style="background:rgba(0,74,173,0.08);color:var(--primary-fg)">${lineIcon("globe", 28)}</div>
-          <div>
-            <h1 class="font-display font-700 text-3xl md:text-4xl" style="color:var(--fg)">${isEn ? "Sitemap" : "Plan du Site"}</h1>
-            <p style="color:var(--muted)">${isEn ? "Find all our pages easily" : "Naviguez facilement sur notre site et trouvez ce que vous cherchez"}</p>
-          </div>
-        </div>
-      </div>
-    </div>
+  <div class="page pb-16">
+    ${renderPageHero({
+      label: isEn ? "Navigation" : "Navigation",
+      title: isEn ? "Site\nmap" : "Plan\ndu site",
+      sub: isEn ? "Every page of the site in one place, to find what you are looking for quickly." : "Toutes les pages du site réunies ici, pour trouver rapidement ce que vous cherchez.",
+      path: "plan-du-site",
+      facts: [
+        [String(Object.keys(pageFileMap).length), isEn ? "main pages" : "pages principales"],
+        [String(portfolioProjects.length), isEn ? "project pages" : "fiches projets"],
+        [String(blogPosts.length), isEn ? "articles" : "articles"],
+      ],
+    })}
 
     <div class="max-w-5xl mx-auto px-4 md:px-8">
       <div class="grid md:grid-cols-2 gap-8">
@@ -1581,7 +1586,7 @@ function renderSitemap() {
         <p class="mb-5" style="color:var(--muted)">${isEn ? "Contact us directly, we'll be happy to help!" : "Contactez-nous directement, nous serons ravis de vous aider !"}</p>
         <div class="flex flex-wrap gap-3 justify-center">
           <button onclick="navigate('contact')" class="btn-primary">${isEn ? "Contact Us" : "Nous Contacter"}</button>
-          <a href="https://wa.me/24166198918" target="_blank" class="btn-outline">WhatsApp</a>
+          <a href="https://wa.me/24166198918" target="_blank" rel="noopener noreferrer" class="btn-outline">WhatsApp</a>
         </div>
       </div>
     </div>
@@ -1674,24 +1679,22 @@ function renderSocial() {
   ];
 
   return `
-  <div class="page pt-28 pb-16">
-    <!-- Header -->
-    <div class="relative overflow-hidden mb-14" style="background:linear-gradient(135deg,#0f172a,#1e293b)">
-      ${`<div class="wave-bg" style="opacity:0.15">
-        <svg width="100%" height="100%" viewBox="0 0 1440 300" preserveAspectRatio="xMidYMid slice">
-          <path d="M-100,100 C300,20 600,200 900,100 C1200,20 1400,200 1540,100" fill="none" stroke="#004AAD" stroke-width="2"/>
-          <path d="M-100,140 C300,60 600,240 900,140 C1200,60 1400,240 1540,140" fill="none" stroke="#0062E6" stroke-width="1.5"/>
-          <path d="M-100,180 C300,100 600,280 900,180 C1200,100 1400,280 1540,180" fill="none" stroke="#004AAD" stroke-width="1"/>
-        </svg>
-      </div>`}
-      <div class="relative max-w-5xl mx-auto px-4 md:px-8 py-16 text-center">
-        <p class="section-label mb-4" style="color:#60A5FA">${isEn ? "Community & Networks" : "Communauté & Réseaux"}</p>
-        <h1 class="font-display font-700 leading-tight mb-4 text-white" style="font-size:clamp(2.5rem,5vw,4rem)">${isEn ? "Find us\nEverywhere" : "Retrouvez-nous\nPartout"}</h1>
-        <p class="max-w-xl mx-auto" style="color:#94a3b8">${isEn ? "Follow our digital adventure on all platforms and stay connected with the MGN CodeWave community." : "Suivez notre aventure digitale sur toutes les plateformes et restez connecté avec la communauté MGN CodeWave."}</p>
-      </div>
-    </div>
+  <div class="page pb-16">
+    ${renderPageHero({
+      label: isEn ? "Community & networks" : "Communauté & réseaux",
+      title: isEn ? "Find us\neverywhere" : "Retrouvez-nous\npartout",
+      sub: isEn
+        ? "Follow our digital adventure on every platform and stay connected with the M.G.N CodeWave community."
+        : "Suivez notre aventure digitale sur toutes les plateformes et restez connecté avec la communauté M.G.N CodeWave.",
+      path: "reseaux",
+      facts: [
+        [String(networks.length), isEn ? "channels to follow us" : "canaux pour nous suivre"],
+        ["WhatsApp", isEn ? "our most responsive channel" : "notre canal le plus réactif"],
+        ["Libreville", isEn ? "a studio based in Gabon" : "un studio basé au Gabon"],
+      ],
+    })}
 
-    <div class="max-w-5xl mx-auto px-4 md:px-8">
+    <div class="max-w-6xl mx-auto px-4 md:px-8">
       <!-- Networks grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-14">
         ${networks
@@ -1729,7 +1732,7 @@ function renderSocial() {
         <h2 class="font-display font-700 text-2xl md:text-3xl mb-3" style="color:var(--fg)">${isEn ? "Proud digital ambassador\nof Gabon" : "Ambassadeurs digitaux\nfiers du Gabon"}</h2>
         <p class="max-w-lg mx-auto mb-6" style="color:var(--muted)">${isEn ? "Every share, every follow, every recommendation helps us grow and support more Gabonese businesses in their digital transformation." : "Chaque partage, chaque abonnement, chaque recommandation nous aide à grandir et à accompagner davantage d'entreprises gabonaises dans leur transformation digitale."}</p>
         <div class="flex flex-wrap gap-3 justify-center">
-          <a href="https://wa.me/24166198918" target="_blank" class="btn-primary">${isEn ? "Contact us on WhatsApp" : "Nous contacter sur WhatsApp"}</a>
+          <a href="https://wa.me/24166198918" target="_blank" rel="noopener noreferrer" class="btn-primary">${isEn ? "Contact us on WhatsApp" : "Nous contacter sur WhatsApp"}</a>
           <button onclick="navigate('contact')" class="btn-outline">${isEn ? "Request a quote" : "Demander un devis"}</button>
         </div>
       </div>

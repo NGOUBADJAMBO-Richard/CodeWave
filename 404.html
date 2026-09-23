@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; form-action 'none'" />
+    <meta name="robots" content="noindex, follow" />
+    <title>Page introuvable (404) | M.G.N CodeWave</title>
+    <!--
+      Page servie par GitHub Pages ET par Vercel pour toute URL inconnue.
+      Volontairement autonome : ni CSS, ni JS, ni image externe. Si l'application principale
+      tombe, cette page s'affiche quand même — c'est sa seule raison d'être.
+    -->
+    <style>
+      :root {
+        --bg: #f4f3f3; --fg: #0f172a; --muted: #475569;
+        --card: #ffffff; --border: #e2e8f0; --primary: #004aad;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #1e293b; --fg: #f1f5f9; --muted: #94a3b8;
+          --card: #0f172a; --border: #334155; --primary: #60a5fa;
+        }
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center;
+        padding: 2rem 1rem; background: var(--bg); color: var(--fg);
+        font-family: "Space Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+        line-height: 1.6;
+      }
+      main { width: 100%; max-width: 34rem; text-align: center; }
+      .mark { width: 64px; height: 64px; margin: 0 auto 1.75rem; display: block; }
+      .code {
+        display: inline-block; margin-bottom: 1rem; padding: 5px 12px;
+        font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+        font-size: 12px; font-weight: 700; letter-spacing: 0.12em;
+        color: var(--primary); border: 1px solid var(--border); background: var(--card);
+      }
+      h1 { margin: 0 0 0.75rem; font-size: clamp(1.5rem, 5vw, 2rem); line-height: 1.2; }
+      p { margin: 0 0 1.5rem; color: var(--muted); }
+      .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; }
+      a.btn {
+        display: inline-flex; align-items: center; justify-content: center;
+        min-height: 48px; padding: 0 1.4rem; font-weight: 700; text-decoration: none;
+        border: 2px solid var(--primary); transition: opacity 0.2s;
+      }
+      a.btn:hover { opacity: 0.85; }
+      .btn-fill { background: var(--primary); color: #fff; }
+      .btn-line { color: var(--primary); }
+      a.btn:focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; }
+      .links { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border); font-size: 0.9rem; }
+      .links a { color: var(--primary); }
+      .en { margin-top: 1.25rem; font-size: 0.85rem; color: var(--muted); }
+    </style>
+  </head>
+  <body>
+    <main>
+      <svg class="mark" viewBox="0 0 64 64" role="img" aria-label="M.G.N CodeWave">
+        <rect width="64" height="64" rx="14" fill="#0B1220" />
+        <g fill="none" stroke-width="4.6" stroke-linejoin="round" stroke-linecap="round">
+          <path d="M7.5 43V21l6 11 6-11v22" stroke="#E2E8F0" />
+          <path d="M38 26A8.5 8.5 0 1 0 40.5 32H33.5" stroke="#3B82F6" />
+          <path d="M44.5 43V21l12 22V21" stroke="#E2E8F0" />
+        </g>
+        <path d="M8 51.5c6-3.5 10.5 3.5 16 0s10.5-3.5 16 0 10.5 3.5 16 0" fill="none" stroke="#3B82F6" stroke-width="2.2" stroke-linecap="round" />
+      </svg>
+
+      <span class="code">ERREUR 404</span>
+      <h1>Cette page n'existe pas</h1>
+      <p>
+        Le lien est peut-être ancien, ou l'adresse comporte une faute de frappe.
+        Votre projet, lui, nous intéresse toujours.
+      </p>
+
+      <div class="actions">
+        <a class="btn btn-fill" id="home" href="/">Retour à l'accueil</a>
+        <a class="btn btn-line" href="https://wa.me/24166198918?text=Bonjour%2C%20je%20souhaite%20un%20devis%20M.G.N%20CodeWave">Nous écrire sur WhatsApp</a>
+      </div>
+
+      <div class="links">
+        <a id="l-services" href="/services.html">Nos services</a> ·
+        <a id="l-portfolio" href="/portfolio.html">Réalisations</a> ·
+        <a id="l-contact" href="/contact.html">Devis gratuit</a> ·
+        <a id="l-sitemap" href="/sitemap.html">Plan du site</a>
+      </div>
+
+      <p class="en">Page not found. Head back to the <a id="l-en" href="/">home page</a> or message us on WhatsApp.</p>
+    </main>
+
+    <script>
+      // Le site vit sous /CodeWave/ sur GitHub Pages et à la racine sur Vercel.
+      // Sans script, les liens pointent sur la racine — correct sur Vercel, et les contacts
+      // (WhatsApp, e-mail) restent absolus, donc valides dans tous les cas.
+      (function () {
+        var base = location.pathname.indexOf("/CodeWave/") === 0 ? "/CodeWave/" : "/";
+        if (base === "/") return;
+        var map = { home: "", "l-services": "services.html", "l-portfolio": "portfolio.html",
+                    "l-contact": "contact.html", "l-sitemap": "sitemap.html", "l-en": "" };
+        Object.keys(map).forEach(function (id) {
+          var el = document.getElementById(id);
+          if (el) el.setAttribute("href", base + map[id]);
+        });
+      })();
+    </script>
+  </body>
+</html>
